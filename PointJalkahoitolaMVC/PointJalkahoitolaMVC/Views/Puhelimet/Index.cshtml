@@ -1,0 +1,45 @@
+﻿@model IEnumerable<PointJalkahoitolaMVC.Database1.Puhelintiedot>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Puhelin_1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Puhelin_2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Puhelin_3)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Puhelin_1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Puhelin_2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Puhelin_3)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PuhelintietoID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PuhelintietoID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PuhelintietoID })
+        </td>
+    </tr>
+}
+
+</table>

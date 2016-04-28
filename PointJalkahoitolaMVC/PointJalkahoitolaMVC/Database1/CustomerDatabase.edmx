@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="JohaMeriSQL1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Asiakkaat">
+          <Key>
+            <PropertyRef Name="AsiakasID" />
+          </Key>
+          <Property Name="AsiakasID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Etunimi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sukunimi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Osoite" Type="nvarchar" MaxLength="100" />
+          <Property Name="Postinumero" Type="varchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hoitajat">
+          <Key>
+            <PropertyRef Name="HoitajaID" />
+          </Key>
+          <Property Name="HoitajaID" Type="int" Nullable="false" />
+          <Property Name="Etunimi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sukunimi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Osoite" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Palvelut">
+          <Key>
+            <PropertyRef Name="PalveluID" />
+          </Key>
+          <Property Name="PalveluID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Palvelu" Type="nvarchar" MaxLength="100" />
+          <Property Name="Palvelun kesto" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Postitoimipaikat1">
+          <Key>
+            <PropertyRef Name="Postinumero" />
+          </Key>
+          <Property Name="Postinumero" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Postitoimipaikka" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Puhelintiedot">
+          <Key>
+            <PropertyRef Name="PuhelintietoID" />
+          </Key>
+          <Property Name="PuhelintietoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Puhelin_1" Type="varchar" MaxLength="24" />
+          <Property Name="Puhelin_2" Type="varchar" MaxLength="24" />
+          <Property Name="Puhelin_3" Type="varchar" MaxLength="24" />
+        </EntityType>
+        <EntityType Name="Toimipisteet">
+          <Key>
+            <PropertyRef Name="ToimipisteID" />
+          </Key>
+          <Property Name="ToimipisteID" Type="int" Nullable="false" />
+          <Property Name="Toimipisteen_Nimi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Hoitopaikat" Type="varchar" MaxLength="4" />
+          <Property Name="Osoite" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Varauskalenteri">
+          <Key>
+            <PropertyRef Name="VarausID" />
+          </Key>
+          <Property Name="VarausID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Päivämäärä" Type="date" />
+          <Property Name="Aika" Type="datetime" />
+          <Property Name="AsiakasID" Type="int" />
+          <Property Name="PalveluID" Type="nvarchar" MaxLength="100" />
+          <Property Name="Hoitopaikka" Type="varchar" MaxLength="4" />
+          <Property Name="HoitajaID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="JohaMeriSQL1ModelStoreContainer">
+          <EntitySet Name="Asiakkaat" EntityType="Self.Asiakkaat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hoitajat" EntityType="Self.Hoitajat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Palvelut" EntityType="Self.Palvelut" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Postitoimipaikat1" EntityType="Self.Postitoimipaikat1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Puhelintiedot" EntityType="Self.Puhelintiedot" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Toimipisteet" EntityType="Self.Toimipisteet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Varauskalenteri" EntityType="Self.Varauskalenteri" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="JohaMeriSQL1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Asiakkaat">
+          <Key>
+            <PropertyRef Name="AsiakasID" />
+          </Key>
+          <Property Name="AsiakasID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Etunimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sukunimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Osoite" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Postinumero" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hoitajat">
+          <Key>
+            <PropertyRef Name="HoitajaID" />
+          </Key>
+          <Property Name="HoitajaID" Type="Int32" Nullable="false" />
+          <Property Name="Etunimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sukunimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Osoite" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Postitoimipaikat1">
+          <Key>
+            <PropertyRef Name="Postinumero" />
+          </Key>
+          <Property Name="Postinumero" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Postitoimipaikka" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="JohaMeriSQL1Entities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Asiakkaat" EntityType="Self.Asiakkaat" />
+          <EntitySet Name="Hoitajat" EntityType="Self.Hoitajat" />
+          <EntitySet Name="Postitoimipaikat1" EntityType="Self.Postitoimipaikat1" />
+          <EntitySet Name="Puhelintiedot" EntityType="JohaMeriSQL1Model.Puhelintiedot" />
+          <EntitySet Name="Toimipisteet" EntityType="JohaMeriSQL1Model.Toimipisteet" />
+          <EntitySet Name="Varauskalenteri" EntityType="JohaMeriSQL1Model.Varauskalenteri" />
+          <EntitySet Name="Palvelut" EntityType="JohaMeriSQL1Model.Palvelut" />
+        </EntityContainer>
+        <EntityType Name="Puhelintiedot">
+          <Key>
+            <PropertyRef Name="PuhelintietoID" />
+          </Key>
+          <Property Name="PuhelintietoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Puhelin_1" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="Puhelin_2" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="Puhelin_3" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Toimipisteet">
+          <Key>
+            <PropertyRef Name="ToimipisteID" />
+          </Key>
+          <Property Name="ToimipisteID" Type="Int32" Nullable="false" />
+          <Property Name="Toimipisteen_Nimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hoitopaikat" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Osoite" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Varauskalenteri">
+          <Key>
+            <PropertyRef Name="VarausID" />
+          </Key>
+          <Property Name="VarausID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Päivämäärä" Type="DateTime" Precision="0" />
+          <Property Name="Aika" Type="DateTime" Precision="3" />
+          <Property Name="AsiakasID" Type="Int32" />
+          <Property Name="PalveluID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Hoitopaikka" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="HoitajaID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Palvelut">
+          <Key>
+            <PropertyRef Name="PalveluID" />
+          </Key>
+          <Property Name="PalveluID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Palvelu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Palvelun_kesto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="JohaMeriSQL1ModelStoreContainer" CdmEntityContainer="JohaMeriSQL1Entities1">
+          <EntitySetMapping Name="Asiakkaat">
+            <EntityTypeMapping TypeName="JohaMeriSQL1Model.Asiakkaat">
+              <MappingFragment StoreEntitySet="Asiakkaat">
+                <ScalarProperty Name="AsiakasID" ColumnName="AsiakasID" />
+                <ScalarProperty Name="Etunimi" ColumnName="Etunimi" />
+                <ScalarProperty Name="Sukunimi" ColumnName="Sukunimi" />
+                <ScalarProperty Name="Osoite" ColumnName="Osoite" />
+                <ScalarProperty Name="Postinumero" ColumnName="Postinumero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hoitajat">
+            <EntityTypeMapping TypeName="JohaMeriSQL1Model.Hoitajat">
+              <MappingFragment StoreEntitySet="Hoitajat">
+                <ScalarProperty Name="HoitajaID" ColumnName="HoitajaID" />
+                <ScalarProperty Name="Etunimi" ColumnName="Etunimi" />
+                <ScalarProperty Name="Sukunimi" ColumnName="Sukunimi" />
+                <ScalarProperty Name="Osoite" ColumnName="Osoite" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Postitoimipaikat1">
+            <EntityTypeMapping TypeName="JohaMeriSQL1Model.Postitoimipaikat1">
+              <MappingFragment StoreEntitySet="Postitoimipaikat1">
+                <ScalarProperty Name="Postinumero" ColumnName="Postinumero" />
+                <ScalarProperty Name="Postitoimipaikka" ColumnName="Postitoimipaikka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Puhelintiedot">
+            <EntityTypeMapping TypeName="JohaMeriSQL1Model.Puhelintiedot">
+              <MappingFragment StoreEntitySet="Puhelintiedot">
+                <ScalarProperty Name="Puhelin_3" ColumnName="Puhelin_3" />
+                <ScalarProperty Name="Puhelin_2" ColumnName="Puhelin_2" />
+                <ScalarProperty Name="Puhelin_1" ColumnName="Puhelin_1" />
+                <ScalarProperty Name="PuhelintietoID" ColumnName="PuhelintietoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Toimipisteet">
+            <EntityTypeMapping TypeName="JohaMeriSQL1Model.Toimipisteet">
+              <MappingFragment StoreEntitySet="Toimipisteet">
+                <ScalarProperty Name="Osoite" ColumnName="Osoite" />
+                <ScalarProperty Name="Hoitopaikat" ColumnName="Hoitopaikat" />
+                <ScalarProperty Name="Toimipisteen_Nimi" ColumnName="Toimipisteen_Nimi" />
+                <ScalarProperty Name="ToimipisteID" ColumnName="ToimipisteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Varauskalenteri">
+            <EntityTypeMapping TypeName="JohaMeriSQL1Model.Varauskalenteri">
+              <MappingFragment StoreEntitySet="Varauskalenteri">
+                <ScalarProperty Name="HoitajaID" ColumnName="HoitajaID" />
+                <ScalarProperty Name="Hoitopaikka" ColumnName="Hoitopaikka" />
+                <ScalarProperty Name="PalveluID" ColumnName="PalveluID" />
+                <ScalarProperty Name="AsiakasID" ColumnName="AsiakasID" />
+                <ScalarProperty Name="Aika" ColumnName="Aika" />
+                <ScalarProperty Name="Päivämäärä" ColumnName="Päivämäärä" />
+                <ScalarProperty Name="VarausID" ColumnName="VarausID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Palvelut">
+            <EntityTypeMapping TypeName="JohaMeriSQL1Model.Palvelut">
+              <MappingFragment StoreEntitySet="Palvelut">
+                <ScalarProperty Name="Palvelun_kesto" ColumnName="Palvelun kesto" />
+                <ScalarProperty Name="Palvelu" ColumnName="Palvelu" />
+                <ScalarProperty Name="PalveluID" ColumnName="PalveluID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<PointJalkahoitolaMVC.Database1.Varauskalenteri>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Asiakasvaraushallinta</h2>
+
+<p>
+    @Html.ActionLink("Varaa uusi aika", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Päivämäärä)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aika)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AsiakasID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PalveluID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hoitopaikka)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HoitajaID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Päivämäärä)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aika)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AsiakasID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PalveluID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hoitopaikka)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoitajaID)
+        </td>
+        <td>
+            @Html.ActionLink("Muokkaa", "Edit", new { id=item.VarausID }) |
+            @Html.ActionLink("Tiedot", "Details", new { id=item.VarausID }) |
+            @Html.ActionLink("Poista", "Delete", new { id=item.VarausID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<PointJalkahoitolaMVC.Database1.Asiakkaat>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Asiakashallinta</h2>
+
+<p>
+    @Html.ActionLink("Luo uusi asiakas", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Etunimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sukunimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Osoite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Postinumero)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <a href="#"><span class="glyphigon glyphigon-plus näytäAjanvarausNappi"></span></a>
+            @Html.DisplayFor(modelItem=> item.AsiakasID)
+
+            @Html.DisplayFor(modelItem => item.Etunimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sukunimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Osoite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Postinumero)
+        </td>
+        <td>
+            @Html.ActionLink("Muokkaa", "Edit", new { id=item.AsiakasID }) |
+            @Html.ActionLink("Tiedot", "Details", new { id=item.AsiakasID }) |
+            @Html.ActionLink("Poista", "Delete", new { id=item.AsiakasID })
+        </td>
+    </tr>
+}
+
+</table>

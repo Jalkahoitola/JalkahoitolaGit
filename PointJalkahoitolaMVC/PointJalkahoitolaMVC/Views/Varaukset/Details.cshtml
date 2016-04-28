@@ -1,0 +1,66 @@
+﻿@model PointJalkahoitolaMVC.Database1.Varauskalenteri
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Varauskalenteri</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Päivämäärä)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Päivämäärä)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aika)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aika)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AsiakasID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AsiakasID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PalveluID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PalveluID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hoitopaikka)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoitopaikka)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoitajaID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoitajaID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.VarausID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
