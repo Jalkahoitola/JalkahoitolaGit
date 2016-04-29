@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Jalkahoitola_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Asiakkaat">
+          <Key>
+            <PropertyRef Name="Asiakas_ID" />
+          </Key>
+          <Property Name="Asiakas_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Etunimi" Type="nvarchar" MaxLength="20" />
+          <Property Name="Sukunimi" Type="nvarchar" MaxLength="20" />
+          <Property Name="Henkilotunnus" Type="nvarchar" MaxLength="20" />
+          <Property Name="Osoite_id" Type="int" />
+          <Property Name="Puhelin_id" Type="int" />
+          <Property Name="Huomio" Type="int" />
+        </EntityType>
+        <EntityType Name="Huomiot">
+          <Key>
+            <PropertyRef Name="Huomio_ID" />
+          </Key>
+          <Property Name="Huomio_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sairaudet" Type="nvarchar" MaxLength="100" />
+          <Property Name="Muut" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Osoite">
+          <Key>
+            <PropertyRef Name="Osoite_ID" />
+          </Key>
+          <Property Name="Osoite_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Katuosoite" Type="nvarchar" MaxLength="100" />
+          <Property Name="Postinumero" Type="nvarchar" MaxLength="20" />
+          <Property Name="Postitoimipaikka" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Puhelin">
+          <Key>
+            <PropertyRef Name="Puhelin_ID" />
+          </Key>
+          <Property Name="Puhelin_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Puhelinnumero_1" Type="nvarchar" MaxLength="20" />
+          <Property Name="Puhelinnumero_2" Type="nvarchar" MaxLength="20" />
+          <Property Name="Puhelinnumero_3" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK_Asiakkaat_ToTable">
+          <End Role="Osoite" Type="Self.Osoite" Multiplicity="0..1" />
+          <End Role="Asiakkaat" Type="Self.Asiakkaat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Osoite">
+              <PropertyRef Name="Osoite_ID" />
+            </Principal>
+            <Dependent Role="Asiakkaat">
+              <PropertyRef Name="Osoite_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Asiakkaat_ToTable_1">
+          <End Role="Puhelin" Type="Self.Puhelin" Multiplicity="0..1" />
+          <End Role="Asiakkaat" Type="Self.Asiakkaat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Puhelin">
+              <PropertyRef Name="Puhelin_ID" />
+            </Principal>
+            <Dependent Role="Asiakkaat">
+              <PropertyRef Name="Puhelin_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Asiakkaat_ToTable_2">
+          <End Role="Huomiot" Type="Self.Huomiot" Multiplicity="0..1" />
+          <End Role="Asiakkaat" Type="Self.Asiakkaat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Huomiot">
+              <PropertyRef Name="Huomio_ID" />
+            </Principal>
+            <Dependent Role="Asiakkaat">
+              <PropertyRef Name="Huomio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Jalkahoitola_dbModelStoreContainer">
+          <EntitySet Name="Asiakkaat" EntityType="Self.Asiakkaat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Huomiot" EntityType="Self.Huomiot" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Osoite" EntityType="Self.Osoite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Puhelin" EntityType="Self.Puhelin" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Asiakkaat_ToTable" Association="Self.FK_Asiakkaat_ToTable">
+            <End Role="Osoite" EntitySet="Osoite" />
+            <End Role="Asiakkaat" EntitySet="Asiakkaat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Asiakkaat_ToTable_1" Association="Self.FK_Asiakkaat_ToTable_1">
+            <End Role="Puhelin" EntitySet="Puhelin" />
+            <End Role="Asiakkaat" EntitySet="Asiakkaat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Asiakkaat_ToTable_2" Association="Self.FK_Asiakkaat_ToTable_2">
+            <End Role="Huomiot" EntitySet="Huomiot" />
+            <End Role="Asiakkaat" EntitySet="Asiakkaat" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Jalkahoitola_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Asiakkaat">
+          <Key>
+            <PropertyRef Name="Asiakas_ID" />
+          </Key>
+          <Property Name="Asiakas_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Etunimi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Sukunimi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Henkilotunnus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Osoite_id" Type="Int32" />
+          <Property Name="Puhelin_id" Type="Int32" />
+          <Property Name="Huomio" Type="Int32" />
+          <NavigationProperty Name="Osoite" Relationship="Self.FK_Asiakkaat_ToTable" FromRole="Asiakkaat" ToRole="Osoite" />
+          <NavigationProperty Name="Puhelin" Relationship="Self.FK_Asiakkaat_ToTable_1" FromRole="Asiakkaat" ToRole="Puhelin" />
+          <NavigationProperty Name="Huomiot" Relationship="Self.FK_Asiakkaat_ToTable_2" FromRole="Asiakkaat" ToRole="Huomiot" />
+        </EntityType>
+        <EntityType Name="Huomiot">
+          <Key>
+            <PropertyRef Name="Huomio_ID" />
+          </Key>
+          <Property Name="Huomio_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sairaudet" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Muut" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Asiakkaat" Relationship="Self.FK_Asiakkaat_ToTable_2" FromRole="Huomiot" ToRole="Asiakkaat" />
+        </EntityType>
+        <EntityType Name="Osoite">
+          <Key>
+            <PropertyRef Name="Osoite_ID" />
+          </Key>
+          <Property Name="Osoite_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Katuosoite" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Postinumero" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Postitoimipaikka" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Asiakkaat" Relationship="Self.FK_Asiakkaat_ToTable" FromRole="Osoite" ToRole="Asiakkaat" />
+        </EntityType>
+        <EntityType Name="Puhelin">
+          <Key>
+            <PropertyRef Name="Puhelin_ID" />
+          </Key>
+          <Property Name="Puhelin_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Puhelinnumero_1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Puhelinnumero_2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Puhelinnumero_3" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Asiakkaat" Relationship="Self.FK_Asiakkaat_ToTable_1" FromRole="Puhelin" ToRole="Asiakkaat" />
+        </EntityType>
+        <Association Name="FK_Asiakkaat_ToTable">
+          <End Role="Osoite" Type="Self.Osoite" Multiplicity="0..1" />
+          <End Role="Asiakkaat" Type="Self.Asiakkaat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Osoite">
+              <PropertyRef Name="Osoite_ID" />
+            </Principal>
+            <Dependent Role="Asiakkaat">
+              <PropertyRef Name="Osoite_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Asiakkaat_ToTable_1">
+          <End Role="Puhelin" Type="Self.Puhelin" Multiplicity="0..1" />
+          <End Role="Asiakkaat" Type="Self.Asiakkaat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Puhelin">
+              <PropertyRef Name="Puhelin_ID" />
+            </Principal>
+            <Dependent Role="Asiakkaat">
+              <PropertyRef Name="Puhelin_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Asiakkaat_ToTable_2">
+          <End Role="Huomiot" Type="Self.Huomiot" Multiplicity="0..1" />
+          <End Role="Asiakkaat" Type="Self.Asiakkaat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Huomiot">
+              <PropertyRef Name="Huomio_ID" />
+            </Principal>
+            <Dependent Role="Asiakkaat">
+              <PropertyRef Name="Huomio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Jalkahoitola_dbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Asiakkaat" EntityType="Self.Asiakkaat" />
+          <EntitySet Name="Huomiot" EntityType="Self.Huomiot" />
+          <EntitySet Name="Osoite" EntityType="Self.Osoite" />
+          <EntitySet Name="Puhelin" EntityType="Self.Puhelin" />
+          <AssociationSet Name="FK_Asiakkaat_ToTable" Association="Self.FK_Asiakkaat_ToTable">
+            <End Role="Osoite" EntitySet="Osoite" />
+            <End Role="Asiakkaat" EntitySet="Asiakkaat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Asiakkaat_ToTable_1" Association="Self.FK_Asiakkaat_ToTable_1">
+            <End Role="Puhelin" EntitySet="Puhelin" />
+            <End Role="Asiakkaat" EntitySet="Asiakkaat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Asiakkaat_ToTable_2" Association="Self.FK_Asiakkaat_ToTable_2">
+            <End Role="Huomiot" EntitySet="Huomiot" />
+            <End Role="Asiakkaat" EntitySet="Asiakkaat" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Jalkahoitola_dbModelStoreContainer" CdmEntityContainer="Jalkahoitola_dbEntities">
+          <EntitySetMapping Name="Asiakkaat">
+            <EntityTypeMapping TypeName="Jalkahoitola_dbModel.Asiakkaat">
+              <MappingFragment StoreEntitySet="Asiakkaat">
+                <ScalarProperty Name="Asiakas_ID" ColumnName="Asiakas_ID" />
+                <ScalarProperty Name="Etunimi" ColumnName="Etunimi" />
+                <ScalarProperty Name="Sukunimi" ColumnName="Sukunimi" />
+                <ScalarProperty Name="Henkilotunnus" ColumnName="Henkilotunnus" />
+                <ScalarProperty Name="Osoite_id" ColumnName="Osoite_id" />
+                <ScalarProperty Name="Puhelin_id" ColumnName="Puhelin_id" />
+                <ScalarProperty Name="Huomio" ColumnName="Huomio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Huomiot">
+            <EntityTypeMapping TypeName="Jalkahoitola_dbModel.Huomiot">
+              <MappingFragment StoreEntitySet="Huomiot">
+                <ScalarProperty Name="Huomio_ID" ColumnName="Huomio_ID" />
+                <ScalarProperty Name="Sairaudet" ColumnName="Sairaudet" />
+                <ScalarProperty Name="Muut" ColumnName="Muut" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Osoite">
+            <EntityTypeMapping TypeName="Jalkahoitola_dbModel.Osoite">
+              <MappingFragment StoreEntitySet="Osoite">
+                <ScalarProperty Name="Osoite_ID" ColumnName="Osoite_ID" />
+                <ScalarProperty Name="Katuosoite" ColumnName="Katuosoite" />
+                <ScalarProperty Name="Postinumero" ColumnName="Postinumero" />
+                <ScalarProperty Name="Postitoimipaikka" ColumnName="Postitoimipaikka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Puhelin">
+            <EntityTypeMapping TypeName="Jalkahoitola_dbModel.Puhelin">
+              <MappingFragment StoreEntitySet="Puhelin">
+                <ScalarProperty Name="Puhelin_ID" ColumnName="Puhelin_ID" />
+                <ScalarProperty Name="Puhelinnumero_1" ColumnName="Puhelinnumero_1" />
+                <ScalarProperty Name="Puhelinnumero_2" ColumnName="Puhelinnumero_2" />
+                <ScalarProperty Name="Puhelinnumero_3" ColumnName="Puhelinnumero_3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
