@@ -1,0 +1,39 @@
+﻿@model IEnumerable<PointJalkahoitolaMVC.Database1.Palvelut>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Palveluhallinta</h2>
+
+<p>
+    @Html.ActionLink("Luo uusi palvelu", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Palvelu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Palvelun_kesto)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Palvelu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Palvelun_kesto)
+        </td>
+        <td>
+            @Html.ActionLink("Muokkaa", "Edit", new { id=item.PalveluID }) |
+            @Html.ActionLink("Tiedot", "Details", new { id=item.PalveluID }) |
+            @Html.ActionLink("Poista", "Delete", new { id=item.PalveluID })
+        </td>
+    </tr>
+}
+
+</table>

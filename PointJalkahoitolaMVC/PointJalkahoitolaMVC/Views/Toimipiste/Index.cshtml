@@ -1,0 +1,45 @@
+﻿@model IEnumerable<PointJalkahoitolaMVC.Database1.Toimipisteet>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Toimipisteet</h2>
+
+<p>
+    @Html.ActionLink("Luo uusi toimipiste", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Toimipisteen_Nimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hoitopaikat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Osoite)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Toimipisteen_Nimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hoitopaikat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Osoite)
+        </td>
+        <td>
+            @Html.ActionLink("Muokkaa", "Edit", new { id=item.ToimipisteID }) |
+            @Html.ActionLink("Tiedot", "Details", new { id=item.ToimipisteID }) |
+            @Html.ActionLink("Poista", "Delete", new { id=item.ToimipisteID })
+        </td>
+    </tr>
+}
+
+</table>

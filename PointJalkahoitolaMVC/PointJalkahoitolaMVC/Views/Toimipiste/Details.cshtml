@@ -1,0 +1,42 @@
+﻿@model PointJalkahoitolaMVC.Database1.Toimipisteet
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Toimipisteet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Toimipisteen_Nimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Toimipisteen_Nimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hoitopaikat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoitopaikat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Osoite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Osoite)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ToimipisteID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
