@@ -1,0 +1,66 @@
+﻿@model JalkahoitolaWebApp.Models.Asiakkaat
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Asiakkaat</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Etunimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Etunimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sukunimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sukunimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Henkilotunnus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Henkilotunnus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Osoite.Katuosoite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Osoite.Katuosoite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Puhelin.Puhelinnumero_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Puhelin.Puhelinnumero_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Huomiot.Sairaudet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Huomiot.Sairaudet)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Asiakas_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
