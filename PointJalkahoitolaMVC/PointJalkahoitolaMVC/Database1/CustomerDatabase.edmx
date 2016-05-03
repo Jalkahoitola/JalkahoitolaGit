@@ -23,6 +23,21 @@
           <Property Name="Etunimi" Type="nvarchar" MaxLength="50" />
           <Property Name="Sukunimi" Type="nvarchar" MaxLength="50" />
           <Property Name="Osoite" Type="nvarchar" MaxLength="50" />
+          <Property Name="Puhelin_ID" Type="varchar" MaxLength="24" />
+          <Property Name="Henkilötunnus" Type="varchar" MaxLength="24" />
+          <Property Name="Kurssi_ID" Type="int" />
+          <Property Name="Aloitus pvm" Type="date" />
+          <Property Name="Valmistumis pvm" Type="date" />
+          <Property Name="Keskeytys pvm" Type="date" />
+        </EntityType>
+        <EntityType Name="Kurssit">
+          <Key>
+            <PropertyRef Name="Kurssi_ID" />
+          </Key>
+          <Property Name="Kurssi_ID" Type="int" Nullable="false" />
+          <Property Name="Nimike" Type="nvarchar" MaxLength="24" />
+          <Property Name="Opintopisteet" Type="int" />
+          <Property Name="Arviointi" Type="nvarchar" MaxLength="24" />
         </EntityType>
         <EntityType Name="Palvelut">
           <Key>
@@ -48,6 +63,14 @@
           <Property Name="Puhelin_2" Type="varchar" MaxLength="24" />
           <Property Name="Puhelin_3" Type="varchar" MaxLength="24" />
         </EntityType>
+        <EntityType Name="Rekisterointi">
+          <Key>
+            <PropertyRef Name="Kurssi_ID" />
+          </Key>
+          <Property Name="Kurssi_ID" Type="int" Nullable="false" />
+          <Property Name="Kurssi" Type="nvarchar" MaxLength="24" />
+          <Property Name="Hoitaja_ID" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Toimipisteet">
           <Key>
             <PropertyRef Name="ToimipisteID" />
@@ -69,14 +92,48 @@
           <Property Name="Hoitopaikka" Type="varchar" MaxLength="4" />
           <Property Name="HoitajaID" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Rekisterointi_Kurssit">
+          <End Role="Kurssit" Type="Self.Kurssit" Multiplicity="1" />
+          <End Role="Rekisterointi" Type="Self.Rekisterointi" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Kurssit">
+              <PropertyRef Name="Kurssi_ID" />
+            </Principal>
+            <Dependent Role="Rekisterointi">
+              <PropertyRef Name="Kurssi_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rekisterointi_Rek">
+          <End Role="Hoitajat" Type="Self.Hoitajat" Multiplicity="1" />
+          <End Role="Rekisterointi" Type="Self.Rekisterointi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hoitajat">
+              <PropertyRef Name="HoitajaID" />
+            </Principal>
+            <Dependent Role="Rekisterointi">
+              <PropertyRef Name="Hoitaja_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="JohaMeriSQL1ModelStoreContainer">
           <EntitySet Name="Asiakkaat" EntityType="Self.Asiakkaat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hoitajat" EntityType="Self.Hoitajat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kurssit" EntityType="Self.Kurssit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Palvelut" EntityType="Self.Palvelut" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Postitoimipaikat1" EntityType="Self.Postitoimipaikat1" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Puhelintiedot" EntityType="Self.Puhelintiedot" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rekisterointi" EntityType="Self.Rekisterointi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Toimipisteet" EntityType="Self.Toimipisteet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Varauskalenteri" EntityType="Self.Varauskalenteri" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Rekisterointi_Kurssit" Association="Self.FK_Rekisterointi_Kurssit">
+            <End Role="Kurssit" EntitySet="Kurssit" />
+            <End Role="Rekisterointi" EntitySet="Rekisterointi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rekisterointi_Rek" Association="Self.FK_Rekisterointi_Rek">
+            <End Role="Hoitajat" EntitySet="Hoitajat" />
+            <End Role="Rekisterointi" EntitySet="Rekisterointi" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -100,6 +157,13 @@
           <Property Name="Etunimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Sukunimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Osoite" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Puhelin_ID" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="Kurssi_ID" Type="Int32" />
+          <Property Name="Aloitus_pvm" Type="DateTime" Precision="0" />
+          <Property Name="Valmistumis_pvm" Type="DateTime" Precision="0" />
+          <Property Name="Keskeytys_pvm" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Rekisterointi" Relationship="JohaMeriSQL1Model.FK_Rekisterointi_Rek" FromRole="Hoitajat" ToRole="Rekisterointi" />
+          <Property Name="Henkilötunnus" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Postitoimipaikat1">
           <Key>
@@ -116,6 +180,16 @@
           <EntitySet Name="Toimipisteet" EntityType="JohaMeriSQL1Model.Toimipisteet" />
           <EntitySet Name="Varauskalenteri" EntityType="JohaMeriSQL1Model.Varauskalenteri" />
           <EntitySet Name="Palvelut" EntityType="JohaMeriSQL1Model.Palvelut" />
+          <EntitySet Name="Rekisterointi" EntityType="JohaMeriSQL1Model.Rekisterointi" />
+          <AssociationSet Name="FK_Rekisterointi_Rek" Association="JohaMeriSQL1Model.FK_Rekisterointi_Rek">
+            <End Role="Hoitajat" EntitySet="Hoitajat" />
+            <End Role="Rekisterointi" EntitySet="Rekisterointi" />
+          </AssociationSet>
+          <EntitySet Name="Kurssit" EntityType="JohaMeriSQL1Model.Kurssit" />
+          <AssociationSet Name="FK_Rekisterointi_Kurssit" Association="JohaMeriSQL1Model.FK_Rekisterointi_Kurssit">
+            <End Role="Kurssit" EntitySet="Kurssit" />
+            <End Role="Rekisterointi" EntitySet="Rekisterointi" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Puhelintiedot">
           <Key>
@@ -155,6 +229,50 @@
           <Property Name="Palvelu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Palvelun_kesto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="Rekisterointi">
+          <Key>
+            <PropertyRef Name="Kurssi_ID" />
+          </Key>
+          <Property Name="Kurssi_ID" Type="Int32" Nullable="false" />
+          <Property Name="Kurssi" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="Hoitaja_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Hoitajat" Relationship="JohaMeriSQL1Model.FK_Rekisterointi_Rek" FromRole="Rekisterointi" ToRole="Hoitajat" />
+          <NavigationProperty Name="Kurssit" Relationship="JohaMeriSQL1Model.FK_Rekisterointi_Kurssit" FromRole="Rekisterointi" ToRole="Kurssit" />
+        </EntityType>
+        <Association Name="FK_Rekisterointi_Rek">
+          <End Type="JohaMeriSQL1Model.Hoitajat" Role="Hoitajat" Multiplicity="1" />
+          <End Type="JohaMeriSQL1Model.Rekisterointi" Role="Rekisterointi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hoitajat">
+              <PropertyRef Name="HoitajaID" />
+            </Principal>
+            <Dependent Role="Rekisterointi">
+              <PropertyRef Name="Hoitaja_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Kurssit">
+          <Key>
+            <PropertyRef Name="Kurssi_ID" />
+          </Key>
+          <Property Name="Kurssi_ID" Type="Int32" Nullable="false" />
+          <Property Name="Nimike" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="Opintopisteet" Type="Int32" />
+          <Property Name="Arviointi" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Rekisterointi" Relationship="JohaMeriSQL1Model.FK_Rekisterointi_Kurssit" FromRole="Kurssit" ToRole="Rekisterointi" />
+        </EntityType>
+        <Association Name="FK_Rekisterointi_Kurssit">
+          <End Type="JohaMeriSQL1Model.Kurssit" Role="Kurssit" Multiplicity="1" />
+          <End Type="JohaMeriSQL1Model.Rekisterointi" Role="Rekisterointi" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Kurssit">
+              <PropertyRef Name="Kurssi_ID" />
+            </Principal>
+            <Dependent Role="Rekisterointi">
+              <PropertyRef Name="Kurssi_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -175,6 +293,12 @@
           <EntitySetMapping Name="Hoitajat">
             <EntityTypeMapping TypeName="JohaMeriSQL1Model.Hoitajat">
               <MappingFragment StoreEntitySet="Hoitajat">
+                <ScalarProperty Name="Henkilötunnus" ColumnName="Henkilötunnus" />
+                <ScalarProperty Name="Keskeytys_pvm" ColumnName="Keskeytys pvm" />
+                <ScalarProperty Name="Valmistumis_pvm" ColumnName="Valmistumis pvm" />
+                <ScalarProperty Name="Aloitus_pvm" ColumnName="Aloitus pvm" />
+                <ScalarProperty Name="Kurssi_ID" ColumnName="Kurssi_ID" />
+                <ScalarProperty Name="Puhelin_ID" ColumnName="Puhelin_ID" />
                 <ScalarProperty Name="HoitajaID" ColumnName="HoitajaID" />
                 <ScalarProperty Name="Etunimi" ColumnName="Etunimi" />
                 <ScalarProperty Name="Sukunimi" ColumnName="Sukunimi" />
@@ -229,6 +353,25 @@
                 <ScalarProperty Name="Palvelun_kesto" ColumnName="Palvelun kesto" />
                 <ScalarProperty Name="Palvelu" ColumnName="Palvelu" />
                 <ScalarProperty Name="PalveluID" ColumnName="PalveluID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rekisterointi">
+            <EntityTypeMapping TypeName="JohaMeriSQL1Model.Rekisterointi">
+              <MappingFragment StoreEntitySet="Rekisterointi">
+                <ScalarProperty Name="Hoitaja_ID" ColumnName="Hoitaja_ID" />
+                <ScalarProperty Name="Kurssi" ColumnName="Kurssi" />
+                <ScalarProperty Name="Kurssi_ID" ColumnName="Kurssi_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kurssit">
+            <EntityTypeMapping TypeName="JohaMeriSQL1Model.Kurssit">
+              <MappingFragment StoreEntitySet="Kurssit">
+                <ScalarProperty Name="Arviointi" ColumnName="Arviointi" />
+                <ScalarProperty Name="Opintopisteet" ColumnName="Opintopisteet" />
+                <ScalarProperty Name="Nimike" ColumnName="Nimike" />
+                <ScalarProperty Name="Kurssi_ID" ColumnName="Kurssi_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

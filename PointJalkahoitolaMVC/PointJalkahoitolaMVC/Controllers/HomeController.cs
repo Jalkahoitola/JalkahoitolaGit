@@ -15,10 +15,29 @@ namespace PointJalkahoitolaMVC.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            // Commenting out LINQ to show how to do the same thing in SQL.
+            //IQueryable<EnrollmentDateGroup> = from student in db.Students
+            //           group student by student.EnrollmentDate into dateGroup
+            //           select new EnrollmentDateGroup()
+            //           {
+            //               EnrollmentDate = dateGroup.Key,
+            //               StudentCount = dateGroup.Count()
+            //           };
 
-            return View();
-        }
+            // SQL version of the above LINQ code.
+            //string query = "SELECT EnrollmentDate, COUNT(*) AS StudentCount "
+            //        + "FROM Person "
+            //        + "WHERE Discriminator = 'Student' "
+            //        + "GROUP BY EnrollmentDate";
+            //IEnumerable<EnrollmentDateGroup> data = db.Database.SqlQuery<EnrollmentDateGroup>(query);
+
+            //    return View(data.ToList());
+            //}
+            
+                ViewBag.Message = "Your application description page.";
+
+                return View();
+            }
 
         public ActionResult Contact()
         {

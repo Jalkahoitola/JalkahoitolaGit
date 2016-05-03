@@ -4,7 +4,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Tiedot</h2>
 
 <div>
     <h4>Hoitajat</h4>
@@ -34,9 +34,90 @@
             @Html.DisplayFor(model => model.Osoite)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Henkilötunnus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Henkilötunnus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Puhelin_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Puhelin_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kurssi_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kurssi_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aloitus_pvm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aloitus_pvm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valmistumis_pvm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valmistumis_pvm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Keskeytys_pvm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Keskeytys_pvm)
+        </dd>
+
     </dl>
+    <table class="table">
+        <tr>
+            <th>
+               KurssiID
+            </th>
+            <th>
+               Kurssin nimi
+            </th>
+            <th>
+                Opintopisteet
+            </th>
+            <th>
+                Arviointi
+            </th>
+        </tr>
+
+        @*@foreach (var item in Model.Rekisterointi)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kurssi.Nimike)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Opintopisteet)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kurssi.Arviointi)
+                </td>
+            </tr>
+        }*@
+    </table>
+ 
+
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.HoitajaID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Muokkaa", "Edit", new { id = Model.HoitajaID }) |
+    @Html.ActionLink("Takaisin hoitajahallintaan", "Index")
 </p>

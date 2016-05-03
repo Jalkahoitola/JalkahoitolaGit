@@ -32,5 +32,7 @@ namespace PointJalkahoitolaMVC.Database1
         public virtual DbSet<Toimipisteet> Toimipisteet { get; set; }
         public virtual DbSet<Varauskalenteri> Varauskalenteri { get; set; }
         public virtual DbSet<Palvelut> Palvelut { get; set; }
+        public virtual DbSet<Rekisterointi> Rekisterointi { get; set; }
+        public virtual DbSet<Kurssit> Kurssit { get; set; }
     }
 }

@@ -18,8 +18,11 @@
 }
 <div class="jumbotron">
     <h1>PointCollege Jalkahoitola ajanvaraustietokanta & Web-sivusto</h1>
-    <p class="lead">Tämä on datanomi opintojen harjoitustehtävä, jossa kehitetään PointCollegen jalkahoitolalle uusi ajanvaraus systeemi. Projektissa käytetään kehittimenä Visual Studiota, jossa on luotu ASP.NET pohjainen MVC malli. Projektissa käytetään seuraavia ... Tietokannan käsittelytekniikkana käytetään Entity Frameworkia (EF). Sivujen luomisessa käytetään seuraavia HTML5-tekniikoita: CSS, CSS3 ja JavaScript. Projektiin kuuluu asiakastietokannan kehittämisen lisäksi web-sivuston kehitystyö.</p>
+    <p class="lead">Tämä on datanomi opintojen harjoitustehtävä, jossa kehitetään PointCollegen jalkahoitolalle uusi ajanvaraus systeemi. Projektissa käytetään kehittimenä Visual Studiota, jossa käytetään ASP.NET MVC 5 web applikaatiota Entity Framework 6 ympäristössä. Projektissa käytetään seuraavia ... Tietokannan käsittelytekniikkana käytetään Entity Frameworkia (EF). Sivujen luomisessa käytetään seuraavia HTML5-tekniikoita: CSS, CSS3 ja JavaScript. Projektiin kuuluu asiakastietokannan kehittämisen lisäksi web-sivuston kehitystyö.</p>
+    
     <p><a href="/Hoitaja" class="btn btn-primary btn-lg">Hoitajatiedot &raquo;</a></p>
+
+    <p><a href="/Asiakas" class="btn btn-primary btn-lg">Asiakastiedot &raquo;</a></p>
 
     <div class="form-actions no-color">
         <input type="submit" value="Aloitussivu" class="btn btn-default" /> |
@@ -29,10 +32,12 @@
         @Html.ActionLink("Asiakkaat", "Index", "Asiakas")<br />
         @Html.ActionLink("Hoitajat", "Index", "Hoitaja")<br />
         @Html.ActionLink("Palvelut", "Index", "Palvelu")<br />
-        @Html.ActionLink("Postitoimipaikat", "Index", "Postitoimipaikat")<br />
-        @Html.ActionLink("Puhelimet", "Index", "Puhelimet")<br />
+        @Html.ActionLink("Postitoimipaikat", "Index", "Postitoimipaikat1")<br />
+        @Html.ActionLink("Puhelimet", "Index", "Puhelintiedot")<br />
         @Html.ActionLink("Toimipisteet", "Index", "Toimipiste")<br />
-        @Html.ActionLink("Varauskalenteri", "Index", "Varaukset")<br /><br /><br />
+        @Html.ActionLink("Varauskalenteri", "Index", "Varaukset")<br />
+        @Html.ActionLink("Kurssit", "Index", "Kurssi")<br />
+        @Html.ActionLink("Rekisteröinti", "Index", "Rekisteroinnit")<br /><br /><br />
 
     </div>
 <div>

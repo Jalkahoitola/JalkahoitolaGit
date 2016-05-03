@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title Point Jalkahoitola</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -29,6 +29,8 @@
                     <li>@Html.ActionLink("Asiakasvaraushallinta", "Index", "Varaukset")</li>
                     <li>@Html.ActionLink("Tiedot", "About", "Aloitussivu")</li>
                     <li>@Html.ActionLink("Yhteystiedot", "Contact", "Aloitussivu")</li>
+                    <li>@Html.ActionLink("Kurssit", "Index", "Kurssi")</li>
+                    <li>@Html.ActionLink("Rekisteröinti", "Index", "Rekisteroinnit")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
