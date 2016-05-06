@@ -17,7 +17,8 @@ namespace PointJalkahoitolaMVC.Controllers
         // GET: Rekisteroinnit
         public ActionResult Index()
         {
-            return View(db.Rekisterointi.ToList());
+            var rekisterointi = db.Rekisterointi.Include(r => r.Hoitajat).Include(r => r.Kurssit);
+            return View(rekisterointi.ToList());
         }
 
         // GET: Rekisteroinnit/Details/5
@@ -38,6 +39,8 @@ namespace PointJalkahoitolaMVC.Controllers
         // GET: Rekisteroinnit/Create
         public ActionResult Create()
         {
+            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "HoitajaID", "Etunimi");
+            ViewBag.Kurssi_ID = new SelectList(db.Kurssit, "Kurssi_ID", "Nimike");
             return View();
         }
 
@@ -55,6 +58,8 @@ namespace PointJalkahoitolaMVC.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "HoitajaID", "Etunimi", rekisterointi.Hoitaja_ID);
+            ViewBag.Kurssi_ID = new SelectList(db.Kurssit, "Kurssi_ID", "Nimike", rekisterointi.Kurssi_ID);
             return View(rekisterointi);
         }
 
@@ -70,6 +75,8 @@ namespace PointJalkahoitolaMVC.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "HoitajaID", "Etunimi", rekisterointi.Hoitaja_ID);
+            ViewBag.Kurssi_ID = new SelectList(db.Kurssit, "Kurssi_ID", "Nimike", rekisterointi.Kurssi_ID);
             return View(rekisterointi);
         }
 
@@ -86,6 +93,8 @@ namespace PointJalkahoitolaMVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "HoitajaID", "Etunimi", rekisterointi.Hoitaja_ID);
+            ViewBag.Kurssi_ID = new SelectList(db.Kurssit, "Kurssi_ID", "Nimike", rekisterointi.Kurssi_ID);
             return View(rekisterointi);
         }
 

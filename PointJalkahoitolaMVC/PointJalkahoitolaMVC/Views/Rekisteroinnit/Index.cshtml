@@ -15,7 +15,10 @@
             @Html.DisplayNameFor(model => model.Kurssi)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Hoitaja_ID)
+            @Html.DisplayNameFor(model => model.Hoitajat.Etunimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kurssit.Nimike)
         </th>
         <th></th>
     </tr>
@@ -26,7 +29,10 @@
             @Html.DisplayFor(modelItem => item.Kurssi)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Hoitaja_ID)
+            @Html.DisplayFor(modelItem => item.Hoitajat.Etunimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kurssit.Nimike)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Kurssi_ID }) |

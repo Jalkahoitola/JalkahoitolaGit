@@ -14,13 +14,28 @@ namespace PointJalkahoitolaMVC.Controllers
     {
         private JohaMeriSQL1Entities1 db = new JohaMeriSQL1Entities1();
 
+        public ActionResult DisplayByAsiakkaat(int AsiakasID)
+        {
+            //imagine goes here
+            return View();
+        }
+
         // GET: Asiakas
+        [Route("Asiakkaat/kaikki")]
+
         public ActionResult Index()
         {
-            return View(db.Asiakkaat.ToList());
+            //Let's get the model
+            var asiakkaat = db.Asiakkaat.ToList();
+
+            //Combine the model with the view and return
+            return View(asiakkaat);
+
+            //return View(db.Asiakkaat.ToList());
         }
 
         // GET: Asiakas/Details/5
+        [Route("Asiakas/{id:int}")]
         public ActionResult Details(int? id)
         {
             if (id == null)

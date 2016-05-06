@@ -374,16 +374,16 @@
     <Content Include="Views\Hoitaja\Details.cshtml" />
     <Content Include="Views\Hoitaja\Edit.cshtml" />
     <Content Include="Views\Hoitaja\Index.cshtml" />
-    <Content Include="Views\Rekisteroinnit\Create.cshtml" />
-    <Content Include="Views\Rekisteroinnit\Delete.cshtml" />
-    <Content Include="Views\Rekisteroinnit\Details.cshtml" />
-    <Content Include="Views\Rekisteroinnit\Edit.cshtml" />
-    <Content Include="Views\Rekisteroinnit\Index.cshtml" />
     <Content Include="Views\Kurssi\Create.cshtml" />
     <Content Include="Views\Kurssi\Delete.cshtml" />
     <Content Include="Views\Kurssi\Details.cshtml" />
     <Content Include="Views\Kurssi\Edit.cshtml" />
     <Content Include="Views\Kurssi\Index.cshtml" />
+    <Content Include="Views\Rekisteroinnit\Create.cshtml" />
+    <Content Include="Views\Rekisteroinnit\Delete.cshtml" />
+    <Content Include="Views\Rekisteroinnit\Details.cshtml" />
+    <Content Include="Views\Rekisteroinnit\Edit.cshtml" />
+    <Content Include="Views\Rekisteroinnit\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
