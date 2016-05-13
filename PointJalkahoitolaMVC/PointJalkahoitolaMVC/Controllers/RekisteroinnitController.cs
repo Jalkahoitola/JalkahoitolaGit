@@ -10,122 +10,116 @@ using PointJalkahoitolaMVC.Database1;
 
 namespace PointJalkahoitolaMVC.Controllers
 {
-    public class AsiakasController : Controller
+    public class RekisteroinnitController : Controller
     {
         private JohaMeriSQL1Entities1 db = new JohaMeriSQL1Entities1();
 
-        public ActionResult DisplayByAsiakkaat(int AsiakasID)
-        {
-            //imagine goes here
-            return View();
-        }
-
-        // GET: Asiakas
-        [Route("Asiakkaat/kaikki")]
-
+        // GET: Rekisteroinnit
         public ActionResult Index()
         {
-            //Let's get the model
-            var asiakkaat = db.Asiakkaat.ToList();
-
-            //Combine the model with the view and return
-            return View(asiakkaat);
-
-            //return View(db.Asiakkaat.ToList());
+            var rekisterointi = db.Rekisterointi.Include(r => r.Hoitajat).Include(r => r.Kurssit);
+            return View(rekisterointi.ToList());
         }
 
-        // GET: Asiakas/Details/5
-        [Route("Asiakas/{id:int}")]
+        // GET: Rekisteroinnit/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Asiakkaat asiakkaat = db.Asiakkaat.Find(id);
-            if (asiakkaat == null)
+            Rekisterointi rekisterointi = db.Rekisterointi.Find(id);
+            if (rekisterointi == null)
             {
                 return HttpNotFound();
             }
-            return View(asiakkaat);
+            return View(rekisterointi);
         }
 
-        // GET: Asiakas/Create
+        // GET: Rekisteroinnit/Create
         public ActionResult Create()
         {
+            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "HoitajaID", "Etunimi");
+            ViewBag.Kurssi_ID = new SelectList(db.Kurssit, "Kurssi_ID", "Nimike");
             return View();
         }
 
-        // POST: Asiakas/Create
+        // POST: Rekisteroinnit/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AsiakasID,Etunimi,Sukunimi,Osoite,Postinumero")] Asiakkaat asiakkaat)
+        public ActionResult Create([Bind(Include = "Kurssi_ID,Kurssi,Hoitaja_ID")] Rekisterointi rekisterointi)
         {
             if (ModelState.IsValid)
             {
-                db.Asiakkaat.Add(asiakkaat);
+                db.Rekisterointi.Add(rekisterointi);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(asiakkaat);
+            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "HoitajaID", "Etunimi", rekisterointi.Hoitaja_ID);
+            ViewBag.Kurssi_ID = new SelectList(db.Kurssit, "Kurssi_ID", "Nimike", rekisterointi.Kurssi_ID);
+            return View(rekisterointi);
         }
 
-        // GET: Asiakas/Edit/5
+        // GET: Rekisteroinnit/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Asiakkaat asiakkaat = db.Asiakkaat.Find(id);
-            if (asiakkaat == null)
+            Rekisterointi rekisterointi = db.Rekisterointi.Find(id);
+            if (rekisterointi == null)
             {
                 return HttpNotFound();
             }
-            return View(asiakkaat);
+            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "HoitajaID", "Etunimi", rekisterointi.Hoitaja_ID);
+            ViewBag.Kurssi_ID = new SelectList(db.Kurssit, "Kurssi_ID", "Nimike", rekisterointi.Kurssi_ID);
+            return View(rekisterointi);
         }
 
-        // POST: Asiakas/Edit/5
+        // POST: Rekisteroinnit/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AsiakasID,Etunimi,Sukunimi,Osoite,Postinumero")] Asiakkaat asiakkaat)
+        public ActionResult Edit([Bind(Include = "Kurssi_ID,Kurssi,Hoitaja_ID")] Rekisterointi rekisterointi)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(asiakkaat).State = EntityState.Modified;
+                db.Entry(rekisterointi).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(asiakkaat);
+            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "HoitajaID", "Etunimi", rekisterointi.Hoitaja_ID);
+            ViewBag.Kurssi_ID = new SelectList(db.Kurssit, "Kurssi_ID", "Nimike", rekisterointi.Kurssi_ID);
+            return View(rekisterointi);
         }
 
-        // GET: Asiakas/Delete/5
+        // GET: Rekisteroinnit/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Asiakkaat asiakkaat = db.Asiakkaat.Find(id);
-            if (asiakkaat == null)
+            Rekisterointi rekisterointi = db.Rekisterointi.Find(id);
+            if (rekisterointi == null)
             {
                 return HttpNotFound();
             }
-            return View(asiakkaat);
+            return View(rekisterointi);
         }
 
-        // POST: Asiakas/Delete/5
+        // POST: Rekisteroinnit/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Asiakkaat asiakkaat = db.Asiakkaat.Find(id);
-            db.Asiakkaat.Remove(asiakkaat);
+            Rekisterointi rekisterointi = db.Rekisterointi.Find(id);
+            db.Rekisterointi.Remove(rekisterointi);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

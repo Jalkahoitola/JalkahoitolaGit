@@ -14,6 +14,57 @@ namespace PointJalkahoitolaMVC.Controllers
     {
         private JohaMeriSQL1Entities1 db = new JohaMeriSQL1Entities1();
 
+        //GET: Hoitaja
+        //public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        //{
+        //    ViewBag.CurrentSort = sortOrder;
+        //    ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+        //    ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+        //    if (searchString != null)
+        //    {
+        //        page = 1;
+        //    }
+        //    else
+        //    {
+        //        searchString = currentFilter;
+        //    }
+
+        //    ViewBag.CurrentFilter = searchString;
+
+        //    var hoitajat = from s in db.Hoitajat
+        //                   select s;
+        //    if (!String.IsNullOrEmpty(searchString))
+        //    {
+        //        hoitajat = hoitajat.Where(s => s.Sukunimi.Contains(searchString)
+        //                               || s.Etunimi.Contains(searchString));
+        //    }
+        //    switch (sortOrder)
+        //    {
+        //        case "name_desc":
+        //            hoitajat = hoitajat.OrderByDescending(s => s.Sukunimi);
+        //            break;
+        //        case "Date":
+        //            hoitajat = hoitajat.OrderBy(s => s.Aloitus_pvm);
+        //            break;
+        //        case "date_desc":
+        //            hoitajat = hoitajat.OrderByDescending(s => s.Aloitus_pvm);
+        //            break;
+        //        default:  // Name ascending 
+        //            hoitajat = hoitajat.OrderBy(s => s.Sukunimi);
+        //            break;
+        //    }
+
+        //    int pageSize = 3;
+        //    int pageNumber = (page ?? 1);
+        //    return View(hoitajat.ToPagedList(pageNumber, pageSize));
+        //}
+
+        //private ViewResult View(object p)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
         // GET: Hoitaja
         public ActionResult Index()
         {
@@ -46,7 +97,7 @@ namespace PointJalkahoitolaMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "HoitajaID,Etunimi,Sukunimi,Osoite")] Hoitajat hoitajat)
+        public ActionResult Create([Bind(Include = "HoitajaID,Etunimi,Sukunimi,Osoite,Puhelin_ID,Kurssi_ID,Aloitus_pvm,Valmistumis_pvm,Keskeytys_pvm")] Hoitajat hoitajat)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +129,7 @@ namespace PointJalkahoitolaMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "HoitajaID,Etunimi,Sukunimi,Osoite")] Hoitajat hoitajat)
+        public ActionResult Edit([Bind(Include = "HoitajaID,Etunimi,Sukunimi,Osoite,Henkilötunnus,Puhelin_ID,Kurssi_ID,Aloitus_pvm,Valmistumis_pvm,Keskeytys_pvm")] Hoitajat hoitajat)
         {
             if (ModelState.IsValid)
             {

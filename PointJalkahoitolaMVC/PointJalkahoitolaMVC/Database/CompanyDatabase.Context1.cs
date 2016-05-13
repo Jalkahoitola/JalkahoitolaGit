@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PointJalkahoitolaMVC.Database1
+namespace PointJalkahoitolaMVC.Database
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class JohaMeriSQL1Entities1 : DbContext
+    public partial class JohaMeriSQL1Entities : DbContext
     {
-        public JohaMeriSQL1Entities1()
-            : base("name=JohaMeriSQL1Entities1")
+        public JohaMeriSQL1Entities()
+            : base("name=JohaMeriSQL1Entities")
         {
         }
     
@@ -27,12 +27,5 @@ namespace PointJalkahoitolaMVC.Database1
     
         public virtual DbSet<Asiakkaat> Asiakkaat { get; set; }
         public virtual DbSet<Hoitajat> Hoitajat { get; set; }
-        public virtual DbSet<Postitoimipaikat1> Postitoimipaikat1 { get; set; }
-        public virtual DbSet<Puhelintiedot> Puhelintiedot { get; set; }
-        public virtual DbSet<Toimipisteet> Toimipisteet { get; set; }
-        public virtual DbSet<Varauskalenteri> Varauskalenteri { get; set; }
-        public virtual DbSet<Palvelut> Palvelut { get; set; }
-        public virtual DbSet<Rekisterointi> Rekisterointi { get; set; }
-        public virtual DbSet<Kurssit> Kurssit { get; set; }
     }
 }

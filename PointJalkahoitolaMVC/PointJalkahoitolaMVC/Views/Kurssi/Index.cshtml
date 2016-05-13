@@ -1,0 +1,51 @@
+﻿@model IEnumerable<PointJalkahoitolaMVC.Database1.Kurssit>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Kurssihallinta</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nimike)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Opintopisteet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Arviointi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rekisterointi.Kurssi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nimike)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Opintopisteet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Arviointi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rekisterointi.Kurssi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Kurssi_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Kurssi_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Kurssi_ID })
+        </td>
+    </tr>
+}
+
+</table>

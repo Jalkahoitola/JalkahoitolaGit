@@ -14,9 +14,24 @@ namespace PointJalkahoitolaMVC.Database1
     
     public partial class Hoitajat
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Hoitajat()
+        {
+            this.Rekisterointi = new HashSet<Rekisterointi>();
+        }
+    
         public int HoitajaID { get; set; }
         public string Etunimi { get; set; }
         public string Sukunimi { get; set; }
         public string Osoite { get; set; }
+        public string Puhelin_ID { get; set; }
+        public Nullable<int> Kurssi_ID { get; set; }
+        public Nullable<System.DateTime> Aloitus_pvm { get; set; }
+        public Nullable<System.DateTime> Valmistumis_pvm { get; set; }
+        public Nullable<System.DateTime> Keskeytys_pvm { get; set; }
+        public string Henkilötunnus { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Rekisterointi> Rekisterointi { get; set; }
     }
 }

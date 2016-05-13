@@ -10,122 +10,112 @@ using PointJalkahoitolaMVC.Database1;
 
 namespace PointJalkahoitolaMVC.Controllers
 {
-    public class AsiakasController : Controller
+    public class KurssiController : Controller
     {
         private JohaMeriSQL1Entities1 db = new JohaMeriSQL1Entities1();
 
-        public ActionResult DisplayByAsiakkaat(int AsiakasID)
-        {
-            //imagine goes here
-            return View();
-        }
-
-        // GET: Asiakas
-        [Route("Asiakkaat/kaikki")]
-
+        // GET: Kurssi
         public ActionResult Index()
         {
-            //Let's get the model
-            var asiakkaat = db.Asiakkaat.ToList();
-
-            //Combine the model with the view and return
-            return View(asiakkaat);
-
-            //return View(db.Asiakkaat.ToList());
+            var kurssit = db.Kurssit.Include(k => k.Rekisterointi);
+            return View(kurssit.ToList());
         }
 
-        // GET: Asiakas/Details/5
-        [Route("Asiakas/{id:int}")]
+        // GET: Kurssi/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Asiakkaat asiakkaat = db.Asiakkaat.Find(id);
-            if (asiakkaat == null)
+            Kurssit kurssit = db.Kurssit.Find(id);
+            if (kurssit == null)
             {
                 return HttpNotFound();
             }
-            return View(asiakkaat);
+            return View(kurssit);
         }
 
-        // GET: Asiakas/Create
+        // GET: Kurssi/Create
         public ActionResult Create()
         {
+            ViewBag.Kurssi_ID = new SelectList(db.Rekisterointi, "Kurssi_ID", "Kurssi");
             return View();
         }
 
-        // POST: Asiakas/Create
+        // POST: Kurssi/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AsiakasID,Etunimi,Sukunimi,Osoite,Postinumero")] Asiakkaat asiakkaat)
+        public ActionResult Create([Bind(Include = "Kurssi_ID,Nimike,Opintopisteet,Arviointi")] Kurssit kurssit)
         {
             if (ModelState.IsValid)
             {
-                db.Asiakkaat.Add(asiakkaat);
+                db.Kurssit.Add(kurssit);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(asiakkaat);
+            ViewBag.Kurssi_ID = new SelectList(db.Rekisterointi, "Kurssi_ID", "Kurssi", kurssit.Kurssi_ID);
+            return View(kurssit);
         }
 
-        // GET: Asiakas/Edit/5
+        // GET: Kurssi/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Asiakkaat asiakkaat = db.Asiakkaat.Find(id);
-            if (asiakkaat == null)
+            Kurssit kurssit = db.Kurssit.Find(id);
+            if (kurssit == null)
             {
                 return HttpNotFound();
             }
-            return View(asiakkaat);
+            ViewBag.Kurssi_ID = new SelectList(db.Rekisterointi, "Kurssi_ID", "Kurssi", kurssit.Kurssi_ID);
+            return View(kurssit);
         }
 
-        // POST: Asiakas/Edit/5
+        // POST: Kurssi/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AsiakasID,Etunimi,Sukunimi,Osoite,Postinumero")] Asiakkaat asiakkaat)
+        public ActionResult Edit([Bind(Include = "Kurssi_ID,Nimike,Opintopisteet,Arviointi")] Kurssit kurssit)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(asiakkaat).State = EntityState.Modified;
+                db.Entry(kurssit).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(asiakkaat);
+            ViewBag.Kurssi_ID = new SelectList(db.Rekisterointi, "Kurssi_ID", "Kurssi", kurssit.Kurssi_ID);
+            return View(kurssit);
         }
 
-        // GET: Asiakas/Delete/5
+        // GET: Kurssi/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Asiakkaat asiakkaat = db.Asiakkaat.Find(id);
-            if (asiakkaat == null)
+            Kurssit kurssit = db.Kurssit.Find(id);
+            if (kurssit == null)
             {
                 return HttpNotFound();
             }
-            return View(asiakkaat);
+            return View(kurssit);
         }
 
-        // POST: Asiakas/Delete/5
+        // POST: Kurssi/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Asiakkaat asiakkaat = db.Asiakkaat.Find(id);
-            db.Asiakkaat.Remove(asiakkaat);
+            Kurssit kurssit = db.Kurssit.Find(id);
+            db.Kurssit.Remove(kurssit);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

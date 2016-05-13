@@ -1,0 +1,50 @@
+﻿@model PointJalkahoitolaMVC.Database1.Kurssit
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Kurssit</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nimike)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nimike)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Opintopisteet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opintopisteet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Arviointi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Arviointi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rekisterointi.Kurssi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rekisterointi.Kurssi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Kurssi_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
