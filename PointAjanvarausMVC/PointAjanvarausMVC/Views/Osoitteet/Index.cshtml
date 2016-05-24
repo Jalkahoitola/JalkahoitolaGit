@@ -1,0 +1,50 @@
+﻿@model IEnumerable<PointAjanvarausMVC.Models.Osoite>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Osoitehallinta</h2>
+
+<p>
+    @Html.ActionLink("Luo uusi osoite", "Create")
+</p>
+
+<p><a href="/Asiakas" class="btn btn-primary btn-lg">Asiakashallinta &raquo;</a></p>
+<p><a href="/Hoitaja" class="btn btn-primary btn-lg">Hoitajahallinta &raquo;</a></p>
+<p><a href="/Hoitaja/Create.cshtml" class="btn btn-primary btn-lg">Hoitajahallinta &raquo;</a></p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Katuosoite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Postinumero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Postitoimipaikka)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Katuosoite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Postinumero)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Postitoimipaikka)
+        </td>
+        <td>
+            @Html.ActionLink("Muokkaa", "Edit", new { id=item.Osoite_ID }) |
+            @Html.ActionLink("Tiedot", "Details", new { id=item.Osoite_ID }) |
+            @Html.ActionLink("Poista", "Delete", new { id=item.Osoite_ID })
+        </td>
+    </tr>
+}
+
+</table>

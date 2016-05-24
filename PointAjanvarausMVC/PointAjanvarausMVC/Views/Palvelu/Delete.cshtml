@@ -1,0 +1,64 @@
+﻿@model PointAjanvarausMVC.Models.Palvelut
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Palvelut</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Palvelun_nimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Palvelun_nimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Palvelun_kesto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Palvelun_kesto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Asiakkaat.Etunimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Asiakkaat.Etunimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hoitajat.Tunnus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoitajat.Tunnus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Toimipisteet.Toimipisteen_Nimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Toimipisteet.Toimipisteen_Nimi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

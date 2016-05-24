@@ -1,0 +1,58 @@
+﻿@model PointAjanvarausMVC.Models.Palvelut
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Palvelut</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Palvelun_nimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Palvelun_nimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Palvelun_kesto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Palvelun_kesto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Asiakkaat.Etunimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Asiakkaat.Etunimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hoitajat.Tunnus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoitajat.Tunnus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Toimipisteet.Toimipisteen_Nimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Toimipisteet.Toimipisteen_Nimi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Palvelu_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

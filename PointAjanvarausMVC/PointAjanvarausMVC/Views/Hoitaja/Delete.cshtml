@@ -1,0 +1,152 @@
+﻿@model PointAjanvarausMVC.Models.Hoitajat
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Hoitajat</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tunnus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tunnus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Etunimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Etunimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Toinen_nimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Toinen_nimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sukunimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sukunimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Katuosoite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Katuosoite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Postinumero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Postinumero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Postitoimipaikka)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Postitoimipaikka)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Henkilotunnus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Henkilotunnus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aloituspvm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aloituspvm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valmistumispvm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valmistumispvm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Keskeytyspvm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Keskeytyspvm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tiedot_arkistoitu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tiedot_arkistoitu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kurssi_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kurssi_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Osoite.Katuosoite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Osoite.Katuosoite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Puhelin.Puhelinnumero_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Puhelin.Puhelinnumero_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Huomiot.Muut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Huomiot.Muut)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

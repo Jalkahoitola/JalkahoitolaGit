@@ -1,0 +1,42 @@
+﻿@model PointAjanvarausMVC.Models.Rekisterointi
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Rekisterointi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Kurssi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kurssi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hoitajat.Tunnus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoitajat.Tunnus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kurssit1.Kurssinimike)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kurssit1.Kurssinimike)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Rekisterointi_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

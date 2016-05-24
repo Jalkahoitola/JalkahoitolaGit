@@ -1,0 +1,45 @@
+﻿@model IEnumerable<PointAjanvarausMVC.Models.Hoitopaikat>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Hoitopaikkahallinta</h2>
+
+<p>
+    @Html.ActionLink("Luo uusi hoitopaikka", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Hoitopaikan_Nimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hoitopaikan_Numero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Toimipisteet.Toimipisteen_Nimi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hoitopaikan_Nimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hoitopaikan_Numero)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Toimipisteet.Toimipisteen_Nimi)
+        </td>
+        <td>
+            @Html.ActionLink("Muokkaa", "Edit", new { id=item.Hoitopaikka_ID }) |
+            @Html.ActionLink("Tiedot", "Details", new { id=item.Hoitopaikka_ID }) |
+            @Html.ActionLink("Poista", "Delete", new { id=item.Hoitopaikka_ID })
+        </td>
+    </tr>
+}
+
+</table>

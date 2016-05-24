@@ -1,0 +1,75 @@
+﻿@model IEnumerable<PointAjanvarausMVC.Models.Tuotteet>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tuotenimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Toimittaja_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ostohinta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tilauspäivä)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Arvioitu_saapumis_pvm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Saapumispvm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tilaus_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Shipper_ID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tuotenimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Toimittaja_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ostohinta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tilauspäivä)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Arvioitu_saapumis_pvm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Saapumispvm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tilaus_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Shipper_ID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Tuote_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Tuote_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Tuote_ID })
+        </td>
+    </tr>
+}
+
+</table>

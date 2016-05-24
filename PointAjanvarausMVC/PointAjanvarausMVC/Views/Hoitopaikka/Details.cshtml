@@ -1,0 +1,42 @@
+﻿@model PointAjanvarausMVC.Models.Hoitopaikat
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Hoitopaikkatiedot</h2>
+
+<div>
+    <h4>Hoitopaikat</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Hoitopaikan_Nimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoitopaikan_Nimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hoitopaikan_Numero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoitopaikan_Numero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Toimipisteet.Toimipisteen_Nimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Toimipisteet.Toimipisteen_Nimi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Muokkaa", "Edit", new { id = Model.Hoitopaikka_ID }) |
+    @Html.ActionLink("Takaisin hoitopaikkahallintaan", "Index")
+</p>

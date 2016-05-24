@@ -1,0 +1,42 @@
+﻿@model PointAjanvarausMVC.Models.Puhelin
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Puhelin</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Puhelinnumero_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Puhelinnumero_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Puhelinnumero_2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Puhelinnumero_2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Puhelinnumero_3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Puhelinnumero_3)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Puhelin_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

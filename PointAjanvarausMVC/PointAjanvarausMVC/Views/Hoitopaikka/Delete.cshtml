@@ -1,0 +1,48 @@
+﻿@model PointAjanvarausMVC.Models.Hoitopaikat
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Poista hoitopaikka</h2>
+
+<h3>Haluatko poistaa tiedot? Poistaminen vaatii admin tason oikeuksia.</h3>
+<div>
+    <h4>Hoitopaikan poistaminen</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Hoitopaikan_Nimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoitopaikan_Nimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hoitopaikan_Numero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoitopaikan_Numero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Toimipisteet.Toimipisteen_Nimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Toimipisteet.Toimipisteen_Nimi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Poista" class="btn btn-default" /> |
+            @Html.ActionLink("Takaisin hoitopaikkahallintaan", "Index")
+        </div>
+    }
+</div>

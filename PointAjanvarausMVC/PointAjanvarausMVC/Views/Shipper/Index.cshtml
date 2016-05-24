@@ -1,0 +1,60 @@
+﻿@model IEnumerable<PointAjanvarausMVC.Models.Shippers>
+
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Index</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Yritysnimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Puhelinnumero_1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Huomiot)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Huomiot1.Muut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Osoite.Katuosoite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Puhelin.Puhelinnumero_1)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Yritysnimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Puhelinnumero_1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Huomiot)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Huomiot1.Muut)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Osoite.Katuosoite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Puhelin.Puhelinnumero_1)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Shipper_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Shipper_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Shipper_ID })
+        </td>
+    </tr>
+}
+</table>

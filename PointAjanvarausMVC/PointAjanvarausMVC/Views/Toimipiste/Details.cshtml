@@ -1,0 +1,50 @@
+﻿@model PointAjanvarausMVC.Models.Toimipisteet
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Toimipisteet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Toimipisteen_Nimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Toimipisteen_Nimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hoitopaikat1.Hoitopaikan_Nimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoitopaikat1.Hoitopaikan_Nimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Osoite.Katuosoite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Osoite.Katuosoite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Puhelin.Puhelinnumero_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Puhelin.Puhelinnumero_1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Toimipiste_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,74 @@
+﻿@model PointAjanvarausMVC.Models.Event
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Event</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Päivämäärä)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Päivämäärä)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Varausaika)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Varausaika)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Info)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Info)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Asiakkaat.Etunimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Asiakkaat.Etunimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Palvelut.Palvelun_nimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Palvelut.Palvelun_nimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hoitopaikat.Hoitopaikan_Nimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoitopaikat.Hoitopaikan_Nimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hoitajat.Tunnus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoitajat.Tunnus)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Muokkaa", "Edit", new { id = Model.Varaus_ID }) |
+    @Html.ActionLink("Takaisin Asiakasvaraushallintaan", "Index")
+</p>

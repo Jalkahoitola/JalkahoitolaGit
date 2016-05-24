@@ -1,0 +1,66 @@
+﻿@model IEnumerable<PointAjanvarausMVC.Models.Toimipisteet>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Toimipistehallinta</h2>
+
+<p>
+    @Html.ActionLink("Luo uusi toimipiste", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Toimipisteen_Nimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hoitopaikat1.Hoitopaikan_Nimi)
+        </th>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.Osoite.Katuosoite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Osoite.Postinumero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Osoite.Postitoimipaikka)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Puhelin.Puhelinnumero_1)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Toimipisteen_Nimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hoitopaikat1.Hoitopaikan_Nimi)
+        </td>
+    
+        <td>
+            @Html.DisplayFor(modelItem => item.Osoite.Katuosoite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Osoite.Postinumero)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Osoite.Postitoimipaikka)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Puhelin.Puhelinnumero_1)
+        </td>
+
+        <td>
+            @Html.ActionLink("Muokkaa", "Edit", new { id=item.Toimipiste_ID }) |
+            @Html.ActionLink("Tiedot", "Details", new { id=item.Toimipiste_ID }) |
+            @Html.ActionLink("Poista", "Delete", new { id=item.Toimipiste_ID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,82 @@
+﻿@model PointAjanvarausMVC.Models.Tuotteet
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tuotteet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tuotenimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tuotenimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Toimittaja_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Toimittaja_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ostohinta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ostohinta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tilauspäivä)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tilauspäivä)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Arvioitu_saapumis_pvm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Arvioitu_saapumis_pvm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Saapumispvm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Saapumispvm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tilaus_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tilaus_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Shipper_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Shipper_ID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Tuote_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

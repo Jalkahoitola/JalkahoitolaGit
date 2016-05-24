@@ -1,0 +1,57 @@
+﻿@model IEnumerable<PointAjanvarausMVC.Models.Palvelut>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Palvelun_nimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Palvelun_kesto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Asiakkaat.Etunimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hoitajat.Tunnus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Toimipisteet.Toimipisteen_Nimi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Palvelun_nimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Palvelun_kesto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Asiakkaat.Etunimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hoitajat.Tunnus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Toimipisteet.Toimipisteen_Nimi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Palvelu_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Palvelu_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Palvelu_ID })
+        </td>
+    </tr>
+}
+
+</table>

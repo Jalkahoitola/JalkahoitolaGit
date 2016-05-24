@@ -1,0 +1,87 @@
+﻿@model IEnumerable<PointAjanvarausMVC.Models.Tilaukset>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Toimittaja_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Henkilokunta_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tilausmäärä)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tilauspäivä)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Toimitus_pvm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Saapumispvm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShipName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShipAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Shipper_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tuotteet.Tuotenimi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Toimittaja_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Henkilokunta_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tilausmäärä)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tilauspäivä)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Toimitus_pvm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Saapumispvm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShipName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShipAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Shipper_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tuotteet.Tuotenimi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Tilaus_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Tilaus_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Tilaus_ID })
+        </td>
+    </tr>
+}
+
+</table>

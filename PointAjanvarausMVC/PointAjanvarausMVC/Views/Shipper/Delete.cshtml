@@ -1,0 +1,72 @@
+﻿@model PointAjanvarausMVC.Models.Shippers
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Shippers</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Yritysnimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yritysnimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Puhelinnumero_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Puhelinnumero_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Huomiot)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Huomiot)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Huomiot1.Muut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Huomiot1.Muut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Osoite.Katuosoite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Osoite.Katuosoite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Puhelin.Puhelinnumero_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Puhelin.Puhelinnumero_1)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
