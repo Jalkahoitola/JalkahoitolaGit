@@ -20,6 +20,7 @@ namespace PointAjanvarausMVC.Controllers
             var asiakkaat = db.Asiakkaat.Include(a => a.Osoite).Include(a => a.Puhelin).Include(a => a.Huomiot1);
             return View(asiakkaat.ToList());
         }
+        //23.5.2016Lisätty tietokantataulujen suodatukset:
         public ActionResult OrderByFirstName()
         {
             var asiakkaat = from a in db.Asiakkaat
@@ -33,7 +34,7 @@ namespace PointAjanvarausMVC.Controllers
                             orderby a.Sukunimi ascending
                             select a;
             return View(asiakkaat);
-        }
+        }//23.5.2016 Lisätty
    
 
         // GET: Asiakas/Details/5
