@@ -4,7 +4,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Tiedot</h2>
 
 <div>
     <h4>Asiakkaat</h4>
@@ -90,15 +90,56 @@
             @Html.DisplayFor(model => model.Puhelin.Puhelinnumero_1)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Huomiot1.Sairaudet)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Huomiot1.Sairaudet)
-        </dd>
-
+        @*25.5.2016 Lisätty alitiedostot:*@
     </dl>
+        <table class="table">
+            <tr>
+                <th>
+                    Palvelun nimi
+                </th>
+                <th>
+                    Palvelun kesto
+                </th>
+                <th>
+                    HoitajaID
+                </th>
+                <th>
+                    Hoitajan etunimi
+                </th>
+                <th>
+                    Hoitajan sukunimi
+                </th>
+                <th>
+                    Huomiot
+                </th>
+            </tr>
+            @foreach (var item in Model.Palvelut)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Palvelun_nimi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Palvelun_kesto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Hoitajat.Hoitaja_ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Hoitajat.Etunimi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Hoitajat.Sukunimi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Asiakkaat.Huomiot)
+                    </td>
+                
+                </tr>
+            }
+        </table>@*<--25.5.2016 Lisätty alitiedostot*@
+
+    
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Asiakas_ID }) |
