@@ -89,6 +89,7 @@
             @Html.DisplayFor(modelItem => item.Huomiot1.Huomioitavat_asiat)
         </td>
         <td>
+            @Html.ActionLink("Varaus", "Index", "Events") |
             @Html.ActionLink("Muokkaa", "Edit", new { id=item.Asiakas_ID }) |
             @Html.ActionLink("Tiedot", "Details", new { id=item.Asiakas_ID }) |
             @Html.ActionLink("Poista", "Delete", new { id=item.Asiakas_ID })
