@@ -11,7 +11,7 @@ using Microsoft.Ajax.Utilities;
 
 namespace PointAjanvarausMVC.Controllers
 {
-    public class EventsController : Controller
+ public class EventsController : Controller
     {
         private JohaMeriSQL2Entities db = new JohaMeriSQL2Entities();
 
@@ -43,10 +43,10 @@ namespace PointAjanvarausMVC.Controllers
         // GET: Events/Create
         public ActionResult Create()
         {
-            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Etunimi");
+            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Etunimi", "Sukunimi");
             ViewBag.Palvelu_ID = new SelectList(db.Palvelut, "Palvelu_ID", "Palvelun_nimi");
-            ViewBag.Hoitopaikka_ID = new SelectList(db.Hoitopaikat, "Hoitopaikka_ID", "Hoitopaikan_Nimi");
-            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus");
+            ViewBag.Hoitopaikka_ID = new SelectList(db.Hoitopaikat, "Hoitopaikka_ID", "Hoitopaikan_Nimi", "Hoitopaikan_Numero");
+            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Etunimi", "Sukunimi");
             return View();
         }
 
@@ -55,7 +55,7 @@ namespace PointAjanvarausMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Varaus_ID,Päivämäärä,Varausaika,Asiakas_ID,Palvelu_ID,Hoitopaikka_ID,Hoitaja_ID,Text")] Event @event)
+        public ActionResult Create([Bind(Include = "Varaus_ID,Päivämäärä,Varausaika,Asiakas_ID,Palvelu_ID,Hoitopaikka_ID,Hoitopaikan_Nimi, Hoitopaikan_Numero,Hoitaja_ID,Info")] Event @event)
         {
             if (ModelState.IsValid)
             {
@@ -64,10 +64,10 @@ namespace PointAjanvarausMVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Etunimi", @event.Asiakas_ID);
+            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Etunimi", "Sukunimi", @event.Asiakas_ID);
             ViewBag.Palvelu_ID = new SelectList(db.Palvelut, "Palvelu_ID", "Palvelun_nimi", @event.Palvelu_ID);
-            ViewBag.Hoitopaikka_ID = new SelectList(db.Hoitopaikat, "Hoitopaikka_ID", "Hoitopaikan_Nimi", @event.Hoitopaikka_ID);
-            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus", @event.Hoitaja_ID);
+            ViewBag.Hoitopaikka_ID = new SelectList(db.Hoitopaikat, "Hoitopaikka_ID", "Hoitopaikan_Nimi", "Hoitopaikan_Numero", @event.Hoitopaikka_ID);
+            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Etunimi", "Sukunimi", @event.Hoitaja_ID);
             return View(@event);
         }
 
@@ -83,10 +83,10 @@ namespace PointAjanvarausMVC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Etunimi", @event.Asiakas_ID);
+            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Etunimi", "Sukunimi", @event.Asiakas_ID);
             ViewBag.Palvelu_ID = new SelectList(db.Palvelut, "Palvelu_ID", "Palvelun_nimi", @event.Palvelu_ID);
-            ViewBag.Hoitopaikka_ID = new SelectList(db.Hoitopaikat, "Hoitopaikka_ID", "Hoitopaikan_Nimi", @event.Hoitopaikka_ID);
-            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus", @event.Hoitaja_ID);
+            ViewBag.Hoitopaikka_ID = new SelectList(db.Hoitopaikat, "Hoitopaikka_ID", "Hoitopaikan_Nimi", "Hoitopaikan_Numero", @event.Hoitopaikka_ID);
+            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Etunimi", "Sukunimi", @event.Hoitaja_ID);
             return View(@event);
         }
 
@@ -95,7 +95,7 @@ namespace PointAjanvarausMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Varaus_ID,Päivämäärä,Varausaika,Asiakas_ID,Palvelu_ID,Hoitopaikka_ID,Hoitaja_ID,Text")] Event @event)
+        public ActionResult Edit([Bind(Include = "Varaus_ID,Päivämäärä,Varausaika,Asiakas_ID,Palvelu_ID,Hoitopaikka_ID,Hoitopaikan_Nimi, Hoitopaikan_Numero,Hoitaja_ID,Info")] Event @event)
         {
             if (ModelState.IsValid)
             {
@@ -103,10 +103,10 @@ namespace PointAjanvarausMVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Etunimi", @event.Asiakas_ID);
+            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Etunimi", "Sukunimi", @event.Asiakas_ID);
             ViewBag.Palvelu_ID = new SelectList(db.Palvelut, "Palvelu_ID", "Palvelun_nimi", @event.Palvelu_ID);
-            ViewBag.Hoitopaikka_ID = new SelectList(db.Hoitopaikat, "Hoitopaikka_ID", "Hoitopaikan_Nimi", @event.Hoitopaikka_ID);
-            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus", @event.Hoitaja_ID);
+            ViewBag.Hoitopaikka_ID = new SelectList(db.Hoitopaikat, "Hoitopaikka_ID", "Hoitopaikan_Nimi", "Hoitopaikan_Numero", @event.Hoitopaikka_ID);
+            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Etunimi", "Sukunimi", @event.Hoitaja_ID);
             return View(@event);
         }
 
