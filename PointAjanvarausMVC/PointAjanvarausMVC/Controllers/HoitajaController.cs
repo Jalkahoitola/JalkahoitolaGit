@@ -11,7 +11,7 @@ using PointAjanvarausMVC.Models;
 namespace PointAjanvarausMVC.Controllers
 {
     public class HoitajaController : Controller
-    {
+     {
         private JohaMeriSQL2Entities db = new JohaMeriSQL2Entities();
 
         // GET: Hoitaja
@@ -20,6 +20,8 @@ namespace PointAjanvarausMVC.Controllers
             var hoitajat = db.Hoitajat.Include(h => h.Osoite).Include(h => h.Puhelin).Include(h => h.Huomiot);
             return View(hoitajat.ToList());
         }
+
+        //Päivitetty 23.5.2016 tietokannan suodatustoimintoja
         public ActionResult OrderByFirstName()
         {
             var hoitajat = from h in db.Hoitajat
