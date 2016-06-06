@@ -17,9 +17,9 @@ namespace PointAjanvarausMVC.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Palvelut()
         {
-            this.Varauskalenteri = new HashSet<Varauskalenteri>();
             this.Event = new HashSet<Event>();
             this.Varaus = new HashSet<Varaus>();
+            this.Varauskalenteri = new HashSet<Varauskalenteri>();
         }
     
         public int Palvelu_ID { get; set; }
@@ -28,15 +28,16 @@ namespace PointAjanvarausMVC.Models
         public Nullable<int> Asiakas_id { get; set; }
         public Nullable<int> Hoitaja_id { get; set; }
         public Nullable<int> Toimipiste_id { get; set; }
+        public Nullable<int> Varaus_id { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Varauskalenteri> Varauskalenteri { get; set; }
+        public virtual Asiakkaat Asiakkaat { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Event> Event { get; set; }
         public virtual Toimipisteet Toimipisteet { get; set; }
-        public virtual Asiakkaat Asiakkaat { get; set; }
-        public virtual Hoitajat Hoitajat { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Varaus> Varaus { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Varauskalenteri> Varauskalenteri { get; set; }
+        public virtual Hoitajat Hoitajat { get; set; }
     }
 }

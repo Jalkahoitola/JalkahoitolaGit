@@ -17,7 +17,8 @@ namespace PointAjanvarausMVC.Controllers
         // GET: Osoitteet
         public ActionResult Index()
         {
-            return View(db.Osoite.ToList());
+            var osoite = db.Osoite.Include(o => o.Asiakkaat1).Include(o => o.Henkilokunta1).Include(o => o.Hoitajat1).Include(o => o.Toimipisteet).Include(o => o.Shippers);
+            return View(osoite.ToList());
         }
 
         // GET: Osoitteet/Details/5
@@ -38,6 +39,11 @@ namespace PointAjanvarausMVC.Controllers
         // GET: Osoitteet/Create
         public ActionResult Create()
         {
+            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Etunimi");
+            ViewBag.Henkilokunta_ID = new SelectList(db.Henkilokunta, "Henkilokunta_ID", "Etunimi");
+            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus");
+            ViewBag.Toimipiste_ID = new SelectList(db.Toimipisteet, "Toimipiste_ID", "Toimipisteen_Nimi");
+            ViewBag.Shipper_ID = new SelectList(db.Shippers, "Shipper_ID", "Yritysnimi");
             return View();
         }
 
@@ -46,7 +52,7 @@ namespace PointAjanvarausMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Osoite_ID,Katuosoite,Postinumero,Postitoimipaikka")] Osoite osoite)
+        public ActionResult Create([Bind(Include = "Osoite_ID,Katuosoite,Postinumero,Postitoimipaikka,Asiakas_ID,Hoitaja_ID,Henkilokunta_ID,Toimipiste_ID,Shipper_ID")] Osoite osoite)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +61,11 @@ namespace PointAjanvarausMVC.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Etunimi", osoite.Asiakas_ID);
+            ViewBag.Henkilokunta_ID = new SelectList(db.Henkilokunta, "Henkilokunta_ID", "Etunimi", osoite.Henkilokunta_ID);
+            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus", osoite.Hoitaja_ID);
+            ViewBag.Toimipiste_ID = new SelectList(db.Toimipisteet, "Toimipiste_ID", "Toimipisteen_Nimi", osoite.Toimipiste_ID);
+            ViewBag.Shipper_ID = new SelectList(db.Shippers, "Shipper_ID", "Yritysnimi", osoite.Shipper_ID);
             return View(osoite);
         }
 
@@ -70,6 +81,11 @@ namespace PointAjanvarausMVC.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Etunimi", osoite.Asiakas_ID);
+            ViewBag.Henkilokunta_ID = new SelectList(db.Henkilokunta, "Henkilokunta_ID", "Etunimi", osoite.Henkilokunta_ID);
+            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus", osoite.Hoitaja_ID);
+            ViewBag.Toimipiste_ID = new SelectList(db.Toimipisteet, "Toimipiste_ID", "Toimipisteen_Nimi", osoite.Toimipiste_ID);
+            ViewBag.Shipper_ID = new SelectList(db.Shippers, "Shipper_ID", "Yritysnimi", osoite.Shipper_ID);
             return View(osoite);
         }
 
@@ -78,7 +94,7 @@ namespace PointAjanvarausMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Osoite_ID,Katuosoite,Postinumero,Postitoimipaikka")] Osoite osoite)
+        public ActionResult Edit([Bind(Include = "Osoite_ID,Katuosoite,Postinumero,Postitoimipaikka,Asiakas_ID,Hoitaja_ID,Henkilokunta_ID,Toimipiste_ID,Shipper_ID")] Osoite osoite)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +102,11 @@ namespace PointAjanvarausMVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Etunimi", osoite.Asiakas_ID);
+            ViewBag.Henkilokunta_ID = new SelectList(db.Henkilokunta, "Henkilokunta_ID", "Etunimi", osoite.Henkilokunta_ID);
+            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus", osoite.Hoitaja_ID);
+            ViewBag.Toimipiste_ID = new SelectList(db.Toimipisteet, "Toimipiste_ID", "Toimipisteen_Nimi", osoite.Toimipiste_ID);
+            ViewBag.Shipper_ID = new SelectList(db.Shippers, "Shipper_ID", "Yritysnimi", osoite.Shipper_ID);
             return View(osoite);
         }
 

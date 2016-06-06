@@ -17,8 +17,7 @@ namespace PointAjanvarausMVC.Controllers
         // GET: Rekisteroinnit
         public ActionResult Index()
         {
-            var rekisterointi = db.Rekisterointi.Include(r => r.Hoitajat).Include(r => r.Kurssit1);
-            return View(rekisterointi.ToList());
+            return View(db.Rekisterointi.ToList());
         }
 
         // GET: Rekisteroinnit/Details/5
@@ -39,8 +38,6 @@ namespace PointAjanvarausMVC.Controllers
         // GET: Rekisteroinnit/Create
         public ActionResult Create()
         {
-            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus");
-            ViewBag.Kurssi_ID = new SelectList(db.Kurssit, "Kurssi_ID", "Kurssinimike");
             return View();
         }
 
@@ -49,7 +46,7 @@ namespace PointAjanvarausMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Rekisterointi_ID,Kurssi_ID,Kurssi,Hoitaja_ID")] Rekisterointi rekisterointi)
+        public ActionResult Create([Bind(Include = "Rekisterointi_ID,Vuosikurssi,Vuosikurssi_aloitus_pvm,Vuosikurssi_lopetus_pvm,Kurssi_ID,Hoitaja_ID")] Rekisterointi rekisterointi)
         {
             if (ModelState.IsValid)
             {
@@ -58,8 +55,6 @@ namespace PointAjanvarausMVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus", rekisterointi.Hoitaja_ID);
-            ViewBag.Kurssi_ID = new SelectList(db.Kurssit, "Kurssi_ID", "Kurssinimike", rekisterointi.Kurssi_ID);
             return View(rekisterointi);
         }
 
@@ -75,8 +70,6 @@ namespace PointAjanvarausMVC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus", rekisterointi.Hoitaja_ID);
-            ViewBag.Kurssi_ID = new SelectList(db.Kurssit, "Kurssi_ID", "Kurssinimike", rekisterointi.Kurssi_ID);
             return View(rekisterointi);
         }
 
@@ -85,7 +78,7 @@ namespace PointAjanvarausMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Rekisterointi_ID,Kurssi_ID,Kurssi,Hoitaja_ID")] Rekisterointi rekisterointi)
+        public ActionResult Edit([Bind(Include = "Rekisterointi_ID,Vuosikurssi,Vuosikurssi_aloitus_pvm,Vuosikurssi_lopetus_pvm,Kurssi_ID,Hoitaja_ID")] Rekisterointi rekisterointi)
         {
             if (ModelState.IsValid)
             {
@@ -93,8 +86,6 @@ namespace PointAjanvarausMVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus", rekisterointi.Hoitaja_ID);
-            ViewBag.Kurssi_ID = new SelectList(db.Kurssit, "Kurssi_ID", "Kurssinimike", rekisterointi.Kurssi_ID);
             return View(rekisterointi);
         }
 

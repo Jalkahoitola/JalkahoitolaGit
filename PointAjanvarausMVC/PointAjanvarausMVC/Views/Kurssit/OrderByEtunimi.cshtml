@@ -1,0 +1,84 @@
+﻿@model IEnumerable<PointAjanvarausMVC.Models.Kurssi>
+
+@{
+    ViewBag.Title = "OrderByEtunimi";
+}
+
+<h2>OrderByEtunimi</h2>
+<p></p>
+
+@Html.ActionLink("Näytä kaikki", "Index")
+@Html.ActionLink("Järjestys etunimen mukaan", "OrderByEtunimi")
+@Html.ActionLink("Järjestys sukunimen mukaan", "OrderBySukunimi")
+@Html.ActionLink("Järjestys kurssin mukaan", "OrderByKurssi")
+@Html.ActionLink("Järjestys hoitajan mukaan", "OrderByHoitajat")
+
+</p>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Etunimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sukunimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kurssinimike)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Opintopisteet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kurssin_aloitus_pvm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kurssin_lopetus_pvm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hoitajat.Tunnus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rekisterointi1.Vuosikurssi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Etunimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sukunimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kurssinimike)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Opintopisteet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kurssin_aloitus_pvm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kurssin_lopetus_pvm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hoitajat.Tunnus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rekisterointi1.Vuosikurssi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Kurssi_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Kurssi_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Kurssi_ID })
+        </td>
+    </tr>
+}
+
+</table>

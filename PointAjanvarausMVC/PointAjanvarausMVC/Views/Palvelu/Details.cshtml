@@ -4,7 +4,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Palvelu tiedot</h2>
 
 <div>
     <h4>Palvelut</h4>
@@ -26,21 +26,21 @@
             @Html.DisplayFor(model => model.Palvelun_kesto)
         </dd>
 
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Varaus_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Varaus_id)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Asiakkaat.Etunimi)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Asiakkaat.Etunimi)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Hoitajat.Tunnus)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Hoitajat.Tunnus)
-        </dd>
+        </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.Toimipisteet.Toimipisteen_Nimi)
@@ -50,9 +50,17 @@
             @Html.DisplayFor(model => model.Toimipisteet.Toimipisteen_Nimi)
         </dd>
 
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Hoitajat.Tunnus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoitajat.Tunnus)
+        </dd>*@
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Palvelu_ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Muokkaa", "Edit", new { id = Model.Palvelu_ID }) |
+    @Html.ActionLink("Takaisin paveluhallintaan", "Index")
 </p>

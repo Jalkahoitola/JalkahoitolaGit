@@ -1,0 +1,82 @@
+﻿@model PointAjanvarausMVC.Models.Kurssi
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Hoitajan kurssitieto</h2>
+
+<div>
+    <h4>Kurssi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Etunimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Etunimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sukunimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sukunimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kurssinimike)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kurssinimike)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Opintopisteet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opintopisteet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kurssin_aloitus_pvm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kurssin_aloitus_pvm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kurssin_lopetus_pvm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kurssin_lopetus_pvm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hoitajat.Tunnus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoitajat.Tunnus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rekisterointi1.Vuosikurssi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rekisterointi1.Vuosikurssi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Muokkaa", "Edit", new { id = Model.Kurssi_ID }) |
+    @Html.ActionLink("Takaisin kurssihallintaan", "Index")
+</p>

@@ -4,7 +4,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Osoite tiedot</h2>
 
 <div>
     <h4>Osoite</h4>
@@ -34,9 +34,49 @@
             @Html.DisplayFor(model => model.Postitoimipaikka)
         </dd>
 
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Asiakkaat1.Etunimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Asiakkaat1.Etunimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Henkilokunta1.Etunimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Henkilokunta1.Etunimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hoitajat1.Tunnus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoitajat1.Tunnus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Toimipisteet.Toimipisteen_Nimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Toimipisteet.Toimipisteen_Nimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Shippers.Yritysnimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Shippers.Yritysnimi)
+        </dd>*@
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Osoite_ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Muokkaa", "Edit", new { id = Model.Osoite_ID }) |
+    @Html.ActionLink("Takaisin osoitehallintaan", "Index")
 </p>

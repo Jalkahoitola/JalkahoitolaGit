@@ -4,10 +4,10 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Toimipiste tiedot</h2>
 
 <div>
-    <h4>Toimipisteet</h4>
+    <h4>Toimipiste</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -17,24 +17,31 @@
         <dd>
             @Html.DisplayFor(model => model.Toimipisteen_Nimi)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.Hoitopaikat1.Hoitopaikan_Nimi)
+            @Html.DisplayNameFor(model => model.Osoite1.Katuosoite)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Hoitopaikat1.Hoitopaikan_Nimi)
+            @Html.DisplayFor(model => model.Osoite1.Katuosoite)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Osoite.Katuosoite)
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Hoitopaikka_ID)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Osoite.Katuosoite)
-        </dd>
+            @Html.DisplayFor(model => model.Hoitopaikka_ID)
+        </dd>*@
 
         <dt>
+            @Html.DisplayNameFor(model => model.Huomiot.Muut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Huomiot.Muut)
+        </dd>
+
+        @*<dt>
             @Html.DisplayNameFor(model => model.Puhelin.Puhelinnumero_1)
         </dt>
 
@@ -42,9 +49,17 @@
             @Html.DisplayFor(model => model.Puhelin.Puhelinnumero_1)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Osoite1.Katuosoite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Osoite1.Katuosoite)
+        </dd>*@
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Toimipiste_ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Muokkaa", "Edit", new { id = Model.Toimipiste_ID }) |
+    @Html.ActionLink("Takaisin toimipistehallintaan", "Index")
 </p>

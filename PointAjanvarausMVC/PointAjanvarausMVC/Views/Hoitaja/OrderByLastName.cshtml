@@ -5,12 +5,15 @@
 }
 
 <h2>OrderByLastName</h2>
-
 <p>
     @Html.ActionLink("Luo uusi hoitajatieto", "Create")
     @Html.ActionLink("Näytä kaikki", "Index")
     @Html.ActionLink("Järjestys etunimen mukaan", "OrderByFirstName")
     @Html.ActionLink("Järjestys sukunimen mukaan", "OrderByLastName")
+</p>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
@@ -51,7 +54,7 @@
             @Html.DisplayNameFor(model => model.Tiedot_arkistoitu)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Kurssi_id)
+            @Html.DisplayNameFor(model => model.Kurssi_ID)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Osoite.Katuosoite)
@@ -104,7 +107,7 @@
             @Html.DisplayFor(modelItem => item.Tiedot_arkistoitu)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Kurssi_id)
+            @Html.DisplayFor(modelItem => item.Kurssi_ID)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Osoite.Katuosoite)

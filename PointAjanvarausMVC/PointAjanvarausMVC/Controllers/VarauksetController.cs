@@ -67,6 +67,27 @@ namespace PointAjanvarausMVC.Controllers
             return View(varaus);
         }
 
+        //Varauksen tietojen muuttaminen
+        //https://www.youtube.com/watch?v=l06JSQDuOwo
+        //OHJE
+        //https://msdn.microsoft.com/fi-fi/data/jj592676
+
+        public ActionResult Resize(int id, string newStart, string newEnd)
+        {
+            using (var dp = new JohaMeriSQL2Entities())
+            {
+                var varaus = dp.Varaus.First(c => c.Varaus_ID == id);
+
+                varaus.Alku = Convert.ToDateTime(newStart);
+                varaus.Loppu = Convert.ToDateTime(newEnd);
+                //varaus.sisalto = "PÄIVITETTY_2 19.5.2016";
+                dp.SaveChanges();
+
+            }
+
+            return new EmptyResult();
+        }
+
         // GET: Varaukset/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -139,6 +160,42 @@ namespace PointAjanvarausMVC.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+
+        // GET: Home/GetVaraukset
+        public ActionResult GetVaraukset(string alku, string loppu)
+        {
+            var a = Convert.ToDateTime(alku);
+            var l = Convert.ToDateTime(loppu);
+
+            JohaMeriSQL2Entities entities = new JohaMeriSQL2Entities();
+            List<Varaus> varaukset = (from o in entities.Varaus
+                                      where (o.Alku >= a && o.Loppu < l)
+                                      //where ( o.alku >= Convert.ToDateTime(alku) && o.loppu < Convert.ToDateTime(loppu) )
+                                      //orderby o.datetime ascending
+                                      select o).ToList();
+            entities.Dispose();
+
+            List<VarausData> result = new List<VarausData>();
+            foreach (Varaus c in varaukset)
+            {
+
+                VarausData data = new VarausData();
+                data.ID = c.Varaus_ID;
+                //data.opiskelija_id = Convert.ToInt32(c.opiskelija_id);
+                //data.hoitopaikka_id = Convert.ToInt32(c.hoitopaikka_id);
+                //data.asiakas_id = Convert.ToInt32(c.asiakas_id);
+
+
+                data.start = Convert.ToDateTime(c.Alku);
+                data.end = Convert.ToDateTime(c.Loppu);
+                data.text = c.Palvelun_nimi + " ID: " + c.Varaus_ID + " ALKU: " + c.Alku + " LOPPU: " + c.Loppu;
+
+                result.Add(data);
+            }
+
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -4,36 +4,48 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Kurssirekisteröinti</h2>
+<h2>Vuosikurssin rekisteröinti</h2>
 
 <p>
-    @Html.ActionLink("Luo uusi kurssi", "Create")
+    @Html.ActionLink("Luo uusi vuosikurssi", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Kurssi)
+            @Html.DisplayNameFor(model => model.Vuosikurssi)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Hoitajat.Tunnus)
+            @Html.DisplayNameFor(model => model.Vuosikurssi_aloitus_pvm)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Kurssit1.Kurssinimike)
+            @Html.DisplayNameFor(model => model.Vuosikurssi_lopetus_pvm)
         </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Kurssi_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hoitaja_ID)
+        </th>*@
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Kurssi)
+            @Html.DisplayFor(modelItem => item.Vuosikurssi)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Hoitajat.Tunnus)
+            @Html.DisplayFor(modelItem => item.Vuosikurssi_aloitus_pvm)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Kurssit1.Kurssinimike)
+            @Html.DisplayFor(modelItem => item.Vuosikurssi_lopetus_pvm)
         </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Kurssi_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hoitaja_ID)
+        </td>*@
         <td>
             @Html.ActionLink("Muokkaa", "Edit", new { id=item.Rekisterointi_ID }) |
             @Html.ActionLink("Tiedot", "Details", new { id=item.Rekisterointi_ID }) |

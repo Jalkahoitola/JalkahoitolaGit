@@ -12,6 +12,7 @@
     @Html.ActionLink("Järjestys etunimen mukaan", "OrderByFirstName")
     @Html.ActionLink("Järjestys sukunimen mukaan", "OrderByLastName")
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -51,7 +52,7 @@
             @Html.DisplayNameFor(model => model.Tiedot_arkistoitu)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Kurssi_id)
+            @Html.DisplayNameFor(model => model.Kurssi_ID)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Osoite.Katuosoite)
@@ -104,7 +105,7 @@
             @Html.DisplayFor(modelItem => item.Tiedot_arkistoitu)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Kurssi_id)
+            @Html.DisplayFor(modelItem => item.Kurssi_ID)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Osoite.Katuosoite)
@@ -116,9 +117,9 @@
             @Html.DisplayFor(modelItem => item.Huomiot.Muut)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Hoitaja_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Hoitaja_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Hoitaja_ID })
+            @Html.ActionLink("Muokkaa", "Edit", new { id=item.Hoitaja_ID }) |
+            @Html.ActionLink("Tiedot", "Details", new { id=item.Hoitaja_ID }) |
+            @Html.ActionLink("Poista", "Delete", new { id=item.Hoitaja_ID })
         </td>
     </tr>
 }

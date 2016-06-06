@@ -12,21 +12,27 @@ namespace PointAjanvarausMVC.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Kurssit
+    public partial class Kurssi
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Kurssit()
+        public Kurssi()
         {
-            this.Rekisterointi2 = new HashSet<Rekisterointi>();
+            this.Rekisterointi = new HashSet<Rekisterointi>();
         }
     
         public int Kurssi_ID { get; set; }
+        public string Etunimi { get; set; }
+        public string Sukunimi { get; set; }
         public string Kurssinimike { get; set; }
         public string Opintopisteet { get; set; }
-        public Nullable<int> Rekisterointi { get; set; }
+        public Nullable<System.DateTime> Kurssin_aloitus_pvm { get; set; }
+        public Nullable<System.DateTime> Kurssin_lopetus_pvm { get; set; }
+        public Nullable<int> Rekisterointi_ID { get; set; }
+        public Nullable<int> Hoitaja_ID { get; set; }
     
-        public virtual Rekisterointi Rekisterointi1 { get; set; }
+        public virtual Hoitajat Hoitajat { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Rekisterointi> Rekisterointi2 { get; set; }
+        public virtual ICollection<Rekisterointi> Rekisterointi { get; set; }
+        public virtual Rekisterointi Rekisterointi1 { get; set; }
     }
 }

@@ -23,10 +23,10 @@ namespace PointAjanvarausMVC.Models
         public Nullable<int> Hoitopaikka_id { get; set; }
         public Nullable<int> Hoitaja_id { get; set; }
     
-        public virtual Palvelut Palvelut { get; set; }
-        public virtual Puhelin Puhelin { get; set; }
         public virtual Hoitopaikat Hoitopaikat { get; set; }
         public virtual Asiakkaat Asiakkaat { get; set; }
+        public virtual Palvelut Palvelut { get; set; }
         public virtual Hoitajat Hoitajat { get; set; }
+        public virtual Puhelin Puhelin { get; set; }
     }
 }

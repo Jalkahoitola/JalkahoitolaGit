@@ -23,9 +23,9 @@ namespace PointAjanvarausMVC.Models
         public Nullable<int> Hoitaja_ID { get; set; }
         public string Info { get; set; }
     
-        public virtual Palvelut Palvelut { get; set; }
         public virtual Hoitopaikat Hoitopaikat { get; set; }
         public virtual Asiakkaat Asiakkaat { get; set; }
+        public virtual Palvelut Palvelut { get; set; }
         public virtual Hoitajat Hoitajat { get; set; }
     }
 }

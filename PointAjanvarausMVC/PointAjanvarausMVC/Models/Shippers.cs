@@ -14,6 +14,13 @@ namespace PointAjanvarausMVC.Models
     
     public partial class Shippers
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Shippers()
+        {
+            this.Puhelin = new HashSet<Puhelin>();
+            this.Osoite = new HashSet<Osoite>();
+        }
+    
         public int Shipper_ID { get; set; }
         public string Yritysnimi { get; set; }
         public string Puhelinnumero_1 { get; set; }
@@ -23,7 +30,11 @@ namespace PointAjanvarausMVC.Models
         public Nullable<int> Puhelin_id { get; set; }
     
         public virtual Huomiot Huomiot1 { get; set; }
-        public virtual Osoite Osoite { get; set; }
-        public virtual Puhelin Puhelin { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Puhelin> Puhelin { get; set; }
+        public virtual Puhelin Puhelin1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Osoite> Osoite { get; set; }
+        public virtual Osoite Osoite1 { get; set; }
     }
 }

@@ -7,13 +7,16 @@
 <h2>Asiakashallinta</h2>
 
 <p>
-    @Html.ActionLink("Tallenna uudet asiakastiedot", "Create")
+    @Html.ActionLink("Luo uusi asiakas", "Create")
     <div class="form-group">
+
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Tallenna" class="btn btn-default" />
             @Html.ActionLink("Näytä kaikki", "Index")
             @Html.ActionLink("Järjestys etunimen mukaan", "OrderByFirstName")
             @Html.ActionLink("Järjestys sukunimen mukaan", "OrderByLastName")
+            </div>
+        </div>
 </p>
 <table class="table">
     <tr>
@@ -41,15 +44,13 @@
         <th>
             @Html.DisplayNameFor(model => model.Huomiot)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Osoite.Katuosoite)
-        </th>
-        <th>
+
+        @*<th>
             @Html.DisplayNameFor(model => model.Puhelin.Puhelinnumero_1)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Huomiot1.Huomioitavat_asiat)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -79,15 +80,16 @@
         <td>
             @Html.DisplayFor(modelItem => item.Huomiot)
         </td>
-        <td>
+     
+        @*<td>
             @Html.DisplayFor(modelItem => item.Osoite.Katuosoite)
-        </td>
-        <td>
+        </td>*@
+        @*<td>
             @Html.DisplayFor(modelItem => item.Puhelin.Puhelinnumero_1)
-        </td>
-        <td>
+        </td>*@
+        @*<td>
             @Html.DisplayFor(modelItem => item.Huomiot1.Huomioitavat_asiat)
-        </td>
+        </td>*@
         <td>
             @Html.ActionLink("Varaus", "Index", "Events") |
             @Html.ActionLink("Muokkaa", "Edit", new { id=item.Asiakas_ID }) |

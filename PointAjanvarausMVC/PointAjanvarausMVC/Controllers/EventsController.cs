@@ -8,10 +8,11 @@ using System.Web;
 using System.Web.Mvc;
 using PointAjanvarausMVC.Models;
 using Microsoft.Ajax.Utilities;
+using System.Globalization;
 
 namespace PointAjanvarausMVC.Controllers
 {
- public class EventsController : Controller
+    public class EventsController : Controller
     {
         private JohaMeriSQL2Entities db = new JohaMeriSQL2Entities();
 
@@ -21,9 +22,23 @@ namespace PointAjanvarausMVC.Controllers
         public ActionResult Index()
         {
             return View(db.Event.ToList());
-            //Var event = db.Event.Include(@ => @.Asiakkaat).Include(@ => @.Palvelut).Include(@ => @.Hoitopaikat).Include(@ => @.Hoitajat);
-            //return View(event.ToList());
         }
+
+        //31.5.2016Lisätty näkymien suodatukset:
+        public ActionResult OrderByFirstName()
+        {
+            var asiakkaat = from a in db.Asiakkaat
+                            orderby a.Etunimi ascending
+                            select a;
+            return View(asiakkaat);
+        }
+        public ActionResult OrderByLastName()
+        {
+            var asiakkaat = from a in db.Asiakkaat
+                            orderby a.Sukunimi ascending
+                            select a;
+            return View(asiakkaat);
+        }//31.5.2016 Lisätty
 
         // GET: Events/Details/5
         public ActionResult Details(int? id)
@@ -144,5 +159,32 @@ namespace PointAjanvarausMVC.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public class SamplesCultureInfo
+        {
+
+            public static void Main()
+            {
+
+                // Creates and initializes a CultureInfo.
+                CultureInfo myCI = new CultureInfo("fi", false);
+
+                // Clones myCI and modifies the DTFI and NFI instances associated with the clone.
+                CultureInfo myCIclone = (CultureInfo)myCI.Clone();
+                
+                myCIclone.DateTimeFormat.DateSeparator = ".";
+            
+
+                // Displays the properties of the DTFI and NFI instances associated with the original and with the clone. 
+                Console.WriteLine("DTFI/NFI PROPERTY\tORIGINAL\tMODIFIED CLONE");
+                
+                Console.WriteLine("DTFI.DateSeparator\t{0}\t\t{1}", myCI.DateTimeFormat.DateSeparator, myCIclone.DateTimeFormat.DateSeparator);
+                
+            
+
+            }
+
+        }
+
     }
 }

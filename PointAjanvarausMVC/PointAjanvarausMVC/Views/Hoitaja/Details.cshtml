@@ -4,7 +4,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Tiedot</h2>
 
 <div>
     <h4>Hoitajat</h4>
@@ -106,12 +106,12 @@
             @Html.DisplayFor(model => model.Tiedot_arkistoitu)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Kurssi_id)
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Kurssi_ID)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Kurssi_id)
+            @Html.DisplayFor(model => model.Kurssi_ID)
         </dd>
 
         <dt>
@@ -128,7 +128,7 @@
 
         <dd>
             @Html.DisplayFor(model => model.Puhelin.Puhelinnumero_1)
-        </dd>
+        </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.Huomiot.Muut)
@@ -139,8 +139,116 @@
         </dd>
 
     </dl>
+
+    <p>
+        @Html.ActionLink("Muokkaa", "Edit", new { id = Model.Hoitaja_ID }) |
+        @Html.ActionLink("Takaisin hoitajahallintaan", "Index")
+    </p>
+
+    @*30.5.2016 Lisätty Event alitiedostot:*@
+
+    <h4>Hoitajan asiakkaat</h4>
+
+    <table class="table">
+        <tr>
+            <th>
+                Päivämäärä
+            </th>
+            <th>
+                Varausaika
+            </th>
+            <th>
+                Palvelun nimi
+            </th>
+            <th>
+                Palvelun kesto
+            </th>
+            <th>
+                Asiakas etunimi
+            </th>
+            <th>
+                Asiakas sukunimi
+            </th>
+            <th>
+                Huomiot
+            </th>
+        </tr>
+        @foreach (var item in Model.Event)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Päivämäärä)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Varausaika)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Palvelut.Palvelun_nimi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Palvelut.Palvelun_kesto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Asiakkaat.Etunimi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Asiakkaat.Sukunimi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Asiakkaat.Huomiot)
+                </td>
+
+            </tr>
+        }
+    </table>@*<--30.5.2016 Lisätty alitiedostot*@
+
+
+    @*30.5.2016 Lisätty Kurssit alitiedostot:*@
+    <h4>Hoitajan kurssit</h4>
+
+    <table class="table">
+        <tr>
+         
+            <th>
+                Kurssinimike
+            </th>
+            <th>
+                Opintopisteet
+            </th>
+            <th>
+                Kurssin aloitus pvm
+            </th>
+            <th>
+               Kurssin lopetus pvm
+            </th>
+            <th>
+                Vuosikurssi
+            </th>
+
+        </tr>
+        @foreach (var item in Model.Kurssi)
+            {
+            <tr>
+             
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kurssinimike)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Opintopisteet)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kurssin_aloitus_pvm)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kurssin_lopetus_pvm)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rekisterointi1.Vuosikurssi)
+                </td>
+
+            </tr>
+        }
+    </table>@*<--30.5.2016 Lisätty kurssi alitiedostot*@
+
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Hoitaja_ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

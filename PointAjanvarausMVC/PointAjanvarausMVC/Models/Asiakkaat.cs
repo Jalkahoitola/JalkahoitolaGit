@@ -18,9 +18,11 @@ namespace PointAjanvarausMVC.Models
         public Asiakkaat()
         {
             this.Event = new HashSet<Event>();
-            this.Palvelut = new HashSet<Palvelut>();
             this.Varauskalenteri = new HashSet<Varauskalenteri>();
             this.Varaus = new HashSet<Varaus>();
+            this.Palvelut = new HashSet<Palvelut>();
+            this.Puhelin1 = new HashSet<Puhelin>();
+            this.Osoite1 = new HashSet<Osoite>();
         }
     
         public int Asiakas_ID { get; set; }
@@ -36,16 +38,20 @@ namespace PointAjanvarausMVC.Models
         public Nullable<int> Huomio_id { get; set; }
         public Nullable<int> Puhelin_id { get; set; }
     
-        public virtual Osoite Osoite { get; set; }
-        public virtual Puhelin Puhelin { get; set; }
         public virtual Huomiot Huomiot1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Event> Event { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Palvelut> Palvelut { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Varauskalenteri> Varauskalenteri { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Varaus> Varaus { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Palvelut> Palvelut { get; set; }
+        public virtual Puhelin Puhelin { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Puhelin> Puhelin1 { get; set; }
+        public virtual Osoite Osoite { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Osoite> Osoite1 { get; set; }
     }
 }

@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Muokkaa vuosikurssin tietoja</h2>
 
 
 @using (Html.BeginForm())
@@ -12,45 +12,61 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Rekisterointi</h4>
+        <h4>Vuosikurssin rekisteröinti</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Rekisterointi_ID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Kurssi_ID, "Kurssi_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Vuosikurssi, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Kurssi_ID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.EditorFor(model => model.Vuosikurssi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Vuosikurssi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Vuosikurssi_aloitus_pvm, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Vuosikurssi_aloitus_pvm, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Vuosikurssi_aloitus_pvm, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Vuosikurssi_lopetus_pvm, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Vuosikurssi_lopetus_pvm, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Vuosikurssi_lopetus_pvm, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Kurssi_ID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Kurssi_ID, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Kurssi_ID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Kurssi, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Hoitaja_ID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Kurssi, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Kurssi, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Hoitaja_ID, "Hoitaja_ID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("Hoitaja_ID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.EditorFor(model => model.Hoitaja_ID, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Hoitaja_ID, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Tallenna" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Takaisin kurssirekisteröintiin", "Index")
 </div>
 
 @section Scripts {

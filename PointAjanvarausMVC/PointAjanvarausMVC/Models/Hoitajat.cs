@@ -19,9 +19,12 @@ namespace PointAjanvarausMVC.Models
         {
             this.Event = new HashSet<Event>();
             this.Palvelut = new HashSet<Palvelut>();
-            this.Rekisterointi = new HashSet<Rekisterointi>();
-            this.Varauskalenteri = new HashSet<Varauskalenteri>();
             this.Varaus = new HashSet<Varaus>();
+            this.Varauskalenteri = new HashSet<Varauskalenteri>();
+            this.Kurssi = new HashSet<Kurssi>();
+            this.Rekisterointi = new HashSet<Rekisterointi>();
+            this.Puhelin1 = new HashSet<Puhelin>();
+            this.Osoite1 = new HashSet<Osoite>();
         }
     
         public int Hoitaja_ID { get; set; }
@@ -37,23 +40,30 @@ namespace PointAjanvarausMVC.Models
         public Nullable<System.DateTime> Valmistumispvm { get; set; }
         public Nullable<System.DateTime> Keskeytyspvm { get; set; }
         public string Tiedot_arkistoitu { get; set; }
-        public Nullable<int> Huomio { get; set; }
-        public Nullable<int> Osoite_id { get; set; }
-        public Nullable<int> Puhelin_id { get; set; }
-        public Nullable<int> Kurssi_id { get; set; }
+        public Nullable<int> Huomio_ID { get; set; }
+        public Nullable<int> Osoite_ID { get; set; }
+        public Nullable<int> Puhelin_ID { get; set; }
+        public Nullable<int> Kurssi_ID { get; set; }
+        public Nullable<int> Rekisterointi_ID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Event> Event { get; set; }
-        public virtual Osoite Osoite { get; set; }
-        public virtual Puhelin Puhelin { get; set; }
         public virtual Huomiot Huomiot { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Palvelut> Palvelut { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Rekisterointi> Rekisterointi { get; set; }
+        public virtual ICollection<Varaus> Varaus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Varauskalenteri> Varauskalenteri { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Varaus> Varaus { get; set; }
+        public virtual ICollection<Kurssi> Kurssi { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Rekisterointi> Rekisterointi { get; set; }
+        public virtual Puhelin Puhelin { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Puhelin> Puhelin1 { get; set; }
+        public virtual Osoite Osoite { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Osoite> Osoite1 { get; set; }
     }
 }

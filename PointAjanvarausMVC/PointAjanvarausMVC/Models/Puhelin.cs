@@ -17,30 +17,40 @@ namespace PointAjanvarausMVC.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Puhelin()
         {
-            this.Varauskalenteri = new HashSet<Varauskalenteri>();
-            this.Toimipisteet = new HashSet<Toimipisteet>();
             this.Asiakkaat = new HashSet<Asiakkaat>();
-            this.Hoitajat = new HashSet<Hoitajat>();
             this.Henkilokunta = new HashSet<Henkilokunta>();
-            this.Shippers = new HashSet<Shippers>();
+            this.Hoitajat = new HashSet<Hoitajat>();
+            this.Shippers1 = new HashSet<Shippers>();
+            this.Toimipisteet = new HashSet<Toimipisteet>();
+            this.Varauskalenteri = new HashSet<Varauskalenteri>();
         }
     
         public int Puhelin_ID { get; set; }
         public string Puhelinnumero_1 { get; set; }
         public string Puhelinnumero_2 { get; set; }
         public string Puhelinnumero_3 { get; set; }
+        public Nullable<int> Asiakas_ID { get; set; }
+        public Nullable<int> Hoitaja_ID { get; set; }
+        public Nullable<int> Henkilokunta_ID { get; set; }
+        public Nullable<int> Shipper_ID { get; set; }
+        public Nullable<int> Toimipiste_ID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Varauskalenteri> Varauskalenteri { get; set; }
+        public virtual ICollection<Asiakkaat> Asiakkaat { get; set; }
+        public virtual Asiakkaat Asiakkaat1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Henkilokunta> Henkilokunta { get; set; }
+        public virtual Henkilokunta Henkilokunta1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Hoitajat> Hoitajat { get; set; }
+        public virtual Hoitajat Hoitajat1 { get; set; }
+        public virtual Shippers Shippers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Shippers> Shippers1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Toimipisteet> Toimipisteet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Asiakkaat> Asiakkaat { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Hoitajat> Hoitajat { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Henkilokunta> Henkilokunta { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Shippers> Shippers { get; set; }
+        public virtual ICollection<Varauskalenteri> Varauskalenteri { get; set; }
+        public virtual Toimipisteet Toimipisteet1 { get; set; }
     }
 }

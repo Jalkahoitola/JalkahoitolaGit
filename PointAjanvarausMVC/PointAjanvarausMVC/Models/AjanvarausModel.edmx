@@ -58,10 +58,10 @@
             <PropertyRef Name="Hoitaja_ID" />
           </Key>
           <Property Name="Hoitaja_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Tunnus" Type="nvarchar" MaxLength="10" />
-          <Property Name="Etunimi" Type="nvarchar" MaxLength="20" />
-          <Property Name="Toinen nimi" Type="nvarchar" MaxLength="20" />
-          <Property Name="Sukunimi" Type="nvarchar" MaxLength="20" />
+          <Property Name="Tunnus" Type="nvarchar" MaxLength="50" />
+          <Property Name="Etunimi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Toinen nimi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sukunimi" Type="nvarchar" MaxLength="50" />
           <Property Name="Katuosoite" Type="nvarchar" MaxLength="100" />
           <Property Name="Postinumero" Type="nvarchar" MaxLength="5" />
           <Property Name="Postitoimipaikka" Type="nvarchar" MaxLength="100" />
@@ -70,10 +70,11 @@
           <Property Name="Valmistumispvm" Type="date" />
           <Property Name="Keskeytyspvm" Type="date" />
           <Property Name="Tiedot arkistoitu" Type="varchar" MaxLength="5" />
-          <Property Name="Huomio" Type="int" />
-          <Property Name="Osoite_id" Type="int" />
-          <Property Name="Puhelin_id" Type="int" />
-          <Property Name="Kurssi_id" Type="int" />
+          <Property Name="Huomio_ID" Type="int" />
+          <Property Name="Osoite_ID" Type="int" />
+          <Property Name="Puhelin_ID" Type="int" />
+          <Property Name="Kurssi_ID" Type="int" />
+          <Property Name="Rekisterointi_ID" Type="int" />
         </EntityType>
         <EntityType Name="Hoitopaikat">
           <Key>
@@ -92,14 +93,19 @@
           <Property Name="Huomioitavat asiat" Type="nvarchar" MaxLength="100" />
           <Property Name="Muut" Type="nvarchar" MaxLength="100" />
         </EntityType>
-        <EntityType Name="Kurssit">
+        <EntityType Name="Kurssi">
           <Key>
             <PropertyRef Name="Kurssi_ID" />
           </Key>
           <Property Name="Kurssi_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Kurssinimike" Type="nvarchar" MaxLength="20" />
+          <Property Name="Etunimi" Type="nvarchar" MaxLength="20" />
+          <Property Name="Sukunimi" Type="nvarchar" MaxLength="20" />
+          <Property Name="Kurssinimike" Type="nvarchar" MaxLength="100" />
           <Property Name="Opintopisteet" Type="nvarchar" MaxLength="20" />
-          <Property Name="Rekisterointi" Type="int" />
+          <Property Name="Kurssin aloitus pvm" Type="datetime" />
+          <Property Name="Kurssin lopetus pvm" Type="datetime" />
+          <Property Name="Rekisterointi_ID" Type="int" />
+          <Property Name="Hoitaja_ID" Type="int" />
         </EntityType>
         <EntityType Name="Osoite">
           <Key>
@@ -109,6 +115,11 @@
           <Property Name="Katuosoite" Type="nvarchar" MaxLength="100" />
           <Property Name="Postinumero" Type="nvarchar" MaxLength="20" />
           <Property Name="Postitoimipaikka" Type="nvarchar" MaxLength="20" />
+          <Property Name="Asiakas_ID" Type="int" />
+          <Property Name="Hoitaja_ID" Type="int" />
+          <Property Name="Henkilokunta_ID" Type="int" />
+          <Property Name="Toimipiste_ID" Type="int" />
+          <Property Name="Shipper_ID" Type="int" />
         </EntityType>
         <EntityType Name="Palvelut">
           <Key>
@@ -120,6 +131,7 @@
           <Property Name="Asiakas_id" Type="int" />
           <Property Name="Hoitaja_id" Type="int" />
           <Property Name="Toimipiste_id" Type="int" />
+          <Property Name="Varaus_id" Type="int" />
         </EntityType>
         <EntityType Name="Postitoimipaikat">
           <Key>
@@ -137,14 +149,21 @@
           <Property Name="Puhelinnumero_1" Type="nvarchar" MaxLength="20" />
           <Property Name="Puhelinnumero_2" Type="nvarchar" MaxLength="20" />
           <Property Name="Puhelinnumero_3" Type="nvarchar" MaxLength="20" />
+          <Property Name="Asiakas_ID" Type="int" />
+          <Property Name="Hoitaja_ID" Type="int" />
+          <Property Name="Henkilokunta_ID" Type="int" />
+          <Property Name="Toimipiste_ID" Type="int" />
+          <Property Name="Shipper_ID" Type="int" />
         </EntityType>
         <EntityType Name="Rekisterointi">
           <Key>
             <PropertyRef Name="Rekisterointi_ID" />
           </Key>
           <Property Name="Rekisterointi_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Vuosikurssi" Type="nvarchar" MaxLength="100" />
+          <Property Name="Vuosikurssi aloitus pvm" Type="datetime" />
+          <Property Name="Vuosikurssi lopetus pvm" Type="datetime" />
           <Property Name="Kurssi_ID" Type="int" />
-          <Property Name="Kurssi" Type="nvarchar" MaxLength="20" />
           <Property Name="Hoitaja_ID" Type="int" />
         </EntityType>
         <EntityType Name="Shippers">
@@ -354,7 +373,7 @@
               <PropertyRef Name="Osoite_ID" />
             </Principal>
             <Dependent Role="Hoitajat">
-              <PropertyRef Name="Osoite_id" />
+              <PropertyRef Name="Osoite_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -366,7 +385,7 @@
               <PropertyRef Name="Puhelin_ID" />
             </Principal>
             <Dependent Role="Hoitajat">
-              <PropertyRef Name="Puhelin_id" />
+              <PropertyRef Name="Puhelin_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -378,7 +397,7 @@
               <PropertyRef Name="Huomio_ID" />
             </Principal>
             <Dependent Role="Hoitajat">
-              <PropertyRef Name="Huomio" />
+              <PropertyRef Name="Huomio_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -394,15 +413,87 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Kurssit_ToTable1">
+        <Association Name="FK_Kurssi_ToTable">
+          <End Role="Hoitajat" Type="Self.Hoitajat" Multiplicity="0..1" />
+          <End Role="Kurssi" Type="Self.Kurssi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hoitajat">
+              <PropertyRef Name="Hoitaja_ID" />
+            </Principal>
+            <Dependent Role="Kurssi">
+              <PropertyRef Name="Hoitaja_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kurssi_ToTable_1">
           <End Role="Rekisterointi" Type="Self.Rekisterointi" Multiplicity="0..1" />
-          <End Role="Kurssit" Type="Self.Kurssit" Multiplicity="*" />
+          <End Role="Kurssi" Type="Self.Kurssi" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Rekisterointi">
               <PropertyRef Name="Rekisterointi_ID" />
             </Principal>
-            <Dependent Role="Kurssit">
-              <PropertyRef Name="Rekisterointi" />
+            <Dependent Role="Kurssi">
+              <PropertyRef Name="Rekisterointi_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Osoite_ToTable">
+          <End Role="Asiakkaat" Type="Self.Asiakkaat" Multiplicity="0..1" />
+          <End Role="Osoite" Type="Self.Osoite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asiakkaat">
+              <PropertyRef Name="Asiakas_ID" />
+            </Principal>
+            <Dependent Role="Osoite">
+              <PropertyRef Name="Asiakas_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Osoite_ToTable_1">
+          <End Role="Hoitajat" Type="Self.Hoitajat" Multiplicity="0..1" />
+          <End Role="Osoite" Type="Self.Osoite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hoitajat">
+              <PropertyRef Name="Hoitaja_ID" />
+            </Principal>
+            <Dependent Role="Osoite">
+              <PropertyRef Name="Hoitaja_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Osoite_ToTable_2">
+          <End Role="Henkilokunta" Type="Self.Henkilokunta" Multiplicity="0..1" />
+          <End Role="Osoite" Type="Self.Osoite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Henkilokunta">
+              <PropertyRef Name="Henkilokunta_ID" />
+            </Principal>
+            <Dependent Role="Osoite">
+              <PropertyRef Name="Henkilokunta_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Osoite_ToTable_3">
+          <End Role="Toimipisteet" Type="Self.Toimipisteet" Multiplicity="0..1" />
+          <End Role="Osoite" Type="Self.Osoite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Toimipisteet">
+              <PropertyRef Name="Toimipiste_ID" />
+            </Principal>
+            <Dependent Role="Osoite">
+              <PropertyRef Name="Toimipiste_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Osoite_ToTable_4">
+          <End Role="Shippers" Type="Self.Shippers" Multiplicity="0..1" />
+          <End Role="Osoite" Type="Self.Osoite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shippers">
+              <PropertyRef Name="Shipper_ID" />
+            </Principal>
+            <Dependent Role="Osoite">
+              <PropertyRef Name="Shipper_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -442,11 +533,83 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Palvelut_ToTable_3">
+          <End Role="Event" Type="Self.Event" Multiplicity="0..1" />
+          <End Role="Palvelut" Type="Self.Palvelut" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="Varaus_ID" />
+            </Principal>
+            <Dependent Role="Palvelut">
+              <PropertyRef Name="Varaus_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Puhelin_ToTable">
+          <End Role="Asiakkaat" Type="Self.Asiakkaat" Multiplicity="0..1" />
+          <End Role="Puhelin" Type="Self.Puhelin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asiakkaat">
+              <PropertyRef Name="Asiakas_ID" />
+            </Principal>
+            <Dependent Role="Puhelin">
+              <PropertyRef Name="Asiakas_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Puhelin_ToTable_1">
+          <End Role="Hoitajat" Type="Self.Hoitajat" Multiplicity="0..1" />
+          <End Role="Puhelin" Type="Self.Puhelin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hoitajat">
+              <PropertyRef Name="Hoitaja_ID" />
+            </Principal>
+            <Dependent Role="Puhelin">
+              <PropertyRef Name="Hoitaja_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Puhelin_ToTable_2">
+          <End Role="Henkilokunta" Type="Self.Henkilokunta" Multiplicity="0..1" />
+          <End Role="Puhelin" Type="Self.Puhelin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Henkilokunta">
+              <PropertyRef Name="Henkilokunta_ID" />
+            </Principal>
+            <Dependent Role="Puhelin">
+              <PropertyRef Name="Henkilokunta_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Puhelin_ToTable_3">
+          <End Role="Toimipisteet" Type="Self.Toimipisteet" Multiplicity="0..1" />
+          <End Role="Puhelin" Type="Self.Puhelin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Toimipisteet">
+              <PropertyRef Name="Toimipiste_ID" />
+            </Principal>
+            <Dependent Role="Puhelin">
+              <PropertyRef Name="Toimipiste_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Puhelin_ToTable_4">
+          <End Role="Shippers" Type="Self.Shippers" Multiplicity="0..1" />
+          <End Role="Puhelin" Type="Self.Puhelin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shippers">
+              <PropertyRef Name="Shipper_ID" />
+            </Principal>
+            <Dependent Role="Puhelin">
+              <PropertyRef Name="Shipper_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Rekisterointi_ToTable">
-          <End Role="Kurssit" Type="Self.Kurssit" Multiplicity="0..1" />
+          <End Role="Kurssi" Type="Self.Kurssi" Multiplicity="0..1" />
           <End Role="Rekisterointi" Type="Self.Rekisterointi" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Kurssit">
+            <Principal Role="Kurssi">
               <PropertyRef Name="Kurssi_ID" />
             </Principal>
             <Dependent Role="Rekisterointi">
@@ -677,7 +840,7 @@
           <EntitySet Name="Hoitajat" EntityType="Self.Hoitajat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hoitopaikat" EntityType="Self.Hoitopaikat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Huomiot" EntityType="Self.Huomiot" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Kurssit" EntityType="Self.Kurssit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kurssi" EntityType="Self.Kurssi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Osoite" EntityType="Self.Osoite" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Palvelut" EntityType="Self.Palvelut" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Postitoimipaikat" EntityType="Self.Postitoimipaikat" Schema="dbo" store:Type="Tables" />
@@ -745,9 +908,33 @@
             <End Role="Toimipisteet" EntitySet="Toimipisteet" />
             <End Role="Hoitopaikat" EntitySet="Hoitopaikat" />
           </AssociationSet>
-          <AssociationSet Name="FK_Kurssit_ToTable1" Association="Self.FK_Kurssit_ToTable1">
+          <AssociationSet Name="FK_Kurssi_ToTable" Association="Self.FK_Kurssi_ToTable">
+            <End Role="Hoitajat" EntitySet="Hoitajat" />
+            <End Role="Kurssi" EntitySet="Kurssi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kurssi_ToTable_1" Association="Self.FK_Kurssi_ToTable_1">
             <End Role="Rekisterointi" EntitySet="Rekisterointi" />
-            <End Role="Kurssit" EntitySet="Kurssit" />
+            <End Role="Kurssi" EntitySet="Kurssi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Osoite_ToTable" Association="Self.FK_Osoite_ToTable">
+            <End Role="Asiakkaat" EntitySet="Asiakkaat" />
+            <End Role="Osoite" EntitySet="Osoite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Osoite_ToTable_1" Association="Self.FK_Osoite_ToTable_1">
+            <End Role="Hoitajat" EntitySet="Hoitajat" />
+            <End Role="Osoite" EntitySet="Osoite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Osoite_ToTable_2" Association="Self.FK_Osoite_ToTable_2">
+            <End Role="Henkilokunta" EntitySet="Henkilokunta" />
+            <End Role="Osoite" EntitySet="Osoite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Osoite_ToTable_3" Association="Self.FK_Osoite_ToTable_3">
+            <End Role="Toimipisteet" EntitySet="Toimipisteet" />
+            <End Role="Osoite" EntitySet="Osoite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Osoite_ToTable_4" Association="Self.FK_Osoite_ToTable_4">
+            <End Role="Shippers" EntitySet="Shippers" />
+            <End Role="Osoite" EntitySet="Osoite" />
           </AssociationSet>
           <AssociationSet Name="FK_Palvelut_ToTable" Association="Self.FK_Palvelut_ToTable">
             <End Role="Asiakkaat" EntitySet="Asiakkaat" />
@@ -761,8 +948,32 @@
             <End Role="Toimipisteet" EntitySet="Toimipisteet" />
             <End Role="Palvelut" EntitySet="Palvelut" />
           </AssociationSet>
+          <AssociationSet Name="FK_Palvelut_ToTable_3" Association="Self.FK_Palvelut_ToTable_3">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="Palvelut" EntitySet="Palvelut" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Puhelin_ToTable" Association="Self.FK_Puhelin_ToTable">
+            <End Role="Asiakkaat" EntitySet="Asiakkaat" />
+            <End Role="Puhelin" EntitySet="Puhelin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Puhelin_ToTable_1" Association="Self.FK_Puhelin_ToTable_1">
+            <End Role="Hoitajat" EntitySet="Hoitajat" />
+            <End Role="Puhelin" EntitySet="Puhelin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Puhelin_ToTable_2" Association="Self.FK_Puhelin_ToTable_2">
+            <End Role="Henkilokunta" EntitySet="Henkilokunta" />
+            <End Role="Puhelin" EntitySet="Puhelin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Puhelin_ToTable_3" Association="Self.FK_Puhelin_ToTable_3">
+            <End Role="Toimipisteet" EntitySet="Toimipisteet" />
+            <End Role="Puhelin" EntitySet="Puhelin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Puhelin_ToTable_4" Association="Self.FK_Puhelin_ToTable_4">
+            <End Role="Shippers" EntitySet="Shippers" />
+            <End Role="Puhelin" EntitySet="Puhelin" />
+          </AssociationSet>
           <AssociationSet Name="FK_Rekisterointi_ToTable" Association="Self.FK_Rekisterointi_ToTable">
-            <End Role="Kurssit" EntitySet="Kurssit" />
+            <End Role="Kurssi" EntitySet="Kurssi" />
             <End Role="Rekisterointi" EntitySet="Rekisterointi" />
           </AssociationSet>
           <AssociationSet Name="FK_Rekisterointi_ToTable_1" Association="Self.FK_Rekisterointi_ToTable_1">
@@ -851,40 +1062,9 @@
           <NavigationProperty Name="Toimipisteet" Relationship="JohaMeriSQL2Model.FK_Toimipisteet_ToTable_3" FromRole="Huomiot" ToRole="Toimipisteet" />
           <NavigationProperty Name="Asiakkaat" Relationship="JohaMeriSQL2Model.FK_Asiakkaat_ToTable_2" FromRole="Huomiot" ToRole="Asiakkaat" />
           <Property Name="Huomioitavat_asiat" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Hoitajat" Relationship="JohaMeriSQL2Model.FK_Hoitajat_ToTable_2" FromRole="Huomiot" ToRole="Hoitajat" />
           <NavigationProperty Name="Henkilokunta" Relationship="JohaMeriSQL2Model.FK_Henkilokunta_ToTable_2" FromRole="Huomiot" ToRole="Henkilokunta" />
           <NavigationProperty Name="Shippers" Relationship="JohaMeriSQL2Model.FK_Shippers_ToTable_2" FromRole="Huomiot" ToRole="Shippers" />
-        </EntityType>
-        <EntityType Name="Osoite">
-          <Key>
-            <PropertyRef Name="Osoite_ID" />
-          </Key>
-          <Property Name="Osoite_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Katuosoite" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Postinumero" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Postitoimipaikka" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Toimipisteet" Relationship="JohaMeriSQL2Model.FK_Toimipisteet_ToTable1" FromRole="Osoite" ToRole="Toimipisteet" />
-          <NavigationProperty Name="Asiakkaat" Relationship="JohaMeriSQL2Model.FK_Asiakkaat_ToTable" FromRole="Osoite" ToRole="Asiakkaat" />
-          <NavigationProperty Name="Hoitajat" Relationship="JohaMeriSQL2Model.FK_Hoitajat_ToTable" FromRole="Osoite" ToRole="Hoitajat" />
-          <NavigationProperty Name="Henkilokunta" Relationship="JohaMeriSQL2Model.FK_Henkilokunta_ToTable" FromRole="Osoite" ToRole="Henkilokunta" />
-          <NavigationProperty Name="Shippers" Relationship="JohaMeriSQL2Model.FK_Shippers_ToTable" FromRole="Osoite" ToRole="Shippers" />
-        </EntityType>
-        <EntityType Name="Palvelut">
-          <Key>
-            <PropertyRef Name="Palvelu_ID" />
-          </Key>
-          <Property Name="Palvelu_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Palvelun_nimi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Palvelun_kesto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Asiakas_id" Type="Int32" />
-          <Property Name="Hoitaja_id" Type="Int32" />
-          <Property Name="Toimipiste_id" Type="Int32" />
-          <NavigationProperty Name="Varauskalenteri" Relationship="Self.FK_Varauskalenteri_ToTable_1" FromRole="Palvelut" ToRole="Varauskalenteri" />
-          <NavigationProperty Name="Event" Relationship="JohaMeriSQL2Model.FK_Event_ToTable_1" FromRole="Palvelut" ToRole="Event" />
-          <NavigationProperty Name="Toimipisteet" Relationship="JohaMeriSQL2Model.FK_Palvelut_ToTable_2" FromRole="Palvelut" ToRole="Toimipisteet" />
-          <NavigationProperty Name="Asiakkaat" Relationship="JohaMeriSQL2Model.FK_Palvelut_ToTable" FromRole="Palvelut" ToRole="Asiakkaat" />
-          <NavigationProperty Name="Hoitajat" Relationship="JohaMeriSQL2Model.FK_Palvelut_ToTable_1" FromRole="Palvelut" ToRole="Hoitajat" />
-          <NavigationProperty Name="Varaus" Relationship="JohaMeriSQL2Model.FK_Varaus_ToTable_3" FromRole="Palvelut" ToRole="Varaus" />
+          <NavigationProperty Name="Hoitajat" Relationship="JohaMeriSQL2Model.FK_Hoitajat_ToTable_2" FromRole="Huomiot" ToRole="Hoitajat" />
         </EntityType>
         <EntityType Name="Postitoimipaikat">
           <Key>
@@ -893,21 +1073,6 @@
           <Property Name="Postinumero" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Postitoimipaikka" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Posti_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <EntityType Name="Puhelin">
-          <Key>
-            <PropertyRef Name="Puhelin_ID" />
-          </Key>
-          <Property Name="Puhelin_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Puhelinnumero_1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Puhelinnumero_2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Puhelinnumero_3" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Varauskalenteri" Relationship="Self.FK_Varauskalenteri_ToTable_2" FromRole="Puhelin" ToRole="Varauskalenteri" />
-          <NavigationProperty Name="Toimipisteet" Relationship="JohaMeriSQL2Model.FK_Toimipisteet_ToTable_2" FromRole="Puhelin" ToRole="Toimipisteet" />
-          <NavigationProperty Name="Asiakkaat" Relationship="JohaMeriSQL2Model.FK_Asiakkaat_ToTable_1" FromRole="Puhelin" ToRole="Asiakkaat" />
-          <NavigationProperty Name="Hoitajat" Relationship="JohaMeriSQL2Model.FK_Hoitajat_ToTable_1" FromRole="Puhelin" ToRole="Hoitajat" />
-          <NavigationProperty Name="Henkilokunta" Relationship="JohaMeriSQL2Model.FK_Henkilokunta_ToTable_1" FromRole="Puhelin" ToRole="Henkilokunta" />
-          <NavigationProperty Name="Shippers" Relationship="JohaMeriSQL2Model.FK_Shippers_ToTable_1" FromRole="Puhelin" ToRole="Shippers" />
         </EntityType>
         <EntityType Name="Varauskalenteri">
           <Key>
@@ -921,56 +1086,17 @@
           <Property Name="Puhelin_id" Type="Int32" />
           <Property Name="Hoitopaikka_id" Type="Int32" />
           <Property Name="Hoitaja_id" Type="Int32" />
-          <NavigationProperty Name="Palvelut" Relationship="Self.FK_Varauskalenteri_ToTable_1" FromRole="Varauskalenteri" ToRole="Palvelut" />
-          <NavigationProperty Name="Puhelin" Relationship="Self.FK_Varauskalenteri_ToTable_2" FromRole="Varauskalenteri" ToRole="Puhelin" />
           <NavigationProperty Name="Hoitopaikat" Relationship="JohaMeriSQL2Model.FK_Varauskalenteri_ToTable_3" FromRole="Varauskalenteri" ToRole="Hoitopaikat" />
           <NavigationProperty Name="Asiakkaat" Relationship="JohaMeriSQL2Model.FK_Varauskalenteri_ToTable" FromRole="Varauskalenteri" ToRole="Asiakkaat" />
+          <NavigationProperty Name="Palvelut" Relationship="JohaMeriSQL2Model.FK_Varauskalenteri_ToTable_1" FromRole="Varauskalenteri" ToRole="Palvelut" />
           <NavigationProperty Name="Hoitajat" Relationship="JohaMeriSQL2Model.FK_Varauskalenteri_ToTable_4" FromRole="Varauskalenteri" ToRole="Hoitajat" />
+          <NavigationProperty Name="Puhelin" Relationship="JohaMeriSQL2Model.FK_Varauskalenteri_ToTable_2" FromRole="Varauskalenteri" ToRole="Puhelin" />
         </EntityType>
-        <Association Name="FK_Varauskalenteri_ToTable_1">
-          <End Role="Palvelut" Type="Self.Palvelut" Multiplicity="0..1" />
-          <End Role="Varauskalenteri" Type="Self.Varauskalenteri" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Palvelut">
-              <PropertyRef Name="Palvelu_ID" />
-            </Principal>
-            <Dependent Role="Varauskalenteri">
-              <PropertyRef Name="Palvelu_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Varauskalenteri_ToTable_2">
-          <End Role="Puhelin" Type="Self.Puhelin" Multiplicity="0..1" />
-          <End Role="Varauskalenteri" Type="Self.Varauskalenteri" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Puhelin">
-              <PropertyRef Name="Puhelin_ID" />
-            </Principal>
-            <Dependent Role="Varauskalenteri">
-              <PropertyRef Name="Puhelin_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="JohaMeriSQL2Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Huomiot" EntityType="Self.Huomiot" />
-          <EntitySet Name="Osoite" EntityType="Self.Osoite" />
-          <EntitySet Name="Palvelut" EntityType="Self.Palvelut" />
           <EntitySet Name="Postitoimipaikat" EntityType="Self.Postitoimipaikat" />
-          <EntitySet Name="Puhelin" EntityType="Self.Puhelin" />
           <EntitySet Name="Varauskalenteri" EntityType="Self.Varauskalenteri" />
-          <AssociationSet Name="FK_Varauskalenteri_ToTable_1" Association="Self.FK_Varauskalenteri_ToTable_1">
-            <End Role="Palvelut" EntitySet="Palvelut" />
-            <End Role="Varauskalenteri" EntitySet="Varauskalenteri" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Varauskalenteri_ToTable_2" Association="Self.FK_Varauskalenteri_ToTable_2">
-            <End Role="Puhelin" EntitySet="Puhelin" />
-            <End Role="Varauskalenteri" EntitySet="Varauskalenteri" />
-          </AssociationSet>
           <EntitySet Name="Event" EntityType="JohaMeriSQL2Model.Event" />
-          <AssociationSet Name="FK_Event_ToTable_1" Association="JohaMeriSQL2Model.FK_Event_ToTable_1">
-            <End Role="Palvelut" EntitySet="Palvelut" />
-            <End Role="Event" EntitySet="Event" />
-          </AssociationSet>
           <EntitySet Name="Hoitopaikat" EntityType="JohaMeriSQL2Model.Hoitopaikat" />
           <AssociationSet Name="FK_Event_ToTable_3" Association="JohaMeriSQL2Model.FK_Event_ToTable_3">
             <End Role="Hoitopaikat" EntitySet="Hoitopaikat" />
@@ -993,27 +1119,7 @@
             <End Role="Huomiot" EntitySet="Huomiot" />
             <End Role="Toimipisteet" EntitySet="Toimipisteet" />
           </AssociationSet>
-          <AssociationSet Name="FK_Toimipisteet_ToTable1" Association="JohaMeriSQL2Model.FK_Toimipisteet_ToTable1">
-            <End Role="Osoite" EntitySet="Osoite" />
-            <End Role="Toimipisteet" EntitySet="Toimipisteet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Palvelut_ToTable_2" Association="JohaMeriSQL2Model.FK_Palvelut_ToTable_2">
-            <End Role="Toimipisteet" EntitySet="Toimipisteet" />
-            <End Role="Palvelut" EntitySet="Palvelut" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Toimipisteet_ToTable_2" Association="JohaMeriSQL2Model.FK_Toimipisteet_ToTable_2">
-            <End Role="Puhelin" EntitySet="Puhelin" />
-            <End Role="Toimipisteet" EntitySet="Toimipisteet" />
-          </AssociationSet>
           <EntitySet Name="Asiakkaat" EntityType="JohaMeriSQL2Model.Asiakkaat" />
-          <AssociationSet Name="FK_Asiakkaat_ToTable" Association="JohaMeriSQL2Model.FK_Asiakkaat_ToTable">
-            <End Role="Osoite" EntitySet="Osoite" />
-            <End Role="Asiakkaat" EntitySet="Asiakkaat" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Asiakkaat_ToTable_1" Association="JohaMeriSQL2Model.FK_Asiakkaat_ToTable_1">
-            <End Role="Puhelin" EntitySet="Puhelin" />
-            <End Role="Asiakkaat" EntitySet="Asiakkaat" />
-          </AssociationSet>
           <AssociationSet Name="FK_Asiakkaat_ToTable_2" Association="JohaMeriSQL2Model.FK_Asiakkaat_ToTable_2">
             <End Role="Huomiot" EntitySet="Huomiot" />
             <End Role="Asiakkaat" EntitySet="Asiakkaat" />
@@ -1022,79 +1128,20 @@
             <End Role="Asiakkaat" EntitySet="Asiakkaat" />
             <End Role="Event" EntitySet="Event" />
           </AssociationSet>
-          <AssociationSet Name="FK_Palvelut_ToTable" Association="JohaMeriSQL2Model.FK_Palvelut_ToTable">
-            <End Role="Asiakkaat" EntitySet="Asiakkaat" />
-            <End Role="Palvelut" EntitySet="Palvelut" />
-          </AssociationSet>
           <AssociationSet Name="FK_Varauskalenteri_ToTable" Association="JohaMeriSQL2Model.FK_Varauskalenteri_ToTable">
             <End Role="Asiakkaat" EntitySet="Asiakkaat" />
-            <End Role="Varauskalenteri" EntitySet="Varauskalenteri" />
-          </AssociationSet>
-          <EntitySet Name="Kurssit" EntityType="JohaMeriSQL2Model.Kurssit" />
-          <EntitySet Name="Rekisterointi" EntityType="JohaMeriSQL2Model.Rekisterointi" />
-          <AssociationSet Name="FK_Kurssit_ToTable1" Association="JohaMeriSQL2Model.FK_Kurssit_ToTable1">
-            <End Role="Rekisterointi" EntitySet="Rekisterointi" />
-            <End Role="Kurssit" EntitySet="Kurssit" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Rekisterointi_ToTable" Association="JohaMeriSQL2Model.FK_Rekisterointi_ToTable">
-            <End Role="Kurssit" EntitySet="Kurssit" />
-            <End Role="Rekisterointi" EntitySet="Rekisterointi" />
-          </AssociationSet>
-          <EntitySet Name="Hoitajat" EntityType="JohaMeriSQL2Model.Hoitajat" />
-          <AssociationSet Name="FK_Event_ToTable_4" Association="JohaMeriSQL2Model.FK_Event_ToTable_4">
-            <End Role="Hoitajat" EntitySet="Hoitajat" />
-            <End Role="Event" EntitySet="Event" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Hoitajat_ToTable" Association="JohaMeriSQL2Model.FK_Hoitajat_ToTable">
-            <End Role="Osoite" EntitySet="Osoite" />
-            <End Role="Hoitajat" EntitySet="Hoitajat" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Hoitajat_ToTable_1" Association="JohaMeriSQL2Model.FK_Hoitajat_ToTable_1">
-            <End Role="Puhelin" EntitySet="Puhelin" />
-            <End Role="Hoitajat" EntitySet="Hoitajat" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Hoitajat_ToTable_2" Association="JohaMeriSQL2Model.FK_Hoitajat_ToTable_2">
-            <End Role="Huomiot" EntitySet="Huomiot" />
-            <End Role="Hoitajat" EntitySet="Hoitajat" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Palvelut_ToTable_1" Association="JohaMeriSQL2Model.FK_Palvelut_ToTable_1">
-            <End Role="Hoitajat" EntitySet="Hoitajat" />
-            <End Role="Palvelut" EntitySet="Palvelut" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Rekisterointi_ToTable_1" Association="JohaMeriSQL2Model.FK_Rekisterointi_ToTable_1">
-            <End Role="Hoitajat" EntitySet="Hoitajat" />
-            <End Role="Rekisterointi" EntitySet="Rekisterointi" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Varauskalenteri_ToTable_4" Association="JohaMeriSQL2Model.FK_Varauskalenteri_ToTable_4">
-            <End Role="Hoitajat" EntitySet="Hoitajat" />
             <End Role="Varauskalenteri" EntitySet="Varauskalenteri" />
           </AssociationSet>
           <EntitySet Name="Henkilokunta" EntityType="JohaMeriSQL2Model.Henkilokunta" />
           <EntitySet Name="Shippers" EntityType="JohaMeriSQL2Model.Shippers" />
           <EntitySet Name="Tilaukset" EntityType="JohaMeriSQL2Model.Tilaukset" />
           <EntitySet Name="Tuotteet" EntityType="JohaMeriSQL2Model.Tuotteet" />
-          <AssociationSet Name="FK_Henkilokunta_ToTable" Association="JohaMeriSQL2Model.FK_Henkilokunta_ToTable">
-            <End Role="Osoite" EntitySet="Osoite" />
-            <End Role="Henkilokunta" EntitySet="Henkilokunta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Henkilokunta_ToTable_1" Association="JohaMeriSQL2Model.FK_Henkilokunta_ToTable_1">
-            <End Role="Puhelin" EntitySet="Puhelin" />
-            <End Role="Henkilokunta" EntitySet="Henkilokunta" />
-          </AssociationSet>
           <AssociationSet Name="FK_Henkilokunta_ToTable_2" Association="JohaMeriSQL2Model.FK_Henkilokunta_ToTable_2">
             <End Role="Huomiot" EntitySet="Huomiot" />
             <End Role="Henkilokunta" EntitySet="Henkilokunta" />
           </AssociationSet>
           <AssociationSet Name="FK_Shippers_ToTable_2" Association="JohaMeriSQL2Model.FK_Shippers_ToTable_2">
             <End Role="Huomiot" EntitySet="Huomiot" />
-            <End Role="Shippers" EntitySet="Shippers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Shippers_ToTable" Association="JohaMeriSQL2Model.FK_Shippers_ToTable">
-            <End Role="Osoite" EntitySet="Osoite" />
-            <End Role="Shippers" EntitySet="Shippers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Shippers_ToTable_1" Association="JohaMeriSQL2Model.FK_Shippers_ToTable_1">
-            <End Role="Puhelin" EntitySet="Puhelin" />
             <End Role="Shippers" EntitySet="Shippers" />
           </AssociationSet>
           <AssociationSet Name="FK_Tilaukset_ToTable" Association="JohaMeriSQL2Model.FK_Tilaukset_ToTable">
@@ -1106,17 +1153,159 @@
             <End Role="Asiakkaat" EntitySet="Asiakkaat" />
             <End Role="Varaus" EntitySet="Varaus" />
           </AssociationSet>
-          <AssociationSet Name="FK_Varaus_ToTable" Association="JohaMeriSQL2Model.FK_Varaus_ToTable">
-            <End Role="Hoitajat" EntitySet="Hoitajat" />
-            <End Role="Varaus" EntitySet="Varaus" />
-          </AssociationSet>
           <AssociationSet Name="FK_Varaus_ToTable_2" Association="JohaMeriSQL2Model.FK_Varaus_ToTable_2">
             <End Role="Hoitopaikat" EntitySet="Hoitopaikat" />
             <End Role="Varaus" EntitySet="Varaus" />
           </AssociationSet>
+          <EntitySet Name="Palvelut" EntityType="JohaMeriSQL2Model.Palvelut" />
+          <AssociationSet Name="FK_Palvelut_ToTable" Association="JohaMeriSQL2Model.FK_Palvelut_ToTable">
+            <End Role="Asiakkaat" EntitySet="Asiakkaat" />
+            <End Role="Palvelut" EntitySet="Palvelut" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_ToTable_1" Association="JohaMeriSQL2Model.FK_Event_ToTable_1">
+            <End Role="Palvelut" EntitySet="Palvelut" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Palvelut_ToTable_3" Association="JohaMeriSQL2Model.FK_Palvelut_ToTable_3">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="Palvelut" EntitySet="Palvelut" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Palvelut_ToTable_2" Association="JohaMeriSQL2Model.FK_Palvelut_ToTable_2">
+            <End Role="Toimipisteet" EntitySet="Toimipisteet" />
+            <End Role="Palvelut" EntitySet="Palvelut" />
+          </AssociationSet>
           <AssociationSet Name="FK_Varaus_ToTable_3" Association="JohaMeriSQL2Model.FK_Varaus_ToTable_3">
             <End Role="Palvelut" EntitySet="Palvelut" />
             <End Role="Varaus" EntitySet="Varaus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Varauskalenteri_ToTable_1" Association="JohaMeriSQL2Model.FK_Varauskalenteri_ToTable_1">
+            <End Role="Palvelut" EntitySet="Palvelut" />
+            <End Role="Varauskalenteri" EntitySet="Varauskalenteri" />
+          </AssociationSet>
+          <EntitySet Name="Hoitajat" EntityType="JohaMeriSQL2Model.Hoitajat" />
+          <AssociationSet Name="FK_Event_ToTable_4" Association="JohaMeriSQL2Model.FK_Event_ToTable_4">
+            <End Role="Hoitajat" EntitySet="Hoitajat" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hoitajat_ToTable_2" Association="JohaMeriSQL2Model.FK_Hoitajat_ToTable_2">
+            <End Role="Huomiot" EntitySet="Huomiot" />
+            <End Role="Hoitajat" EntitySet="Hoitajat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Palvelut_ToTable_1" Association="JohaMeriSQL2Model.FK_Palvelut_ToTable_1">
+            <End Role="Hoitajat" EntitySet="Hoitajat" />
+            <End Role="Palvelut" EntitySet="Palvelut" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Varaus_ToTable" Association="JohaMeriSQL2Model.FK_Varaus_ToTable">
+            <End Role="Hoitajat" EntitySet="Hoitajat" />
+            <End Role="Varaus" EntitySet="Varaus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Varauskalenteri_ToTable_4" Association="JohaMeriSQL2Model.FK_Varauskalenteri_ToTable_4">
+            <End Role="Hoitajat" EntitySet="Hoitajat" />
+            <End Role="Varauskalenteri" EntitySet="Varauskalenteri" />
+          </AssociationSet>
+          <EntitySet Name="Kurssi" EntityType="JohaMeriSQL2Model.Kurssi" />
+          <AssociationSet Name="FK_Kurssi_ToTable" Association="JohaMeriSQL2Model.FK_Kurssi_ToTable">
+            <End Role="Hoitajat" EntitySet="Hoitajat" />
+            <End Role="Kurssi" EntitySet="Kurssi" />
+          </AssociationSet>
+          <EntitySet Name="Rekisterointi" EntityType="JohaMeriSQL2Model.Rekisterointi" />
+          <AssociationSet Name="FK_Rekisterointi_ToTable_1" Association="JohaMeriSQL2Model.FK_Rekisterointi_ToTable_1">
+            <End Role="Hoitajat" EntitySet="Hoitajat" />
+            <End Role="Rekisterointi" EntitySet="Rekisterointi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rekisterointi_ToTable" Association="JohaMeriSQL2Model.FK_Rekisterointi_ToTable">
+            <End Role="Kurssi" EntitySet="Kurssi" />
+            <End Role="Rekisterointi" EntitySet="Rekisterointi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kurssi_ToTable_1" Association="JohaMeriSQL2Model.FK_Kurssi_ToTable_1">
+            <End Role="Rekisterointi" EntitySet="Rekisterointi" />
+            <End Role="Kurssi" EntitySet="Kurssi" />
+          </AssociationSet>
+          <EntitySet Name="Puhelin" EntityType="JohaMeriSQL2Model.Puhelin" />
+          <AssociationSet Name="FK_Asiakkaat_ToTable_1" Association="JohaMeriSQL2Model.FK_Asiakkaat_ToTable_1">
+            <End Role="Puhelin" EntitySet="Puhelin" />
+            <End Role="Asiakkaat" EntitySet="Asiakkaat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Puhelin_ToTable" Association="JohaMeriSQL2Model.FK_Puhelin_ToTable">
+            <End Role="Asiakkaat" EntitySet="Asiakkaat" />
+            <End Role="Puhelin" EntitySet="Puhelin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Henkilokunta_ToTable_1" Association="JohaMeriSQL2Model.FK_Henkilokunta_ToTable_1">
+            <End Role="Puhelin" EntitySet="Puhelin" />
+            <End Role="Henkilokunta" EntitySet="Henkilokunta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Puhelin_ToTable_2" Association="JohaMeriSQL2Model.FK_Puhelin_ToTable_2">
+            <End Role="Henkilokunta" EntitySet="Henkilokunta" />
+            <End Role="Puhelin" EntitySet="Puhelin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hoitajat_ToTable_1" Association="JohaMeriSQL2Model.FK_Hoitajat_ToTable_1">
+            <End Role="Puhelin" EntitySet="Puhelin" />
+            <End Role="Hoitajat" EntitySet="Hoitajat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Puhelin_ToTable_1" Association="JohaMeriSQL2Model.FK_Puhelin_ToTable_1">
+            <End Role="Hoitajat" EntitySet="Hoitajat" />
+            <End Role="Puhelin" EntitySet="Puhelin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Puhelin_ToTable_3" Association="JohaMeriSQL2Model.FK_Puhelin_ToTable_3">
+            <End Role="Shippers" EntitySet="Shippers" />
+            <End Role="Puhelin" EntitySet="Puhelin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shippers_ToTable_1" Association="JohaMeriSQL2Model.FK_Shippers_ToTable_1">
+            <End Role="Puhelin" EntitySet="Puhelin" />
+            <End Role="Shippers" EntitySet="Shippers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Toimipisteet_ToTable_2" Association="JohaMeriSQL2Model.FK_Toimipisteet_ToTable_2">
+            <End Role="Puhelin" EntitySet="Puhelin" />
+            <End Role="Toimipisteet" EntitySet="Toimipisteet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Varauskalenteri_ToTable_2" Association="JohaMeriSQL2Model.FK_Varauskalenteri_ToTable_2">
+            <End Role="Puhelin" EntitySet="Puhelin" />
+            <End Role="Varauskalenteri" EntitySet="Varauskalenteri" />
+          </AssociationSet>
+          <EntitySet Name="Osoite" EntityType="JohaMeriSQL2Model.Osoite" />
+          <AssociationSet Name="FK_Asiakkaat_ToTable" Association="JohaMeriSQL2Model.FK_Asiakkaat_ToTable">
+            <End Role="Osoite" EntitySet="Osoite" />
+            <End Role="Asiakkaat" EntitySet="Asiakkaat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Osoite_ToTable" Association="JohaMeriSQL2Model.FK_Osoite_ToTable">
+            <End Role="Asiakkaat" EntitySet="Asiakkaat" />
+            <End Role="Osoite" EntitySet="Osoite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Henkilokunta_ToTable" Association="JohaMeriSQL2Model.FK_Henkilokunta_ToTable">
+            <End Role="Osoite" EntitySet="Osoite" />
+            <End Role="Henkilokunta" EntitySet="Henkilokunta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Osoite_ToTable_2" Association="JohaMeriSQL2Model.FK_Osoite_ToTable_2">
+            <End Role="Henkilokunta" EntitySet="Henkilokunta" />
+            <End Role="Osoite" EntitySet="Osoite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hoitajat_ToTable" Association="JohaMeriSQL2Model.FK_Hoitajat_ToTable">
+            <End Role="Osoite" EntitySet="Osoite" />
+            <End Role="Hoitajat" EntitySet="Hoitajat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Osoite_ToTable_1" Association="JohaMeriSQL2Model.FK_Osoite_ToTable_1">
+            <End Role="Hoitajat" EntitySet="Hoitajat" />
+            <End Role="Osoite" EntitySet="Osoite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Osoite_ToTable_3" Association="JohaMeriSQL2Model.FK_Osoite_ToTable_3">
+            <End Role="Toimipisteet" EntitySet="Toimipisteet" />
+            <End Role="Osoite" EntitySet="Osoite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Osoite_ToTable_4" Association="JohaMeriSQL2Model.FK_Osoite_ToTable_4">
+            <End Role="Shippers" EntitySet="Shippers" />
+            <End Role="Osoite" EntitySet="Osoite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shippers_ToTable" Association="JohaMeriSQL2Model.FK_Shippers_ToTable">
+            <End Role="Osoite" EntitySet="Osoite" />
+            <End Role="Shippers" EntitySet="Shippers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Toimipisteet_ToTable1" Association="JohaMeriSQL2Model.FK_Toimipisteet_ToTable1">
+            <End Role="Osoite" EntitySet="Osoite" />
+            <End Role="Toimipisteet" EntitySet="Toimipisteet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Puhelin_ToTable_31" Association="JohaMeriSQL2Model.FK_Puhelin_ToTable_31">
+            <End Role="Toimipisteet" EntitySet="Toimipisteet" />
+            <End Role="Puhelin" EntitySet="Puhelin" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Event">
@@ -1130,24 +1319,12 @@
           <Property Name="Palvelu_ID" Type="Int32" />
           <Property Name="Hoitopaikka_ID" Type="Int32" />
           <Property Name="Hoitaja_ID" Type="Int32" />
-          <NavigationProperty Name="Palvelut" Relationship="JohaMeriSQL2Model.FK_Event_ToTable_1" FromRole="Event" ToRole="Palvelut" />
           <NavigationProperty Name="Hoitopaikat" Relationship="JohaMeriSQL2Model.FK_Event_ToTable_3" FromRole="Event" ToRole="Hoitopaikat" />
           <NavigationProperty Name="Asiakkaat" Relationship="JohaMeriSQL2Model.FK_Event_ToTable" FromRole="Event" ToRole="Asiakkaat" />
           <Property Name="Info" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Palvelut" Relationship="JohaMeriSQL2Model.FK_Event_ToTable_1" FromRole="Event" ToRole="Palvelut" />
           <NavigationProperty Name="Hoitajat" Relationship="JohaMeriSQL2Model.FK_Event_ToTable_4" FromRole="Event" ToRole="Hoitajat" />
         </EntityType>
-        <Association Name="FK_Event_ToTable_1">
-          <End Type="JohaMeriSQL2Model.Palvelut" Role="Palvelut" Multiplicity="0..1" />
-          <End Type="JohaMeriSQL2Model.Event" Role="Event" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Palvelut">
-              <PropertyRef Name="Palvelu_ID" />
-            </Principal>
-            <Dependent Role="Event">
-              <PropertyRef Name="Palvelu_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Hoitopaikat">
           <Key>
             <PropertyRef Name="Hoitopaikka_ID" />
@@ -1159,7 +1336,6 @@
           <NavigationProperty Name="Event" Relationship="JohaMeriSQL2Model.FK_Event_ToTable_3" FromRole="Hoitopaikat" ToRole="Event" />
           <NavigationProperty Name="Varauskalenteri" Relationship="JohaMeriSQL2Model.FK_Varauskalenteri_ToTable_3" FromRole="Hoitopaikat" ToRole="Varauskalenteri" />
           <NavigationProperty Name="Toimipisteet" Relationship="JohaMeriSQL2Model.FK_Hoitopaikat_ToTable" FromRole="Hoitopaikat" ToRole="Toimipisteet" />
-          <NavigationProperty Name="Toimipisteet1" Relationship="JohaMeriSQL2Model.FK_Toimipisteet_ToTable" FromRole="Hoitopaikat" ToRole="Toimipisteet" />
           <NavigationProperty Name="Varaus" Relationship="JohaMeriSQL2Model.FK_Varaus_ToTable_2" FromRole="Hoitopaikat" ToRole="Varaus" />
         </EntityType>
         <Association Name="FK_Event_ToTable_3">
@@ -1197,11 +1373,12 @@
           <Property Name="Puhelin_ID" Type="Int32" />
           <Property Name="Huomio_ID" Type="Int32" />
           <NavigationProperty Name="Hoitopaikat" Relationship="JohaMeriSQL2Model.FK_Hoitopaikat_ToTable" FromRole="Toimipisteet" ToRole="Hoitopaikat" />
-          <NavigationProperty Name="Hoitopaikat1" Relationship="JohaMeriSQL2Model.FK_Toimipisteet_ToTable" FromRole="Toimipisteet" ToRole="Hoitopaikat" />
           <NavigationProperty Name="Huomiot" Relationship="JohaMeriSQL2Model.FK_Toimipisteet_ToTable_3" FromRole="Toimipisteet" ToRole="Huomiot" />
-          <NavigationProperty Name="Osoite" Relationship="JohaMeriSQL2Model.FK_Toimipisteet_ToTable1" FromRole="Toimipisteet" ToRole="Osoite" />
           <NavigationProperty Name="Palvelut" Relationship="JohaMeriSQL2Model.FK_Palvelut_ToTable_2" FromRole="Toimipisteet" ToRole="Palvelut" />
           <NavigationProperty Name="Puhelin" Relationship="JohaMeriSQL2Model.FK_Toimipisteet_ToTable_2" FromRole="Toimipisteet" ToRole="Puhelin" />
+          <NavigationProperty Name="Osoite" Relationship="JohaMeriSQL2Model.FK_Osoite_ToTable_3" FromRole="Toimipisteet" ToRole="Osoite" />
+          <NavigationProperty Name="Osoite1" Relationship="JohaMeriSQL2Model.FK_Toimipisteet_ToTable1" FromRole="Toimipisteet" ToRole="Osoite" />
+          <NavigationProperty Name="Puhelin1" Relationship="JohaMeriSQL2Model.FK_Puhelin_ToTable_31" FromRole="Toimipisteet" ToRole="Puhelin" />
         </EntityType>
         <Association Name="FK_Hoitopaikat_ToTable">
           <End Type="JohaMeriSQL2Model.Toimipisteet" Role="Toimipisteet" Multiplicity="0..1" />
@@ -1239,42 +1416,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Toimipisteet_ToTable1">
-          <End Type="JohaMeriSQL2Model.Osoite" Role="Osoite" Multiplicity="0..1" />
-          <End Type="JohaMeriSQL2Model.Toimipisteet" Role="Toimipisteet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Osoite">
-              <PropertyRef Name="Osoite_ID" />
-            </Principal>
-            <Dependent Role="Toimipisteet">
-              <PropertyRef Name="Osoite_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Palvelut_ToTable_2">
-          <End Type="JohaMeriSQL2Model.Toimipisteet" Role="Toimipisteet" Multiplicity="0..1" />
-          <End Type="JohaMeriSQL2Model.Palvelut" Role="Palvelut" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Toimipisteet">
-              <PropertyRef Name="Toimipiste_ID" />
-            </Principal>
-            <Dependent Role="Palvelut">
-              <PropertyRef Name="Toimipiste_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Toimipisteet_ToTable_2">
-          <End Type="JohaMeriSQL2Model.Puhelin" Role="Puhelin" Multiplicity="0..1" />
-          <End Type="JohaMeriSQL2Model.Toimipisteet" Role="Toimipisteet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Puhelin">
-              <PropertyRef Name="Puhelin_ID" />
-            </Principal>
-            <Dependent Role="Toimipisteet">
-              <PropertyRef Name="Puhelin_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Asiakkaat">
           <Key>
             <PropertyRef Name="Asiakas_ID" />
@@ -1291,38 +1432,16 @@
           <Property Name="Osoite_id" Type="Int32" />
           <Property Name="Huomio_id" Type="Int32" />
           <Property Name="Puhelin_id" Type="Int32" />
-          <NavigationProperty Name="Osoite" Relationship="JohaMeriSQL2Model.FK_Asiakkaat_ToTable" FromRole="Asiakkaat" ToRole="Osoite" />
-          <NavigationProperty Name="Puhelin" Relationship="JohaMeriSQL2Model.FK_Asiakkaat_ToTable_1" FromRole="Asiakkaat" ToRole="Puhelin" />
           <NavigationProperty Name="Huomiot1" Relationship="JohaMeriSQL2Model.FK_Asiakkaat_ToTable_2" FromRole="Asiakkaat" ToRole="Huomiot" />
           <NavigationProperty Name="Event" Relationship="JohaMeriSQL2Model.FK_Event_ToTable" FromRole="Asiakkaat" ToRole="Event" />
-          <NavigationProperty Name="Palvelut" Relationship="JohaMeriSQL2Model.FK_Palvelut_ToTable" FromRole="Asiakkaat" ToRole="Palvelut" />
           <NavigationProperty Name="Varauskalenteri" Relationship="JohaMeriSQL2Model.FK_Varauskalenteri_ToTable" FromRole="Asiakkaat" ToRole="Varauskalenteri" />
           <NavigationProperty Name="Varaus" Relationship="JohaMeriSQL2Model.FK_Varaus_ToTable_1" FromRole="Asiakkaat" ToRole="Varaus" />
+          <NavigationProperty Name="Palvelut" Relationship="JohaMeriSQL2Model.FK_Palvelut_ToTable" FromRole="Asiakkaat" ToRole="Palvelut" />
+          <NavigationProperty Name="Puhelin" Relationship="JohaMeriSQL2Model.FK_Asiakkaat_ToTable_1" FromRole="Asiakkaat" ToRole="Puhelin" />
+          <NavigationProperty Name="Puhelin1" Relationship="JohaMeriSQL2Model.FK_Puhelin_ToTable" FromRole="Asiakkaat" ToRole="Puhelin" />
+          <NavigationProperty Name="Osoite" Relationship="JohaMeriSQL2Model.FK_Asiakkaat_ToTable" FromRole="Asiakkaat" ToRole="Osoite" />
+          <NavigationProperty Name="Osoite1" Relationship="JohaMeriSQL2Model.FK_Osoite_ToTable" FromRole="Asiakkaat" ToRole="Osoite" />
         </EntityType>
-        <Association Name="FK_Asiakkaat_ToTable">
-          <End Type="JohaMeriSQL2Model.Osoite" Role="Osoite" Multiplicity="0..1" />
-          <End Type="JohaMeriSQL2Model.Asiakkaat" Role="Asiakkaat" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Osoite">
-              <PropertyRef Name="Osoite_ID" />
-            </Principal>
-            <Dependent Role="Asiakkaat">
-              <PropertyRef Name="Osoite_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Asiakkaat_ToTable_1">
-          <End Type="JohaMeriSQL2Model.Puhelin" Role="Puhelin" Multiplicity="0..1" />
-          <End Type="JohaMeriSQL2Model.Asiakkaat" Role="Asiakkaat" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Puhelin">
-              <PropertyRef Name="Puhelin_ID" />
-            </Principal>
-            <Dependent Role="Asiakkaat">
-              <PropertyRef Name="Puhelin_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Asiakkaat_ToTable_2">
           <End Type="JohaMeriSQL2Model.Huomiot" Role="Huomiot" Multiplicity="0..1" />
           <End Type="JohaMeriSQL2Model.Asiakkaat" Role="Asiakkaat" Multiplicity="*" />
@@ -1347,18 +1466,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Palvelut_ToTable">
-          <End Type="JohaMeriSQL2Model.Asiakkaat" Role="Asiakkaat" Multiplicity="0..1" />
-          <End Type="JohaMeriSQL2Model.Palvelut" Role="Palvelut" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Asiakkaat">
-              <PropertyRef Name="Asiakas_ID" />
-            </Principal>
-            <Dependent Role="Palvelut">
-              <PropertyRef Name="Asiakas_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Varauskalenteri_ToTable">
           <End Type="JohaMeriSQL2Model.Asiakkaat" Role="Asiakkaat" Multiplicity="0..1" />
           <End Type="JohaMeriSQL2Model.Varauskalenteri" Role="Varauskalenteri" Multiplicity="*" />
@@ -1368,167 +1475,6 @@
             </Principal>
             <Dependent Role="Varauskalenteri">
               <PropertyRef Name="Asiakas_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Kurssit">
-          <Key>
-            <PropertyRef Name="Kurssi_ID" />
-          </Key>
-          <Property Name="Kurssi_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Kurssinimike" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Opintopisteet" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Rekisterointi" Type="Int32" />
-          <NavigationProperty Name="Rekisterointi1" Relationship="JohaMeriSQL2Model.FK_Kurssit_ToTable1" FromRole="Kurssit" ToRole="Rekisterointi" />
-          <NavigationProperty Name="Rekisterointi2" Relationship="JohaMeriSQL2Model.FK_Rekisterointi_ToTable" FromRole="Kurssit" ToRole="Rekisterointi" />
-          </EntityType>
-        <EntityType Name="Rekisterointi">
-          <Key>
-            <PropertyRef Name="Rekisterointi_ID" />
-          </Key>
-          <Property Name="Rekisterointi_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Kurssi_ID" Type="Int32" />
-          <Property Name="Kurssi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Hoitaja_ID" Type="Int32" />
-          <NavigationProperty Name="Kurssit" Relationship="JohaMeriSQL2Model.FK_Kurssit_ToTable1" FromRole="Rekisterointi" ToRole="Kurssit" />
-          <NavigationProperty Name="Kurssit1" Relationship="JohaMeriSQL2Model.FK_Rekisterointi_ToTable" FromRole="Rekisterointi" ToRole="Kurssit" />
-          <NavigationProperty Name="Hoitajat" Relationship="JohaMeriSQL2Model.FK_Rekisterointi_ToTable_1" FromRole="Rekisterointi" ToRole="Hoitajat" />
-        </EntityType>
-        <Association Name="FK_Kurssit_ToTable1">
-          <End Type="JohaMeriSQL2Model.Rekisterointi" Role="Rekisterointi" Multiplicity="0..1" />
-          <End Type="JohaMeriSQL2Model.Kurssit" Role="Kurssit" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rekisterointi">
-              <PropertyRef Name="Rekisterointi_ID" />
-            </Principal>
-            <Dependent Role="Kurssit">
-              <PropertyRef Name="Rekisterointi" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Rekisterointi_ToTable">
-          <End Type="JohaMeriSQL2Model.Kurssit" Role="Kurssit" Multiplicity="0..1" />
-          <End Type="JohaMeriSQL2Model.Rekisterointi" Role="Rekisterointi" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kurssit">
-              <PropertyRef Name="Kurssi_ID" />
-            </Principal>
-            <Dependent Role="Rekisterointi">
-              <PropertyRef Name="Kurssi_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Hoitajat">
-          <Key>
-            <PropertyRef Name="Hoitaja_ID" />
-          </Key>
-          <Property Name="Hoitaja_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Tunnus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Etunimi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Toinen_nimi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Sukunimi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Katuosoite" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Postinumero" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="Postitoimipaikka" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Henkilotunnus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Aloituspvm" Type="DateTime" Precision="0" />
-          <Property Name="Valmistumispvm" Type="DateTime" Precision="0" />
-          <Property Name="Keskeytyspvm" Type="DateTime" Precision="0" />
-          <Property Name="Tiedot_arkistoitu" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="Huomio" Type="Int32" />
-          <Property Name="Osoite_id" Type="Int32" />
-          <Property Name="Puhelin_id" Type="Int32" />
-          <Property Name="Kurssi_id" Type="Int32" />
-          <NavigationProperty Name="Event" Relationship="JohaMeriSQL2Model.FK_Event_ToTable_4" FromRole="Hoitajat" ToRole="Event" />
-          <NavigationProperty Name="Osoite" Relationship="JohaMeriSQL2Model.FK_Hoitajat_ToTable" FromRole="Hoitajat" ToRole="Osoite" />
-          <NavigationProperty Name="Puhelin" Relationship="JohaMeriSQL2Model.FK_Hoitajat_ToTable_1" FromRole="Hoitajat" ToRole="Puhelin" />
-          <NavigationProperty Name="Huomiot" Relationship="JohaMeriSQL2Model.FK_Hoitajat_ToTable_2" FromRole="Hoitajat" ToRole="Huomiot" />
-          <NavigationProperty Name="Palvelut" Relationship="JohaMeriSQL2Model.FK_Palvelut_ToTable_1" FromRole="Hoitajat" ToRole="Palvelut" />
-          <NavigationProperty Name="Rekisterointi" Relationship="JohaMeriSQL2Model.FK_Rekisterointi_ToTable_1" FromRole="Hoitajat" ToRole="Rekisterointi" />
-          <NavigationProperty Name="Varauskalenteri" Relationship="JohaMeriSQL2Model.FK_Varauskalenteri_ToTable_4" FromRole="Hoitajat" ToRole="Varauskalenteri" />
-          <NavigationProperty Name="Varaus" Relationship="JohaMeriSQL2Model.FK_Varaus_ToTable" FromRole="Hoitajat" ToRole="Varaus" />
-        </EntityType>
-        <Association Name="FK_Event_ToTable_4">
-          <End Type="JohaMeriSQL2Model.Hoitajat" Role="Hoitajat" Multiplicity="0..1" />
-          <End Type="JohaMeriSQL2Model.Event" Role="Event" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Hoitajat">
-              <PropertyRef Name="Hoitaja_ID" />
-            </Principal>
-            <Dependent Role="Event">
-              <PropertyRef Name="Hoitaja_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Hoitajat_ToTable">
-          <End Type="JohaMeriSQL2Model.Osoite" Role="Osoite" Multiplicity="0..1" />
-          <End Type="JohaMeriSQL2Model.Hoitajat" Role="Hoitajat" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Osoite">
-              <PropertyRef Name="Osoite_ID" />
-            </Principal>
-            <Dependent Role="Hoitajat">
-              <PropertyRef Name="Osoite_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Hoitajat_ToTable_1">
-          <End Type="JohaMeriSQL2Model.Puhelin" Role="Puhelin" Multiplicity="0..1" />
-          <End Type="JohaMeriSQL2Model.Hoitajat" Role="Hoitajat" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Puhelin">
-              <PropertyRef Name="Puhelin_ID" />
-            </Principal>
-            <Dependent Role="Hoitajat">
-              <PropertyRef Name="Puhelin_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Hoitajat_ToTable_2">
-          <End Type="JohaMeriSQL2Model.Huomiot" Role="Huomiot" Multiplicity="0..1" />
-          <End Type="JohaMeriSQL2Model.Hoitajat" Role="Hoitajat" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Huomiot">
-              <PropertyRef Name="Huomio_ID" />
-            </Principal>
-            <Dependent Role="Hoitajat">
-              <PropertyRef Name="Huomio" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Palvelut_ToTable_1">
-          <End Type="JohaMeriSQL2Model.Hoitajat" Role="Hoitajat" Multiplicity="0..1" />
-          <End Type="JohaMeriSQL2Model.Palvelut" Role="Palvelut" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Hoitajat">
-              <PropertyRef Name="Hoitaja_ID" />
-            </Principal>
-            <Dependent Role="Palvelut">
-              <PropertyRef Name="Hoitaja_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Rekisterointi_ToTable_1">
-          <End Type="JohaMeriSQL2Model.Hoitajat" Role="Hoitajat" Multiplicity="0..1" />
-          <End Type="JohaMeriSQL2Model.Rekisterointi" Role="Rekisterointi" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Hoitajat">
-              <PropertyRef Name="Hoitaja_ID" />
-            </Principal>
-            <Dependent Role="Rekisterointi">
-              <PropertyRef Name="Hoitaja_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Varauskalenteri_ToTable_4">
-          <End Type="JohaMeriSQL2Model.Hoitajat" Role="Hoitajat" Multiplicity="0..1" />
-          <End Type="JohaMeriSQL2Model.Varauskalenteri" Role="Varauskalenteri" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Hoitajat">
-              <PropertyRef Name="Hoitaja_ID" />
-            </Principal>
-            <Dependent Role="Varauskalenteri">
-              <PropertyRef Name="Hoitaja_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1549,9 +1495,11 @@
           <Property Name="Osoite_id" Type="Int32" />
           <Property Name="Huomio_id" Type="Int32" />
           <Property Name="Puhelin_id" Type="Int32" />
-          <NavigationProperty Name="Osoite" Relationship="JohaMeriSQL2Model.FK_Henkilokunta_ToTable" FromRole="Henkilokunta" ToRole="Osoite" />
-          <NavigationProperty Name="Puhelin" Relationship="JohaMeriSQL2Model.FK_Henkilokunta_ToTable_1" FromRole="Henkilokunta" ToRole="Puhelin" />
           <NavigationProperty Name="Huomiot1" Relationship="JohaMeriSQL2Model.FK_Henkilokunta_ToTable_2" FromRole="Henkilokunta" ToRole="Huomiot" />
+          <NavigationProperty Name="Puhelin" Relationship="JohaMeriSQL2Model.FK_Henkilokunta_ToTable_1" FromRole="Henkilokunta" ToRole="Puhelin" />
+          <NavigationProperty Name="Puhelin1" Relationship="JohaMeriSQL2Model.FK_Puhelin_ToTable_2" FromRole="Henkilokunta" ToRole="Puhelin" />
+          <NavigationProperty Name="Osoite" Relationship="JohaMeriSQL2Model.FK_Henkilokunta_ToTable" FromRole="Henkilokunta" ToRole="Osoite" />
+          <NavigationProperty Name="Osoite1" Relationship="JohaMeriSQL2Model.FK_Osoite_ToTable_2" FromRole="Henkilokunta" ToRole="Osoite" />
         </EntityType>
         <EntityType Name="Shippers">
           <Key>
@@ -1565,8 +1513,10 @@
           <Property Name="Huomio_id" Type="Int32" />
           <Property Name="Puhelin_id" Type="Int32" />
           <NavigationProperty Name="Huomiot1" Relationship="JohaMeriSQL2Model.FK_Shippers_ToTable_2" FromRole="Shippers" ToRole="Huomiot" />
-          <NavigationProperty Name="Osoite" Relationship="JohaMeriSQL2Model.FK_Shippers_ToTable" FromRole="Shippers" ToRole="Osoite" />
-          <NavigationProperty Name="Puhelin" Relationship="JohaMeriSQL2Model.FK_Shippers_ToTable_1" FromRole="Shippers" ToRole="Puhelin" />
+          <NavigationProperty Name="Puhelin" Relationship="JohaMeriSQL2Model.FK_Puhelin_ToTable_3" FromRole="Shippers" ToRole="Puhelin" />
+          <NavigationProperty Name="Puhelin1" Relationship="JohaMeriSQL2Model.FK_Shippers_ToTable_1" FromRole="Shippers" ToRole="Puhelin" />
+          <NavigationProperty Name="Osoite" Relationship="JohaMeriSQL2Model.FK_Osoite_ToTable_4" FromRole="Shippers" ToRole="Osoite" />
+          <NavigationProperty Name="Osoite1" Relationship="JohaMeriSQL2Model.FK_Shippers_ToTable" FromRole="Shippers" ToRole="Osoite" />
         </EntityType>
         <EntityType Name="Tilaukset">
           <Key>
@@ -1600,30 +1550,6 @@
           <Property Name="Shipper_ID" Type="Int32" />
           <NavigationProperty Name="Tilaukset" Relationship="JohaMeriSQL2Model.FK_Tilaukset_ToTable" FromRole="Tuotteet" ToRole="Tilaukset" />
         </EntityType>
-        <Association Name="FK_Henkilokunta_ToTable">
-          <End Type="JohaMeriSQL2Model.Osoite" Role="Osoite" Multiplicity="0..1" />
-          <End Type="JohaMeriSQL2Model.Henkilokunta" Role="Henkilokunta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Osoite">
-              <PropertyRef Name="Osoite_ID" />
-            </Principal>
-            <Dependent Role="Henkilokunta">
-              <PropertyRef Name="Osoite_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Henkilokunta_ToTable_1">
-          <End Type="JohaMeriSQL2Model.Puhelin" Role="Puhelin" Multiplicity="0..1" />
-          <End Type="JohaMeriSQL2Model.Henkilokunta" Role="Henkilokunta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Puhelin">
-              <PropertyRef Name="Puhelin_ID" />
-            </Principal>
-            <Dependent Role="Henkilokunta">
-              <PropertyRef Name="Puhelin_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Henkilokunta_ToTable_2">
           <End Type="JohaMeriSQL2Model.Huomiot" Role="Huomiot" Multiplicity="0..1" />
           <End Type="JohaMeriSQL2Model.Henkilokunta" Role="Henkilokunta" Multiplicity="*" />
@@ -1645,30 +1571,6 @@
             </Principal>
             <Dependent Role="Shippers">
               <PropertyRef Name="Huomio_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Shippers_ToTable">
-          <End Type="JohaMeriSQL2Model.Osoite" Role="Osoite" Multiplicity="0..1" />
-          <End Type="JohaMeriSQL2Model.Shippers" Role="Shippers" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Osoite">
-              <PropertyRef Name="Osoite_ID" />
-            </Principal>
-            <Dependent Role="Shippers">
-              <PropertyRef Name="Osoite_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Shippers_ToTable_1">
-          <End Type="JohaMeriSQL2Model.Puhelin" Role="Puhelin" Multiplicity="0..1" />
-          <End Type="JohaMeriSQL2Model.Shippers" Role="Shippers" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Puhelin">
-              <PropertyRef Name="Puhelin_ID" />
-            </Principal>
-            <Dependent Role="Shippers">
-              <PropertyRef Name="Puhelin_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1697,9 +1599,9 @@
           <Property Name="Palvelun_nimi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Palvelu_ID" Type="Int32" />
           <NavigationProperty Name="Asiakkaat" Relationship="JohaMeriSQL2Model.FK_Varaus_ToTable_1" FromRole="Varaus" ToRole="Asiakkaat" />
-          <NavigationProperty Name="Hoitajat" Relationship="JohaMeriSQL2Model.FK_Varaus_ToTable" FromRole="Varaus" ToRole="Hoitajat" />
           <NavigationProperty Name="Hoitopaikat" Relationship="JohaMeriSQL2Model.FK_Varaus_ToTable_2" FromRole="Varaus" ToRole="Hoitopaikat" />
           <NavigationProperty Name="Palvelut" Relationship="JohaMeriSQL2Model.FK_Varaus_ToTable_3" FromRole="Varaus" ToRole="Palvelut" />
+          <NavigationProperty Name="Hoitajat" Relationship="JohaMeriSQL2Model.FK_Varaus_ToTable" FromRole="Varaus" ToRole="Hoitajat" />
         </EntityType>
         <Association Name="FK_Varaus_ToTable_1">
           <End Type="JohaMeriSQL2Model.Asiakkaat" Role="Asiakkaat" Multiplicity="0..1" />
@@ -1710,18 +1612,6 @@
             </Principal>
             <Dependent Role="Varaus">
               <PropertyRef Name="Asiakas_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Varaus_ToTable">
-          <End Type="JohaMeriSQL2Model.Hoitajat" Role="Hoitajat" Multiplicity="0..1" />
-          <End Type="JohaMeriSQL2Model.Varaus" Role="Varaus" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Hoitajat">
-              <PropertyRef Name="Hoitaja_ID" />
-            </Principal>
-            <Dependent Role="Varaus">
-              <PropertyRef Name="Hoitaja_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1737,6 +1627,72 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Palvelut">
+          <Key>
+            <PropertyRef Name="Palvelu_ID" />
+          </Key>
+          <Property Name="Palvelu_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Palvelun_nimi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Palvelun_kesto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Asiakas_id" Type="Int32" />
+          <Property Name="Hoitaja_id" Type="Int32" />
+          <Property Name="Toimipiste_id" Type="Int32" />
+          <Property Name="Varaus_id" Type="Int32" />
+          <NavigationProperty Name="Asiakkaat" Relationship="JohaMeriSQL2Model.FK_Palvelut_ToTable" FromRole="Palvelut" ToRole="Asiakkaat" />
+          <NavigationProperty Name="Event" Relationship="JohaMeriSQL2Model.FK_Event_ToTable_1" FromRole="Palvelut" ToRole="Event" />
+          <NavigationProperty Name="Toimipisteet" Relationship="JohaMeriSQL2Model.FK_Palvelut_ToTable_2" FromRole="Palvelut" ToRole="Toimipisteet" />
+          <NavigationProperty Name="Varaus" Relationship="JohaMeriSQL2Model.FK_Varaus_ToTable_3" FromRole="Palvelut" ToRole="Varaus" />
+          <NavigationProperty Name="Varauskalenteri" Relationship="JohaMeriSQL2Model.FK_Varauskalenteri_ToTable_1" FromRole="Palvelut" ToRole="Varauskalenteri" />
+          <NavigationProperty Name="Hoitajat" Relationship="JohaMeriSQL2Model.FK_Palvelut_ToTable_1" FromRole="Palvelut" ToRole="Hoitajat" />
+        </EntityType>
+        <Association Name="FK_Palvelut_ToTable">
+          <End Type="JohaMeriSQL2Model.Asiakkaat" Role="Asiakkaat" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Palvelut" Role="Palvelut" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asiakkaat">
+              <PropertyRef Name="Asiakas_ID" />
+            </Principal>
+            <Dependent Role="Palvelut">
+              <PropertyRef Name="Asiakas_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_ToTable_1">
+          <End Type="JohaMeriSQL2Model.Palvelut" Role="Palvelut" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Event" Role="Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Palvelut">
+              <PropertyRef Name="Palvelu_ID" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="Palvelu_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Palvelut_ToTable_3">
+          <End Type="JohaMeriSQL2Model.Event" Role="Event" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Palvelut" Role="Palvelut" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="Varaus_ID" />
+            </Principal>
+            <Dependent Role="Palvelut">
+              <PropertyRef Name="Varaus_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Palvelut_ToTable_2">
+          <End Type="JohaMeriSQL2Model.Toimipisteet" Role="Toimipisteet" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Palvelut" Role="Palvelut" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Toimipisteet">
+              <PropertyRef Name="Toimipiste_ID" />
+            </Principal>
+            <Dependent Role="Palvelut">
+              <PropertyRef Name="Toimipiste_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Varaus_ToTable_3">
           <End Type="JohaMeriSQL2Model.Palvelut" Role="Palvelut" Multiplicity="0..1" />
           <End Type="JohaMeriSQL2Model.Varaus" Role="Varaus" Multiplicity="*" />
@@ -1746,6 +1702,492 @@
             </Principal>
             <Dependent Role="Varaus">
               <PropertyRef Name="Palvelu_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Varauskalenteri_ToTable_1">
+          <End Type="JohaMeriSQL2Model.Palvelut" Role="Palvelut" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Varauskalenteri" Role="Varauskalenteri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Palvelut">
+              <PropertyRef Name="Palvelu_ID" />
+            </Principal>
+            <Dependent Role="Varauskalenteri">
+              <PropertyRef Name="Palvelu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Hoitajat">
+          <Key>
+            <PropertyRef Name="Hoitaja_ID" />
+          </Key>
+          <Property Name="Hoitaja_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tunnus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Etunimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Toinen_nimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sukunimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Katuosoite" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Postinumero" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Postitoimipaikka" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Henkilotunnus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Aloituspvm" Type="DateTime" Precision="0" />
+          <Property Name="Valmistumispvm" Type="DateTime" Precision="0" />
+          <Property Name="Keskeytyspvm" Type="DateTime" Precision="0" />
+          <Property Name="Tiedot_arkistoitu" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Huomio_ID" Type="Int32" />
+          <Property Name="Osoite_ID" Type="Int32" />
+          <Property Name="Puhelin_ID" Type="Int32" />
+          <Property Name="Kurssi_ID" Type="Int32" />
+          <NavigationProperty Name="Event" Relationship="JohaMeriSQL2Model.FK_Event_ToTable_4" FromRole="Hoitajat" ToRole="Event" />
+          <NavigationProperty Name="Huomiot" Relationship="JohaMeriSQL2Model.FK_Hoitajat_ToTable_2" FromRole="Hoitajat" ToRole="Huomiot" />
+          <NavigationProperty Name="Palvelut" Relationship="JohaMeriSQL2Model.FK_Palvelut_ToTable_1" FromRole="Hoitajat" ToRole="Palvelut" />
+          <NavigationProperty Name="Varaus" Relationship="JohaMeriSQL2Model.FK_Varaus_ToTable" FromRole="Hoitajat" ToRole="Varaus" />
+          <NavigationProperty Name="Varauskalenteri" Relationship="JohaMeriSQL2Model.FK_Varauskalenteri_ToTable_4" FromRole="Hoitajat" ToRole="Varauskalenteri" />
+          <NavigationProperty Name="Kurssi" Relationship="JohaMeriSQL2Model.FK_Kurssi_ToTable" FromRole="Hoitajat" ToRole="Kurssi" />
+          <NavigationProperty Name="Rekisterointi" Relationship="JohaMeriSQL2Model.FK_Rekisterointi_ToTable_1" FromRole="Hoitajat" ToRole="Rekisterointi" />
+          <Property Name="Rekisterointi_ID" Type="Int32" />
+          <NavigationProperty Name="Puhelin" Relationship="JohaMeriSQL2Model.FK_Hoitajat_ToTable_1" FromRole="Hoitajat" ToRole="Puhelin" />
+          <NavigationProperty Name="Puhelin1" Relationship="JohaMeriSQL2Model.FK_Puhelin_ToTable_1" FromRole="Hoitajat" ToRole="Puhelin" />
+          <NavigationProperty Name="Osoite" Relationship="JohaMeriSQL2Model.FK_Hoitajat_ToTable" FromRole="Hoitajat" ToRole="Osoite" />
+          <NavigationProperty Name="Osoite1" Relationship="JohaMeriSQL2Model.FK_Osoite_ToTable_1" FromRole="Hoitajat" ToRole="Osoite" />
+        </EntityType>
+        <Association Name="FK_Event_ToTable_4">
+          <End Type="JohaMeriSQL2Model.Hoitajat" Role="Hoitajat" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Event" Role="Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hoitajat">
+              <PropertyRef Name="Hoitaja_ID" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="Hoitaja_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hoitajat_ToTable_2">
+          <End Type="JohaMeriSQL2Model.Huomiot" Role="Huomiot" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Hoitajat" Role="Hoitajat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Huomiot">
+              <PropertyRef Name="Huomio_ID" />
+            </Principal>
+            <Dependent Role="Hoitajat">
+              <PropertyRef Name="Huomio_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Palvelut_ToTable_1">
+          <End Type="JohaMeriSQL2Model.Hoitajat" Role="Hoitajat" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Palvelut" Role="Palvelut" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hoitajat">
+              <PropertyRef Name="Hoitaja_ID" />
+            </Principal>
+            <Dependent Role="Palvelut">
+              <PropertyRef Name="Hoitaja_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Varaus_ToTable">
+          <End Type="JohaMeriSQL2Model.Hoitajat" Role="Hoitajat" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Varaus" Role="Varaus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hoitajat">
+              <PropertyRef Name="Hoitaja_ID" />
+            </Principal>
+            <Dependent Role="Varaus">
+              <PropertyRef Name="Hoitaja_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Varauskalenteri_ToTable_4">
+          <End Type="JohaMeriSQL2Model.Hoitajat" Role="Hoitajat" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Varauskalenteri" Role="Varauskalenteri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hoitajat">
+              <PropertyRef Name="Hoitaja_ID" />
+            </Principal>
+            <Dependent Role="Varauskalenteri">
+              <PropertyRef Name="Hoitaja_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Kurssi">
+          <Key>
+            <PropertyRef Name="Kurssi_ID" />
+          </Key>
+          <Property Name="Kurssi_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Etunimi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Sukunimi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Kurssinimike" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Opintopisteet" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Kurssin_aloitus_pvm" Type="DateTime" Precision="3" />
+          <Property Name="Kurssin_lopetus_pvm" Type="DateTime" Precision="3" />
+          <Property Name="Rekisterointi_ID" Type="Int32" />
+          <Property Name="Hoitaja_ID" Type="Int32" />
+          <NavigationProperty Name="Hoitajat" Relationship="JohaMeriSQL2Model.FK_Kurssi_ToTable" FromRole="Kurssi" ToRole="Hoitajat" />
+          <NavigationProperty Name="Rekisterointi" Relationship="JohaMeriSQL2Model.FK_Rekisterointi_ToTable" FromRole="Kurssi" ToRole="Rekisterointi" />
+          <NavigationProperty Name="Rekisterointi1" Relationship="JohaMeriSQL2Model.FK_Kurssi_ToTable_1" FromRole="Kurssi" ToRole="Rekisterointi" />
+        </EntityType>
+        <Association Name="FK_Kurssi_ToTable">
+          <End Type="JohaMeriSQL2Model.Hoitajat" Role="Hoitajat" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Kurssi" Role="Kurssi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hoitajat">
+              <PropertyRef Name="Hoitaja_ID" />
+            </Principal>
+            <Dependent Role="Kurssi">
+              <PropertyRef Name="Hoitaja_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Rekisterointi">
+          <Key>
+            <PropertyRef Name="Rekisterointi_ID" />
+          </Key>
+          <Property Name="Rekisterointi_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vuosikurssi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Vuosikurssi_aloitus_pvm" Type="DateTime" Precision="3" />
+          <Property Name="Vuosikurssi_lopetus_pvm" Type="DateTime" Precision="3" />
+          <Property Name="Kurssi_ID" Type="Int32" />
+          <Property Name="Hoitaja_ID" Type="Int32" />
+          <NavigationProperty Name="Hoitajat" Relationship="JohaMeriSQL2Model.FK_Rekisterointi_ToTable_1" FromRole="Rekisterointi" ToRole="Hoitajat" />
+          <NavigationProperty Name="Kurssi" Relationship="JohaMeriSQL2Model.FK_Rekisterointi_ToTable" FromRole="Rekisterointi" ToRole="Kurssi" />
+          <NavigationProperty Name="Kurssi1" Relationship="JohaMeriSQL2Model.FK_Kurssi_ToTable_1" FromRole="Rekisterointi" ToRole="Kurssi" />
+        </EntityType>
+        <Association Name="FK_Rekisterointi_ToTable_1">
+          <End Type="JohaMeriSQL2Model.Hoitajat" Role="Hoitajat" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Rekisterointi" Role="Rekisterointi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hoitajat">
+              <PropertyRef Name="Hoitaja_ID" />
+            </Principal>
+            <Dependent Role="Rekisterointi">
+              <PropertyRef Name="Hoitaja_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rekisterointi_ToTable">
+          <End Type="JohaMeriSQL2Model.Kurssi" Role="Kurssi" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Rekisterointi" Role="Rekisterointi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kurssi">
+              <PropertyRef Name="Kurssi_ID" />
+            </Principal>
+            <Dependent Role="Rekisterointi">
+              <PropertyRef Name="Kurssi_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kurssi_ToTable_1">
+          <End Type="JohaMeriSQL2Model.Rekisterointi" Role="Rekisterointi" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Kurssi" Role="Kurssi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rekisterointi">
+              <PropertyRef Name="Rekisterointi_ID" />
+            </Principal>
+            <Dependent Role="Kurssi">
+              <PropertyRef Name="Rekisterointi_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Puhelin">
+          <Key>
+            <PropertyRef Name="Puhelin_ID" />
+          </Key>
+          <Property Name="Puhelin_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Puhelinnumero_1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Puhelinnumero_2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Puhelinnumero_3" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Asiakas_ID" Type="Int32" />
+          <Property Name="Hoitaja_ID" Type="Int32" />
+          <Property Name="Henkilokunta_ID" Type="Int32" />
+          <Property Name="Shipper_ID" Type="Int32" />
+          <NavigationProperty Name="Asiakkaat" Relationship="JohaMeriSQL2Model.FK_Asiakkaat_ToTable_1" FromRole="Puhelin" ToRole="Asiakkaat" />
+          <NavigationProperty Name="Asiakkaat1" Relationship="JohaMeriSQL2Model.FK_Puhelin_ToTable" FromRole="Puhelin" ToRole="Asiakkaat" />
+          <NavigationProperty Name="Henkilokunta" Relationship="JohaMeriSQL2Model.FK_Henkilokunta_ToTable_1" FromRole="Puhelin" ToRole="Henkilokunta" />
+          <NavigationProperty Name="Henkilokunta1" Relationship="JohaMeriSQL2Model.FK_Puhelin_ToTable_2" FromRole="Puhelin" ToRole="Henkilokunta" />
+          <NavigationProperty Name="Hoitajat" Relationship="JohaMeriSQL2Model.FK_Hoitajat_ToTable_1" FromRole="Puhelin" ToRole="Hoitajat" />
+          <NavigationProperty Name="Hoitajat1" Relationship="JohaMeriSQL2Model.FK_Puhelin_ToTable_1" FromRole="Puhelin" ToRole="Hoitajat" />
+          <NavigationProperty Name="Shippers" Relationship="JohaMeriSQL2Model.FK_Puhelin_ToTable_3" FromRole="Puhelin" ToRole="Shippers" />
+          <NavigationProperty Name="Shippers1" Relationship="JohaMeriSQL2Model.FK_Shippers_ToTable_1" FromRole="Puhelin" ToRole="Shippers" />
+          <NavigationProperty Name="Toimipisteet" Relationship="JohaMeriSQL2Model.FK_Toimipisteet_ToTable_2" FromRole="Puhelin" ToRole="Toimipisteet" />
+          <NavigationProperty Name="Varauskalenteri" Relationship="JohaMeriSQL2Model.FK_Varauskalenteri_ToTable_2" FromRole="Puhelin" ToRole="Varauskalenteri" />
+          <Property Name="Toimipiste_ID" Type="Int32" />
+          <NavigationProperty Name="Toimipisteet1" Relationship="JohaMeriSQL2Model.FK_Puhelin_ToTable_31" FromRole="Puhelin" ToRole="Toimipisteet" />
+        </EntityType>
+        <Association Name="FK_Asiakkaat_ToTable_1">
+          <End Type="JohaMeriSQL2Model.Puhelin" Role="Puhelin" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Asiakkaat" Role="Asiakkaat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Puhelin">
+              <PropertyRef Name="Puhelin_ID" />
+            </Principal>
+            <Dependent Role="Asiakkaat">
+              <PropertyRef Name="Puhelin_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Puhelin_ToTable">
+          <End Type="JohaMeriSQL2Model.Asiakkaat" Role="Asiakkaat" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Puhelin" Role="Puhelin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asiakkaat">
+              <PropertyRef Name="Asiakas_ID" />
+            </Principal>
+            <Dependent Role="Puhelin">
+              <PropertyRef Name="Asiakas_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Henkilokunta_ToTable_1">
+          <End Type="JohaMeriSQL2Model.Puhelin" Role="Puhelin" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Henkilokunta" Role="Henkilokunta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Puhelin">
+              <PropertyRef Name="Puhelin_ID" />
+            </Principal>
+            <Dependent Role="Henkilokunta">
+              <PropertyRef Name="Puhelin_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Puhelin_ToTable_2">
+          <End Type="JohaMeriSQL2Model.Henkilokunta" Role="Henkilokunta" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Puhelin" Role="Puhelin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Henkilokunta">
+              <PropertyRef Name="Henkilokunta_ID" />
+            </Principal>
+            <Dependent Role="Puhelin">
+              <PropertyRef Name="Henkilokunta_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hoitajat_ToTable_1">
+          <End Type="JohaMeriSQL2Model.Puhelin" Role="Puhelin" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Hoitajat" Role="Hoitajat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Puhelin">
+              <PropertyRef Name="Puhelin_ID" />
+            </Principal>
+            <Dependent Role="Hoitajat">
+              <PropertyRef Name="Puhelin_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Puhelin_ToTable_1">
+          <End Type="JohaMeriSQL2Model.Hoitajat" Role="Hoitajat" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Puhelin" Role="Puhelin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hoitajat">
+              <PropertyRef Name="Hoitaja_ID" />
+            </Principal>
+            <Dependent Role="Puhelin">
+              <PropertyRef Name="Hoitaja_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Puhelin_ToTable_3">
+          <End Type="JohaMeriSQL2Model.Shippers" Role="Shippers" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Puhelin" Role="Puhelin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shippers">
+              <PropertyRef Name="Shipper_ID" />
+            </Principal>
+            <Dependent Role="Puhelin">
+              <PropertyRef Name="Shipper_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shippers_ToTable_1">
+          <End Type="JohaMeriSQL2Model.Puhelin" Role="Puhelin" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Shippers" Role="Shippers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Puhelin">
+              <PropertyRef Name="Puhelin_ID" />
+            </Principal>
+            <Dependent Role="Shippers">
+              <PropertyRef Name="Puhelin_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Toimipisteet_ToTable_2">
+          <End Type="JohaMeriSQL2Model.Puhelin" Role="Puhelin" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Toimipisteet" Role="Toimipisteet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Puhelin">
+              <PropertyRef Name="Puhelin_ID" />
+            </Principal>
+            <Dependent Role="Toimipisteet">
+              <PropertyRef Name="Puhelin_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Varauskalenteri_ToTable_2">
+          <End Type="JohaMeriSQL2Model.Puhelin" Role="Puhelin" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Varauskalenteri" Role="Varauskalenteri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Puhelin">
+              <PropertyRef Name="Puhelin_ID" />
+            </Principal>
+            <Dependent Role="Varauskalenteri">
+              <PropertyRef Name="Puhelin_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Osoite">
+          <Key>
+            <PropertyRef Name="Osoite_ID" />
+          </Key>
+          <Property Name="Osoite_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Katuosoite" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Postinumero" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Postitoimipaikka" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Asiakas_ID" Type="Int32" />
+          <Property Name="Hoitaja_ID" Type="Int32" />
+          <Property Name="Henkilokunta_ID" Type="Int32" />
+          <Property Name="Toimipiste_ID" Type="Int32" />
+          <Property Name="Shipper_ID" Type="Int32" />
+          <NavigationProperty Name="Asiakkaat" Relationship="JohaMeriSQL2Model.FK_Asiakkaat_ToTable" FromRole="Osoite" ToRole="Asiakkaat" />
+          <NavigationProperty Name="Asiakkaat1" Relationship="JohaMeriSQL2Model.FK_Osoite_ToTable" FromRole="Osoite" ToRole="Asiakkaat" />
+          <NavigationProperty Name="Henkilokunta" Relationship="JohaMeriSQL2Model.FK_Henkilokunta_ToTable" FromRole="Osoite" ToRole="Henkilokunta" />
+          <NavigationProperty Name="Henkilokunta1" Relationship="JohaMeriSQL2Model.FK_Osoite_ToTable_2" FromRole="Osoite" ToRole="Henkilokunta" />
+          <NavigationProperty Name="Hoitajat" Relationship="JohaMeriSQL2Model.FK_Hoitajat_ToTable" FromRole="Osoite" ToRole="Hoitajat" />
+          <NavigationProperty Name="Hoitajat1" Relationship="JohaMeriSQL2Model.FK_Osoite_ToTable_1" FromRole="Osoite" ToRole="Hoitajat" />
+          <NavigationProperty Name="Toimipisteet" Relationship="JohaMeriSQL2Model.FK_Osoite_ToTable_3" FromRole="Osoite" ToRole="Toimipisteet" />
+          <NavigationProperty Name="Shippers" Relationship="JohaMeriSQL2Model.FK_Osoite_ToTable_4" FromRole="Osoite" ToRole="Shippers" />
+          <NavigationProperty Name="Shippers1" Relationship="JohaMeriSQL2Model.FK_Shippers_ToTable" FromRole="Osoite" ToRole="Shippers" />
+          <NavigationProperty Name="Toimipisteet1" Relationship="JohaMeriSQL2Model.FK_Toimipisteet_ToTable1" FromRole="Osoite" ToRole="Toimipisteet" />
+        </EntityType>
+        <Association Name="FK_Asiakkaat_ToTable">
+          <End Type="JohaMeriSQL2Model.Osoite" Role="Osoite" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Asiakkaat" Role="Asiakkaat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Osoite">
+              <PropertyRef Name="Osoite_ID" />
+            </Principal>
+            <Dependent Role="Asiakkaat">
+              <PropertyRef Name="Osoite_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Osoite_ToTable">
+          <End Type="JohaMeriSQL2Model.Asiakkaat" Role="Asiakkaat" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Osoite" Role="Osoite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asiakkaat">
+              <PropertyRef Name="Asiakas_ID" />
+            </Principal>
+            <Dependent Role="Osoite">
+              <PropertyRef Name="Asiakas_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Henkilokunta_ToTable">
+          <End Type="JohaMeriSQL2Model.Osoite" Role="Osoite" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Henkilokunta" Role="Henkilokunta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Osoite">
+              <PropertyRef Name="Osoite_ID" />
+            </Principal>
+            <Dependent Role="Henkilokunta">
+              <PropertyRef Name="Osoite_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Osoite_ToTable_2">
+          <End Type="JohaMeriSQL2Model.Henkilokunta" Role="Henkilokunta" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Osoite" Role="Osoite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Henkilokunta">
+              <PropertyRef Name="Henkilokunta_ID" />
+            </Principal>
+            <Dependent Role="Osoite">
+              <PropertyRef Name="Henkilokunta_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hoitajat_ToTable">
+          <End Type="JohaMeriSQL2Model.Osoite" Role="Osoite" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Hoitajat" Role="Hoitajat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Osoite">
+              <PropertyRef Name="Osoite_ID" />
+            </Principal>
+            <Dependent Role="Hoitajat">
+              <PropertyRef Name="Osoite_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Osoite_ToTable_1">
+          <End Type="JohaMeriSQL2Model.Hoitajat" Role="Hoitajat" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Osoite" Role="Osoite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hoitajat">
+              <PropertyRef Name="Hoitaja_ID" />
+            </Principal>
+            <Dependent Role="Osoite">
+              <PropertyRef Name="Hoitaja_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Osoite_ToTable_3">
+          <End Type="JohaMeriSQL2Model.Toimipisteet" Role="Toimipisteet" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Osoite" Role="Osoite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Toimipisteet">
+              <PropertyRef Name="Toimipiste_ID" />
+            </Principal>
+            <Dependent Role="Osoite">
+              <PropertyRef Name="Toimipiste_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Osoite_ToTable_4">
+          <End Type="JohaMeriSQL2Model.Shippers" Role="Shippers" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Osoite" Role="Osoite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shippers">
+              <PropertyRef Name="Shipper_ID" />
+            </Principal>
+            <Dependent Role="Osoite">
+              <PropertyRef Name="Shipper_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shippers_ToTable">
+          <End Type="JohaMeriSQL2Model.Osoite" Role="Osoite" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Shippers" Role="Shippers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Osoite">
+              <PropertyRef Name="Osoite_ID" />
+            </Principal>
+            <Dependent Role="Shippers">
+              <PropertyRef Name="Osoite_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Toimipisteet_ToTable1">
+          <End Type="JohaMeriSQL2Model.Osoite" Role="Osoite" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Toimipisteet" Role="Toimipisteet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Osoite">
+              <PropertyRef Name="Osoite_ID" />
+            </Principal>
+            <Dependent Role="Toimipisteet">
+              <PropertyRef Name="Osoite_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Puhelin_ToTable_31">
+          <End Type="JohaMeriSQL2Model.Toimipisteet" Role="Toimipisteet" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Puhelin" Role="Puhelin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Toimipisteet">
+              <PropertyRef Name="Toimipiste_ID" />
+            </Principal>
+            <Dependent Role="Puhelin">
+              <PropertyRef Name="Toimipiste_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1764,44 +2206,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Osoite">
-            <EntityTypeMapping TypeName="JohaMeriSQL2Model.Osoite">
-              <MappingFragment StoreEntitySet="Osoite">
-                <ScalarProperty Name="Osoite_ID" ColumnName="Osoite_ID" />
-                <ScalarProperty Name="Katuosoite" ColumnName="Katuosoite" />
-                <ScalarProperty Name="Postinumero" ColumnName="Postinumero" />
-                <ScalarProperty Name="Postitoimipaikka" ColumnName="Postitoimipaikka" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Palvelut">
-            <EntityTypeMapping TypeName="JohaMeriSQL2Model.Palvelut">
-              <MappingFragment StoreEntitySet="Palvelut">
-                <ScalarProperty Name="Palvelu_ID" ColumnName="Palvelu_ID" />
-                <ScalarProperty Name="Palvelun_nimi" ColumnName="Palvelun nimi" />
-                <ScalarProperty Name="Palvelun_kesto" ColumnName="Palvelun_kesto" />
-                <ScalarProperty Name="Asiakas_id" ColumnName="Asiakas_id" />
-                <ScalarProperty Name="Hoitaja_id" ColumnName="Hoitaja_id" />
-                <ScalarProperty Name="Toimipiste_id" ColumnName="Toimipiste_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Postitoimipaikat">
             <EntityTypeMapping TypeName="JohaMeriSQL2Model.Postitoimipaikat">
               <MappingFragment StoreEntitySet="Postitoimipaikat">
                 <ScalarProperty Name="Posti_id" ColumnName="Posti_id" />
                 <ScalarProperty Name="Postinumero" ColumnName="Postinumero" />
                 <ScalarProperty Name="Postitoimipaikka" ColumnName="Postitoimipaikka" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Puhelin">
-            <EntityTypeMapping TypeName="JohaMeriSQL2Model.Puhelin">
-              <MappingFragment StoreEntitySet="Puhelin">
-                <ScalarProperty Name="Puhelin_ID" ColumnName="Puhelin_ID" />
-                <ScalarProperty Name="Puhelinnumero_1" ColumnName="Puhelinnumero_1" />
-                <ScalarProperty Name="Puhelinnumero_2" ColumnName="Puhelinnumero_2" />
-                <ScalarProperty Name="Puhelinnumero_3" ColumnName="Puhelinnumero_3" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1870,49 +2280,6 @@
                 <ScalarProperty Name="Sukunimi" ColumnName="Sukunimi" />
                 <ScalarProperty Name="Etunimi" ColumnName="Etunimi" />
                 <ScalarProperty Name="Asiakas_ID" ColumnName="Asiakas_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Kurssit">
-            <EntityTypeMapping TypeName="JohaMeriSQL2Model.Kurssit">
-              <MappingFragment StoreEntitySet="Kurssit">
-                <ScalarProperty Name="Rekisterointi" ColumnName="Rekisterointi" />
-                <ScalarProperty Name="Opintopisteet" ColumnName="Opintopisteet" />
-                <ScalarProperty Name="Kurssinimike" ColumnName="Kurssinimike" />
-                <ScalarProperty Name="Kurssi_ID" ColumnName="Kurssi_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Rekisterointi">
-            <EntityTypeMapping TypeName="JohaMeriSQL2Model.Rekisterointi">
-              <MappingFragment StoreEntitySet="Rekisterointi">
-                <ScalarProperty Name="Hoitaja_ID" ColumnName="Hoitaja_ID" />
-                <ScalarProperty Name="Kurssi" ColumnName="Kurssi" />
-                <ScalarProperty Name="Kurssi_ID" ColumnName="Kurssi_ID" />
-                <ScalarProperty Name="Rekisterointi_ID" ColumnName="Rekisterointi_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Hoitajat">
-            <EntityTypeMapping TypeName="JohaMeriSQL2Model.Hoitajat">
-              <MappingFragment StoreEntitySet="Hoitajat">
-                <ScalarProperty Name="Kurssi_id" ColumnName="Kurssi_id" />
-                <ScalarProperty Name="Puhelin_id" ColumnName="Puhelin_id" />
-                <ScalarProperty Name="Osoite_id" ColumnName="Osoite_id" />
-                <ScalarProperty Name="Huomio" ColumnName="Huomio" />
-                <ScalarProperty Name="Tiedot_arkistoitu" ColumnName="Tiedot arkistoitu" />
-                <ScalarProperty Name="Keskeytyspvm" ColumnName="Keskeytyspvm" />
-                <ScalarProperty Name="Valmistumispvm" ColumnName="Valmistumispvm" />
-                <ScalarProperty Name="Aloituspvm" ColumnName="Aloituspvm" />
-                <ScalarProperty Name="Henkilotunnus" ColumnName="Henkilotunnus" />
-                <ScalarProperty Name="Postitoimipaikka" ColumnName="Postitoimipaikka" />
-                <ScalarProperty Name="Postinumero" ColumnName="Postinumero" />
-                <ScalarProperty Name="Katuosoite" ColumnName="Katuosoite" />
-                <ScalarProperty Name="Sukunimi" ColumnName="Sukunimi" />
-                <ScalarProperty Name="Toinen_nimi" ColumnName="Toinen nimi" />
-                <ScalarProperty Name="Etunimi" ColumnName="Etunimi" />
-                <ScalarProperty Name="Tunnus" ColumnName="Tunnus" />
-                <ScalarProperty Name="Hoitaja_ID" ColumnName="Hoitaja_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1991,6 +2358,100 @@
                 <ScalarProperty Name="Hoitopaikka_ID" ColumnName="Hoitopaikka_ID" />
                 <ScalarProperty Name="Hoitaja_ID" ColumnName="Hoitaja_ID" />
                 <ScalarProperty Name="Varaus_ID" ColumnName="Varaus_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Palvelut">
+            <EntityTypeMapping TypeName="JohaMeriSQL2Model.Palvelut">
+              <MappingFragment StoreEntitySet="Palvelut">
+                <ScalarProperty Name="Varaus_id" ColumnName="Varaus_id" />
+                <ScalarProperty Name="Toimipiste_id" ColumnName="Toimipiste_id" />
+                <ScalarProperty Name="Hoitaja_id" ColumnName="Hoitaja_id" />
+                <ScalarProperty Name="Asiakas_id" ColumnName="Asiakas_id" />
+                <ScalarProperty Name="Palvelun_kesto" ColumnName="Palvelun_kesto" />
+                <ScalarProperty Name="Palvelun_nimi" ColumnName="Palvelun nimi" />
+                <ScalarProperty Name="Palvelu_ID" ColumnName="Palvelu_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hoitajat">
+            <EntityTypeMapping TypeName="JohaMeriSQL2Model.Hoitajat">
+              <MappingFragment StoreEntitySet="Hoitajat">
+                <ScalarProperty Name="Rekisterointi_ID" ColumnName="Rekisterointi_ID" />
+                <ScalarProperty Name="Kurssi_ID" ColumnName="Kurssi_ID" />
+                <ScalarProperty Name="Puhelin_ID" ColumnName="Puhelin_ID" />
+                <ScalarProperty Name="Osoite_ID" ColumnName="Osoite_ID" />
+                <ScalarProperty Name="Huomio_ID" ColumnName="Huomio_ID" />
+                <ScalarProperty Name="Tiedot_arkistoitu" ColumnName="Tiedot arkistoitu" />
+                <ScalarProperty Name="Keskeytyspvm" ColumnName="Keskeytyspvm" />
+                <ScalarProperty Name="Valmistumispvm" ColumnName="Valmistumispvm" />
+                <ScalarProperty Name="Aloituspvm" ColumnName="Aloituspvm" />
+                <ScalarProperty Name="Henkilotunnus" ColumnName="Henkilotunnus" />
+                <ScalarProperty Name="Postitoimipaikka" ColumnName="Postitoimipaikka" />
+                <ScalarProperty Name="Postinumero" ColumnName="Postinumero" />
+                <ScalarProperty Name="Katuosoite" ColumnName="Katuosoite" />
+                <ScalarProperty Name="Sukunimi" ColumnName="Sukunimi" />
+                <ScalarProperty Name="Toinen_nimi" ColumnName="Toinen nimi" />
+                <ScalarProperty Name="Etunimi" ColumnName="Etunimi" />
+                <ScalarProperty Name="Tunnus" ColumnName="Tunnus" />
+                <ScalarProperty Name="Hoitaja_ID" ColumnName="Hoitaja_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kurssi">
+            <EntityTypeMapping TypeName="JohaMeriSQL2Model.Kurssi">
+              <MappingFragment StoreEntitySet="Kurssi">
+                <ScalarProperty Name="Hoitaja_ID" ColumnName="Hoitaja_ID" />
+                <ScalarProperty Name="Rekisterointi_ID" ColumnName="Rekisterointi_ID" />
+                <ScalarProperty Name="Kurssin_lopetus_pvm" ColumnName="Kurssin lopetus pvm" />
+                <ScalarProperty Name="Kurssin_aloitus_pvm" ColumnName="Kurssin aloitus pvm" />
+                <ScalarProperty Name="Opintopisteet" ColumnName="Opintopisteet" />
+                <ScalarProperty Name="Kurssinimike" ColumnName="Kurssinimike" />
+                <ScalarProperty Name="Sukunimi" ColumnName="Sukunimi" />
+                <ScalarProperty Name="Etunimi" ColumnName="Etunimi" />
+                <ScalarProperty Name="Kurssi_ID" ColumnName="Kurssi_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rekisterointi">
+            <EntityTypeMapping TypeName="JohaMeriSQL2Model.Rekisterointi">
+              <MappingFragment StoreEntitySet="Rekisterointi">
+                <ScalarProperty Name="Hoitaja_ID" ColumnName="Hoitaja_ID" />
+                <ScalarProperty Name="Kurssi_ID" ColumnName="Kurssi_ID" />
+                <ScalarProperty Name="Vuosikurssi_lopetus_pvm" ColumnName="Vuosikurssi lopetus pvm" />
+                <ScalarProperty Name="Vuosikurssi_aloitus_pvm" ColumnName="Vuosikurssi aloitus pvm" />
+                <ScalarProperty Name="Vuosikurssi" ColumnName="Vuosikurssi" />
+                <ScalarProperty Name="Rekisterointi_ID" ColumnName="Rekisterointi_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Puhelin">
+            <EntityTypeMapping TypeName="JohaMeriSQL2Model.Puhelin">
+              <MappingFragment StoreEntitySet="Puhelin">
+                <ScalarProperty Name="Toimipiste_ID" ColumnName="Toimipiste_ID" />
+                <ScalarProperty Name="Shipper_ID" ColumnName="Shipper_ID" />
+                <ScalarProperty Name="Henkilokunta_ID" ColumnName="Henkilokunta_ID" />
+                <ScalarProperty Name="Hoitaja_ID" ColumnName="Hoitaja_ID" />
+                <ScalarProperty Name="Asiakas_ID" ColumnName="Asiakas_ID" />
+                <ScalarProperty Name="Puhelinnumero_3" ColumnName="Puhelinnumero_3" />
+                <ScalarProperty Name="Puhelinnumero_2" ColumnName="Puhelinnumero_2" />
+                <ScalarProperty Name="Puhelinnumero_1" ColumnName="Puhelinnumero_1" />
+                <ScalarProperty Name="Puhelin_ID" ColumnName="Puhelin_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Osoite">
+            <EntityTypeMapping TypeName="JohaMeriSQL2Model.Osoite">
+              <MappingFragment StoreEntitySet="Osoite">
+                <ScalarProperty Name="Shipper_ID" ColumnName="Shipper_ID" />
+                <ScalarProperty Name="Toimipiste_ID" ColumnName="Toimipiste_ID" />
+                <ScalarProperty Name="Henkilokunta_ID" ColumnName="Henkilokunta_ID" />
+                <ScalarProperty Name="Hoitaja_ID" ColumnName="Hoitaja_ID" />
+                <ScalarProperty Name="Asiakas_ID" ColumnName="Asiakas_ID" />
+                <ScalarProperty Name="Postitoimipaikka" ColumnName="Postitoimipaikka" />
+                <ScalarProperty Name="Postinumero" ColumnName="Postinumero" />
+                <ScalarProperty Name="Katuosoite" ColumnName="Katuosoite" />
+                <ScalarProperty Name="Osoite_ID" ColumnName="Osoite_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

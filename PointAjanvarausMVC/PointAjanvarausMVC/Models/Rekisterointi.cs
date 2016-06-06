@@ -17,17 +17,19 @@ namespace PointAjanvarausMVC.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Rekisterointi()
         {
-            this.Kurssit = new HashSet<Kurssit>();
+            this.Kurssi1 = new HashSet<Kurssi>();
         }
     
         public int Rekisterointi_ID { get; set; }
+        public string Vuosikurssi { get; set; }
+        public Nullable<System.DateTime> Vuosikurssi_aloitus_pvm { get; set; }
+        public Nullable<System.DateTime> Vuosikurssi_lopetus_pvm { get; set; }
         public Nullable<int> Kurssi_ID { get; set; }
-        public string Kurssi { get; set; }
         public Nullable<int> Hoitaja_ID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Kurssit> Kurssit { get; set; }
-        public virtual Kurssit Kurssit1 { get; set; }
         public virtual Hoitajat Hoitajat { get; set; }
+        public virtual Kurssi Kurssi { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Kurssi> Kurssi1 { get; set; }
     }
 }

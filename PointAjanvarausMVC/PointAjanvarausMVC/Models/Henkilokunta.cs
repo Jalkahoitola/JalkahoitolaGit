@@ -14,6 +14,13 @@ namespace PointAjanvarausMVC.Models
     
     public partial class Henkilokunta
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Henkilokunta()
+        {
+            this.Puhelin1 = new HashSet<Puhelin>();
+            this.Osoite1 = new HashSet<Osoite>();
+        }
+    
         public int Henkilokunta_ID { get; set; }
         public string Etunimi { get; set; }
         public string Sukunimi { get; set; }
@@ -28,8 +35,12 @@ namespace PointAjanvarausMVC.Models
         public Nullable<int> Huomio_id { get; set; }
         public Nullable<int> Puhelin_id { get; set; }
     
-        public virtual Osoite Osoite { get; set; }
-        public virtual Puhelin Puhelin { get; set; }
         public virtual Huomiot Huomiot1 { get; set; }
+        public virtual Puhelin Puhelin { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Puhelin> Puhelin1 { get; set; }
+        public virtual Osoite Osoite { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Osoite> Osoite1 { get; set; }
     }
 }

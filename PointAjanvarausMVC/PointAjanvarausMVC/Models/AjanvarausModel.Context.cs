@@ -26,22 +26,22 @@ namespace PointAjanvarausMVC.Models
         }
     
         public virtual DbSet<Huomiot> Huomiot { get; set; }
-        public virtual DbSet<Osoite> Osoite { get; set; }
-        public virtual DbSet<Palvelut> Palvelut { get; set; }
         public virtual DbSet<Postitoimipaikat> Postitoimipaikat { get; set; }
-        public virtual DbSet<Puhelin> Puhelin { get; set; }
         public virtual DbSet<Varauskalenteri> Varauskalenteri { get; set; }
         public virtual DbSet<Event> Event { get; set; }
         public virtual DbSet<Hoitopaikat> Hoitopaikat { get; set; }
         public virtual DbSet<Toimipisteet> Toimipisteet { get; set; }
         public virtual DbSet<Asiakkaat> Asiakkaat { get; set; }
-        public virtual DbSet<Kurssit> Kurssit { get; set; }
-        public virtual DbSet<Rekisterointi> Rekisterointi { get; set; }
-        public virtual DbSet<Hoitajat> Hoitajat { get; set; }
         public virtual DbSet<Henkilokunta> Henkilokunta { get; set; }
         public virtual DbSet<Shippers> Shippers { get; set; }
         public virtual DbSet<Tilaukset> Tilaukset { get; set; }
         public virtual DbSet<Tuotteet> Tuotteet { get; set; }
         public virtual DbSet<Varaus> Varaus { get; set; }
+        public virtual DbSet<Palvelut> Palvelut { get; set; }
+        public virtual DbSet<Hoitajat> Hoitajat { get; set; }
+        public virtual DbSet<Kurssi> Kurssi { get; set; }
+        public virtual DbSet<Rekisterointi> Rekisterointi { get; set; }
+        public virtual DbSet<Puhelin> Puhelin { get; set; }
+        public virtual DbSet<Osoite> Osoite { get; set; }
     }
 }

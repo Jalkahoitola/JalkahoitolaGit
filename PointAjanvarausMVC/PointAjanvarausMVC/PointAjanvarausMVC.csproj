@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.2.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.2.2\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
-  <Import Project="..\packages\Microsoft.Net.Compilers.1.2.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.2.1\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -217,7 +217,7 @@
     <Compile Include="Controllers\HoitopaikkaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HuomioController.cs" />
-    <Compile Include="Controllers\KurssiController.cs" />
+    <Compile Include="Controllers\KurssitController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OsoitteetController.cs" />
     <Compile Include="Controllers\PalveluController.cs" />
@@ -248,6 +248,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AjanvarausModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ApplyFormatInEditModeAttribute.cs" />
     <Compile Include="Models\Asiakkaat.cs">
       <DependentUpon>AjanvarausModel.tt</DependentUpon>
     </Compile>
@@ -268,7 +269,7 @@
       <DependentUpon>AjanvarausModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Kurssit.cs">
+    <Compile Include="Models\Kurssi.cs">
       <DependentUpon>AjanvarausModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
@@ -302,6 +303,7 @@
     <Compile Include="Models\Varaus.cs">
       <DependentUpon>AjanvarausModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\VarausData.cs" />
     <Compile Include="Models\Varauskalenteri.cs">
       <DependentUpon>AjanvarausModel.tt</DependentUpon>
     </Compile>
@@ -651,6 +653,7 @@
     <Content Include="Database\dbo.Hoitajat.sql" />
     <Content Include="Database\dbo.Hoitopaikat.sql" />
     <Content Include="Database\dbo.Huomiot.sql" />
+    <Content Include="Database\dbo.Kurssi.sql" />
     <Content Include="Database\dbo.Kurssit.sql" />
     <Content Include="Database\dbo.Osoite.sql" />
     <Content Include="Database\dbo.Palvelut.sql" />
@@ -664,6 +667,7 @@
     <Content Include="Database\dbo.Varaus.sql" />
     <Content Include="Database\dbo.Varauskalenteri.sql" />
     <Content Include="Database\Demo.css" />
+    <Content Include="Database\file1.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -851,6 +855,7 @@
     <Content Include="obj\Debug\edmxResourcesToEmbed\Models\AjanvarausModel.csdl" />
     <Content Include="obj\Debug\edmxResourcesToEmbed\Models\AjanvarausModel.msl" />
     <Content Include="obj\Debug\edmxResourcesToEmbed\Models\AjanvarausModel.ssdl" />
+    <Content Include="Database\file1.js.map" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -948,11 +953,6 @@
     <Content Include="Views\Asiakas\Details.cshtml" />
     <Content Include="Views\Asiakas\Edit.cshtml" />
     <Content Include="Views\Asiakas\Index.cshtml" />
-    <Content Include="Views\Kurssi\Create.cshtml" />
-    <Content Include="Views\Kurssi\Delete.cshtml" />
-    <Content Include="Views\Kurssi\Details.cshtml" />
-    <Content Include="Views\Kurssi\Edit.cshtml" />
-    <Content Include="Views\Kurssi\Index.cshtml" />
     <Content Include="Views\Rekisteroinnit\Create.cshtml" />
     <Content Include="Views\Rekisteroinnit\Delete.cshtml" />
     <Content Include="Views\Rekisteroinnit\Details.cshtml" />
@@ -993,6 +993,12 @@
     <Content Include="Views\Varaukset\Details.cshtml" />
     <Content Include="Views\Varaukset\Edit.cshtml" />
     <Content Include="Views\Varaukset\Index.cshtml" />
+    <Content Include="Views\Kurssit\Create.cshtml" />
+    <Content Include="Views\Kurssit\Delete.cshtml" />
+    <Content Include="Views\Kurssit\Details.cshtml" />
+    <Content Include="Views\Kurssit\Edit.cshtml" />
+    <Content Include="Views\Kurssit\Index.cshtml" />
+    <Content Include="Views\Kurssit\OrderByEtunimi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1045,8 +1051,8 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.2.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.2.1\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.2.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.2.2\build\Microsoft.Net.Compilers.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

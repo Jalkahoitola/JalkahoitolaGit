@@ -20,326 +20,548 @@
         });
     </script>
 
+
+
+
     }
 
-<h1>Käyttämäsi selain</h1>
-<p>@ViewBag.Selain</p>
+<meta name="viewport" content="width=device-width" />
+<title>HTML5 Event Calendar</title>
+<link type="text/css" rel="stylesheet" href="media/layout.css" />
 
-@*Brand image:*@
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header" >
-            <a class="navbar-brand" href="#" title="Point College  Aikuiskoulutus" rel="home" width="105" height="32" >
-                <img alt="Point College Aikuiskoulutus logo" src="~/Images/LogoPointCollege.png" />
-            </a>
+<link type="text/css" rel="stylesheet" href="themes/calendar_g.css" />
+<link type="text/css" rel="stylesheet" href="themes/calendar_green.css" />
+<link type="text/css" rel="stylesheet" href="themes/calendar_traditional.css" />
+<link type="text/css" rel="stylesheet" href="themes/calendar_transparent.css" />
+<link type="text/css" rel="stylesheet" href="themes/calendar_white.css" />
+
+<!-- helper libraries -->
+<script src="Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
+
+<!-- daypilot libraries -->
+
+<script src="~/Scripts/DayPilot/daypilot-all.min.js" type="text/javascript"></script>
+
+
+
+
+
+<body>
+    <p>@ViewBag.Selain</p>
+
+    @*CULTUREINFO SELECTION*@
+
+    <form id="form1" runat="server">
+        <div>
+            <asp:ListBox ID="ListBox1" runat="server">
+                <asp:ListItem Value="fi-FI"
+                              Selected="True">English</asp:ListItem>
+                <asp:ListItem Value="es-MX">Finnish</asp:ListItem>
+                <asp:ListItem Value="de-DE">Deutsch</asp:ListItem>
+            </asp:ListBox><br />
+            <asp:Button ID="Button1" runat="server"
+                        Text="Set Language"
+                        meta:resourcekey="Button1" />
+            <br />
+            <asp:Label ID="Label1" runat="server"
+                       Text=""
+                       meta:resourcekey="Label1" />
         </div>
-    </div>
-</nav>
+    </form>
+
+    <script runat="server">
+
+        protected override void InitializeCulture()
+        {
+            if (Request.Form["ListBox1"] != null)
+            {
+                String selectedLanguage = Request.Form["ListBox1"];
+                UICulture = selectedLanguage ;
+                Culture = selectedLanguage ;
+
+                Thread.CurrentThread.CurrentCulture =
+                    CultureInfo.CreateSpecificCulture(selectedLanguage);
+                Thread.CurrentThread.CurrentUICulture = new
+                    CultureInfo(selectedLanguage);
+            }
+            base.InitializeCulture();
+        }
+    </script>@*CULTUREINFO SELECTION*@
 
 
-<div class="jumbotron">
 
 
-    <h1>PointCollege Jalkahoitola ajanvaraustietokanta & Web-sivusto</h1>
-    <p class="lead">Tämä on datanomi opintojen harjoitustehtävä, jossa kehitetään PointCollegen jalkahoitolalle uusi ajanvaraus systeemi. Projektissa käytetään kehittimenä Visual Studiota, jossa käytetään ASP.NET MVC 5 web applikaatiota Entity Framework 6 ympäristössä. Projektissa käytetään seuraavia ... Tietokannan käsittelytekniikkana käytetään Entity Frameworkia (EF). Sivujen luomisessa käytetään seuraavia HTML5-tekniikoita: CSS, CSS3 ja JavaScript. Projektiin kuuluu asiakastietokannan kehittämisen lisäksi web-sivuston kehitystyö.</p>
-    
-    
-        <div class="col-md-offset-2 col-md-10">  
-                <div class="form-actions no-color">
-                    <div class="btn-group btn-group-vertical btn-lg">
-                        <a href="/Index" class="btn btn-default">Aloitussivu&raquo;</a>
-                        <a href="/Asiakas" class="btn btn-default">Asiakashallinta&raquo;</a>
-                        <a href="/Hoitaja" class="btn btn-default">Hoitajahallinta&raquo;</a>
-                        <a href="/Hoitopaikka" class="btn btn-default">Hoitopaikkahallinta&raquo;</a>
-                        <a href="/Huomio" class="btn btn-default">Huomiot&raquo;</a>
-                        <a href="/Kurssi" class="btn btn-default">Kurssihallinta&raquo;</a>
-                        <a href="/Osoitteet" class="btn btn-default">Osoitehallinta&raquo;</a>
-                        <a href="/Palvelu" class="btn btn-default">Palveluhallintaa&raquo;</a>
-                        <a href="/Postitoimipaikka" class="btn btn-default">Postitoimipaikat&raquo;</a>
-                        <a href="/Puhelimet" class="btn btn-default">Puhelinhallinta&raquo;</a>
-                        <a href="/Toimipiste" class="btn btn-default">Toimipistehallinta&raquo;</a>
-                        <a href="/Events" class="btn btn-default">Asiakasvaraushallinta&raquo;</a>
-                        <a href="/Rekisteroinnit" class="btn btn-default">Kurssirekisteröinti&raquo;</a>
-                        <a href="/HoitajaPalvelu" class="btn btn-default">Hoitajapalvelut&raquo;</a>
-                        <a href="/Henkilokuntas" class="btn btn-default">Henkilokuntahallinta&raquo;</a>
-                        <a href="/Shipper" class="btn btn-default">Rahdintoimittajahallinta&raquo;</a>
-                        <a href="/Tilaus" class="btn btn-default">Tilaustenhallinta&raquo;</a>
-                        <a href="/Tuote" class="btn btn-default">Tuotehallinta&raquo;</a>
-                        <a href="/Varaukset" class="btn btn-default">Varaustenhallinta&raquo;</a>
-                    </div>
+    @*BRAND IMAGE*@
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="xnavbar-brand" href="#" title="Point College  Aikuiskoulutus" rel="home" width="52" height="16">
+                    <img alt="Point College Aikuiskoulutus logo" src="~/Images/LogoPointCollege.png" />
+                </a>
             </div>
-    </div>
-
-
-
-    @Html.ActionLink("Aloitussivu", "Index", "Index")<br />
-    @Html.ActionLink("Asiakashallinta", "Index", "Asiakas")<br />
-    @Html.ActionLink("Hoitajahallinta", "Index", "Hoitaja")<br />
-    @Html.ActionLink("Hoitopaikkahallinta", "Index", "Hoitopaikka")<br />
-    @Html.ActionLink("Huomiot", "Index", "Huomio")<br />
-    @Html.ActionLink("Kurssihallinta", "Index", "Kurssi")<br />
-    @Html.ActionLink("Osoitehallinta", "Index", "Osoitteet")<br />
-    @Html.ActionLink("Palveluhallinta", "Index", "Palvelu")<br />
-    @Html.ActionLink("Postitoimipaikat", "Index", "Postitoimipaikka")<br />
-    @Html.ActionLink("Puhelinhallinta", "Index", "Puhelimet")<br />
-    @Html.ActionLink("Toimipistehallinta", "Index", "Toimipiste")<br />
-    @Html.ActionLink("Asiakasvaraushallinta", "Index", "Events")<br />
-    @Html.ActionLink("Kurssirekisteröinti", "Index", "Rekisteroinnit")<br />
-    @Html.ActionLink("Hoitajapalvelut", "Index", "HoitajaPalvelu")<br /><br />
-    @Html.ActionLink("Henkilökuntahallinta", "Index", "Henkilokuntas")<br />
-    @Html.ActionLink("Rahdintoimittajahallinta", "Index", "Shipper")<br />
-    @Html.ActionLink("Tilautenhallinta", "Index", "Tilaus")<br />
-    @Html.ActionLink("Tuotehallinta", "Index", "Tuote")<br />
-    @Html.ActionLink("Varaustenhallinta", "Index", "Varaukset")<br /><br /><br />
-
-    <p><a href="~/Views/Hoitaja/Create.cshtml" class="btn btn-default btn-lg">Hoitajahallinta &raquo;</a></p>
-    <p><a href="/Hoitajat" class="btn btn-primary btn-lg">Hoitajahallinta &raquo;</a></p>
-    <p><a href="/Asiakas" class="btn btn-primary btn-lg">Asiakashallinta &raquo;</a></p>
-
-    <div class="btn-group-vertical">
-        <div class="form-actions no-color">
-            <input type="submit" value="Aloitussivu" class="btn btn-default" /> |
         </div>
-    </div>
-</div>
-<br />
+    </nav>
 
-<!-- Single button -->
-<div class="btn-group-vertical">
-    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Action <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
-        <li><a href="#">Action</a></li>
-        <li><a href="#">Another action</a></li>
-        <li><a href="#">Something else here</a></li>
-        <li role="separator" class="divider"></li>
-        <li><a href="#">Separated link</a></li>
-    </ul>
-</div>
-<br />
-<br />
-<br />
-<br />
-<br />
 
-<div style="float:left; width: 150px;">
-    <div id="nav"></div>
-</div>
-<div style="margin-left: 150px;">
-    <div id="dp"></div>
-</div>
-<br />
-<br />
-<br />
-<br />
-<br />
+    <div class="jumbotron">
 
-<script type="text/javascript">
-    var nav = new DayPilot.Navigator("nav");
-    //editoitu
-    nav.locale = "fi-fi";
 
-    nav.showMonths = 1;
-    nav.selectMode = "week";
-    nav.onTimeRangeSelected = function (args) {
-        dp.startDate = args.start;
+        <h2>PointCollege Jalkahoitola ajanvaraustietokanta & Web-sivusto</h2>
+        <p class="lead">Tämä on datanomi opintojen harjoitustehtävä, jossa kehitetään PointCollegen jalkahoitolalle uusi ajanvaraus systeemi. Projektissa käytetään kehittimenä Visual Studiota, jossa käytetään ASP.NET MVC 5 web applikaatiota Entity Framework 6 ympäristössä. Projektissa käytetään seuraavia ... Tietokannan käsittelytekniikkana käytetään Entity Frameworkia (EF). Sivujen luomisessa käytetään seuraavia HTML5-tekniikoita: CSS, CSS3 ja JavaScript. Projektiin kuuluu asiakastietokannan kehittämisen lisäksi web-sivuston kehitystyö.</p>
 
+
+        <div class="col-md-offset-0 col-md-12">
+            <div class="form-actions no-color">
+                <div class="btn-group btn-group-vertical btn-lg">
+                    <a href="/Index" class="btn btn-default">Aloitussivu&raquo;</a>
+                    <a href="/Asiakas" class="btn btn-default">Asiakashallinta&raquo;</a>
+                    <a href="/Hoitaja" class="btn btn-default">Hoitajahallinta&raquo;</a>
+                    <a href="/Hoitopaikka" class="btn btn-default">Hoitopaikkahallinta&raquo;</a>
+                    <a href="/Huomio" class="btn btn-default">Huomiot&raquo;</a>
+                    <a href="/Kurssit" class="btn btn-default">Kurssihallinta&raquo;</a>
+                    <a href="/Osoitteet" class="btn btn-default">Osoitehallinta&raquo;</a>
+                    <a href="/Palvelu" class="btn btn-default">Palveluhallinta&raquo;</a>
+                    <a href="/Postitoimipaikka" class="btn btn-default">Postitoimipaikat&raquo;</a>
+                    <a href="/Puhelimet" class="btn btn-default">Puhelinhallinta&raquo;</a>
+                    <a href="/Toimipiste" class="btn btn-default">Toimipistehallinta&raquo;</a>
+                    <a href="/Events" class="btn btn-default">Asiakasvaraushallinta&raquo;</a>
+                    <a href="/Rekisteroinnit" class="btn btn-default">Kurssirekisteröinti&raquo;</a>
+                    <a href="/Henkilokuntas" class="btn btn-default">Henkilokuntahallinta&raquo;</a>
+                    <a href="/Shipper" class="btn btn-default">Rahdintoimittajahallinta&raquo;</a>
+                    <a href="/Tilaus" class="btn btn-default">Tilaustenhallinta&raquo;</a>
+                    <a href="/Tuote" class="btn btn-default">Tuotehallinta&raquo;</a>
+                    <a href="/Varaukset" class="btn btn-default">Varaustenhallinta&raquo;</a>
+                </div>
+            </div>
+
+            @*//event-KALENTERINÄKYMÄ*@
+
+            <div id="header">
+                <div class="bg-help">
+                    <div class="inBox">
+                        <h1 id="logo"><a href='http://code.daypilot.org/17910/html5-event-calendar-open-source'>HTML5 Event Calendar</a></h1>
+                        <p id="claim"><a href="http://javascript.daypilot.org/">DayPilot for JavaScript</a> - AJAX Calendar/Scheduling Widgets for JavaScript/HTML5/jQuery</p>
+                        <hr class="hidden" />
+                    </div>
+                </div>
+            </div>
+            <div class="shadow"></div>
+            <div class="hideSkipLink">
+            </div>
+            <div class="main">
+
+                <div style="float:left; width: 160px;">
+                    <div id="nav"></div>
+                </div>
+                <div style="margin-left: 160px;">
+
+                    <div class="space">
+                        Theme: <select id="theme">
+                            <option value="calendar_default">Default</option>
+                            <option value="calendar_white">White</option>
+                            <option value="calendar_g">Google-Like</option>
+                            <option value="calendar_green">Green</option>
+                            <option value="calendar_traditional">Traditional</option>
+                            <option value="calendar_transparent">Transparent</option>
+                        </select>
+                    </div>
+
+                    <div id="dp"></div>
+                </div>
+
+                <script type="text/javascript">
+
+                var nav = new DayPilot.Navigator("nav");
+                nav.showMonths = 3;
+                nav.skipMonths = 3;
+                nav.selectMode = "week";
+                nav.onTimeRangeSelected = function (args) {
+                    dp.startDate = args.day;
+                    dp.update();
+                    loadEvents();
+                };
+                nav.init();
+
+                var dp = new DayPilot.Calendar("dp");
+                dp.viewType = "Week";
+
+                dp.onEventMoved = function (args) {
+                    $.post("backend/move",
+                            {
+                                id: args.e.id(),
+                                newStart: args.newStart.toString(),
+                                newEnd: args.newEnd.toString()
+                            },
+                            function () {
+                                console.log("Moved.");
+                            });
+                };
+
+                dp.onEventResized = function (args) {
+                    $.post("backend/resize",
+                            {
+                                id: args.e.id(),
+                                newStart: args.newStart.toString(),
+                                newEnd: args.newEnd.toString()
+                            },
+                            function () {
+                                console.log("Resized.");
+                            });
+                };
+
+                // event creating
+                dp.onTimeRangeSelected = function (args) {
+                    var name = prompt("New event name:", "Event");
+                    dp.clearSelection();
+                    if (!name) return;
+
+                    $.post("backend/create",
+                    {
+                        start: args.start.toString(),
+                        end: args.end.toString(),
+                        name: name
+                    },
+                    function (data) {
+                        var e = new DayPilot.Event({
+                            start: args.start,
+                            end: args.end,
+                            id: data.id,
+                            resource: args.resource,
+                            text: name
+                        });
+                        dp.events.add(e);
+
+                    });
+
+                };
+
+                dp.onEventClick = function (args) {
+                    alert("clicked: " + args.e.id());
+                };
+
+                dp.init();
+
+                loadEvents();
+
+                function loadEvents() {
+                    var start = dp.visibleStart();
+                    var end = dp.visibleEnd();
+
+                    $.post("backend/events",
+                    {
+                        start: start.toString(),
+                        end: end.toString()
+                    },
+                    function (data) {
+                        //console.log(data);
+                        dp.events.list = data;
+                        dp.update();
+                    });
+                }
+
+                </script>
+
+                <script type="text/javascript">
+                $(document).ready(function () {
+                    $("#theme").change(function (e) {
+                        dp.theme = this.value;
+                        dp.update();
+                    });
+                });
+                </script>
+
+            </div>
+            <div class="clear">
+            </div>@*//<--event-KALENTERINÄKYMÄ*@
+
+            @*//KALENTERINÄKYMÄ*@
+            <div class="calendar">
+                <div style="float:left; width: 150px;">
+                    <div id="nav"></div>
+                </div>
+                <div style="margin-left: 150px;">
+                    <div id="dp"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="space">
+            <select id="theme">
+                <option value="calendar_default">Default</option>
+                <option value="calendar_g">Google-Like</option>
+                <option value="calendar_green">Green</option>
+                <option value="calendar_traditional">Traditional</option>
+                <option value="calendar_transparent">Transparent</option>
+                <option value="calendar_white">White</option>
+            </select>
+        </div>
+
+        <script type="text/javascript">
+        $(document).ready(function() {
+        $("#theme").change(function(e) {
+        dp.theme = this.value;
         dp.update();
-
-        //JSON kysely
-        LoadEvents(dp.visibleStart(), dp.visibleEnd());
-    };
-    nav.init();
-
-
-    var dp = new DayPilot.Calendar("dp");
-    //editoitu
-    dp.locale = "fi-fi";
-
-    dp.viewType = "Week";
-    dp.init();
-
-    //event creating
-    var e = new DayPilot.Event({
-        start: new DayPilot.Date("2016-05-12T12:00:00"),
-        end: new DayPilot.Date("2016-05-12T13:00:00"),
-        id: DayPilot.guid(),
-        text: "EKA"
     });
+});
+        </script>
 
-    dp.events.add(e);
+        <script type="text/javascript">
+            var nav = new DayPilot.Navigator("nav");
+            //editoitu
+            nav.locale = "fi-fi";
 
-    var e = new DayPilot.Event({
-        start: new DayPilot.Date("2016-05-13T12:00:00"),
-        end: new DayPilot.Date("2016-05-13T16:00:00"),
-        id: DayPilot.guid(),
-        text: "TOKA"
-    });
+            nav.showMonths = 1;
+            nav.selectMode = "week";
+            nav.onTimeRangeSelected = function (args) {
+                dp.startDate = args.start;
 
-    // event creating
-    dp.onTimeRangeSelected = function (args) {
-        var name = prompt("New event name:", "Event");
-        dp.clearSelection();
-        if (!name) return;
-        var e = new DayPilot.Event({
-            start: args.start,
-            end: args.end,
-            id: DayPilot.guid(),
-            resource: args.resource,
-            text: name
-        });
-        dp.events.add(e);
-        alert("Created");
-    };
+                dp.update();
 
-    //OHJE MVC:lle
-    //http://code.daypilot.org/17910/html5-event-calendar-open-source
+                //JSON kysely
+                LoadEvents(dp.visibleStart(), dp.visibleEnd());
+            };
+            nav.init();
 
-    //dp.onEventClicked = function (args) {
-    //    alert("Event clicked: " + args.e.text());
-    //};
 
-    dp.onEventClicked = function (args) {
-        //formatted = $.datepicker.formatDate("M d, yy", new Date("2014-07-08T09:02:21.377"));
-        var startDate = new Date(args.e.start());
-        var endDate = new Date(args.e.end());
+            var dp = new DayPilot.Calendar("dp");
+            //editoitu
+            dp.locale = "fi-fi";
 
-        var hour = "" + startDate.getHours(); if (hour.length == 1) { hour = "0" + hour; }
-        var minute = "" + startDate.getMinutes(); if (minute.length == 1) { minute = "0" + minute; }
-        //var sD = (startDate.getMonth() + 1) + '.' + startDate.getDate() + '.' + startDate.getFullYear() + " " + hour + ":" + minute;
-        var sD = startDate.getDate() + '.' + (startDate.getMonth() + 1) + '.' + startDate.getFullYear() + " " + hour + ":" + minute;
+            dp.viewType = "Week";
+            dp.init();
 
-        var hour = "" + endDate.getHours(); if (hour.length == 1) { hour = "0" + hour; }
-        var minute = "" + endDate.getMinutes(); if (minute.length == 1) { minute = "0" + minute; }
-        //var eD = (endDate.getMonth() + 1) + '.' + endDate.getDate() + '.' + endDate.getFullYear() + " " + hour + ":" + minute;
-        var eD = endDate.getDate() + '.' + (endDate.getMonth() + 1) + '.' + endDate.getFullYear() + " " + hour + ":" + minute;
+            //event creating
+            var e = new DayPilot.Event({
+                start: new DayPilot.Date("2016-05-12T12:00:00"),
+                end: new DayPilot.Date("2016-05-12T13:00:00"),
+                id: DayPilot.guid(),
+                text: "EKA"
+            });
 
-        //alert("Event clicked: Alku: " + sD + " Loppu: " + eD);
+            dp.events.add(e);
 
-        //alert( dp.visibleStart().toString() + " - " + dp.visibleEnd().toString() );
-    };
+            var e = new DayPilot.Event({
+                start: new DayPilot.Date("2016-05-13T12:00:00"),
+                end: new DayPilot.Date("2016-05-13T16:00:00"),
+                id: DayPilot.guid(),
+                text: "TOKA"
+            });
 
-    // event resizing
-    dp.onEventResized = function (args) {
-        //alert("Resized: " + args.e.text());
-        UpdateEvent(args);
-    };
+            // event creating
+            dp.onTimeRangeSelected = function (args) {
+                var name = prompt("New event name:", "Event");
+                dp.clearSelection();
+                if (!name) return;
+                var e = new DayPilot.Event({
+                    start: args.start,
+                    end: args.end,
+                    id: DayPilot.guid(),
+                    resource: args.resource,
+                    text: name
+                });
+                dp.events.add(e);
+                alert("Created");
+            };
 
-    // event moving
-    //Resize(int id, string newStart, string newEnd)
-    dp.onEventMoved = function (args) {
-        UpdateEvent(args);
-    };
+            //OHJE MVC:lle
+            //http://code.daypilot.org/17910/html5-event-calendar-open-source
 
-    function LoadEvents(alku, loppu) {
-        url = "/Home/GetVaraukset/?alku=" + ConvertDate2(alku) + "&loppu=" + ConvertDate2(loppu);
+            //dp.onEventClicked = function (args) {
+            //    alert("Event clicked: " + args.e.text());
+            //};
 
-        //alert("AJAX url: " + url);
+            dp.onEventClicked = function (args) {
+                //formatted = $.datepicker.formatDate("M d, yy", new Date("2014-07-08T09:02:21.377"));
+                var startDate = new Date(args.e.start());
+                var endDate = new Date(args.e.end());
 
-        $.ajax(url).done(function (data) {
-            i = 0;
+                var hour = "" + startDate.getHours(); if (hour.length == 1) { hour = "0" + hour; }
+                var minute = "" + startDate.getMinutes(); if (minute.length == 1) { minute = "0" + minute; }
+                //var sD = (startDate.getMonth() + 1) + '.' + startDate.getDate() + '.' + startDate.getFullYear() + " " + hour + ":" + minute;
+                var sD = startDate.getDate() + '.' + (startDate.getMonth() + 1) + '.' + startDate.getFullYear() + " " + hour + ":" + minute;
 
-            //alert("JSON objects: " + data);
+                var hour = "" + endDate.getHours(); if (hour.length == 1) { hour = "0" + hour; }
+                var minute = "" + endDate.getMinutes(); if (minute.length == 1) { minute = "0" + minute; }
+                //var eD = (endDate.getMonth() + 1) + '.' + endDate.getDate() + '.' + endDate.getFullYear() + " " + hour + ":" + minute;
+                var eD = endDate.getDate() + '.' + (endDate.getMonth() + 1) + '.' + endDate.getFullYear() + " " + hour + ":" + minute;
 
-            for (var i = 0; i < data.length; i++) {
-                data[i].start = ConvertDate(data[i].start);
-                data[i].end = ConvertDate(data[i].end)
+                //alert("Event clicked: Alku: " + sD + " Loppu: " + eD);
 
-                //alert("1. START: " + data[i].start + " END: " + data[i].end);
+                //alert( dp.visibleStart().toString() + " - " + dp.visibleEnd().toString() );
+            };
+
+            // event resizing
+            dp.onEventResized = function (args) {
+                //alert("Resized: " + args.e.text());
+                UpdateEvent(args);
+            };
+
+            // event moving
+            //Resize(int id, string newStart, string newEnd)
+            dp.onEventMoved = function (args) {
+                UpdateEvent(args);
+            };
+
+            function LoadEvents(alku, loppu) {
+                url = "/Home/GetVaraukset/?alku=" + ConvertDate2(alku) + "&loppu=" + ConvertDate2(loppu);
+
+                //alert("AJAX url: " + url);
+
+                $.ajax(url).done(function (data) {
+                    i = 0;
+
+                    //alert("JSON objects: " + data);
+
+                    for (var i = 0; i < data.length; i++) {
+                        data[i].start = ConvertDate(data[i].start);
+                        data[i].end = ConvertDate(data[i].end)
+
+                        //alert("1. START: " + data[i].start + " END: " + data[i].end);
+                    }
+
+                    CreateEvents(data);
+                });
             }
 
-            CreateEvents(data);
-        });
-    }
+            //event creating
+            function CreateEvents(data) {
+                dp.events.list = data
+                dp.update();
+            }
 
-    //event creating
-    function CreateEvents(data) {
-        dp.events.list = data
-        dp.update();
-    }
+            //convert json date "\/Date(1464001200000)\/" to "2010-01-01T00:00:00"
+            function ConvertDate(date) {
+                var dateString = date.substr(6);
+                var currentTime = new Date(parseInt(dateString));
+                var month = currentTime.getMonth() + 1;
+                if (month < 10) { month = "0" + month };
+                var day = currentTime.getDate();
+                if (day < 10) { day = "0" + day };
+                var year = currentTime.getFullYear();
+                if (year < 10) { year = "0" + year };
+                var hours = currentTime.getHours();
+                if (hours < 10) { hours = "0" + hours };
+                var minutes = currentTime.getMinutes();
+                if (minutes < 10) { minutes = "0" + minutes };
+                var seconds = currentTime.getSeconds();
+                if (seconds < 10) { seconds = "0" + seconds };
+                var date = year + "-" + month + "-" + day + "T" + hours + ":" + minutes + ":" + seconds;
+                return date;
+            }
 
-    //convert json date "\/Date(1464001200000)\/" to "2010-01-01T00:00:00"
-    function ConvertDate(date) {
-        var dateString = date.substr(6);
-        var currentTime = new Date(parseInt(dateString));
-        var month = currentTime.getMonth() + 1;
-        if (month < 10) { month = "0" + month };
-        var day = currentTime.getDate();
-        if (day < 10) { day = "0" + day };
-        var year = currentTime.getFullYear();
-        if (year < 10) { year = "0" + year };
-        var hours = currentTime.getHours();
-        if (hours < 10) { hours = "0" + hours };
-        var minutes = currentTime.getMinutes();
-        if (minutes < 10) { minutes = "0" + minutes };
-        var seconds = currentTime.getSeconds();
-        if (seconds < 10) { seconds = "0" + seconds };
-        var date = year + "-" + month + "-" + day + "T" + hours + ":" + minutes + ":" + seconds;
-        return date;
-    }
+            //convert date "2010-01-01T00:00:00" to "2010-01-01"
+            function ConvertDate2(date) {
+                var month = date.getMonth() + 1;
+                if (month < 10) { month = "0" + month };
+                var day = date.getDay();
+                if (day < 10) { day = "0" + day };
+                var year = date.getYear();
+                if (year < 10) { year = "0" + year };
+                var date = year + "-" + month + "-" + day;
+                return date;
+            }
 
-    //convert date "2010-01-01T00:00:00" to "2010-01-01"
-    function ConvertDate2(date) {
-        var month = date.getMonth() + 1;
-        if (month < 10) { month = "0" + month };
-        var day = date.getDay();
-        if (day < 10) { day = "0" + day };
-        var year = date.getYear();
-        if (year < 10) { year = "0" + year };
-        var date = year + "-" + month + "-" + day;
-        return date;
-    }
+            function ConfirmMove(ID) {
+                alert("Vahvista siirto: " + ID);
+            }
 
-    function ConfirmMove(ID) {
-        alert("Vahvista siirto: " + ID);
-    }
+            function UpdateEvent(args) {
+                url = "/Varaus/Resize/?id=" + args.e.data.ID + "&newStart=" + args.e.start() + "&newEnd=" + args.e.end();
 
-    function UpdateEvent(args) {
-        url = "/Varaus/Resize/?id=" + args.e.data.ID + "&newStart=" + args.e.start() + "&newEnd=" + args.e.end();
+                //alert(url);
 
-        //alert(url);
+                $.ajax(url).done(function (data) {
+                    //alert(data);
+                });
+            }
 
-        $.ajax(url).done(function (data) {
-            //alert(data);
-        });
-    }
+        </script>
 
-</script>
+        <div class="section2">
+    
 
-<div class="Opetusvideo">
-    <!-- 16:9 aspect ratio -->
-    <div class="embed-responsive embed-responsive-16by9">
-        <h1>Opetusvideo (demoesimerkki)</h1>
-        <iframe class="embed-responsive-item" width="213" height="120" src="https://www.youtube.com/embed/FOk0fR3-mbM" frameborder="0" allowfullscreen></iframe>
+            @Html.ActionLink("Aloitussivu", "Index", "Index")<br />
+            @Html.ActionLink("Asiakashallinta", "Index", "Asiakas")<br />
+            @Html.ActionLink("Hoitajahallinta", "Index", "Hoitaja")<br />
+            @Html.ActionLink("Hoitopaikkahallinta", "Index", "Hoitopaikka")<br />
+            @Html.ActionLink("Huomiot", "Index", "Huomio")<br />
+            @Html.ActionLink("Kurssihallinta", "Index", "Kurssi")<br />
+            @Html.ActionLink("Osoitehallinta", "Index", "Osoitteet")<br />
+            @Html.ActionLink("Palveluhallinta", "Index", "Palvelu")<br />
+            @Html.ActionLink("Postitoimipaikat", "Index", "Postitoimipaikka")<br />
+            @Html.ActionLink("Puhelinhallinta", "Index", "Puhelimet")<br />
+            @Html.ActionLink("Toimipistehallinta", "Index", "Toimipiste")<br />
+            @Html.ActionLink("Asiakasvaraushallinta", "Index", "Events")<br />
+            @Html.ActionLink("Kurssirekisteröinti", "Index", "Rekisteroinnit")<br />
+            @Html.ActionLink("Henkilökuntahallinta", "Index", "Henkilokuntas")<br />
+            @Html.ActionLink("Rahdintoimittajahallinta", "Index", "Shipper")<br />
+            @Html.ActionLink("Tilautenhallinta", "Index", "Tilaus")<br />
+            @Html.ActionLink("Tuotehallinta", "Index", "Tuote")<br />
+            @Html.ActionLink("Varaustenhallinta", "Index", "Varaukset")<br /><br /><br />
+
+            <p><a href="~/Views/Hoitaja/Create.cshtml" class="btn btn-default btn-lg">Hoitajahallinta &raquo;</a></p>
+            <p><a href="/Hoitajat" class="btn btn-primary btn-lg">Hoitajahallinta &raquo;</a></p>
+            <p><a href="/Asiakas" class="btn btn-primary btn-lg">Asiakashallinta &raquo;</a></p>
+
+            <div class="btn-group-vertical">
+                <div class="form-actions no-color">
+                    <input type="submit" value="Aloitussivu" class="btn btn-default" /> |
+                </div>
+            </div>
+        </div>
+        <br />
+
+        <div class="Opetusvideo">
+            <!-- 16:9 aspect ratio -->
+            <div class="embed-responsive embed-responsive-16by9">
+                <h1>Opetusvideo (demoesimerkki)</h1>
+                <iframe class="embed-responsive-item" width="213" height="120" src="https://www.youtube.com/embed/FOk0fR3-mbM" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Single button -->
+        <div class="btn-group-vertical">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Action <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </div>
     </div>
-</div>
-
-<nav>
-    <ul class="pager">
-        <li><a href="#">Edellinen</a></li>
-        <li><a href="/Asiakas">Seuraava</a></li>
-    </ul>
-</nav>
+    <br />
 
 
+    <nav>
+        <ul class="pager">
+            <li><a href="#">Edellinen</a></li>
+            <li><a href="/Asiakas">Seuraava</a></li>
+        </ul>
+    </nav>
 
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>#</h2>
-        <p>#</p>
-        <p><a class="btn btn-default" href="#"># &raquo;</a></p>
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <h2>#</h2>
+            <p>#</p>
+            <p><a class="btn btn-default" href="#"># &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>#</h2>
+            <p>#</p>
+            <p><a class="btn btn-default" href="#"># &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>#</h2>
+            <p>#</p>
+            <p><a class="btn btn-default" href="#"># &raquo;</a></p>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>#</h2>
-        <p>#</p>
-        <p><a class="btn btn-default" href="#"># &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>#</h2>
-        <p>#</p>
-        <p><a class="btn btn-default" href="#"># &raquo;</a></p>
-    </div>
-</div>
 
+</body>

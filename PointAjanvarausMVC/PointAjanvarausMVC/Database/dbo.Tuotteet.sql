@@ -8,12 +8,12 @@ CREATE TABLE [dbo].[Tuotteet] (
     [Tilauspäivä]      DATETIME    NULL,
     [Arvioitu saapumis pvm] DATETIME   NULL,
     [Saapumispvm]		DATETIME  NULL,
-	[Valikoimasta poisto] BIT,
+	[Valikoimasta poisto] BIT(1),
 	[Tilaus_ID] INT NULL,
 	[Shipper_ID] INT NULL,
    
     PRIMARY KEY CLUSTERED ([Tuote_ID] ASC),
-    --CONSTRAINT [FK_Tuotteet_ToTable] FOREIGN KEY ([Tilaus_ID]) REFERENCES [dbo].[Tilaukset] ([Tilaus_ID]),
-    --CONSTRAINT [FK_Tuotteet_ToTable_1] FOREIGN KEY ([Toimittaja_ID]) REFERENCES [dbo].[Toimitaja] ([Toimittaja_ID]),
+    CONSTRAINT [FK_Tuotteet_ToTable] FOREIGN KEY ([Tilaus_ID]) REFERENCES [dbo].[Tilaukset] ([Tilaus_ID]),
+    CONSTRAINT [FK_Tuotteet_ToTable_1] FOREIGN KEY ([Toimittaja_ID]) REFERENCES [dbo].[Toimitaja] ([Toimittaja_ID]),
     CONSTRAINT [FK_Tuotteet_ToTable_2] FOREIGN KEY ([Shipper_ID]) REFERENCES [dbo].[Shippers] ([Shipper_ID])
 );

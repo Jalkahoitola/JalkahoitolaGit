@@ -1,2 +1,33 @@
 ﻿body {
+  /*padding-bottom: 40px;*/
+  color: #5a5a5a;
+  margin:0;
+  padding:0;
 }
+.wrapper{
+  color: #5a5a5a;
+  margin:0px auto;
+  /*padding:0;*/
+  background-color: rgb(254,254,254);
+  /*opacity:0.9;*/
+  /*background-image: url("#.jpg");*/
+  /*background-repeat: repeat;*/
+}
+.section2{
+  color: #5a5a5a;
+  margin:0px auto;
+  /*padding:0;*/
+  background-color: rgb(254,254,254);
+  /*opacity:0.9;*/
+  /*background-image: url("#.jpg");*/
+  /*background-repeat: repeat;*/
+}
+.calendar{
+  color: #5a5a5a;
+  margin:0px auto;
+  /*padding:0;*/
+  background-color: rgb(254,254,254);
+  /*opacity:0.9;*/
+}
+
+

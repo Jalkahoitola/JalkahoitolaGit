@@ -11,7 +11,7 @@ using PointAjanvarausMVC.Models;
 namespace PointAjanvarausMVC.Controllers
 {
     public class HoitajaController : Controller
-     {
+    {
         private JohaMeriSQL2Entities db = new JohaMeriSQL2Entities();
 
         // GET: Hoitaja
@@ -20,20 +20,19 @@ namespace PointAjanvarausMVC.Controllers
             var hoitajat = db.Hoitajat.Include(h => h.Osoite).Include(h => h.Puhelin).Include(h => h.Huomiot);
             return View(hoitajat.ToList());
         }
-
         //Päivitetty 23.5.2016 tietokannan suodatustoimintoja
         public ActionResult OrderByFirstName()
         {
             var hoitajat = from h in db.Hoitajat
-                            orderby h.Etunimi ascending
-                            select h;
+                           orderby h.Etunimi ascending
+                           select h;
             return View(hoitajat);
         }
         public ActionResult OrderByLastName()
         {
             var hoitajat = from a in db.Hoitajat
-                            orderby a.Sukunimi ascending
-                            select a;
+                           orderby a.Sukunimi ascending
+                           select a;
             return View(hoitajat);
         }
 
@@ -55,9 +54,9 @@ namespace PointAjanvarausMVC.Controllers
         // GET: Hoitaja/Create
         public ActionResult Create()
         {
-            ViewBag.Osoite_id = new SelectList(db.Osoite, "Osoite_ID", "Katuosoite");
-            ViewBag.Puhelin_id = new SelectList(db.Puhelin, "Puhelin_ID", "Puhelinnumero_1");
-            ViewBag.Huomio = new SelectList(db.Huomiot, "Huomio_ID", "Muut");
+            ViewBag.Osoite_ID = new SelectList(db.Osoite, "Osoite_ID", "Katuosoite");
+            ViewBag.Puhelin_ID = new SelectList(db.Puhelin, "Puhelin_ID", "Puhelinnumero_1");
+            ViewBag.Huomio_ID = new SelectList(db.Huomiot, "Huomio_ID", "Muut");
             return View();
         }
 
@@ -66,7 +65,7 @@ namespace PointAjanvarausMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Hoitaja_ID,Tunnus,Etunimi,Toinen_nimi,Sukunimi,Katuosoite,Postinumero,Postitoimipaikka,Henkilotunnus,Aloituspvm,Valmistumispvm,Keskeytyspvm,Tiedot_arkistoitu,Huomio,Osoite_id,Puhelin_id,Kurssi_id")] Hoitajat hoitajat)
+        public ActionResult Create([Bind(Include = "Hoitaja_ID,Tunnus,Etunimi,Toinen_nimi,Sukunimi,Katuosoite,Postinumero,Postitoimipaikka,Henkilotunnus,Aloituspvm,Valmistumispvm,Keskeytyspvm,Tiedot_arkistoitu,Huomio_ID,Osoite_ID,Puhelin_ID,Kurssi_ID")] Hoitajat hoitajat)
         {
             if (ModelState.IsValid)
             {
@@ -75,9 +74,9 @@ namespace PointAjanvarausMVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Osoite_id = new SelectList(db.Osoite, "Osoite_ID", "Katuosoite", hoitajat.Osoite_id);
-            ViewBag.Puhelin_id = new SelectList(db.Puhelin, "Puhelin_ID", "Puhelinnumero_1", hoitajat.Puhelin_id);
-            ViewBag.Huomio = new SelectList(db.Huomiot, "Huomio_ID", "Muut", hoitajat.Huomio);
+            ViewBag.Osoite_ID = new SelectList(db.Osoite, "Osoite_ID", "Katuosoite", hoitajat.Osoite_ID);
+            ViewBag.Puhelin_ID = new SelectList(db.Puhelin, "Puhelin_ID", "Puhelinnumero_1", hoitajat.Puhelin_ID);
+            ViewBag.Huomio_ID = new SelectList(db.Huomiot, "Huomio_ID", "Muut", hoitajat.Huomio_ID);
             return View(hoitajat);
         }
 
@@ -93,9 +92,9 @@ namespace PointAjanvarausMVC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Osoite_id = new SelectList(db.Osoite, "Osoite_ID", "Katuosoite", hoitajat.Osoite_id);
-            ViewBag.Puhelin_id = new SelectList(db.Puhelin, "Puhelin_ID", "Puhelinnumero_1", hoitajat.Puhelin_id);
-            ViewBag.Huomio = new SelectList(db.Huomiot, "Huomio_ID", "Muut", hoitajat.Huomio);
+            ViewBag.Osoite_ID = new SelectList(db.Osoite, "Osoite_ID", "Katuosoite", hoitajat.Osoite_ID);
+            ViewBag.Puhelin_ID = new SelectList(db.Puhelin, "Puhelin_ID", "Puhelinnumero_1", hoitajat.Puhelin_ID);
+            ViewBag.Huomio_ID = new SelectList(db.Huomiot, "Huomio_ID", "Muut", hoitajat.Huomio_ID);
             return View(hoitajat);
         }
 
@@ -104,7 +103,7 @@ namespace PointAjanvarausMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Hoitaja_ID,Tunnus,Etunimi,Toinen_nimi,Sukunimi,Katuosoite,Postinumero,Postitoimipaikka,Henkilotunnus,Aloituspvm,Valmistumispvm,Keskeytyspvm,Tiedot_arkistoitu,Huomio,Osoite_id,Puhelin_id,Kurssi_id")] Hoitajat hoitajat)
+        public ActionResult Edit([Bind(Include = "Hoitaja_ID,Tunnus,Etunimi,Toinen_nimi,Sukunimi,Katuosoite,Postinumero,Postitoimipaikka,Henkilotunnus,Aloituspvm,Valmistumispvm,Keskeytyspvm,Tiedot_arkistoitu,Huomio_ID,Osoite_ID,Puhelin_ID,Kurssi_ID")] Hoitajat hoitajat)
         {
             if (ModelState.IsValid)
             {
@@ -112,9 +111,9 @@ namespace PointAjanvarausMVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Osoite_id = new SelectList(db.Osoite, "Osoite_ID", "Katuosoite", hoitajat.Osoite_id);
-            ViewBag.Puhelin_id = new SelectList(db.Puhelin, "Puhelin_ID", "Puhelinnumero_1", hoitajat.Puhelin_id);
-            ViewBag.Huomio = new SelectList(db.Huomiot, "Huomio_ID", "Muut", hoitajat.Huomio);
+            ViewBag.Osoite_ID = new SelectList(db.Osoite, "Osoite_ID", "Katuosoite", hoitajat.Osoite_ID);
+            ViewBag.Puhelin_ID = new SelectList(db.Puhelin, "Puhelin_ID", "Puhelinnumero_1", hoitajat.Puhelin_ID);
+            ViewBag.Huomio_ID = new SelectList(db.Huomiot, "Huomio_ID", "Muut", hoitajat.Huomio_ID);
             return View(hoitajat);
         }
 

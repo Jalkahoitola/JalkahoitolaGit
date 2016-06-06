@@ -3,40 +3,39 @@
 @{
     ViewBag.Title = "Index";
 }
-
 @section scripts {
 
     <script src="~/Scripts/jquery-2.2.3.js"></script>
     <script type="text/javascript">
 
-    $(function () {
+        $(function () {
             $(".näytäHoitajaNappi").click(function () {
-                
+
                 var hoitajaId = $(this).data("hoitajaid");
-            
+
                 $("#palvelut_" + palveluId).css("display", "table-row");
                 var url = "/palvelu/gethoitajapalvelu/" + hoitajaId;
-                
+
                 $.ajax(url).done(function (data) {
                     var hoitajaData = "";
                     for (var i = 0; i < data.length; i++) {
                         hoitajaData += (i + 1) + ": " + data[i].EtunimiNimi + " " + data[i].SukunimiNimi + " " + data[i].Asiakas_id + " " + "\r\n";
                     }
-               
+
                     $("#hoitajaText_" + palveluId).html("<pre>" + hoitajaData + "</pre>");
                 });
             });
-    });
-</script>
+        });
+    </script>
 
 
-<script>
-function myFunction() {
-    document.getElementById("field2").value = document.getElementById("field1").value;
+    <script>
+        function myFunction() {
+            document.getElementById("field2").value = document.getElementById("field1").value;
+        }
+    </script>
+
 }
-</script>
-    
-    }
 
 <h2>Hoitajahallinta</h2>
 
@@ -46,6 +45,7 @@ function myFunction() {
     @Html.ActionLink("Järjestys etunimen mukaan", "OrderByFirstName")
     @Html.ActionLink("Järjestys sukunimen mukaan", "OrderByLastName")
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -84,96 +84,98 @@ function myFunction() {
         <th>
             @Html.DisplayNameFor(model => model.Tiedot_arkistoitu)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Kurssi_id)
+        @*<th>
+            @Html.DisplayNameFor(model => model.Kurssi_ID)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Osoite.Katuosoite)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Puhelin.Puhelinnumero_1)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Huomiot.Muut)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tunnus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Etunimi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Toinen_nimi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sukunimi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Katuosoite)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Postinumero)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Postitoimipaikka)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Henkilotunnus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Aloituspvm)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Valmistumispvm)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Keskeytyspvm)
-        </td>
-        <td><div class="row">
-        <div class="col-lg-6">
-        <div class="input-group">
-            <span class="input-group-addon">
-                <input type="checkbox" aria-label="...">
-            </span>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tunnus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Etunimi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Toinen_nimi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sukunimi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Katuosoite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Postinumero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Postitoimipaikka)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Henkilotunnus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aloituspvm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Valmistumispvm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Keskeytyspvm)
+            </td>
+            <td>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="...">
+                            </span>
 
-            <input type="text" class="form-control" aria-label="...">
-        </div><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
-        </div><!-- /.row -->
-            <!--<a href="#"><span tiedot_id="@Html.DisplayFor(modelItem => item.Tiedot_arkistoitu)" class="glyphicon glyphicon-check"></span></a>-->
-            @Html.DisplayFor(modelItem => item.Tiedot_arkistoitu)
-            @Html.CheckBox("Arkistoi", new { id = item.Hoitaja_ID })
-            @Html.ActionLink("Arkistoi", "Edit", new { id = item.Hoitaja_ID })
+                            <input type="text" class="form-control" aria-label="...">
+                        </div><!-- /input-group -->
+                    </div><!-- /.col-lg-6 -->
+                </div><!-- /.row -->
+                <!--<a href="#"><span tiedot_id="@Html.DisplayFor(modelItem => item.Tiedot_arkistoitu)" class="glyphicon glyphicon-check"></span></a>-->
+                @Html.DisplayFor(modelItem => item.Tiedot_arkistoitu)
+                @Html.CheckBox("Arkistoi", new { id = item.Hoitaja_ID })
+                @Html.ActionLink("Arkistoi", "Edit", new { id = item.Hoitaja_ID })
 
 
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Kurssi_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Osoite.Katuosoite)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Puhelin.Puhelinnumero_1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Huomiot.Muut)
-        </td>
-        <td>
-            @Html.ActionLink("Muokkaa", "Edit", new { id=item.Hoitaja_ID }) |
-            @Html.ActionLink("Tiedot", "Details", new { id=item.Hoitaja_ID }) |
-            @Html.ActionLink("Poista", "Delete", new { id=item.Hoitaja_ID })
-        </td>
-    </tr>
-    <tr style="display: none;" id="palvelut_@Html.DisplayFor(modelItem => item.Hoitaja_ID)">
-        <td>&nbsp;</td>
-        <td colspan="10" id="hoitajaText_@Html.DisplayFor(modelItem => item.Hoitaja_ID)"><pre>Loading...</pre></td>
-    </tr>
-}
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Kurssi_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Osoite.Katuosoite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Puhelin.Puhelinnumero_1)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Huomiot.Muut)
+            </td>
+            <td>
+                @Html.ActionLink("Muokkaa", "Edit", new { id = item.Hoitaja_ID }) |
+                @Html.ActionLink("Tiedot", "Details", new { id = item.Hoitaja_ID }) |
+                @Html.ActionLink("Poista", "Delete", new { id = item.Hoitaja_ID })
+            </td>
+        </tr>
+        <tr style="display: none;" id="palvelut_@Html.DisplayFor(modelItem => item.Hoitaja_ID)">
+            <td>&nbsp;</td>
+            <td colspan="10" id="hoitajaText_@Html.DisplayFor(modelItem => item.Hoitaja_ID)"><pre>Loading...</pre></td>
+        </tr>
+    }
 
 </table>

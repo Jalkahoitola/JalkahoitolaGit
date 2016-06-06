@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Luo uusi hoitajatieto</h2>
 
 
 @using (Html.BeginForm()) 
@@ -111,48 +111,48 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Huomio, "Huomio", htmlAttributes: new { @class = "control-label col-md-2" })
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Huomio_ID, "Huomio_ID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Huomio", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Huomio, "", new { @class = "text-danger" })
+                @Html.DropDownList("Huomio_ID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Huomio_ID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Osoite_id, "Osoite_id", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Osoite_ID, "Osoite_ID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Osoite_id", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Osoite_id, "", new { @class = "text-danger" })
+                @Html.DropDownList("Osoite_ID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Osoite_ID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Puhelin_id, "Puhelin_id", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Puhelin_ID, "Puhelin_ID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Puhelin_id", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Puhelin_id, "", new { @class = "text-danger" })
+                @Html.DropDownList("Puhelin_ID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Puhelin_ID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Kurssi_id, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Kurssi_ID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Kurssi_id, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Kurssi_id, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Kurssi_ID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Kurssi_ID, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Tallenna" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Takaisin hoitajahallintaan", "Index")
 </div>
 
 @section Scripts {

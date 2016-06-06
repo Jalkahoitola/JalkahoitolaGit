@@ -4,39 +4,55 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Tiedot</h2>
 
 <div>
-    <h4>Rekisterointi</h4>
+    <h4>Vuosikurssin rekisteröinti</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Kurssi)
+            @Html.DisplayNameFor(model => model.Vuosikurssi)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Kurssi)
+            @Html.DisplayFor(model => model.Vuosikurssi)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Hoitajat.Tunnus)
+            @Html.DisplayNameFor(model => model.Vuosikurssi_aloitus_pvm)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Hoitajat.Tunnus)
+            @Html.DisplayFor(model => model.Vuosikurssi_aloitus_pvm)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Kurssit1.Kurssinimike)
+            @Html.DisplayNameFor(model => model.Vuosikurssi_lopetus_pvm)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Kurssit1.Kurssinimike)
+            @Html.DisplayFor(model => model.Vuosikurssi_lopetus_pvm)
         </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Kurssi_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kurssi_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hoitaja_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoitaja_ID)
+        </dd>*@
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Rekisterointi_ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Muokkaa", "Edit", new { id = Model.Rekisterointi_ID }) |
+    @Html.ActionLink("Takaisin kurssirekisteröintiin", "Index")
 </p>

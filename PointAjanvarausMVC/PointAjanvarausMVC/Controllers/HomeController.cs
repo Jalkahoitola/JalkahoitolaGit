@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PointAjanvarausMVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -33,5 +34,7 @@ namespace PointAjanvarausMVC.Controllers
 
             return View();
         }
+
     }
 }
+

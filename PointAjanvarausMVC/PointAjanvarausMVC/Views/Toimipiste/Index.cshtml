@@ -15,21 +15,20 @@
             @Html.DisplayNameFor(model => model.Toimipisteen_Nimi)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Hoitopaikat1.Hoitopaikan_Nimi)
+            @Html.DisplayNameFor(model => model.Osoite1.Katuosoite)
         </th>
-      
-        <th>
-            @Html.DisplayNameFor(model => model.Osoite.Katuosoite)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Osoite.Postinumero)
+        @*<th>
+            @Html.DisplayNameFor(model => model.Hoitopaikka_ID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Osoite.Postitoimipaikka)
+            @Html.DisplayNameFor(model => model.Huomiot.Muut)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Puhelin.Puhelinnumero_1)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Osoite1.Katuosoite)
+        </th>*@
         <th></th>
     </tr>
 
@@ -39,22 +38,20 @@
             @Html.DisplayFor(modelItem => item.Toimipisteen_Nimi)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Hoitopaikat1.Hoitopaikan_Nimi)
+            @Html.DisplayFor(modelItem => item.Osoite1.Katuosoite)
         </td>
-    
-        <td>
-            @Html.DisplayFor(modelItem => item.Osoite.Katuosoite)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Osoite.Postinumero)
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Hoitopaikka_ID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Osoite.Postitoimipaikka)
+            @Html.DisplayFor(modelItem => item.Huomiot.Muut)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Puhelin.Puhelinnumero_1)
         </td>
-
+        <td>
+            @Html.DisplayFor(modelItem => item.Osoite1.Katuosoite)
+        </td>*@
         <td>
             @Html.ActionLink("Muokkaa", "Edit", new { id=item.Toimipiste_ID }) |
             @Html.ActionLink("Tiedot", "Details", new { id=item.Toimipiste_ID }) |

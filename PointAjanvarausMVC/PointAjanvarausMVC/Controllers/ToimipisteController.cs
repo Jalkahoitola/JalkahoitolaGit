@@ -17,7 +17,7 @@ namespace PointAjanvarausMVC.Controllers
         // GET: Toimipiste
         public ActionResult Index()
         {
-            var toimipisteet = db.Toimipisteet.Include(t => t.Hoitopaikat1).Include(t => t.Huomiot).Include(t => t.Osoite).Include(t => t.Puhelin);
+            var toimipisteet = db.Toimipisteet.Include(t => t.Huomiot).Include(t => t.Puhelin).Include(t => t.Osoite1);
             return View(toimipisteet.ToList());
         }
 
@@ -39,10 +39,9 @@ namespace PointAjanvarausMVC.Controllers
         // GET: Toimipiste/Create
         public ActionResult Create()
         {
-            ViewBag.Hoitopaikka_ID = new SelectList(db.Hoitopaikat, "Hoitopaikka_ID", "Hoitopaikan_Nimi");
-            ViewBag.Huomio_ID = new SelectList(db.Huomiot, "Huomio_ID", "Sairaudet");
-            ViewBag.Osoite_ID = new SelectList(db.Osoite, "Osoite_ID", "Katuosoite");
+            ViewBag.Huomio_ID = new SelectList(db.Huomiot, "Huomio_ID", "Muut");
             ViewBag.Puhelin_ID = new SelectList(db.Puhelin, "Puhelin_ID", "Puhelinnumero_1");
+            ViewBag.Osoite_ID = new SelectList(db.Osoite, "Osoite_ID", "Katuosoite");
             return View();
         }
 
@@ -60,10 +59,9 @@ namespace PointAjanvarausMVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Hoitopaikka_ID = new SelectList(db.Hoitopaikat, "Hoitopaikka_ID", "Hoitopaikan_Nimi", toimipisteet.Hoitopaikka_ID);
-            ViewBag.Huomio_ID = new SelectList(db.Huomiot, "Huomio_ID", "Sairaudet", toimipisteet.Huomio_ID);
-            ViewBag.Osoite_ID = new SelectList(db.Osoite, "Osoite_ID", "Katuosoite", toimipisteet.Osoite_ID);
+            ViewBag.Huomio_ID = new SelectList(db.Huomiot, "Huomio_ID", "Muut", toimipisteet.Huomio_ID);
             ViewBag.Puhelin_ID = new SelectList(db.Puhelin, "Puhelin_ID", "Puhelinnumero_1", toimipisteet.Puhelin_ID);
+            ViewBag.Osoite_ID = new SelectList(db.Osoite, "Osoite_ID", "Katuosoite", toimipisteet.Osoite_ID);
             return View(toimipisteet);
         }
 
@@ -79,10 +77,9 @@ namespace PointAjanvarausMVC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Hoitopaikka_ID = new SelectList(db.Hoitopaikat, "Hoitopaikka_ID", "Hoitopaikan_Nimi", toimipisteet.Hoitopaikka_ID);
-            ViewBag.Huomio_ID = new SelectList(db.Huomiot, "Huomio_ID", "Sairaudet", toimipisteet.Huomio_ID);
-            ViewBag.Osoite_ID = new SelectList(db.Osoite, "Osoite_ID", "Katuosoite", toimipisteet.Osoite_ID);
+            ViewBag.Huomio_ID = new SelectList(db.Huomiot, "Huomio_ID", "Muut", toimipisteet.Huomio_ID);
             ViewBag.Puhelin_ID = new SelectList(db.Puhelin, "Puhelin_ID", "Puhelinnumero_1", toimipisteet.Puhelin_ID);
+            ViewBag.Osoite_ID = new SelectList(db.Osoite, "Osoite_ID", "Katuosoite", toimipisteet.Osoite_ID);
             return View(toimipisteet);
         }
 
@@ -99,10 +96,9 @@ namespace PointAjanvarausMVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Hoitopaikka_ID = new SelectList(db.Hoitopaikat, "Hoitopaikka_ID", "Hoitopaikan_Nimi", toimipisteet.Hoitopaikka_ID);
-            ViewBag.Huomio_ID = new SelectList(db.Huomiot, "Huomio_ID", "Sairaudet", toimipisteet.Huomio_ID);
-            ViewBag.Osoite_ID = new SelectList(db.Osoite, "Osoite_ID", "Katuosoite", toimipisteet.Osoite_ID);
+            ViewBag.Huomio_ID = new SelectList(db.Huomiot, "Huomio_ID", "Muut", toimipisteet.Huomio_ID);
             ViewBag.Puhelin_ID = new SelectList(db.Puhelin, "Puhelin_ID", "Puhelinnumero_1", toimipisteet.Puhelin_ID);
+            ViewBag.Osoite_ID = new SelectList(db.Osoite, "Osoite_ID", "Katuosoite", toimipisteet.Osoite_ID);
             return View(toimipisteet);
         }
 

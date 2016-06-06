@@ -4,7 +4,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Tiedot</h2>
+<h2>Asiakastiedot</h2>
 
 <div>
     <h4>Asiakkaat</h4>
@@ -73,75 +73,67 @@
         <dd>
             @Html.DisplayFor(model => model.Huomiot)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Osoite.Katuosoite)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Osoite.Katuosoite)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Puhelin.Puhelinnumero_1)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Puhelin.Puhelinnumero_1)
-        </dd>
-
-        @*25.5.2016 Lisätty alitiedostot:*@
+  
     </dl>
-        <table class="table">
-            <tr>
-                <th>
-                    Palvelun nimi
-                </th>
-                <th>
-                    Palvelun kesto
-                </th>
-                <th>
-                    HoitajaID
-                </th>
-                <th>
-                    Hoitajan etunimi
-                </th>
-                <th>
-                    Hoitajan sukunimi
-                </th>
-                <th>
-                    Huomiot
-                </th>
-            </tr>
-            @foreach (var item in Model.Palvelut)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Palvelun_nimi)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Palvelun_kesto)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Hoitajat.Hoitaja_ID)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Hoitajat.Etunimi)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Hoitajat.Sukunimi)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Asiakkaat.Huomiot)
-                    </td>
-                
-                </tr>
-            }
-        </table>@*<--25.5.2016 Lisätty alitiedostot*@
 
+    <h4>Asiakkaan hoitotiedot</h4>
+        @*25.5.2016 Lisätty alitiedostot Palvelut, päivitetty 1.6.2016 Event:*@
     
+    <table class="table">
+        <tr>
+            <th>
+                Päivämäärä
+            </th>
+            <th>
+                Varausaika
+            </th>
+            <th>
+                Palvelun nimi
+            </th>
+            <th>
+                Palvelun kesto
+            </th>
+            <th>
+                Hoitajan nimi
+            </th>
+            <th>
+                Huomiot
+            </th>
+        </tr>
+        @foreach (var item in Model.Event)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Päivämäärä)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Varausaika)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Palvelut.Palvelun_nimi)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Palvelut.Palvelun_kesto)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hoitajat.Tunnus)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Asiakkaat.Huomiot)
+                </td>
+
+            </tr>
+        }
+    </table>@*<--25.5.2016 Lisätty alitiedostot, päivitetty 1.6.2016*@
+       
+    
+   
+
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Asiakas_ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Muokkaa", "Edit", new { id = Model.Asiakas_ID }) |
+    @Html.ActionLink("Takaisin asiakashallintaan", "Index")
 </p>

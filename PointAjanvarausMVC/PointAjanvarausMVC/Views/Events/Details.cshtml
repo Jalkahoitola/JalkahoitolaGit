@@ -27,19 +27,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Info)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Info)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Asiakkaat.Etunimi)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Asiakkaat.Etunimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Asiakkaat.Sukunimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Asiakkaat.Sukunimi)
         </dd>
 
         <dt>
@@ -51,6 +51,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Info)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Info)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Hoitopaikat.Hoitopaikan_Nimi)
         </dt>
 
@@ -59,11 +67,32 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Hoitopaikat.Hoitopaikan_Numero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoitopaikat.Hoitopaikan_Numero)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Hoitajat.Tunnus)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Hoitajat.Tunnus)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Hoitajat.Etunimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoitajat.Etunimi)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Hoitajat.Sukunimi)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Hoitajat.Sukunimi)
         </dd>
 
     </dl>
