@@ -27,21 +27,16 @@
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Henkilokunta_ToTable_2" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Shippers_ToTable_2" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Tilaukset_ToTable" />
-        <EntityTypeShape EntityType="JohaMeriSQL2Model.Varaus" Width="1.5" PointX="8.375" PointY="0.75" />
-        <AssociationConnector Association="JohaMeriSQL2Model.FK_Varaus_ToTable_1" />
-        <AssociationConnector Association="JohaMeriSQL2Model.FK_Varaus_ToTable_2" />
         <EntityTypeShape EntityType="JohaMeriSQL2Model.Palvelut" Width="1.5" PointX="23.25" PointY="6.25" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Palvelut_ToTable" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Event_ToTable_1" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Palvelut_ToTable_3" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Palvelut_ToTable_2" />
-        <AssociationConnector Association="JohaMeriSQL2Model.FK_Varaus_ToTable_3" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Varauskalenteri_ToTable_1" />
         <EntityTypeShape EntityType="JohaMeriSQL2Model.Hoitajat" Width="1.5" PointX="6" PointY="2.625" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Event_ToTable_4" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Hoitajat_ToTable_2" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Palvelut_ToTable_1" />
-        <AssociationConnector Association="JohaMeriSQL2Model.FK_Varaus_ToTable" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Varauskalenteri_ToTable_4" />
         <EntityTypeShape EntityType="JohaMeriSQL2Model.Kurssi" Width="1.5" PointX="8.25" PointY="5.125" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Kurssi_ToTable" />
@@ -72,6 +67,11 @@
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Shippers_ToTable" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Toimipisteet_ToTable1" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Puhelin_ToTable_31" />
+        <EntityTypeShape EntityType="JohaMeriSQL2Model.Varaus" Width="1.5" PointX="25.5" PointY="1.375" />
+        <AssociationConnector Association="JohaMeriSQL2Model.FK_Varaus_ToTable_1" />
+        <AssociationConnector Association="JohaMeriSQL2Model.FK_Varaus_ToTable" />
+        <AssociationConnector Association="JohaMeriSQL2Model.FK_Varaus_ToTable_2" />
+        <AssociationConnector Association="JohaMeriSQL2Model.FK_Varaus_ToTable_3" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -988,17 +988,17 @@
     <Content Include="Views\Tuote\Details.cshtml" />
     <Content Include="Views\Tuote\Edit.cshtml" />
     <Content Include="Views\Tuote\Index.cshtml" />
-    <Content Include="Views\Varaukset\Create.cshtml" />
-    <Content Include="Views\Varaukset\Delete.cshtml" />
-    <Content Include="Views\Varaukset\Details.cshtml" />
-    <Content Include="Views\Varaukset\Edit.cshtml" />
-    <Content Include="Views\Varaukset\Index.cshtml" />
     <Content Include="Views\Kurssit\Create.cshtml" />
     <Content Include="Views\Kurssit\Delete.cshtml" />
     <Content Include="Views\Kurssit\Details.cshtml" />
     <Content Include="Views\Kurssit\Edit.cshtml" />
     <Content Include="Views\Kurssit\Index.cshtml" />
     <Content Include="Views\Kurssit\OrderByEtunimi.cshtml" />
+    <Content Include="Views\Varaukset\Create.cshtml" />
+    <Content Include="Views\Varaukset\Delete.cshtml" />
+    <Content Include="Views\Varaukset\Details.cshtml" />
+    <Content Include="Views\Varaukset\Edit.cshtml" />
+    <Content Include="Views\Varaukset\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

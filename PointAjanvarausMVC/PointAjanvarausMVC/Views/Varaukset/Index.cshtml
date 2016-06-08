@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Varaukset</h2>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Luo uusi varaus", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
@@ -19,6 +19,12 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Palvelun_nimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sisalto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Asiakkaat.Etunimi)
@@ -45,6 +51,12 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Palvelun_nimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sisalto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Asiakkaat.Etunimi)

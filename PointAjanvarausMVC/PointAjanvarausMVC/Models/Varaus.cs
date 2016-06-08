@@ -22,10 +22,12 @@ namespace PointAjanvarausMVC.Models
         public Nullable<System.DateTime> Loppu { get; set; }
         public string Palvelun_nimi { get; set; }
         public Nullable<int> Palvelu_ID { get; set; }
+        public string sisalto { get; set; }
+        public int Type { get; set; }
     
         public virtual Asiakkaat Asiakkaat { get; set; }
+        public virtual Hoitajat Hoitajat { get; set; }
         public virtual Hoitopaikat Hoitopaikat { get; set; }
         public virtual Palvelut Palvelut { get; set; }
-        public virtual Hoitajat Hoitajat { get; set; }
     }
 }
