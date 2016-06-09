@@ -11,6 +11,15 @@
     <h4>Varaus</h4>
     <hr />
     <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pvm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pvm)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Alku)
         </dt>
@@ -36,11 +45,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.sisalto)
+            @Html.DisplayNameFor(model => model.Info)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.sisalto)
+            @Html.DisplayFor(model => model.Info)
         </dd>
 
         <dt>
@@ -52,19 +61,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.pvm)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.pvm)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Asiakkaat.Etunimi)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Asiakkaat.Etunimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Asiakkaat.Sukunimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Asiakkaat.Sukunimi)
         </dd>
 
         <dt>
@@ -89,6 +98,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.Palvelut.Palvelun_nimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Info)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Info)
         </dd>
 
     </dl>

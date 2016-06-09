@@ -27,7 +27,6 @@ namespace PointAjanvarausMVC.Models
     
         public virtual DbSet<Huomiot> Huomiot { get; set; }
         public virtual DbSet<Postitoimipaikat> Postitoimipaikat { get; set; }
-        public virtual DbSet<Varauskalenteri> Varauskalenteri { get; set; }
         public virtual DbSet<Event> Event { get; set; }
         public virtual DbSet<Hoitopaikat> Hoitopaikat { get; set; }
         public virtual DbSet<Toimipisteet> Toimipisteet { get; set; }

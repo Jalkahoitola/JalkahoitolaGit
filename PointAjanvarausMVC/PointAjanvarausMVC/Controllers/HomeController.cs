@@ -57,7 +57,7 @@ namespace PointAjanvarausMVC.Controllers
                 data.Pvm = Convert.ToDateTime(c.pvm);
                 data.startTime = c.Alku.ToString();
                 data.endTime = c.Loppu.ToString();
-                data.text = c.sisalto + " ID: " + c.Varaus_ID + " ALKU: " + c.Alku + " LOPPU: " + c.Loppu;
+                data.text = c.Info + " ID: " + c.Varaus_ID + " ALKU: " + c.Alku + " LOPPU: " + c.Loppu;
 
                 result.Add(data);
             }

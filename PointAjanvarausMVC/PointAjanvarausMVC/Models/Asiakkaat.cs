@@ -18,7 +18,6 @@ namespace PointAjanvarausMVC.Models
         public Asiakkaat()
         {
             this.Event = new HashSet<Event>();
-            this.Varauskalenteri = new HashSet<Varauskalenteri>();
             this.Palvelut = new HashSet<Palvelut>();
             this.Puhelin1 = new HashSet<Puhelin>();
             this.Osoite1 = new HashSet<Osoite>();
@@ -41,8 +40,6 @@ namespace PointAjanvarausMVC.Models
         public virtual Huomiot Huomiot1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Event> Event { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Varauskalenteri> Varauskalenteri { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Palvelut> Palvelut { get; set; }
         public virtual Puhelin Puhelin { get; set; }

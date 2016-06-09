@@ -8,9 +8,15 @@
 
 <p>
     @Html.ActionLink("Tee uusi varaus", "Create")
+    @Html.ActionLink("Näytä kaikki", "Index")
+    @Html.ActionLink("Järjestys etunimen mukaan", "OrderByFirstName")
+    @Html.ActionLink("Järjestys sukunimen mukaan", "OrderByLastName")
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.pvm)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Alku)
         </th>
@@ -18,20 +24,18 @@
             @Html.DisplayNameFor(model => model.Loppu)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Asiakkaat.Etunimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Asiakkaat.Sukunimi)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Palvelun_nimi)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.sisalto)
+            @Html.DisplayNameFor(model => model.Info)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.pvm)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Asiakkaat.Etunimi)
-        </th>
+     
         <th>
             @Html.DisplayNameFor(model => model.Hoitajat.Tunnus)
         </th>
@@ -39,13 +43,23 @@
             @Html.DisplayNameFor(model => model.Hoitopaikat.Hoitopaikan_Nimi)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Hoitopaikat.Hoitopaikan_Numero)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Palvelut.Palvelun_nimi)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th> 
+
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.pvm)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Alku)
         </td>
@@ -53,20 +67,17 @@
             @Html.DisplayFor(modelItem => item.Loppu)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Asiakkaat.Etunimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Asiakkaat.Sukunimi)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Palvelun_nimi)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.sisalto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.pvm)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Asiakkaat.Etunimi)
-        </td>
+            @Html.DisplayFor(modelItem => item.Info)
+        </td>   
         <td>
             @Html.DisplayFor(modelItem => item.Hoitajat.Tunnus)
         </td>
@@ -74,8 +85,15 @@
             @Html.DisplayFor(modelItem => item.Hoitopaikat.Hoitopaikan_Nimi)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Hoitopaikat.Hoitopaikan_Numero)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Palvelut.Palvelun_nimi)
         </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+
         <td>
             @Html.ActionLink("Muokkaa", "Edit", new { id=item.Varaus_ID }) |
             @Html.ActionLink("Tiedot", "Details", new { id=item.Varaus_ID }) |

@@ -7,11 +7,9 @@
       <Diagram DiagramId="7b90ef8193aa488d8e9534ac5461c0b6" Name="Diagram1" ZoomLevel="88">
         <EntityTypeShape EntityType="JohaMeriSQL2Model.Huomiot" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="JohaMeriSQL2Model.Postitoimipaikat" Width="2.125" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="JohaMeriSQL2Model.Varauskalenteri" Width="1.5" PointX="13.5" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="JohaMeriSQL2Model.Event" Width="1.5" PointX="13.5" PointY="9" />
         <EntityTypeShape EntityType="JohaMeriSQL2Model.Hoitopaikat" Width="1.5" PointX="18.75" PointY="5.25" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Event_ToTable_3" />
-        <AssociationConnector Association="JohaMeriSQL2Model.FK_Varauskalenteri_ToTable_3" />
         <EntityTypeShape EntityType="JohaMeriSQL2Model.Toimipisteet" Width="1.5" PointX="21" PointY="4.75" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Hoitopaikat_ToTable" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Toimipisteet_ToTable" />
@@ -19,7 +17,6 @@
         <EntityTypeShape EntityType="JohaMeriSQL2Model.Asiakkaat" Width="1.5" PointX="3" PointY="4.25" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Asiakkaat_ToTable_2" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Event_ToTable" />
-        <AssociationConnector Association="JohaMeriSQL2Model.FK_Varauskalenteri_ToTable" />
         <EntityTypeShape EntityType="JohaMeriSQL2Model.Henkilokunta" Width="1.5" PointX="3.375" PointY="9.625" />
         <EntityTypeShape EntityType="JohaMeriSQL2Model.Shippers" Width="1.5" PointX="6.375" PointY="10.25" />
         <EntityTypeShape EntityType="JohaMeriSQL2Model.Tilaukset" Width="1.5" PointX="3" PointY="15" />
@@ -32,12 +29,10 @@
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Event_ToTable_1" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Palvelut_ToTable_3" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Palvelut_ToTable_2" />
-        <AssociationConnector Association="JohaMeriSQL2Model.FK_Varauskalenteri_ToTable_1" />
         <EntityTypeShape EntityType="JohaMeriSQL2Model.Hoitajat" Width="1.5" PointX="6" PointY="2.625" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Event_ToTable_4" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Hoitajat_ToTable_2" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Palvelut_ToTable_1" />
-        <AssociationConnector Association="JohaMeriSQL2Model.FK_Varauskalenteri_ToTable_4" />
         <EntityTypeShape EntityType="JohaMeriSQL2Model.Kurssi" Width="1.5" PointX="8.25" PointY="5.125" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Kurssi_ToTable" />
         <EntityTypeShape EntityType="JohaMeriSQL2Model.Rekisterointi" Width="1.5" PointX="8.375" PointY="9.75" />
@@ -54,7 +49,6 @@
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Puhelin_ToTable_3" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Shippers_ToTable_1" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Toimipisteet_ToTable_2" />
-        <AssociationConnector Association="JohaMeriSQL2Model.FK_Varauskalenteri_ToTable_2" />
         <EntityTypeShape EntityType="JohaMeriSQL2Model.Osoite" Width="1.5" PointX="26.25" PointY="6" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Asiakkaat_ToTable" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Osoite_ToTable" />
