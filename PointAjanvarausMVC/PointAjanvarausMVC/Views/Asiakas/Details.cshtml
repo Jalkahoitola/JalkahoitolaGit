@@ -73,12 +73,59 @@
         <dd>
             @Html.DisplayFor(model => model.Huomiot)
         </dd>
-  
-    </dl>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Osoite.Katuosoite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Osoite.Katuosoite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Puhelin.Puhelinnumero_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Puhelin.Puhelinnumero_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Huomiot1.Muut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Huomiot1.Muut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hoitajat.Tunnus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoitajat.Tunnus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Varaus.Palvelun_nimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Varaus.Palvelun_nimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Palvelut.Palvelun_nimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Palvelut.Palvelun_nimi)
+        </dd>
+
+    </dl>
     <h4>Asiakkaan hoitotiedot</h4>
-        @*25.5.2016 Lisätty alitiedostot Palvelut, päivitetty 1.6.2016 Event:*@
-    
+    @*25.5.2016 Lisätty alitiedostot Palvelut, päivitetty 1.6.2016 Event:*@
+
     <table class="table">
         <tr>
             <th>
@@ -128,9 +175,10 @@
             </tr>
         }
     </table>@*<--25.5.2016 Lisätty alitiedostot, päivitetty 1.6.2016*@
-       
-    
-   
+
+
+
+
 
 </div>
 <p>

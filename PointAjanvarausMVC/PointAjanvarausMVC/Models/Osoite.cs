@@ -17,11 +17,11 @@ namespace PointAjanvarausMVC.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Osoite()
         {
-            this.Asiakkaat = new HashSet<Asiakkaat>();
             this.Henkilokunta = new HashSet<Henkilokunta>();
             this.Hoitajat = new HashSet<Hoitajat>();
             this.Shippers1 = new HashSet<Shippers>();
             this.Toimipisteet1 = new HashSet<Toimipisteet>();
+            this.Asiakkaat = new HashSet<Asiakkaat>();
         }
     
         public int Osoite_ID { get; set; }
@@ -35,9 +35,6 @@ namespace PointAjanvarausMVC.Models
         public Nullable<int> Shipper_ID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Asiakkaat> Asiakkaat { get; set; }
-        public virtual Asiakkaat Asiakkaat1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Henkilokunta> Henkilokunta { get; set; }
         public virtual Henkilokunta Henkilokunta1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -49,5 +46,8 @@ namespace PointAjanvarausMVC.Models
         public virtual ICollection<Shippers> Shippers1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Toimipisteet> Toimipisteet1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Asiakkaat> Asiakkaat { get; set; }
+        public virtual Asiakkaat Asiakkaat1 { get; set; }
     }
 }

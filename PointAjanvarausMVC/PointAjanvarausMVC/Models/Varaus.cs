@@ -14,6 +14,13 @@ namespace PointAjanvarausMVC.Models
     
     public partial class Varaus
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Varaus()
+        {
+            this.Asiakkaat = new HashSet<Asiakkaat>();
+            this.Hoitajat1 = new HashSet<Hoitajat>();
+        }
+    
         public int Varaus_ID { get; set; }
         public Nullable<int> Hoitaja_ID { get; set; }
         public Nullable<int> Hoitopaikka_ID { get; set; }
@@ -26,9 +33,13 @@ namespace PointAjanvarausMVC.Models
         public Nullable<System.DateTime> pvm { get; set; }
         public string Info { get; set; }
     
-        public virtual Asiakkaat Asiakkaat { get; set; }
         public virtual Hoitajat Hoitajat { get; set; }
         public virtual Hoitopaikat Hoitopaikat { get; set; }
         public virtual Palvelut Palvelut { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Asiakkaat> Asiakkaat { get; set; }
+        public virtual Asiakkaat Asiakkaat1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Hoitajat> Hoitajat1 { get; set; }
     }
 }

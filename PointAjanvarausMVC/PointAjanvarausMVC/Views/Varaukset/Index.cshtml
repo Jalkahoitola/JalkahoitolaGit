@@ -24,14 +24,20 @@
             @Html.DisplayNameFor(model => model.Loppu)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Asiakkaat.Etunimi)
+            @Html.DisplayNameFor(model => model.Asiakkaat1.Etunimi)
         </th>
+
         <th>
-            @Html.DisplayNameFor(model => model.Asiakkaat.Sukunimi)
+            @Html.DisplayNameFor(model => model.Asiakkaat1.Sukunimi)
         </th>
+    
         <th>
             @Html.DisplayNameFor(model => model.Palvelun_nimi)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Palvelut.Palvelun_nimi)
+        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.Info)
         </th>
@@ -45,9 +51,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Hoitopaikat.Hoitopaikan_Numero)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Palvelut.Palvelun_nimi)
-        </th>
+     
         <th>
             @Html.DisplayNameFor(model => model.Type)
         </th> 
@@ -67,14 +71,19 @@
             @Html.DisplayFor(modelItem => item.Loppu)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Asiakkaat.Etunimi)
+            @Html.DisplayFor(modelItem => item.Asiakkaat1.Etunimi)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Asiakkaat.Sukunimi)
+            @Html.DisplayFor(modelItem => item.Asiakkaat1.Sukunimi)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Palvelun_nimi)
         </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Palvelut.Palvelun_nimi)
+        </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.Info)
         </td>   
@@ -87,9 +96,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Hoitopaikat.Hoitopaikan_Numero)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Palvelut.Palvelun_nimi)
-        </td>
+    
         <td>
             @Html.DisplayFor(modelItem => item.Type)
         </td>

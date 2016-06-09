@@ -957,11 +957,6 @@
     <Content Include="Views\Toimipiste\Details.cshtml" />
     <Content Include="Views\Toimipiste\Edit.cshtml" />
     <Content Include="Views\Toimipiste\Index.cshtml" />
-    <Content Include="Views\Asiakas\Create.cshtml" />
-    <Content Include="Views\Asiakas\Delete.cshtml" />
-    <Content Include="Views\Asiakas\Details.cshtml" />
-    <Content Include="Views\Asiakas\Edit.cshtml" />
-    <Content Include="Views\Asiakas\Index.cshtml" />
     <Content Include="Views\Rekisteroinnit\Create.cshtml" />
     <Content Include="Views\Rekisteroinnit\Delete.cshtml" />
     <Content Include="Views\Rekisteroinnit\Details.cshtml" />
@@ -972,8 +967,6 @@
     <Content Include="Views\Hoitaja\Details.cshtml" />
     <Content Include="Views\Hoitaja\Edit.cshtml" />
     <Content Include="Views\Hoitaja\Index.cshtml" />
-    <Content Include="Views\Asiakas\OrderByFirstName.cshtml" />
-    <Content Include="Views\Asiakas\OrderByLastName.cshtml" />
     <Content Include="Views\Hoitaja\OrderByFirstName.cshtml" />
     <Content Include="Views\Hoitaja\OrderByLastName.cshtml" />
     <Content Include="Views\Henkilokuntas\Create.cshtml" />
@@ -1014,6 +1007,11 @@
     <Content Include="Views\EditModal\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutModal.cshtml" />
     <Content Include="Views\Events\OrderByFirstName.cshtml" />
+    <Content Include="Views\Asiakas\Create.cshtml" />
+    <Content Include="Views\Asiakas\Delete.cshtml" />
+    <Content Include="Views\Asiakas\Details.cshtml" />
+    <Content Include="Views\Asiakas\Edit.cshtml" />
+    <Content Include="Views\Asiakas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

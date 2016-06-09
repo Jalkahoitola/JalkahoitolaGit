@@ -17,7 +17,7 @@ namespace PointAjanvarausMVC.Controllers
         // GET: Asiakas
         public ActionResult Index()
         {
-            var asiakkaat = db.Asiakkaat.Include(a => a.Osoite).Include(a => a.Puhelin).Include(a => a.Huomiot1);
+            var asiakkaat = db.Asiakkaat.Include(a => a.Osoite).Include(a => a.Puhelin).Include(a => a.Huomiot1).Include(a => a.Hoitajat).Include(a => a.Varaus).Include(a => a.Palvelut);
             return View(asiakkaat.ToList());
         }
 
@@ -36,7 +36,7 @@ namespace PointAjanvarausMVC.Controllers
                             select a;
             return View(asiakkaat);
         }//23.5.2016 Lisätty
-   
+
 
         // GET: Asiakas/Details/5
         public ActionResult Details(int? id)
@@ -58,7 +58,10 @@ namespace PointAjanvarausMVC.Controllers
         {
             ViewBag.Osoite_id = new SelectList(db.Osoite, "Osoite_ID", "Katuosoite");
             ViewBag.Puhelin_id = new SelectList(db.Puhelin, "Puhelin_ID", "Puhelinnumero_1");
-            ViewBag.Huomio_id = new SelectList(db.Huomiot, "Huomio_ID", "Huomioitavat asiat");
+            ViewBag.Huomio_id = new SelectList(db.Huomiot, "Huomio_ID", "Muut");
+            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus");
+            ViewBag.Varaus_ID = new SelectList(db.Varaus, "Varaus_ID", "Palvelun_nimi");
+            ViewBag.Palvelu_ID = new SelectList(db.Palvelut, "Palvelu_ID", "Palvelun_nimi");
             return View();
         }
 
@@ -67,7 +70,7 @@ namespace PointAjanvarausMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Asiakas_ID,Etunimi,Sukunimi,Katuosoite,Postinumero,Postitoimipaikka,Henkilotunnus,Puhelinnumero_1,Huomiot,Osoite_id,Huomio_id,Puhelin_id")] Asiakkaat asiakkaat)
+        public ActionResult Create([Bind(Include = "Asiakas_ID,Etunimi,Sukunimi,Katuosoite,Postinumero,Postitoimipaikka,Henkilotunnus,Puhelinnumero_1,Huomiot,Osoite_id,Huomio_id,Puhelin_id,Hoitaja_ID,Varaus_ID,Palvelu_ID")] Asiakkaat asiakkaat)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +81,10 @@ namespace PointAjanvarausMVC.Controllers
 
             ViewBag.Osoite_id = new SelectList(db.Osoite, "Osoite_ID", "Katuosoite", asiakkaat.Osoite_id);
             ViewBag.Puhelin_id = new SelectList(db.Puhelin, "Puhelin_ID", "Puhelinnumero_1", asiakkaat.Puhelin_id);
-            ViewBag.Huomio_id = new SelectList(db.Huomiot, "Huomio_ID", "Huomioitavat asiat", asiakkaat.Huomio_id);
+            ViewBag.Huomio_id = new SelectList(db.Huomiot, "Huomio_ID", "Muut", asiakkaat.Huomio_id);
+            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus", asiakkaat.Hoitaja_ID);
+            ViewBag.Varaus_ID = new SelectList(db.Varaus, "Varaus_ID", "Palvelun_nimi", asiakkaat.Varaus_ID);
+            ViewBag.Palvelu_ID = new SelectList(db.Palvelut, "Palvelu_ID", "Palvelun_nimi", asiakkaat.Palvelu_ID);
             return View(asiakkaat);
         }
 
@@ -96,7 +102,10 @@ namespace PointAjanvarausMVC.Controllers
             }
             ViewBag.Osoite_id = new SelectList(db.Osoite, "Osoite_ID", "Katuosoite", asiakkaat.Osoite_id);
             ViewBag.Puhelin_id = new SelectList(db.Puhelin, "Puhelin_ID", "Puhelinnumero_1", asiakkaat.Puhelin_id);
-            ViewBag.Huomio_id = new SelectList(db.Huomiot, "Huomio_ID", "Huomioitavat asiat", asiakkaat.Huomio_id);
+            ViewBag.Huomio_id = new SelectList(db.Huomiot, "Huomio_ID", "Muut", asiakkaat.Huomio_id);
+            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus", asiakkaat.Hoitaja_ID);
+            ViewBag.Varaus_ID = new SelectList(db.Varaus, "Varaus_ID", "Palvelun_nimi", asiakkaat.Varaus_ID);
+            ViewBag.Palvelu_ID = new SelectList(db.Palvelut, "Palvelu_ID", "Palvelun_nimi", asiakkaat.Palvelu_ID);
             return View(asiakkaat);
         }
 
@@ -105,7 +114,7 @@ namespace PointAjanvarausMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Asiakas_ID,Etunimi,Sukunimi,Katuosoite,Postinumero,Postitoimipaikka,Henkilotunnus,Puhelinnumero_1,Huomiot,Osoite_id,Huomio_id,Puhelin_id")] Asiakkaat asiakkaat)
+        public ActionResult Edit([Bind(Include = "Asiakas_ID,Etunimi,Sukunimi,Katuosoite,Postinumero,Postitoimipaikka,Henkilotunnus,Puhelinnumero_1,Huomiot,Osoite_id,Huomio_id,Puhelin_id,Hoitaja_ID,Varaus_ID,Palvelu_ID")] Asiakkaat asiakkaat)
         {
             if (ModelState.IsValid)
             {
@@ -115,7 +124,10 @@ namespace PointAjanvarausMVC.Controllers
             }
             ViewBag.Osoite_id = new SelectList(db.Osoite, "Osoite_ID", "Katuosoite", asiakkaat.Osoite_id);
             ViewBag.Puhelin_id = new SelectList(db.Puhelin, "Puhelin_ID", "Puhelinnumero_1", asiakkaat.Puhelin_id);
-            ViewBag.Huomio_id = new SelectList(db.Huomiot, "Huomio_ID", "Huomioitavat asiat", asiakkaat.Huomio_id);
+            ViewBag.Huomio_id = new SelectList(db.Huomiot, "Huomio_ID", "Muut", asiakkaat.Huomio_id);
+            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus", asiakkaat.Hoitaja_ID);
+            ViewBag.Varaus_ID = new SelectList(db.Varaus, "Varaus_ID", "Palvelun_nimi", asiakkaat.Varaus_ID);
+            ViewBag.Palvelu_ID = new SelectList(db.Palvelut, "Palvelu_ID", "Palvelun_nimi", asiakkaat.Palvelu_ID);
             return View(asiakkaat);
         }
 

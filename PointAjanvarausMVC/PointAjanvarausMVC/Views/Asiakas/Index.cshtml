@@ -7,17 +7,17 @@
 <h2>Asiakashallinta</h2>
 
 <p>
-    @Html.ActionLink("Tallenna uudet aiakastiedot", "Create")
-    <div class="form-group">
-        <input type="submit" value="Tallenna" class="btn btn-default" />
+    @Html.ActionLink("Luo uusi asiakas", "Create")
 
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Tallenna" class="btn btn-default" />
             @Html.ActionLink("Näytä kaikki", "Index")
             @Html.ActionLink("Järjestys etunimen mukaan", "OrderByFirstName")
             @Html.ActionLink("Järjestys sukunimen mukaan", "OrderByLastName")
-            
+        </div>
     </div>
 
-   
 </p>
 <table class="table">
     <tr>
@@ -45,13 +45,24 @@
         <th>
             @Html.DisplayNameFor(model => model.Huomiot)
         </th>
-
+        <th>
+            @Html.DisplayNameFor(model => model.Osoite.Katuosoite)
+        </th>
         @*<th>
             @Html.DisplayNameFor(model => model.Puhelin.Puhelinnumero_1)
+        </th>*@
+        @*<th>
+            @Html.DisplayNameFor(model => model.Huomiot1.Muut)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Hoitajat.Tunnus)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Huomiot1.Huomioitavat_asiat)
-        </th>*@
+            @Html.DisplayNameFor(model => model.Varaus.Palvelun_nimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Palvelut.Palvelun_nimi)
+        </th>
         <th></th>
     </tr>
 
@@ -81,25 +92,31 @@
         <td>
             @Html.DisplayFor(modelItem => item.Huomiot)
         </td>
-     
         @*<td>
             @Html.DisplayFor(modelItem => item.Osoite.Katuosoite)
         </td>*@
         @*<td>
             @Html.DisplayFor(modelItem => item.Puhelin.Puhelinnumero_1)
-        </td>*@
+        </td*@>
         @*<td>
-            @Html.DisplayFor(modelItem => item.Huomiot1.Huomioitavat_asiat)
+            @Html.DisplayFor(modelItem => item.Huomiot1.Muut)
         </td>*@
         <td>
-            @Html.ActionLink("Varaus", "Index", "Varaukset") |
-            @Html.ActionLink("Muokkaa", "Edit", new { id=item.Asiakas_ID }) |
-            @Html.ActionLink("Tiedot", "Details", new { id=item.Asiakas_ID }) |
-            @Html.ActionLink("Poista", "Delete", new { id=item.Asiakas_ID })
+            @Html.DisplayFor(modelItem => item.Hoitajat.Tunnus)
         </td>
-        
+        <td>
+            @Html.DisplayFor(modelItem => item.Varaus.Palvelun_nimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Palvelut.Palvelun_nimi)
+        </td>
+        <td>
+            @Html.ActionLink("Varaus", "Index", "Events") |
+            @Html.ActionLink("Muokkaa", "Edit", new { id = item.Asiakas_ID }) |
+            @Html.ActionLink("Tiedot", "Details", new { id = item.Asiakas_ID }) |
+            @Html.ActionLink("Poista", "Delete", new { id = item.Asiakas_ID })
+        </td>
     </tr>
 }
-
 
 </table>

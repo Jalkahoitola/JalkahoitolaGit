@@ -81,29 +81,23 @@
             </div>
         </div>
 
-
         @*<div class="form-group">
             @Html.LabelFor(model => model.Osoite_id, "Osoite_id", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Osoite_id", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Osoite_id, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
-        <div class="col-md-offset-2 col-md-10">
-            <p><a href="/Osoitteet" class="btn btn-primary btn-lg">Osoitehallinta &raquo;</a></p>
-        </div><br />
-        <br />
-
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.Huomio_id, "Huomio_id", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Huomio_id", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Huomio_id, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.Puhelin_id, "Puhelin_id", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Puhelin_id", null, htmlAttributes: new { @class = "form-control" })
@@ -112,15 +106,39 @@
         </div>*@
 
         <div class="form-group">
+            @Html.LabelFor(model => model.Hoitaja_ID, "Hoitaja_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Hoitaja_ID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Hoitaja_ID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Varaus_ID, "Varaus_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Varaus_ID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Varaus_ID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Palvelu_ID, "Palvelu_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Palvelu_ID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Palvelu_ID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Tallenna" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Takaisin asiakashallintaan", "Index")
+    @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {

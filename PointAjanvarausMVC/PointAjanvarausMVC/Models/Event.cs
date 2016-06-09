@@ -24,8 +24,8 @@ namespace PointAjanvarausMVC.Models
         public string Info { get; set; }
     
         public virtual Hoitopaikat Hoitopaikat { get; set; }
-        public virtual Asiakkaat Asiakkaat { get; set; }
         public virtual Palvelut Palvelut { get; set; }
         public virtual Hoitajat Hoitajat { get; set; }
+        public virtual Asiakkaat Asiakkaat { get; set; }
     }
 }
