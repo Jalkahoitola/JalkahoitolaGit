@@ -155,7 +155,10 @@
                 Päivämäärä
             </th>
             <th>
-                Varausaika
+                Varausaika alku
+            </th>
+            <th>
+                Varausaika loppu
             </th>
             <th>
                 Palvelun nimi
@@ -170,17 +173,23 @@
                 Asiakas sukunimi
             </th>
             <th>
+                Asiakastunnus
+            </th>
+            <th>
                 Huomiot
             </th>
         </tr>
-        @foreach (var item in Model.Event)
+        @foreach (var item in Model.Varaus)
             {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Päivämäärä)
+                    @Html.DisplayFor(modelItem => item.pvm)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Varausaika)
+                    @Html.DisplayFor(modelItem => item.Alku)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Loppu)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Palvelut.Palvelun_nimi)
@@ -189,13 +198,16 @@
                     @Html.DisplayFor(modelItem => item.Palvelut.Palvelun_kesto)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Asiakkaat.Etunimi)
+                    @Html.DisplayFor(modelItem => item.Asiakkaat1.Etunimi)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Asiakkaat.Sukunimi)
+                    @Html.DisplayFor(modelItem => item.Asiakkaat1.Sukunimi)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Asiakkaat.Huomiot)
+                    @Html.DisplayFor(modelItem => item.Asiakkaat1.Asiakastunnus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Asiakkaat1.Huomiot)
                 </td>
 
             </tr>

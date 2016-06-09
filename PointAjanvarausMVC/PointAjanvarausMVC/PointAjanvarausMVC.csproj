@@ -1012,6 +1012,8 @@
     <Content Include="Views\Asiakas\Details.cshtml" />
     <Content Include="Views\Asiakas\Edit.cshtml" />
     <Content Include="Views\Asiakas\Index.cshtml" />
+    <Content Include="Views\Asiakas\OrderByFirstName.cshtml" />
+    <Content Include="Views\Asiakas\OrderByLastName.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

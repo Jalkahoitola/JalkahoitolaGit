@@ -12,6 +12,7 @@
     @Html.ActionLink("Järjestys etunimen mukaan", "OrderByFirstName")
     @Html.ActionLink("Järjestys sukunimen mukaan", "OrderByLastName")
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -30,10 +31,19 @@
         <th>
             @Html.DisplayNameFor(model => model.Asiakkaat1.Sukunimi)
         </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Asiakkaat1.Asiakastunnus)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Asiakkaat1.Asiakas_ID)
+        </th>
     
         <th>
             @Html.DisplayNameFor(model => model.Palvelun_nimi)
         </th>
+
         <th>
             @Html.DisplayNameFor(model => model.Palvelut.Palvelun_nimi)
         </th>
@@ -45,12 +55,14 @@
         <th>
             @Html.DisplayNameFor(model => model.Hoitajat.Tunnus)
         </th>
+
         <th>
             @Html.DisplayNameFor(model => model.Hoitopaikat.Hoitopaikan_Nimi)
         </th>
-        <th>
+
+        @*<th>
             @Html.DisplayNameFor(model => model.Hoitopaikat.Hoitopaikan_Numero)
-        </th>
+        </th>*@
      
         <th>
             @Html.DisplayNameFor(model => model.Type)
@@ -77,13 +89,17 @@
             @Html.DisplayFor(modelItem => item.Asiakkaat1.Sukunimi)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Asiakkaat1.Asiakastunnus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Asiakkaat1.Asiakas_ID)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Palvelun_nimi)
         </td>
-
         <td>
             @Html.DisplayFor(modelItem => item.Palvelut.Palvelun_nimi)
         </td>
-
         <td>
             @Html.DisplayFor(modelItem => item.Info)
         </td>   
@@ -93,10 +109,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Hoitopaikat.Hoitopaikan_Nimi)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Hoitopaikat.Hoitopaikan_Numero)
-        </td>
-    
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.Type)
         </td>

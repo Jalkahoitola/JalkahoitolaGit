@@ -70,7 +70,7 @@ namespace PointAjanvarausMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Asiakas_ID,Etunimi,Sukunimi,Katuosoite,Postinumero,Postitoimipaikka,Henkilotunnus,Puhelinnumero_1,Huomiot,Osoite_id,Huomio_id,Puhelin_id,Hoitaja_ID,Varaus_ID,Palvelu_ID")] Asiakkaat asiakkaat)
+        public ActionResult Create([Bind(Include = "Asiakas_ID,Etunimi,Sukunimi,Katuosoite,Postinumero,Postitoimipaikka,Henkilotunnus,Puhelinnumero_1,Huomiot,Osoite_id,Huomio_id,Puhelin_id,Hoitaja_ID,Varaus_ID,Palvelu_ID,Asiakastunnus")] Asiakkaat asiakkaat)
         {
             if (ModelState.IsValid)
             {
@@ -114,7 +114,7 @@ namespace PointAjanvarausMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Asiakas_ID,Etunimi,Sukunimi,Katuosoite,Postinumero,Postitoimipaikka,Henkilotunnus,Puhelinnumero_1,Huomiot,Osoite_id,Huomio_id,Puhelin_id,Hoitaja_ID,Varaus_ID,Palvelu_ID")] Asiakkaat asiakkaat)
+        public ActionResult Edit([Bind(Include = "Asiakas_ID,Etunimi,Sukunimi,Katuosoite,Postinumero,Postitoimipaikka,Henkilotunnus,Puhelinnumero_1,Huomiot,Osoite_id,Huomio_id,Puhelin_id,Hoitaja_ID,Varaus_ID,Palvelu_ID,Asiakastunnus")] Asiakkaat asiakkaat)
         {
             if (ModelState.IsValid)
             {

@@ -24,6 +24,7 @@
           <Property Name="Hoitaja_ID" Type="int" />
           <Property Name="Varaus_ID" Type="int" />
           <Property Name="Palvelu_ID" Type="int" />
+          <Property Name="Asiakastunnus" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Event">
           <Key>
@@ -2046,6 +2047,7 @@
           <NavigationProperty Name="Palvelut1" Relationship="JohaMeriSQL2Model.FK_Palvelut_ToTable" FromRole="Asiakkaat" ToRole="Palvelut" />
           <NavigationProperty Name="Puhelin1" Relationship="JohaMeriSQL2Model.FK_Puhelin_ToTable" FromRole="Asiakkaat" ToRole="Puhelin" />
           <NavigationProperty Name="Varaus1" Relationship="JohaMeriSQL2Model.FK_Varaus_ToTable_1" FromRole="Asiakkaat" ToRole="Varaus" />
+          <Property Name="Asiakastunnus" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Asiakkaat_ToTable">
           <End Type="JohaMeriSQL2Model.Osoite" Role="Osoite" Multiplicity="0..1" />
@@ -2456,6 +2458,7 @@
           <EntitySetMapping Name="Asiakkaat">
             <EntityTypeMapping TypeName="JohaMeriSQL2Model.Asiakkaat">
               <MappingFragment StoreEntitySet="Asiakkaat">
+                <ScalarProperty Name="Asiakastunnus" ColumnName="Asiakastunnus" />
                 <ScalarProperty Name="Palvelu_ID" ColumnName="Palvelu_ID" />
                 <ScalarProperty Name="Varaus_ID" ColumnName="Varaus_ID" />
                 <ScalarProperty Name="Hoitaja_ID" ColumnName="Hoitaja_ID" />
