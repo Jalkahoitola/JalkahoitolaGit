@@ -7,6 +7,7 @@
 
 @section scripts{
    
+<script src="~/Scripts/modernizr-2.6.2.js"></script>
     <script>
         $(function () {
             alert("Sivun alustus.");
@@ -23,23 +24,13 @@
 
 
 <body>
-
-
-    @*BRAND IMAGE*@
-    
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="xnavbar-brand" href="#" title="Point College  Aikuiskoulutus" rel="home" width="52" height="16">
-                    <img alt="Point College Aikuiskoulutus logo" src="~/Images/LogoPointCollege.png" />
-                </a>
-            </div>
-        </div>
    
-
     <div class="jumbotron">
+
         <h1>POINT COLLEGE JALKAHOITOLAN AJANVARAUSTIETOKANTA</h1>
         <h2>PointCollege Jalkahoitola ajanvaraustietokanta & Web-sivusto</h2>
-        <p class="lead">Tämä on datanomi opintojen harjoitustehtävä, jossa kehitetään PointCollegen jalkahoitolalle uusi ajanvaraus systeemi. Projektissa käytetään kehittimenä Visual Studiota, jossa käytetään ASP.NET MVC 5 web applikaatiota Entity Framework 6 ympäristössä. Projektissa käytetään seuraavia ... Tietokannan käsittelytekniikkana käytetään Entity Frameworkia (EF). Sivujen luomisessa käytetään seuraavia HTML5-tekniikoita: CSS, CSS3 ja JavaScript. Projektiin kuuluu asiakastietokannan kehittämisen lisäksi web-sivuston kehitystyö.</p>
+        <p class="lead">Tämä on datanomi opintojen harjoitustehtävä, jossa kehitetään PointCollegen jalkahoitolalle uusi ajanvaraus järjestelmä.
+        Projektissa luodaan Visual Studion avulla käyttöliittymät, joissa hyödynnetään ASP.NET MVC 5 bootstrapin responsiivisia www-sivuja. Tietokantojen data tallentuu SQL-tietokantaan (Azure). Sivujen luomisessa käytetään seuraavia HTML5-tekniikoita: CSS, CSS3 ja JavaScript. Projektiin kuuluu asiakastietokannan kehittämisen lisäksi web-sivuston kehitystyö.</p>
 
 
         <div class="col-md-offset-0 col-md-12">
@@ -157,8 +148,6 @@
         createEvent();
         dp.update();
     };
-
-
 
 
     //OHJE MVC:lle
@@ -339,39 +328,7 @@
         </script> @*//<--KALENTERINÄKYMÄ*@
 
 
-        <div class="section2">
-    
-
-            @Html.ActionLink("Aloitussivu", "Index", "Index")<br />
-            @Html.ActionLink("Asiakashallinta", "Index", "Asiakas")<br />
-            @Html.ActionLink("Hoitajahallinta", "Index", "Hoitaja")<br />
-            @Html.ActionLink("Hoitopaikkahallinta", "Index", "Hoitopaikka")<br />
-            @Html.ActionLink("Huomiot", "Index", "Huomio")<br />
-            @Html.ActionLink("Kurssihallinta", "Index", "Kurssi")<br />
-            @Html.ActionLink("Osoitehallinta", "Index", "Osoitteet")<br />
-            @Html.ActionLink("Palveluhallinta", "Index", "Palvelu")<br />
-            @Html.ActionLink("Postitoimipaikat", "Index", "Postitoimipaikka")<br />
-            @Html.ActionLink("Puhelinhallinta", "Index", "Puhelimet")<br />
-            @Html.ActionLink("Toimipistehallinta", "Index", "Toimipiste")<br />
-            @Html.ActionLink("Asiakasvaraushallinta", "Index", "Events")<br />
-            @Html.ActionLink("Kurssirekisteröinti", "Index", "Rekisteroinnit")<br />
-            @Html.ActionLink("Henkilökuntahallinta", "Index", "Henkilokuntas")<br />
-            @Html.ActionLink("Rahdintoimittajahallinta", "Index", "Shipper")<br />
-            @Html.ActionLink("Tilautenhallinta", "Index", "Tilaus")<br />
-            @Html.ActionLink("Tuotehallinta", "Index", "Tuote")<br />
-            @Html.ActionLink("Varaustenhallinta", "Index", "Varaukset")<br /><br /><br />
-
-            <p><a href="~/Views/Hoitaja/Create.cshtml" class="btn btn-default btn-lg">Hoitajahallinta &raquo;</a></p>
-            <p><a href="/Hoitajat" class="btn btn-primary btn-lg">Hoitajahallinta &raquo;</a></p>
-            <p><a href="/Asiakas" class="btn btn-primary btn-lg">Asiakashallinta &raquo;</a></p>
-
-            <div class="btn-group-vertical">
-                <div class="form-actions no-color">
-                    <input type="submit" value="Aloitussivu" class="btn btn-default" /> |
-                </div>
-            </div>
-        </div>
-        <br />
+       <br /><br /><br />
 
         <div class="Opetusvideo">
             <!-- 16:9 aspect ratio -->
@@ -381,22 +338,7 @@
             </div>
         </div>
 
-        <!-- Single button -->
-        <div class="btn-group-vertical">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Action <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-            </ul>
         </div>
-    </div>
-    <br />
-
 
     <nav>
         <ul class="pager">

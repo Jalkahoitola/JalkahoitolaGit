@@ -60,12 +60,12 @@ border-radius: 0 4px 4px 4px;
         }
 
 
-   
-        }
+
 
         .clearfix:after {
             content: "";
             display: table;
             clear: both;
         }
+     
       
