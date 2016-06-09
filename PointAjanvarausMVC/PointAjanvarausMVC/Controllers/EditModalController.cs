@@ -47,7 +47,7 @@ namespace PointAjanvarausMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "varaus_ID,type,opiskelija_id,hoitopaikka_id,asiakas_id,pvm,alku,loppu,sisalto")] Varaus varaus)
+        public ActionResult Create([Bind(Include = "Varaus_ID,Type,Hoitaja_ID,Hoitopaikka_ID,Asiakas_ID,pvm,Alku,Loppu,Info")] Varaus varaus)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace PointAjanvarausMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "varaus_ID,type,opiskelija_id,hoitopaikka_id,asiakas_id,pvm,alku,loppu,sisalto")] Varaus varaus)
+        public ActionResult Edit([Bind(Include = "Varaus_ID,Type,Hoitaja_ID,Hoitopaikka_ID,Asiakas_ID,pvm,Alku,Loppu,Info")] Varaus varaus)
         {
             if (ModelState.IsValid)
             {
