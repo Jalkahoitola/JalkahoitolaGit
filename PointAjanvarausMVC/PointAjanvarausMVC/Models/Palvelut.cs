@@ -42,5 +42,6 @@ namespace PointAjanvarausMVC.Models
         public virtual Asiakkaat Asiakkaat1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Hoitajat> Hoitajat1 { get; set; }
+        public virtual Varaus Varaus1 { get; set; }
     }
 }

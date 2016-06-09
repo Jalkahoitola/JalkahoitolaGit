@@ -72,6 +72,8 @@
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Varaus_ToTable_1" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Hoitajat_ToTable_4" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Hoitajat_ToTable_5" />
+        <AssociationConnector Association="JohaMeriSQL2Model.FK_Hoitopaikat_ToTable_1" />
+        <AssociationConnector Association="JohaMeriSQL2Model.FK_Palvelut_ToTable_31" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
