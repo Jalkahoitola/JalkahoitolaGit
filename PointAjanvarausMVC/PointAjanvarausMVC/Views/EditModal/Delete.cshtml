@@ -1,0 +1,89 @@
+﻿@model PointAjanvarausMVC.Models.Varaus
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutModal.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Varaus</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.opiskelija_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.opiskelija_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hoitopaikka_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hoitopaikka_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.asiakas_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.asiakas_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pvm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pvm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.alku)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.alku)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.loppu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.loppu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sisalto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sisalto)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

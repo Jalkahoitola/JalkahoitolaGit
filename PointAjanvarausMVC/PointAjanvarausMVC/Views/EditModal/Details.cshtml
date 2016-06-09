@@ -1,0 +1,83 @@
+﻿@model PointAjanvarausMVC.Models.Varaus
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutModal.cshtml";
+}
+
+<h2>Tiedot</h2>
+
+<div>
+    <h4>Varaus</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hoitaja_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoitaja_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hoitopaikka_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoitopaikka_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Asiakas_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Asiakas_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pvm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pvm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Alku)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Alku)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Loppu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Loppu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sisalto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sisalto)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Varaus_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

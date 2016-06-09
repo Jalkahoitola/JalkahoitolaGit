@@ -9,6 +9,7 @@
 	[Palvelu_ID] INT NULL,
 	[sisalto] NVARCHAR(100) NULL,
 	[Type] INT NOT NULL,
+	[pvm] DATETIME NULL,
     PRIMARY KEY CLUSTERED ([Varaus_ID] ASC),
 	CONSTRAINT [FK_Varaus_ToTable] FOREIGN KEY ([Hoitaja_ID]) REFERENCES [dbo].[Hoitajat] ([Hoitaja_ID]),
     CONSTRAINT [FK_Varaus_ToTable_1] FOREIGN KEY ([Asiakas_ID]) REFERENCES [dbo].[Asiakkaat] ([Asiakas_ID]),

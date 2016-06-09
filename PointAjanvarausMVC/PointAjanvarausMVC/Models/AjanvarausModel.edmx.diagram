@@ -67,7 +67,7 @@
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Shippers_ToTable" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Toimipisteet_ToTable1" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Puhelin_ToTable_31" />
-        <EntityTypeShape EntityType="JohaMeriSQL2Model.Varaus" Width="1.5" PointX="25.5" PointY="1.375" />
+        <EntityTypeShape EntityType="JohaMeriSQL2Model.Varaus" Width="1.5" PointX="25.5" PointY="1.25" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Varaus_ToTable_1" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Varaus_ToTable" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Varaus_ToTable_2" />

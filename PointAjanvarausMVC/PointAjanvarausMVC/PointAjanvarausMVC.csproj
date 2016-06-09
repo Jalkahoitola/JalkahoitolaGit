@@ -207,9 +207,9 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Context\AsiakasContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AsiakasController.cs" />
+    <Compile Include="Controllers\EditModalController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HenkilokuntasController.cs" />
     <Compile Include="Controllers\HoitajaController.cs" />
@@ -248,7 +248,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AjanvarausModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\ApplyFormatInEditModeAttribute.cs" />
     <Compile Include="Models\Asiakkaat.cs">
       <DependentUpon>AjanvarausModel.tt</DependentUpon>
     </Compile>
@@ -860,6 +859,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\daypilot-all.min.js" />
+    <Content Include="Scripts\DayPilot\daypilot-all.min.js" />
     <Content Include="Scripts\Demo.js" />
     <Content Include="Scripts\jquery-2.2.3.js" />
     <Content Include="Scripts\jquery-2.2.3.min.js" />
@@ -873,6 +873,18 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\src\daypilot-calendar.src.js" />
+    <Content Include="Scripts\src\daypilot-common.src.js" />
+    <Content Include="Scripts\src\daypilot-datepicker.src.js" />
+    <Content Include="Scripts\src\daypilot-modal.src.js" />
+    <Content Include="Scripts\src\daypilot-month.src.js" />
+    <Content Include="Scripts\src\daypilot-navigator.src.js" />
+    <Content Include="Scripts\src\min\daypilot-calendar.min.js" />
+    <Content Include="Scripts\src\min\daypilot-common.min.js" />
+    <Content Include="Scripts\src\min\daypilot-datepicker.min.js" />
+    <Content Include="Scripts\src\min\daypilot-modal.min.js" />
+    <Content Include="Scripts\src\min\daypilot-month.min.js" />
+    <Content Include="Scripts\src\min\daypilot-navigator.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -963,7 +975,6 @@
     <Content Include="Views\Hoitaja\Details.cshtml" />
     <Content Include="Views\Hoitaja\Edit.cshtml" />
     <Content Include="Views\Hoitaja\Index.cshtml" />
-    <Content Include="Views\HoitajaPalvelu\Index.cshtml" />
     <Content Include="Views\Asiakas\OrderByFirstName.cshtml" />
     <Content Include="Views\Asiakas\OrderByLastName.cshtml" />
     <Content Include="Views\Hoitaja\OrderByFirstName.cshtml" />
@@ -999,10 +1010,15 @@
     <Content Include="Views\Varaukset\Details.cshtml" />
     <Content Include="Views\Varaukset\Edit.cshtml" />
     <Content Include="Views\Varaukset\Index.cshtml" />
+    <Content Include="Views\EditModal\Create.cshtml" />
+    <Content Include="Views\EditModal\Delete.cshtml" />
+    <Content Include="Views\EditModal\Details.cshtml" />
+    <Content Include="Views\EditModal\Edit.cshtml" />
+    <Content Include="Views\EditModal\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\DayPilot\" />
     <Folder Include="Views\Asiakastieto\" />
     <Folder Include="Views\Raportti\" />
   </ItemGroup>

@@ -274,7 +274,7 @@
             <div class="clear">
             </div>@*//<--event-KALENTERINÄKYMÄ*@
 
-            @*//KALENTERINÄKYMÄ*@
+@*//KALENTERINÄKYMÄ*@
             <div class="calendar">
                 <div style="float:left; width: 150px;">
                     <div id="nav"></div>
@@ -296,186 +296,257 @@
             </select>
         </div>
 
-        <script type="text/javascript">
-        $(document).ready(function() {
-        $("#theme").change(function(e) {
-        dp.theme = this.value;
+@*https://code.daypilot.org/81367/daypilot-modal*@
+
+<script type="text/javascript">
+    var nav = new DayPilot.Navigator("nav");
+    //editoitu
+    nav.locale = "fi-fi";
+
+    nav.showMonths = 1;
+    nav.selectMode = "week";
+    nav.onTimeRangeSelected = function (args) {
+        dp.startDate = args.start;
+
         dp.update();
+
+
+        //JSON kysely
+        LoadEvents(dp.visibleStart(), dp.visibleEnd());
+    };
+    nav.init();
+
+
+    var dp = new DayPilot.Calendar("dp");
+    //editoitu
+    dp.locale = "fi-fi";
+    dp.allowEventOverlap = false;
+
+    dp.viewType = "Week";
+    dp.init();
+
+    //event creating
+    var e = new DayPilot.Event({
+        start: new DayPilot.Date("2016-05-12T12:00:00"),
+        end: new DayPilot.Date("2016-05-12T13:00:00"),
+        id: DayPilot.guid(),
+        text: "EKA"
     });
-});
+
+    dp.events.add(e);
+
+    var e = new DayPilot.Event({
+        start: new DayPilot.Date("2016-05-13T12:00:00"),
+        end: new DayPilot.Date("2016-05-13T16:00:00"),
+        id: DayPilot.guid(),
+        text: "TOKA"
+    });
+
+    //// event creating
+    //dp.onTimeRangeSelected = function (args) {
+    //    var name = prompt("New event name:", "Event");
+    //    dp.clearSelection();
+    //    if (!name) return;
+    //    var e = new DayPilot.Event({
+    //        start: args.start,
+    //        end: args.end,
+    //        id: DayPilot.guid(),
+    //        resource: args.resource,
+    //        text: name
+    //    });
+    //    dp.events.add(e);
+    //    alert("Created");
+    //};
+
+    // event creating MODAL
+    dp.onTimeRangeSelected = function (args) {
+        createEvent();
+        dp.update();
+    };
+
+
+
+
+    //OHJE MVC:lle
+    //http://code.daypilot.org/17910/html5-event-calendar-open-source
+
+    //dp.onEventClicked = function (args) {
+    //    alert("Event clicked: " + args.e.text());
+    //};
+
+    dp.onEventClicked = function (args) {
+        //formatted = $.datepicker.formatDate("M d, yy", new Date("2014-07-08T09:02:21.377"));
+        var startDate = new Date(args.e.start());
+        var endDate = new Date(args.e.end());
+
+        var hour = "" + startDate.getHours(); if (hour.length == 1) { hour = "0" + hour; }
+        var minute = "" + startDate.getMinutes(); if (minute.length == 1) { minute = "0" + minute; }
+        //var sD = (startDate.getMonth() + 1) + '.' + startDate.getDate() + '.' + startDate.getFullYear() + " " + hour + ":" + minute;
+        var sD = startDate.getDate() + '.' + (startDate.getMonth() + 1) + '.' + startDate.getFullYear() + " " + hour + ":" + minute;
+
+        var hour = "" + endDate.getHours(); if (hour.length == 1) { hour = "0" + hour; }
+        var minute = "" + endDate.getMinutes(); if (minute.length == 1) { minute = "0" + minute; }
+        //var eD = (endDate.getMonth() + 1) + '.' + endDate.getDate() + '.' + endDate.getFullYear() + " " + hour + ":" + minute;
+        var eD = endDate.getDate() + '.' + (endDate.getMonth() + 1) + '.' + endDate.getFullYear() + " " + hour + ":" + minute;
+
+        editEvent(args.e.data.ID);
+
+        //alert("Event clicked: Alku: " + sD + " Loppu: " + eD);
+
+        //alert( dp.visibleStart().toString() + " - " + dp.visibleEnd().toString() );
+    };
+
+    // event resizing
+    dp.onEventResized = function (args) {
+        //alert("Resized: " + args.e.text());
+        UpdateEvent(args);
+    };
+
+    // event moving
+    dp.onEventMoved = function (args) {
+        UpdateEvent(args);
+    };
+
+    function LoadEvents(alku, loppu) {
+
+        url = "/Home/GetVaraukset/?alku=" + alku + "&loppu=" + loppu;
+        //Home/GetVaraukset/?alku="2016-05-20T09:02"&loppu="2016-05-29T09:02";
+
+
+        //alert("AJAX url: " + url);
+
+        $.ajax({ url: url, cache: false }).done(function (data) {
+            i = 0;
+
+            //alert("JSON objects: " + data);
+
+            for (var i = 0; i < data.length; i++) {
+                data[i].pvm = ConvertDate(data[i].pvm);
+                data[i].startTime = data[i].startTime;
+                data[i].endTime = data[i].endTime;
+                data[i].start = data[i].pvm.substr(0, 11) + data[i].startTime +":00";
+                data[i].end = data[i].pvm.substr(0, 11) + data[i].endTime + ":00";
+
+                //alert("Varaus alku: " + data[i].start + " Varaus loppu: " + data[i].end);
+
+                var date = new Date(data[i].pvm);
+
+                //alert("varauksen pvm: " + data[i].pvm + " startTime:" + data[i].startTime + " endTime:" + data[i].endTime + " sisältö: " + data[i].text)
+
+            }
+
+            //alert("luodaan varaus kalenteriin: " + i);
+            CreateEvents(data);
+
+        });
+    }
+
+    //event creating
+    function CreateEvents(data) {
+        dp.events.list = data
+        dp.update();
+    }
+
+    //convert json date "\/Date(1464001200000)\/" to "2010-01-01T00:00:00"
+    function ConvertDate(date) {
+        var dateString = date.substr(6);
+        //var dateString = date.match(/\d+/); //1464001200000
+        var currentTime = new Date(parseInt(dateString));
+        var month = currentTime.getMonth() + 1;
+        if (month < 10) { month = "0" + month };
+        var day = currentTime.getDate();
+        if (day < 10) { day = "0" + day };
+        var year = currentTime.getFullYear();
+        if (year < 10) { year = "0" + year };
+        var hours = currentTime.getHours();
+        if (hours < 10) { hours = "0" + hours };
+        var minutes = currentTime.getMinutes();
+        if (minutes < 10) { minutes = "0" + minutes };
+        var seconds = currentTime.getSeconds();
+        if (seconds < 10) { seconds = "0" + seconds };
+        var date = year + "-" + month + "-" + day + "T" + hours + ":" + minutes + ":" + seconds;
+        return date;
+    }
+
+    //convert date "2010-01-01T00:00:00" to "2010-01-01"
+    function ConvertDate2(date) {
+        var month = date.getMonth() + 1;
+        if (month < 10) { month = "0" + month };
+        var day = date.getDay();
+        if (day < 10) { day = "0" + day };
+        var year = date.getYear();
+        if (year < 10) { year = "0" + year };
+        var date = year + "-" + month + "-" + day;
+        return date;
+    }
+
+
+
+    function ConfirmMove(ID) {
+        alert("Vahvista siirto: " + ID);
+    }
+
+    function AddZero(t) {
+        if (t < 10) { t = "0" + t };
+        return t;
+    }
+
+
+    function UpdateEvent(args) {
+        a = new Date(args.e.start());
+        l = new Date(args.e.end());
+
+        var startTime = AddZero(a.getHours()) + ":" + AddZero(a.getMinutes());
+        var endTime = AddZero(l.getHours()) + ":" + AddZero(l.getMinutes());
+
+        d = a.getFullYear() + "-" + AddZero(a.getMonth()+1) + "-" + AddZero(a.getDate());
+
+        url = "/Varaus/Resize/?id=" + args.e.data.ID + "&pvm=" + d + "&newStart=" + startTime + "&newEnd=" + endTime;
+
+        $.ajax({ url: url, cache: false }).done(function (data) {
+            //alert(data);
+        });
+    }
+
+
+    function editEvent(id) {
+        var modal = new DayPilot.Modal();
+        modal.top = 60;
+        modal.width = 500;
+        modal.opacity = 70;
+        modal.border = "10px solid #d0d0d0";
+        modal.closed = function () {
+            if (this.result == "OK") {
+                dps.commandCallBack('refresh');
+            }
+        };
+
+        modal.height = 500;
+        modal.zIndex = 100;
+        modal.showUrl("/EditModal/Edit/" + id);
+    }
+
+    function createEvent() {
+        var modal = new DayPilot.Modal();
+        modal.top = 60;
+        modal.width = 400;
+        modal.opacity = 70;
+        modal.border = "10px solid #d0d0d0";
+        modal.closed = function () {
+            if (this.result == "OK") {
+                dps.commandCallBack('refresh');
+            }
+        };
+
+        modal.height = 400;
+        modal.zIndex = 100;
+        modal.showUrl("/EditModal/Create");
+    }
+
+
+
         </script>
 
-        <script type="text/javascript">
-            var nav = new DayPilot.Navigator("nav");
-            //editoitu
-            nav.locale = "fi-fi";
-
-            nav.showMonths = 1;
-            nav.selectMode = "week";
-            nav.onTimeRangeSelected = function (args) {
-                dp.startDate = args.start;
-
-                dp.update();
-
-                //JSON kysely
-                LoadEvents(dp.visibleStart(), dp.visibleEnd());
-            };
-            nav.init();
-
-
-            var dp = new DayPilot.Calendar("dp");
-            //editoitu
-            dp.locale = "fi-fi";
-
-            dp.viewType = "Week";
-            dp.init();
-
-            //event creating
-            var e = new DayPilot.Event({
-                start: new DayPilot.Date("2016-05-12T12:00:00"),
-                end: new DayPilot.Date("2016-05-12T13:00:00"),
-                id: DayPilot.guid(),
-                text: "EKA"
-            });
-
-            dp.events.add(e);
-
-            var e = new DayPilot.Event({
-                start: new DayPilot.Date("2016-05-13T12:00:00"),
-                end: new DayPilot.Date("2016-05-13T16:00:00"),
-                id: DayPilot.guid(),
-                text: "TOKA"
-            });
-
-            // event creating
-            dp.onTimeRangeSelected = function (args) {
-                var name = prompt("New event name:", "Event");
-                dp.clearSelection();
-                if (!name) return;
-                var e = new DayPilot.Event({
-                    start: args.start,
-                    end: args.end,
-                    id: DayPilot.guid(),
-                    resource: args.resource,
-                    text: name
-                });
-                dp.events.add(e);
-                alert("Created");
-            };
-
-            //OHJE MVC:lle
-            //http://code.daypilot.org/17910/html5-event-calendar-open-source
-
-            //dp.onEventClicked = function (args) {
-            //    alert("Event clicked: " + args.e.text());
-            //};
-
-            dp.onEventClicked = function (args) {
-                //formatted = $.datepicker.formatDate("M d, yy", new Date("2014-07-08T09:02:21.377"));
-                var startDate = new Date(args.e.start());
-                var endDate = new Date(args.e.end());
-
-                var hour = "" + startDate.getHours(); if (hour.length == 1) { hour = "0" + hour; }
-                var minute = "" + startDate.getMinutes(); if (minute.length == 1) { minute = "0" + minute; }
-                //var sD = (startDate.getMonth() + 1) + '.' + startDate.getDate() + '.' + startDate.getFullYear() + " " + hour + ":" + minute;
-                var sD = startDate.getDate() + '.' + (startDate.getMonth() + 1) + '.' + startDate.getFullYear() + " " + hour + ":" + minute;
-
-                var hour = "" + endDate.getHours(); if (hour.length == 1) { hour = "0" + hour; }
-                var minute = "" + endDate.getMinutes(); if (minute.length == 1) { minute = "0" + minute; }
-                //var eD = (endDate.getMonth() + 1) + '.' + endDate.getDate() + '.' + endDate.getFullYear() + " " + hour + ":" + minute;
-                var eD = endDate.getDate() + '.' + (endDate.getMonth() + 1) + '.' + endDate.getFullYear() + " " + hour + ":" + minute;
-
-                //alert("Event clicked: Alku: " + sD + " Loppu: " + eD);
-
-                //alert( dp.visibleStart().toString() + " - " + dp.visibleEnd().toString() );
-            };
-
-            // event resizing
-            dp.onEventResized = function (args) {
-                //alert("Resized: " + args.e.text());
-                UpdateEvent(args);
-            };
-
-            // event moving
-            //Resize(int id, string newStart, string newEnd)
-            dp.onEventMoved = function (args) {
-                UpdateEvent(args);
-            };
-
-            function LoadEvents(alku, loppu) {
-                url = "/Home/GetVaraukset/?alku=" + ConvertDate2(alku) + "&loppu=" + ConvertDate2(loppu);
-
-                //alert("AJAX url: " + url);
-
-                $.ajax(url).done(function (data) {
-                    i = 0;
-
-                    //alert("JSON objects: " + data);
-
-                    for (var i = 0; i < data.length; i++) {
-                        data[i].start = ConvertDate(data[i].start);
-                        data[i].end = ConvertDate(data[i].end)
-
-                        //alert("1. START: " + data[i].start + " END: " + data[i].end);
-                    }
-
-                    CreateEvents(data);
-                });
-            }
-
-            //event creating
-            function CreateEvents(data) {
-                dp.events.list = data
-                dp.update();
-            }
-
-            //convert json date "\/Date(1464001200000)\/" to "2010-01-01T00:00:00"
-            function ConvertDate(date) {
-                var dateString = date.substr(6);
-                var currentTime = new Date(parseInt(dateString));
-                var month = currentTime.getMonth() + 1;
-                if (month < 10) { month = "0" + month };
-                var day = currentTime.getDate();
-                if (day < 10) { day = "0" + day };
-                var year = currentTime.getFullYear();
-                if (year < 10) { year = "0" + year };
-                var hours = currentTime.getHours();
-                if (hours < 10) { hours = "0" + hours };
-                var minutes = currentTime.getMinutes();
-                if (minutes < 10) { minutes = "0" + minutes };
-                var seconds = currentTime.getSeconds();
-                if (seconds < 10) { seconds = "0" + seconds };
-                var date = year + "-" + month + "-" + day + "T" + hours + ":" + minutes + ":" + seconds;
-                return date;
-            }
-
-            //convert date "2010-01-01T00:00:00" to "2010-01-01"
-            function ConvertDate2(date) {
-                var month = date.getMonth() + 1;
-                if (month < 10) { month = "0" + month };
-                var day = date.getDay();
-                if (day < 10) { day = "0" + day };
-                var year = date.getYear();
-                if (year < 10) { year = "0" + year };
-                var date = year + "-" + month + "-" + day;
-                return date;
-            }
-
-            function ConfirmMove(ID) {
-                alert("Vahvista siirto: " + ID);
-            }
-
-            function UpdateEvent(args) {
-                url = "/Varaus/Resize/?id=" + args.e.data.ID + "&newStart=" + args.e.start() + "&newEnd=" + args.e.end();
-
-                //alert(url);
-
-                $.ajax(url).done(function (data) {
-                    //alert(data);
-                });
-            }
-
-        </script>
 
         <div class="section2">
     

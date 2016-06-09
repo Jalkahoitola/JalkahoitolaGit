@@ -233,6 +233,7 @@
           <Property Name="Palvelu_ID" Type="int" />
           <Property Name="sisalto" Type="nvarchar" MaxLength="100" />
           <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="pvm" Type="datetime" />
         </EntityType>
         <EntityType Name="Varauskalenteri">
           <Key>
@@ -2142,6 +2143,7 @@
           <Property Name="Palvelu_ID" Type="Int32" />
           <Property Name="sisalto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="pvm" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Asiakkaat" Relationship="JohaMeriSQL2Model.FK_Varaus_ToTable_1" FromRole="Varaus" ToRole="Asiakkaat" />
           <NavigationProperty Name="Hoitajat" Relationship="JohaMeriSQL2Model.FK_Varaus_ToTable" FromRole="Varaus" ToRole="Hoitajat" />
           <NavigationProperty Name="Hoitopaikat" Relationship="JohaMeriSQL2Model.FK_Varaus_ToTable_2" FromRole="Varaus" ToRole="Hoitopaikat" />
@@ -2448,6 +2450,7 @@
           <EntitySetMapping Name="Varaus">
             <EntityTypeMapping TypeName="JohaMeriSQL2Model.Varaus">
               <MappingFragment StoreEntitySet="Varaus">
+                <ScalarProperty Name="pvm" ColumnName="pvm" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="sisalto" ColumnName="sisalto" />
                 <ScalarProperty Name="Palvelu_ID" ColumnName="Palvelu_ID" />

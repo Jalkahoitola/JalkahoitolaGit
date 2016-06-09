@@ -1,0 +1,76 @@
+﻿@model IEnumerable<PointAjanvarausMVC.Models.Varaus>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutModal.cshtml";
+}
+
+<h2>EditModal</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hoitaja_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hoitopaikka_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Asiakas_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pvm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Alku)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Loppu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sisalto)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hoitaja_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hoitopaikka_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Asiakas_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pvm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Alku)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Loppu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sisalto)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Varaus_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Varaus_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Varaus_ID })
+        </td>
+    </tr>
+}
+
+</table>

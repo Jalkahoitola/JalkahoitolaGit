@@ -51,7 +51,7 @@ namespace PointAjanvarausMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Varaus_ID,Hoitaja_ID,Hoitopaikka_ID,Asiakas_ID,Alku,Loppu,Palvelun_nimi,Palvelu_ID,sisalto,Type")] Varaus varaus)
+        public ActionResult Create([Bind(Include = "Varaus_ID,Hoitaja_ID,Hoitopaikka_ID,Asiakas_ID,Alku,Loppu,Palvelun_nimi,Palvelu_ID,sisalto,Type,pvm")] Varaus varaus)
         {
             if (ModelState.IsValid)
             {
@@ -65,6 +65,29 @@ namespace PointAjanvarausMVC.Controllers
             ViewBag.Hoitopaikka_ID = new SelectList(db.Hoitopaikat, "Hoitopaikka_ID", "Hoitopaikan_Nimi", varaus.Hoitopaikka_ID);
             ViewBag.Palvelu_ID = new SelectList(db.Palvelut, "Palvelu_ID", "Palvelun_nimi", varaus.Palvelu_ID);
             return View(varaus);
+        }
+
+
+        //Varauksen tietojen muuttaminen
+        //https://www.youtube.com/watch?v=l06JSQDuOwo
+        //OHJE
+        //https://msdn.microsoft.com/fi-fi/data/jj592676
+
+
+        public ActionResult Resize(int id, DateTime pvm, DateTime newStart, DateTime newEnd)
+        {
+            using (var dp = new JohaMeriSQL2Entities())
+            {
+                var varaus = dp.Varaus.First(c => c.Varaus_ID == id);
+
+                varaus.pvm = pvm;
+                varaus.Alku = newStart;
+                varaus.Loppu = newEnd;
+                //varaus.sisalto = "PÄIVITETTY_2 19.5.2016";
+                dp.SaveChanges();
+            }
+
+            return new EmptyResult();
         }
 
         // GET: Varaukset/Edit/5
@@ -91,7 +114,7 @@ namespace PointAjanvarausMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Varaus_ID,Hoitaja_ID,Hoitopaikka_ID,Asiakas_ID,Alku,Loppu,Palvelun_nimi,Palvelu_ID,sisalto,Type")] Varaus varaus)
+        public ActionResult Edit([Bind(Include = "Varaus_ID,Hoitaja_ID,Hoitopaikka_ID,Asiakas_ID,Alku,Loppu,Palvelun_nimi,Palvelu_ID,sisalto,Type,pvm")] Varaus varaus)
         {
             if (ModelState.IsValid)
             {

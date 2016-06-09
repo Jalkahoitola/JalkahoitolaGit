@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Varaustenhallinta</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Tee uusi varaus", "Create")
 </p>
 <table class="table">
     <tr>
@@ -25,6 +25,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pvm)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Asiakkaat.Etunimi)
@@ -59,6 +62,9 @@
             @Html.DisplayFor(modelItem => item.Type)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.pvm)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Asiakkaat.Etunimi)
         </td>
         <td>
@@ -71,9 +77,9 @@
             @Html.DisplayFor(modelItem => item.Palvelut.Palvelun_nimi)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Varaus_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Varaus_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Varaus_ID })
+            @Html.ActionLink("Muokkaa", "Edit", new { id=item.Varaus_ID }) |
+            @Html.ActionLink("Tiedot", "Details", new { id=item.Varaus_ID }) |
+            @Html.ActionLink("POista", "Delete", new { id=item.Varaus_ID })
         </td>
     </tr>
 }
