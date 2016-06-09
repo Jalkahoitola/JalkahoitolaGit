@@ -36,6 +36,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Asiakkaat1.Asiakastunnus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Asiakkaat1.Asiakastunnus)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Asiakkaat1.Asiakas_ID)
         </dt>
 
@@ -57,14 +65,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.Asiakkaat1.Sukunimi)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Asiakkaat1.Asiakastunnus)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Asiakkaat1.Asiakastunnus)
         </dd>
 
         <dt>
@@ -140,8 +140,67 @@
         </dd>
 
     </dl>
+
+    <p>
+        @Html.ActionLink("Muokkaa", "Edit", new { id = Model.Varaus_ID }) |
+        @Html.ActionLink("Takaisin varaustenhallintaan", "Index")
+    </p>
+
+    <h4>Asiakkaan hoitotiedot</h4>
+    @*Lisätty alitiedostot Palvelut 9.6.2016:*@
+
+    <table class="table">
+        <tr>
+            <th>
+                Päivämäärä
+            </th>
+            <th>
+                Varausaika alkaa
+            </th>
+            <th>
+                Varausaika loppuu
+            </th>
+            <th>
+                Palvelun nimi
+            </th>
+            <th>
+                Palvelun kesto
+            </th>
+            <th>
+                Hoitajan nimi
+            </th>
+            <th>
+                Huomiot
+            </th>
+        </tr>
+        @foreach (var item in Model.Asiakkaat)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Varaus.pvm)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Varaus.Alku)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Varaus.Loppu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Palvelut.Palvelun_nimi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Palvelut.Palvelun_kesto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hoitajat.Tunnus)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Huomiot)
+                </td>
+
+            </tr>
+        }
+    </table>@*<--25.5.2016 Lisätty alitiedostot, päivitetty 9.6.2016*@
 </div>
-<p>
-    @Html.ActionLink("Muokkaa", "Edit", new { id = Model.Varaus_ID }) |
-    @Html.ActionLink("Takaisin varaustenhallintaan", "Index")
-</p>
+

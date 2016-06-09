@@ -27,8 +27,8 @@ namespace PointAjanvarausMVC.Models
         public Nullable<int> Hoitaja_ID { get; set; }
         public Nullable<int> Hoitopaikka_ID { get; set; }
         public Nullable<int> Asiakas_ID { get; set; }
-        public Nullable<System.DateTime> Alku { get; set; }
-        public Nullable<System.DateTime> Loppu { get; set; }
+        public string Alku { get; set; }
+        public string Loppu { get; set; }
         public string Palvelun_nimi { get; set; }
         public Nullable<int> Palvelu_ID { get; set; }
         public int Type { get; set; }

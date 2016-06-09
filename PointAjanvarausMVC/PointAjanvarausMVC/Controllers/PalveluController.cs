@@ -39,7 +39,7 @@ namespace PointAjanvarausMVC.Controllers
         // GET: Palvelu/Create
         public ActionResult Create()
         {
-            ViewBag.Asiakas_id = new SelectList(db.Asiakkaat, "Asiakas_ID", "Etunimi");
+            ViewBag.Asiakas_id = new SelectList(db.Asiakkaat, "Asiakas_ID", "Asiakastunnus");
             ViewBag.Toimipiste_id = new SelectList(db.Toimipisteet, "Toimipiste_ID", "Toimipisteen_Nimi");
             ViewBag.Hoitaja_id = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus");
             return View();
@@ -59,7 +59,7 @@ namespace PointAjanvarausMVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Asiakas_id = new SelectList(db.Asiakkaat, "Asiakas_ID", "Etunimi", palvelut.Asiakas_id);
+            ViewBag.Asiakas_id = new SelectList(db.Asiakkaat, "Asiakas_ID", "Asiakastunnus", palvelut.Asiakas_id);
             ViewBag.Toimipiste_id = new SelectList(db.Toimipisteet, "Toimipiste_ID", "Toimipisteen_Nimi", palvelut.Toimipiste_id);
             ViewBag.Hoitaja_id = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus", palvelut.Hoitaja_id);
             return View(palvelut);
@@ -77,7 +77,7 @@ namespace PointAjanvarausMVC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Asiakas_id = new SelectList(db.Asiakkaat, "Asiakas_ID", "Etunimi", palvelut.Asiakas_id);
+            ViewBag.Asiakas_id = new SelectList(db.Asiakkaat, "Asiakas_ID", "Asiakastunnus", palvelut.Asiakas_id);
             ViewBag.Toimipiste_id = new SelectList(db.Toimipisteet, "Toimipiste_ID", "Toimipisteen_Nimi", palvelut.Toimipiste_id);
             ViewBag.Hoitaja_id = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus", palvelut.Hoitaja_id);
             return View(palvelut);
@@ -96,7 +96,7 @@ namespace PointAjanvarausMVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Asiakas_id = new SelectList(db.Asiakkaat, "Asiakas_ID", "Etunimi", palvelut.Asiakas_id);
+            ViewBag.Asiakas_id = new SelectList(db.Asiakkaat, "Asiakas_ID", "Asiakastunnus", palvelut.Asiakas_id);
             ViewBag.Toimipiste_id = new SelectList(db.Toimipisteet, "Toimipiste_ID", "Toimipisteen_Nimi", palvelut.Toimipiste_id);
             ViewBag.Hoitaja_id = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus", palvelut.Hoitaja_id);
             return View(palvelut);

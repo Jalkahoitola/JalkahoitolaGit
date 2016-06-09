@@ -235,8 +235,8 @@
           <Property Name="Hoitaja_ID" Type="int" />
           <Property Name="Hoitopaikka_ID" Type="int" />
           <Property Name="Asiakas_ID" Type="int" />
-          <Property Name="Alku" Type="datetime" />
-          <Property Name="Loppu" Type="datetime" />
+          <Property Name="Alku" Type="nvarchar" MaxLength="10" />
+          <Property Name="Loppu" Type="nvarchar" MaxLength="10" />
           <Property Name="Palvelun nimi" Type="nvarchar" MaxLength="100" />
           <Property Name="Palvelu_ID" Type="int" />
           <Property Name="Info" Type="nvarchar" MaxLength="100" />
@@ -1994,8 +1994,8 @@
           <Property Name="Hoitaja_ID" Type="Int32" />
           <Property Name="Hoitopaikka_ID" Type="Int32" />
           <Property Name="Asiakas_ID" Type="Int32" />
-          <Property Name="Alku" Type="DateTime" Precision="3" />
-          <Property Name="Loppu" Type="DateTime" Precision="3" />
+          <Property Name="Alku" Type="String" />
+          <Property Name="Loppu" Type="String" />
           <Property Name="Palvelun_nimi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Palvelu_ID" Type="Int32" />
           <Property Name="Type" Type="Int32" Nullable="false" />
