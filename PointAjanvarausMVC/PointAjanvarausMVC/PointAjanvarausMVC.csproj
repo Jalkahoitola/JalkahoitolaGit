@@ -303,9 +303,9 @@
       <DependentUpon>AjanvarausModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\VarausData.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Models\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="Models\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="Models\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -679,11 +679,11 @@
       <DependentUpon>AjanvarausModel.edmx</DependentUpon>
       <LastGenOutput>AjanvarausModel.cs</LastGenOutput>
     </Content>
-    <Content Include="obj\Debug\PointAjanvarausMVC.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Debug\PointAjanvarausMVC.dll" />
-    <Content Include="obj\Debug\PointAjanvarausMVC.pdb" />
-    <Content Include="obj\Debug\TempPE\Models.AjanvarausModel.cs.dll" />
-    <Content Include="obj\Debug\TempPE\Models.AjanvarausModel.Designer.cs.dll" />
+    <Content Include="Models\obj\Debug\PointAjanvarausMVC.csproj.FileListAbsolute.txt" />
+    <Content Include="Models\obj\Debug\PointAjanvarausMVC.dll" />
+    <Content Include="Models\obj\Debug\PointAjanvarausMVC.pdb" />
+    <Content Include="Models\obj\Debug\TempPE\Models.AjanvarausModel.cs.dll" />
+    <Content Include="Models\obj\Debug\TempPE\Models.AjanvarausModel.Designer.cs.dll" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -847,10 +847,10 @@
     <Content Include="bin\roslyn\vbc.exe.config" />
     <Content Include="bin\roslyn\vbc.rsp" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
-    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\AjanvarausModel.csdl" />
-    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\AjanvarausModel.msl" />
-    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\AjanvarausModel.ssdl" />
+    <Content Include="Models\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="Models\obj\Debug\edmxResourcesToEmbed\Models\AjanvarausModel.csdl" />
+    <Content Include="Models\obj\Debug\edmxResourcesToEmbed\Models\AjanvarausModel.msl" />
+    <Content Include="Models\obj\Debug\edmxResourcesToEmbed\Models\AjanvarausModel.ssdl" />
     <Content Include="Database\file1.js.map" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />

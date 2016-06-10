@@ -6,6 +6,10 @@
 
 <h2>Asiakastiedot</h2>
 
+<p>
+    @Html.ActionLink("Tee uusi varaus", "Create", "Varaukset")
+    
+</p>
 <div>
     <h4>Asiakkaat</h4>
     <hr />
@@ -132,6 +136,11 @@
 
     </dl>
 
+    <p>
+        @Html.ActionLink("Muokkaa", "Edit", new { id = Model.Asiakas_ID }) |
+        @Html.ActionLink("Takaisin asiakashallintaan", "Index")
+    </p>
+
     <h4>Asiakkaan hoitotiedot</h4>
     @*25.5.2016 Lisätty alitiedostot Palvelut, päivitetty 1.6.2016 Event:*@
 
@@ -196,7 +205,3 @@
 
 
 </div>
-<p>
-    @Html.ActionLink("Muokkaa", "Edit", new { id = Model.Asiakas_ID }) |
-    @Html.ActionLink("Takaisin asiakashallintaan", "Index")
-</p>

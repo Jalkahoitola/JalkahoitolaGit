@@ -21,6 +21,7 @@ namespace PointAjanvarausMVC.Models
             this.Palvelut = new HashSet<Palvelut>();
             this.Osoite = new HashSet<Osoite>();
             this.Puhelin1 = new HashSet<Puhelin>();
+            this.Varaus1 = new HashSet<Varaus>();
         }
     
         public int Toimipiste_ID { get; set; }
@@ -29,6 +30,7 @@ namespace PointAjanvarausMVC.Models
         public Nullable<int> Osoite_ID { get; set; }
         public Nullable<int> Puhelin_ID { get; set; }
         public Nullable<int> Huomio_ID { get; set; }
+        public Nullable<int> Varaus_ID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Hoitopaikat> Hoitopaikat { get; set; }
@@ -41,5 +43,8 @@ namespace PointAjanvarausMVC.Models
         public virtual Osoite Osoite1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Puhelin> Puhelin1 { get; set; }
+        public virtual Varaus Varaus { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Varaus> Varaus1 { get; set; }
     }
 }

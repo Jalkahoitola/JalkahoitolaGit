@@ -212,6 +212,7 @@
           <Property Name="Osoite_ID" Type="int" />
           <Property Name="Puhelin_ID" Type="int" />
           <Property Name="Huomio_ID" Type="int" />
+          <Property Name="Varaus_ID" Type="int" />
         </EntityType>
         <EntityType Name="Tuotteet">
           <Key>
@@ -242,6 +243,7 @@
           <Property Name="Info" Type="nvarchar" MaxLength="100" />
           <Property Name="Type" Type="int" Nullable="false" />
           <Property Name="pvm" Type="datetime" />
+          <Property Name="Toimipiste_ID" Type="int" />
         </EntityType>
         <Association Name="FK_Asiakkaat_ToTable">
           <End Role="Osoite" Type="Self.Osoite" Multiplicity="0..1" />
@@ -795,6 +797,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Toimipisteet_ToTable_4">
+          <End Role="Varaus" Type="Self.Varaus" Multiplicity="0..1" />
+          <End Role="Toimipisteet" Type="Self.Toimipisteet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Varaus">
+              <PropertyRef Name="Varaus_ID" />
+            </Principal>
+            <Dependent Role="Toimipisteet">
+              <PropertyRef Name="Varaus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Toimipisteet_ToTable1">
           <End Role="Osoite" Type="Self.Osoite" Multiplicity="0..1" />
           <End Role="Toimipisteet" Type="Self.Toimipisteet" Multiplicity="*" />
@@ -852,6 +866,18 @@
             </Principal>
             <Dependent Role="Varaus">
               <PropertyRef Name="Palvelu_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Varaus_ToTable_4">
+          <End Role="Toimipisteet" Type="Self.Toimipisteet" Multiplicity="0..1" />
+          <End Role="Varaus" Type="Self.Varaus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Toimipisteet">
+              <PropertyRef Name="Toimipiste_ID" />
+            </Principal>
+            <Dependent Role="Varaus">
+              <PropertyRef Name="Toimipiste_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1057,6 +1083,10 @@
             <End Role="Huomiot" EntitySet="Huomiot" />
             <End Role="Toimipisteet" EntitySet="Toimipisteet" />
           </AssociationSet>
+          <AssociationSet Name="FK_Toimipisteet_ToTable_4" Association="Self.FK_Toimipisteet_ToTable_4">
+            <End Role="Varaus" EntitySet="Varaus" />
+            <End Role="Toimipisteet" EntitySet="Toimipisteet" />
+          </AssociationSet>
           <AssociationSet Name="FK_Toimipisteet_ToTable1" Association="Self.FK_Toimipisteet_ToTable1">
             <End Role="Osoite" EntitySet="Osoite" />
             <End Role="Toimipisteet" EntitySet="Toimipisteet" />
@@ -1075,6 +1105,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Varaus_ToTable_3" Association="Self.FK_Varaus_ToTable_3">
             <End Role="Palvelut" EntitySet="Palvelut" />
+            <End Role="Varaus" EntitySet="Varaus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Varaus_ToTable_4" Association="Self.FK_Varaus_ToTable_4">
+            <End Role="Toimipisteet" EntitySet="Toimipisteet" />
             <End Role="Varaus" EntitySet="Varaus" />
           </AssociationSet>
         </EntityContainer>
@@ -1329,6 +1363,14 @@
             <End Role="Varaus" EntitySet="Varaus" />
             <End Role="Palvelut" EntitySet="Palvelut" />
           </AssociationSet>
+          <AssociationSet Name="FK_Toimipisteet_ToTable_4" Association="JohaMeriSQL2Model.FK_Toimipisteet_ToTable_4">
+            <End Role="Varaus" EntitySet="Varaus" />
+            <End Role="Toimipisteet" EntitySet="Toimipisteet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Varaus_ToTable_4" Association="JohaMeriSQL2Model.FK_Varaus_ToTable_4">
+            <End Role="Toimipisteet" EntitySet="Toimipisteet" />
+            <End Role="Varaus" EntitySet="Varaus" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Event">
           <Key>
@@ -1390,6 +1432,9 @@
           <NavigationProperty Name="Osoite" Relationship="JohaMeriSQL2Model.FK_Osoite_ToTable_3" FromRole="Toimipisteet" ToRole="Osoite" />
           <NavigationProperty Name="Osoite1" Relationship="JohaMeriSQL2Model.FK_Toimipisteet_ToTable1" FromRole="Toimipisteet" ToRole="Osoite" />
           <NavigationProperty Name="Puhelin1" Relationship="JohaMeriSQL2Model.FK_Puhelin_ToTable_31" FromRole="Toimipisteet" ToRole="Puhelin" />
+          <Property Name="Varaus_ID" Type="Int32" />
+          <NavigationProperty Name="Varaus" Relationship="JohaMeriSQL2Model.FK_Toimipisteet_ToTable_4" FromRole="Toimipisteet" ToRole="Varaus" />
+          <NavigationProperty Name="Varaus1" Relationship="JohaMeriSQL2Model.FK_Varaus_ToTable_4" FromRole="Toimipisteet" ToRole="Varaus" />
         </EntityType>
         <Association Name="FK_Hoitopaikat_ToTable">
           <End Type="JohaMeriSQL2Model.Toimipisteet" Role="Toimipisteet" Multiplicity="0..1" />
@@ -1994,8 +2039,8 @@
           <Property Name="Hoitaja_ID" Type="Int32" />
           <Property Name="Hoitopaikka_ID" Type="Int32" />
           <Property Name="Asiakas_ID" Type="Int32" />
-          <Property Name="Alku" Type="String" />
-          <Property Name="Loppu" Type="String" />
+          <Property Name="Alku" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Loppu" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
           <Property Name="Palvelun_nimi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Palvelu_ID" Type="Int32" />
           <Property Name="Type" Type="Int32" Nullable="false" />
@@ -2009,6 +2054,9 @@
           <NavigationProperty Name="Hoitajat1" Relationship="JohaMeriSQL2Model.FK_Hoitajat_ToTable_4" FromRole="Varaus" ToRole="Hoitajat" />
           <NavigationProperty Name="Hoitopaikat1" Relationship="JohaMeriSQL2Model.FK_Hoitopaikat_ToTable_1" FromRole="Varaus" ToRole="Hoitopaikat" />
           <NavigationProperty Name="Palvelut1" Relationship="JohaMeriSQL2Model.FK_Palvelut_ToTable_31" FromRole="Varaus" ToRole="Palvelut" />
+          <Property Name="Toimipiste_ID" Type="Int32" />
+          <NavigationProperty Name="Toimipisteet" Relationship="JohaMeriSQL2Model.FK_Toimipisteet_ToTable_4" FromRole="Varaus" ToRole="Toimipisteet" />
+          <NavigationProperty Name="Toimipisteet1" Relationship="JohaMeriSQL2Model.FK_Varaus_ToTable_4" FromRole="Varaus" ToRole="Toimipisteet" />
         </EntityType>
         <Association Name="FK_Varaus_ToTable">
           <End Type="JohaMeriSQL2Model.Hoitajat" Role="Hoitajat" Multiplicity="0..1" />
@@ -2271,6 +2319,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Toimipisteet_ToTable_4">
+          <End Type="JohaMeriSQL2Model.Varaus" Role="Varaus" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Toimipisteet" Role="Toimipisteet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Varaus">
+              <PropertyRef Name="Varaus_ID" />
+            </Principal>
+            <Dependent Role="Toimipisteet">
+              <PropertyRef Name="Varaus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Varaus_ToTable_4">
+          <End Type="JohaMeriSQL2Model.Toimipisteet" Role="Toimipisteet" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Varaus" Role="Varaus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Toimipisteet">
+              <PropertyRef Name="Toimipiste_ID" />
+            </Principal>
+            <Dependent Role="Varaus">
+              <PropertyRef Name="Toimipiste_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2323,6 +2395,7 @@
           <EntitySetMapping Name="Toimipisteet">
             <EntityTypeMapping TypeName="JohaMeriSQL2Model.Toimipisteet">
               <MappingFragment StoreEntitySet="Toimipisteet">
+                <ScalarProperty Name="Varaus_ID" ColumnName="Varaus_ID" />
                 <ScalarProperty Name="Huomio_ID" ColumnName="Huomio_ID" />
                 <ScalarProperty Name="Puhelin_ID" ColumnName="Puhelin_ID" />
                 <ScalarProperty Name="Osoite_ID" ColumnName="Osoite_ID" />
@@ -2496,6 +2569,7 @@
           <EntitySetMapping Name="Varaus">
             <EntityTypeMapping TypeName="JohaMeriSQL2Model.Varaus">
               <MappingFragment StoreEntitySet="Varaus">
+                <ScalarProperty Name="Toimipiste_ID" ColumnName="Toimipiste_ID" />
                 <ScalarProperty Name="Info" ColumnName="Info" />
                 <ScalarProperty Name="pvm" ColumnName="pvm" />
                 <ScalarProperty Name="Type" ColumnName="Type" />

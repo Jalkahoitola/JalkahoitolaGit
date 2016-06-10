@@ -39,8 +39,8 @@ namespace PointAjanvarausMVC.Controllers
         // GET: Osoitteet/Create
         public ActionResult Create()
         {
-            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Etunimi");
-            ViewBag.Henkilokunta_ID = new SelectList(db.Henkilokunta, "Henkilokunta_ID", "Etunimi");
+            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Asiakastunnus");
+            ViewBag.Henkilokunta_ID = new SelectList(db.Henkilokunta, "Henkilokunta_ID", "Tunnus");
             ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus");
             ViewBag.Toimipiste_ID = new SelectList(db.Toimipisteet, "Toimipiste_ID", "Toimipisteen_Nimi");
             ViewBag.Shipper_ID = new SelectList(db.Shippers, "Shipper_ID", "Yritysnimi");
@@ -61,7 +61,7 @@ namespace PointAjanvarausMVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Etunimi", osoite.Asiakas_ID);
+            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Asiakastunnus", osoite.Asiakas_ID);
             ViewBag.Henkilokunta_ID = new SelectList(db.Henkilokunta, "Henkilokunta_ID", "Etunimi", osoite.Henkilokunta_ID);
             ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus", osoite.Hoitaja_ID);
             ViewBag.Toimipiste_ID = new SelectList(db.Toimipisteet, "Toimipiste_ID", "Toimipisteen_Nimi", osoite.Toimipiste_ID);
@@ -81,7 +81,7 @@ namespace PointAjanvarausMVC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Etunimi", osoite.Asiakas_ID);
+            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Asiakastunnus", osoite.Asiakas_ID);
             ViewBag.Henkilokunta_ID = new SelectList(db.Henkilokunta, "Henkilokunta_ID", "Etunimi", osoite.Henkilokunta_ID);
             ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus", osoite.Hoitaja_ID);
             ViewBag.Toimipiste_ID = new SelectList(db.Toimipisteet, "Toimipiste_ID", "Toimipisteen_Nimi", osoite.Toimipiste_ID);
@@ -102,7 +102,7 @@ namespace PointAjanvarausMVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Etunimi", osoite.Asiakas_ID);
+            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Asiakastunnus", osoite.Asiakas_ID);
             ViewBag.Henkilokunta_ID = new SelectList(db.Henkilokunta, "Henkilokunta_ID", "Etunimi", osoite.Henkilokunta_ID);
             ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus", osoite.Hoitaja_ID);
             ViewBag.Toimipiste_ID = new SelectList(db.Toimipisteet, "Toimipiste_ID", "Toimipisteen_Nimi", osoite.Toimipiste_ID);

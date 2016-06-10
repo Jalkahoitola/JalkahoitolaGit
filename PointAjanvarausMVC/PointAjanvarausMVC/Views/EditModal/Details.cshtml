@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_LayoutModal.cshtml";
 }
 
-<h2>Tiedot</h2>
+<h2>Varaustiedot</h2>
 
 <div>
     <h4>Varaus</h4>
@@ -37,6 +37,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Asiakkaat1.Asiakastunnus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Asiakkaat1.Asiakastunnus)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Asiakkaat1.Asiakas_ID)
         </dt>
 
@@ -61,19 +69,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Asiakkaat1.Asiakastunnus)
+            @Html.DisplayNameFor(model => model.Palvelut.Palvelun_nimi)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Asiakkaat1.Asiakastunnus)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Palvelun_nimi)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Palvelun_nimi)
+            @Html.DisplayFor(model => model.Palvelut.Palvelun_nimi)
         </dd>
 
         <dt>
@@ -104,6 +104,10 @@
             @Html.DisplayNameFor(model => model.Hoitajat.Sukunimi)
         </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.Hoitajat.Sukunimi)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Hoitopaikat.Hoitopaikan_Nimi)
         </dt>
@@ -128,10 +132,9 @@
             @Html.DisplayFor(model => model.Type)
         </dd>
  
-
     </dl>
 </div>
 <p>
     @Html.ActionLink("Muokkaa", "Edit", new { id = Model.Varaus_ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Takaisin ajanvaaukseen", "Index")
 </p>

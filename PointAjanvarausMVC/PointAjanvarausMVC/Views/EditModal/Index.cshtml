@@ -8,7 +8,8 @@
 <h2>EditModal</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Luo uusi kalenterivaraus", "Create")
+    @Html.ActionLink("Takaisin kalenterinäkymään", "Index","Home")
 </p>
 
 <table class="table">
@@ -22,16 +23,17 @@
         <th>
             @Html.DisplayNameFor(model => model.Loppu)
         </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Asiakkaat1.Asiakastunnus)
+        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.Asiakkaat1.Etunimi)
         </th>
 
         <th>
             @Html.DisplayNameFor(model => model.Asiakkaat1.Sukunimi)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.Asiakkaat1.Asiakastunnus)
         </th>
 
         <th>
@@ -81,15 +83,17 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Loppu)
             </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Asiakkaat1.Asiakastunnus)
+            </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.Asiakkaat1.Etunimi)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Asiakkaat1.Sukunimi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Asiakkaat1.Asiakastunnus)
-            </td>
+            </td>        
             <td>
                 @Html.DisplayFor(modelItem => item.Asiakkaat1.Asiakas_ID)
             </td>

@@ -17,7 +17,7 @@ namespace PointAjanvarausMVC.Controllers
         // GET: Varaukset
         public ActionResult Index()
         {
-            var varaus = db.Varaus.Include(v => v.Asiakkaat).Include(v => v.Hoitajat).Include(v => v.Hoitopaikat).Include(v => v.Palvelut);
+            var varaus = db.Varaus.Include(v => v.Asiakkaat).Include(v => v.Hoitajat).Include(v => v.Hoitopaikat).Include(v => v.Palvelut).Include(v => v.Toimipisteet);
             return View(varaus.ToList());
         }
 
@@ -39,10 +39,11 @@ namespace PointAjanvarausMVC.Controllers
         // GET: Varaukset/Create
         public ActionResult Create()
         {
-            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Etunimi", "Sukunimi");
+            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Asiakastunnus");
             ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus");
             ViewBag.Hoitopaikka_ID = new SelectList(db.Hoitopaikat, "Hoitopaikka_ID", "Hoitopaikan_Nimi", "Hoitopaikan_Numero");
             ViewBag.Palvelu_ID = new SelectList(db.Palvelut, "Palvelu_ID", "Palvelun_nimi");
+            ViewBag.Toimipiste_ID = new SelectList(db.Palvelut, "Toimipiste_ID", "Toimipisteen_nimi");
             return View();
         }
 
@@ -60,10 +61,11 @@ namespace PointAjanvarausMVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Etunimi", "Sukunimi", varaus.Asiakas_ID);
+            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Asiakastunnus", varaus.Asiakas_ID);
             ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus", varaus.Hoitaja_ID);
             ViewBag.Hoitopaikka_ID = new SelectList(db.Hoitopaikat, "Hoitopaikka_ID", "Hoitopaikan_Nimi", "Hoitopaikan_Numero",varaus.Hoitopaikka_ID);
             ViewBag.Palvelu_ID = new SelectList(db.Palvelut, "Palvelu_ID", "Palvelun_nimi", varaus.Palvelu_ID);
+            ViewBag.Toimipiste_ID = new SelectList(db.Palvelut, "Toimipiste_ID", "Toimipisteen_nimi", varaus.Toimipiste_ID);
             return View(varaus);
         }
 
@@ -106,6 +108,7 @@ namespace PointAjanvarausMVC.Controllers
             ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus", varaus.Hoitaja_ID);
             ViewBag.Hoitopaikka_ID = new SelectList(db.Hoitopaikat, "Hoitopaikka_ID", "Hoitopaikan_Nimi", "Hoitopaikan_Numero", varaus.Hoitopaikka_ID);
             ViewBag.Palvelu_ID = new SelectList(db.Palvelut, "Palvelu_ID", "Palvelun_nimi", varaus.Palvelu_ID);
+            ViewBag.Toimipiste_ID = new SelectList(db.Palvelut, "Toimipiste_ID", "Toimipisteen_nimi", varaus.Toimipiste_ID);
             return View(varaus);
         }
 
@@ -126,6 +129,7 @@ namespace PointAjanvarausMVC.Controllers
             ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus", varaus.Hoitaja_ID);
             ViewBag.Hoitopaikka_ID = new SelectList(db.Hoitopaikat, "Hoitopaikka_ID", "Hoitopaikan_Nimi", "Hoitopaikan_Numero", varaus.Hoitopaikka_ID);
             ViewBag.Palvelu_ID = new SelectList(db.Palvelut, "Palvelu_ID", "Palvelun_nimi", varaus.Palvelu_ID);
+            ViewBag.Toimipiste_ID = new SelectList(db.Palvelut, "Toimipiste_ID", "Toimipisteen_nimi", varaus.Toimipiste_ID);
             return View(varaus);
         }
 

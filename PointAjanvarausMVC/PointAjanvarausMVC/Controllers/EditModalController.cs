@@ -39,6 +39,10 @@ namespace PointAjanvarausMVC.Controllers
         // GET: EditModal/Create
         public ActionResult Create()
         {
+            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Etunimi", "Sukunimi");
+            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus");
+            ViewBag.Hoitopaikka_ID = new SelectList(db.Hoitopaikat, "Hoitopaikka_ID", "Hoitopaikan_Nimi", "Hoitopaikan_Numero");
+            ViewBag.Palvelu_ID = new SelectList(db.Palvelut, "Palvelu_ID", "Palvelun_nimi");
             return View();
         }
 
@@ -47,7 +51,7 @@ namespace PointAjanvarausMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Varaus_ID,Type,Hoitaja_ID,Hoitopaikka_ID,Asiakas_ID,pvm,Alku,Loppu,Info")] Varaus varaus)
+        public ActionResult Create([Bind(Include = "Varaus_ID,Type,Hoitaja_ID,Hoitopaikka_ID,Asiakas_ID,pvm,Alku,Loppu,Palvelun_nimi,Palvelu_ID,Info")] Varaus varaus)
         {
             if (ModelState.IsValid)
             {
@@ -55,7 +59,10 @@ namespace PointAjanvarausMVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Asiakastunnus", varaus.Asiakas_ID);
+            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus", varaus.Hoitaja_ID);
+            ViewBag.Hoitopaikka_ID = new SelectList(db.Hoitopaikat, "Hoitopaikka_ID", "Hoitopaikan_Nimi", "Hoitopaikan_Numero", varaus.Hoitopaikka_ID);
+            ViewBag.Palvelu_ID = new SelectList(db.Palvelut, "Palvelu_ID", "Palvelun_nimi", varaus.Palvelu_ID);
             return View(varaus);
         }
 
@@ -71,6 +78,10 @@ namespace PointAjanvarausMVC.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Asiakastunnus", varaus.Asiakas_ID);
+            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus", varaus.Hoitaja_ID);
+            ViewBag.Hoitopaikka_ID = new SelectList(db.Hoitopaikat, "Hoitopaikka_ID", "Hoitopaikan_Nimi", "Hoitopaikan_Numero", varaus.Hoitopaikka_ID);
+            ViewBag.Palvelu_ID = new SelectList(db.Palvelut, "Palvelu_ID", "Palvelun_nimi", varaus.Palvelu_ID);
             return View(varaus);
         }
 
@@ -79,7 +90,7 @@ namespace PointAjanvarausMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Varaus_ID,Type,Hoitaja_ID,Hoitopaikka_ID,Asiakas_ID,pvm,Alku,Loppu,Info")] Varaus varaus)
+        public ActionResult Edit([Bind(Include = "Varaus_ID,Type,Hoitaja_ID,Hoitopaikka_ID,Asiakas_ID,pvm,Alku,Loppu,Palvelun_nimi,Palvelu_ID,Info")] Varaus varaus)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +98,10 @@ namespace PointAjanvarausMVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Asiakastunnus", varaus.Asiakas_ID);
+            ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus", varaus.Hoitaja_ID);
+            ViewBag.Hoitopaikka_ID = new SelectList(db.Hoitopaikat, "Hoitopaikka_ID", "Hoitopaikan_Nimi", "Hoitopaikan_Numero", varaus.Hoitopaikka_ID);
+            ViewBag.Palvelu_ID = new SelectList(db.Palvelut, "Palvelu_ID", "Palvelun_nimi", varaus.Palvelu_ID);
             return View(varaus);
         }
 
