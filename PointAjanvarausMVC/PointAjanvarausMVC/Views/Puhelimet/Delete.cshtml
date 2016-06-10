@@ -4,9 +4,9 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2>Poista puhelintiedot</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Haluatko varmasti poistaa puhelintiedot? Poistaminen edellyttää Admin tason kirjautumista.</h3>
 <div>
     <h4>Puhelin</h4>
     <hr />
@@ -36,19 +36,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Asiakkaat1.Etunimi)
+            @Html.DisplayNameFor(model => model.Asiakkaat1.Asiakastunnus)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Asiakkaat1.Etunimi)
+            @Html.DisplayFor(model => model.Asiakkaat1.Asiakastunnus)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Henkilokunta1.Etunimi)
+            @Html.DisplayNameFor(model => model.Henkilokunta1.Hlokuntatunnus)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Henkilokunta1.Etunimi)
+            @Html.DisplayFor(model => model.Henkilokunta1.Hlokuntatunnus)
         </dd>
 
         <dt>
@@ -73,8 +73,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Poista" class="btn btn-default" /> |
+            @Html.ActionLink("Takaisin puhelinhallintaan", "Index")
         </div>
     }
 </div>

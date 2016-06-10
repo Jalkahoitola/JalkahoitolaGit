@@ -39,8 +39,8 @@ namespace PointAjanvarausMVC.Controllers
         // GET: Puhelimet/Create
         public ActionResult Create()
         {
-            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Etunimi");
-            ViewBag.Henkilokunta_ID = new SelectList(db.Henkilokunta, "Henkilokunta_ID", "Etunimi");
+            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Asiakastunnus");
+            ViewBag.Henkilokunta_ID = new SelectList(db.Henkilokunta, "Henkilokunta_ID", "Hlokuntatunnus");
             ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus");
             ViewBag.Shipper_ID = new SelectList(db.Shippers, "Shipper_ID", "Yritysnimi");
             return View();
@@ -60,8 +60,8 @@ namespace PointAjanvarausMVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Etunimi", puhelin.Asiakas_ID);
-            ViewBag.Henkilokunta_ID = new SelectList(db.Henkilokunta, "Henkilokunta_ID", "Etunimi", puhelin.Henkilokunta_ID);
+            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Asiakastunnus", puhelin.Asiakas_ID);
+            ViewBag.Henkilokunta_ID = new SelectList(db.Henkilokunta, "Henkilokunta_ID", "Hlokuntatunnus", puhelin.Henkilokunta_ID);
             ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus", puhelin.Hoitaja_ID);
             ViewBag.Shipper_ID = new SelectList(db.Shippers, "Shipper_ID", "Yritysnimi", puhelin.Shipper_ID);
             return View(puhelin);
@@ -79,8 +79,8 @@ namespace PointAjanvarausMVC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Etunimi", puhelin.Asiakas_ID);
-            ViewBag.Henkilokunta_ID = new SelectList(db.Henkilokunta, "Henkilokunta_ID", "Etunimi", puhelin.Henkilokunta_ID);
+            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Asiakastunnus", puhelin.Asiakas_ID);
+            ViewBag.Henkilokunta_ID = new SelectList(db.Henkilokunta, "Henkilokunta_ID", "Hlokuntatunnus", puhelin.Henkilokunta_ID);
             ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus", puhelin.Hoitaja_ID);
             ViewBag.Shipper_ID = new SelectList(db.Shippers, "Shipper_ID", "Yritysnimi", puhelin.Shipper_ID);
             return View(puhelin);
@@ -99,8 +99,8 @@ namespace PointAjanvarausMVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Etunimi", puhelin.Asiakas_ID);
-            ViewBag.Henkilokunta_ID = new SelectList(db.Henkilokunta, "Henkilokunta_ID", "Etunimi", puhelin.Henkilokunta_ID);
+            ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Asiakastunnus", puhelin.Asiakas_ID);
+            ViewBag.Henkilokunta_ID = new SelectList(db.Henkilokunta, "Henkilokunta_ID", "Hlokuntatunnus", puhelin.Henkilokunta_ID);
             ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus", puhelin.Hoitaja_ID);
             ViewBag.Shipper_ID = new SelectList(db.Shippers, "Shipper_ID", "Yritysnimi", puhelin.Shipper_ID);
             return View(puhelin);

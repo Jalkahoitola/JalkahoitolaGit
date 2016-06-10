@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Muokkaa puhelinnumerotietoja</h2>
 
 
 @using (Html.BeginForm())
@@ -50,6 +50,14 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.Asiakkaat1.Asiakastunnus, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Asiakkaat1.Asiakastunnus, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Asiakkaat1.Asiakastunnus, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.Hoitaja_ID, "Hoitaja_ID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Hoitaja_ID", null, htmlAttributes: new { @class = "form-control" })
@@ -58,10 +66,26 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.Hoitajat1.Tunnus, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Hoitajat1.Tunnus, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Hoitajat1.Tunnus, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.Henkilokunta_ID, "Henkilokunta_ID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Henkilokunta_ID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Henkilokunta_ID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Henkilokunta1.Hlokuntatunnus, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Henkilokunta1.Hlokuntatunnus, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Henkilokunta1.Hlokuntatunnus, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -75,14 +99,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Tallenna" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Takaisin puhelinhallintaan", "Index")
 </div>
 
 @section Scripts {

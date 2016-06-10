@@ -17,7 +17,7 @@ namespace PointAjanvarausMVC.Controllers
         // GET: Henkilokuntas
         public ActionResult Index()
         {
-            var henkilokunta = db.Henkilokunta.Include(h => h.Osoite).Include(h => h.Puhelin).Include(h => h.Huomiot1);
+            var henkilokunta = db.Henkilokunta.Include(h => h.Osoite).Include(h => h.Puhelin).Include(h => h.Huomiot1).Include(h => h.Tilaukset);
             return View(henkilokunta.ToList());
         }
 
@@ -42,6 +42,7 @@ namespace PointAjanvarausMVC.Controllers
             ViewBag.Osoite_id = new SelectList(db.Osoite, "Osoite_ID", "Katuosoite");
             ViewBag.Puhelin_id = new SelectList(db.Puhelin, "Puhelin_ID", "Puhelinnumero_1");
             ViewBag.Huomio_id = new SelectList(db.Huomiot, "Huomio_ID", "Muut");
+            ViewBag.Tilaus_ID = new SelectList(db.Tilaukset, "Tilaus_ID", "Tilauspäivä");
             return View();
         }
 
@@ -50,7 +51,7 @@ namespace PointAjanvarausMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Henkilokunta_ID,Etunimi,Sukunimi,Katuosoite,Postinumero,Postitoimipaikka,Henkilotunnus,Puhelinnumero_1,Sahkoposti,Huomiot,Osoite_id,Huomio_id,Puhelin_id")] Henkilokunta henkilokunta)
+        public ActionResult Create([Bind(Include = "Henkilokunta_ID,Etunimi,Sukunimi,Katuosoite,Postinumero,Postitoimipaikka,Henkilotunnus,Puhelinnumero_1,Sahkoposti,Huomiot,Osoite_id,Huomio_id,Puhelin_id,Hlokuntatunnus,Tilaus_ID")] Henkilokunta henkilokunta)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +63,7 @@ namespace PointAjanvarausMVC.Controllers
             ViewBag.Osoite_id = new SelectList(db.Osoite, "Osoite_ID", "Katuosoite", henkilokunta.Osoite_id);
             ViewBag.Puhelin_id = new SelectList(db.Puhelin, "Puhelin_ID", "Puhelinnumero_1", henkilokunta.Puhelin_id);
             ViewBag.Huomio_id = new SelectList(db.Huomiot, "Huomio_ID", "Muut", henkilokunta.Huomio_id);
+            ViewBag.Tilaus_ID = new SelectList(db.Tilaukset, "Tilaus_ID", "Tilauspäivä", henkilokunta.Tilaus_ID);
             return View(henkilokunta);
         }
 
@@ -80,6 +82,7 @@ namespace PointAjanvarausMVC.Controllers
             ViewBag.Osoite_id = new SelectList(db.Osoite, "Osoite_ID", "Katuosoite", henkilokunta.Osoite_id);
             ViewBag.Puhelin_id = new SelectList(db.Puhelin, "Puhelin_ID", "Puhelinnumero_1", henkilokunta.Puhelin_id);
             ViewBag.Huomio_id = new SelectList(db.Huomiot, "Huomio_ID", "Muut", henkilokunta.Huomio_id);
+            ViewBag.Tilaus_ID = new SelectList(db.Tilaukset, "Tilaus_ID", "Tilauspäivä", henkilokunta.Tilaus_ID);
             return View(henkilokunta);
         }
 
@@ -88,7 +91,7 @@ namespace PointAjanvarausMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Henkilokunta_ID,Etunimi,Sukunimi,Katuosoite,Postinumero,Postitoimipaikka,Henkilotunnus,Puhelinnumero_1,Sahkoposti,Huomiot,Osoite_id,Huomio_id,Puhelin_id")] Henkilokunta henkilokunta)
+        public ActionResult Edit([Bind(Include = "Henkilokunta_ID,Etunimi,Sukunimi,Katuosoite,Postinumero,Postitoimipaikka,Henkilotunnus,Puhelinnumero_1,Sahkoposti,Huomiot,Osoite_id,Huomio_id,Puhelin_id,Hlokuntatunnus,Tilaus_ID")] Henkilokunta henkilokunta)
         {
             if (ModelState.IsValid)
             {
@@ -99,6 +102,7 @@ namespace PointAjanvarausMVC.Controllers
             ViewBag.Osoite_id = new SelectList(db.Osoite, "Osoite_ID", "Katuosoite", henkilokunta.Osoite_id);
             ViewBag.Puhelin_id = new SelectList(db.Puhelin, "Puhelin_ID", "Puhelinnumero_1", henkilokunta.Puhelin_id);
             ViewBag.Huomio_id = new SelectList(db.Huomiot, "Huomio_ID", "Muut", henkilokunta.Huomio_id);
+            ViewBag.Tilaus_ID = new SelectList(db.Tilaukset, "Tilaus_ID", "Tilauspäivä", henkilokunta.Tilaus_ID);
             return View(henkilokunta);
         }
 

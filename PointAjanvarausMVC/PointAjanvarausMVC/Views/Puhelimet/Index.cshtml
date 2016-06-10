@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Puhelihallinta</h2>
+<h2>Puhelinhallinta</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Tallenna uusi puhelintieto", "Create")
 </p>
 <table class="table">
     <tr>
@@ -21,10 +21,10 @@
             @Html.DisplayNameFor(model => model.Puhelinnumero_3)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Asiakkaat1.Etunimi)
+            @Html.DisplayNameFor(model => model.Asiakkaat1.Asiakastunnus)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Henkilokunta1.Etunimi)
+            @Html.DisplayNameFor(model => model.Henkilokunta1.Hlokuntatunnus)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Hoitajat1.Tunnus)
@@ -47,10 +47,10 @@
             @Html.DisplayFor(modelItem => item.Puhelinnumero_3)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Asiakkaat1.Etunimi)
+            @Html.DisplayFor(modelItem => item.Asiakkaat1.Asiakastunnus)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Henkilokunta1.Etunimi)
+            @Html.DisplayFor(modelItem => item.Henkilokunta1.Hlokuntatunnus)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Hoitajat1.Tunnus)
@@ -59,9 +59,9 @@
             @Html.DisplayFor(modelItem => item.Shippers.Yritysnimi)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Puhelin_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Puhelin_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Puhelin_ID })
+            @Html.ActionLink("Muokkaa", "Edit", new { id=item.Puhelin_ID }) |
+            @Html.ActionLink("Tiedot", "Details", new { id=item.Puhelin_ID }) |
+            @Html.ActionLink("Poista", "Delete", new { id=item.Puhelin_ID })
         </td>
     </tr>
 }

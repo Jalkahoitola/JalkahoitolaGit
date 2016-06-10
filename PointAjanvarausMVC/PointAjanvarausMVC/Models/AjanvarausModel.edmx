@@ -56,6 +56,8 @@
           <Property Name="Osoite_id" Type="int" />
           <Property Name="Huomio_id" Type="int" />
           <Property Name="Puhelin_id" Type="int" />
+          <Property Name="Hlokuntatunnus" Type="nvarchar" MaxLength="100" />
+          <Property Name="Tilaus_ID" Type="int" />
         </EntityType>
         <EntityType Name="Hoitajat">
           <Key>
@@ -398,6 +400,18 @@
             </Principal>
             <Dependent Role="Henkilokunta">
               <PropertyRef Name="Huomio_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Henkilokunta_ToTable_3">
+          <End Role="Tilaukset" Type="Self.Tilaukset" Multiplicity="0..1" />
+          <End Role="Henkilokunta" Type="Self.Henkilokunta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tilaukset">
+              <PropertyRef Name="Tilaus_ID" />
+            </Principal>
+            <Dependent Role="Henkilokunta">
+              <PropertyRef Name="Tilaus_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -951,6 +965,10 @@
             <End Role="Huomiot" EntitySet="Huomiot" />
             <End Role="Henkilokunta" EntitySet="Henkilokunta" />
           </AssociationSet>
+          <AssociationSet Name="FK_Henkilokunta_ToTable_3" Association="Self.FK_Henkilokunta_ToTable_3">
+            <End Role="Tilaukset" EntitySet="Tilaukset" />
+            <End Role="Henkilokunta" EntitySet="Henkilokunta" />
+          </AssociationSet>
           <AssociationSet Name="FK_Hoitajat_ToTable" Association="Self.FK_Hoitajat_ToTable">
             <End Role="Osoite" EntitySet="Osoite" />
             <End Role="Hoitajat" EntitySet="Hoitajat" />
@@ -1371,6 +1389,10 @@
             <End Role="Toimipisteet" EntitySet="Toimipisteet" />
             <End Role="Varaus" EntitySet="Varaus" />
           </AssociationSet>
+          <AssociationSet Name="FK_Henkilokunta_ToTable_3" Association="JohaMeriSQL2Model.FK_Henkilokunta_ToTable_3">
+            <End Role="Tilaukset" EntitySet="Tilaukset" />
+            <End Role="Henkilokunta" EntitySet="Henkilokunta" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Event">
           <Key>
@@ -1494,6 +1516,9 @@
           <NavigationProperty Name="Puhelin1" Relationship="JohaMeriSQL2Model.FK_Puhelin_ToTable_2" FromRole="Henkilokunta" ToRole="Puhelin" />
           <NavigationProperty Name="Osoite" Relationship="JohaMeriSQL2Model.FK_Henkilokunta_ToTable" FromRole="Henkilokunta" ToRole="Osoite" />
           <NavigationProperty Name="Osoite1" Relationship="JohaMeriSQL2Model.FK_Osoite_ToTable_2" FromRole="Henkilokunta" ToRole="Osoite" />
+          <Property Name="Hlokuntatunnus" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Tilaus_ID" Type="Int32" />
+          <NavigationProperty Name="Tilaukset" Relationship="JohaMeriSQL2Model.FK_Henkilokunta_ToTable_3" FromRole="Henkilokunta" ToRole="Tilaukset" />
         </EntityType>
         <EntityType Name="Shippers">
           <Key>
@@ -1528,6 +1553,7 @@
           <Property Name="ShipAddress" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
           <Property Name="Shipper_ID" Type="Int32" />
           <NavigationProperty Name="Tuotteet" Relationship="JohaMeriSQL2Model.FK_Tilaukset_ToTable" FromRole="Tilaukset" ToRole="Tuotteet" />
+          <NavigationProperty Name="Henkilokunta" Relationship="JohaMeriSQL2Model.FK_Henkilokunta_ToTable_3" FromRole="Tilaukset" ToRole="Henkilokunta" />
         </EntityType>
         <EntityType Name="Tuotteet">
           <Key>
@@ -2343,6 +2369,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Henkilokunta_ToTable_3">
+          <End Type="JohaMeriSQL2Model.Tilaukset" Role="Tilaukset" Multiplicity="0..1" />
+          <End Type="JohaMeriSQL2Model.Henkilokunta" Role="Henkilokunta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tilaukset">
+              <PropertyRef Name="Tilaus_ID" />
+            </Principal>
+            <Dependent Role="Henkilokunta">
+              <PropertyRef Name="Tilaus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2408,6 +2446,8 @@
           <EntitySetMapping Name="Henkilokunta">
             <EntityTypeMapping TypeName="JohaMeriSQL2Model.Henkilokunta">
               <MappingFragment StoreEntitySet="Henkilokunta">
+                <ScalarProperty Name="Tilaus_ID" ColumnName="Tilaus_ID" />
+                <ScalarProperty Name="Hlokuntatunnus" ColumnName="Hlokuntatunnus" />
                 <ScalarProperty Name="Puhelin_id" ColumnName="Puhelin_id" />
                 <ScalarProperty Name="Huomio_id" ColumnName="Huomio_id" />
                 <ScalarProperty Name="Osoite_id" ColumnName="Osoite_id" />

@@ -14,6 +14,12 @@ namespace PointAjanvarausMVC.Models
     
     public partial class Tilaukset
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Tilaukset()
+        {
+            this.Henkilokunta = new HashSet<Henkilokunta>();
+        }
+    
         public int Tilaus_ID { get; set; }
         public Nullable<int> Toimittaja_ID { get; set; }
         public Nullable<int> Tuote_ID { get; set; }
@@ -27,5 +33,7 @@ namespace PointAjanvarausMVC.Models
         public Nullable<int> Shipper_ID { get; set; }
     
         public virtual Tuotteet Tuotteet { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Henkilokunta> Henkilokunta { get; set; }
     }
 }

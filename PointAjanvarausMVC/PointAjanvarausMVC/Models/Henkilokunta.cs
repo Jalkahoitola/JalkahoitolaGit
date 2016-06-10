@@ -34,6 +34,8 @@ namespace PointAjanvarausMVC.Models
         public Nullable<int> Osoite_id { get; set; }
         public Nullable<int> Huomio_id { get; set; }
         public Nullable<int> Puhelin_id { get; set; }
+        public string Hlokuntatunnus { get; set; }
+        public Nullable<int> Tilaus_ID { get; set; }
     
         public virtual Huomiot Huomiot1 { get; set; }
         public virtual Puhelin Puhelin { get; set; }
@@ -42,5 +44,6 @@ namespace PointAjanvarausMVC.Models
         public virtual Osoite Osoite { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Osoite> Osoite1 { get; set; }
+        public virtual Tilaukset Tilaukset { get; set; }
     }
 }
