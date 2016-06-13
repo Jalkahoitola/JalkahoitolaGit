@@ -27,41 +27,11 @@
    
     <div class="jumbotron">
 
-        <h1>POINT COLLEGE JALKAHOITOLAN AJANVARAUSTIETOKANTA</h1>
-        <h2>PointCollege Jalkahoitola ajanvaraustietokanta & Web-sivusto</h2>
-        <p class="lead">Tämä on datanomi opintojen harjoitustehtävä, jossa kehitetään PointCollegen jalkahoitolalle uusi ajanvaraus järjestelmä.
-        Projektissa luodaan Visual Studion avulla käyttöliittymät, joissa hyödynnetään ASP.NET MVC 5 bootstrapin responsiivisia www-sivuja. Tietokantojen data tallentuu SQL-tietokantaan (Azure). Sivujen luomisessa käytetään seuraavia HTML5-tekniikoita: CSS, CSS3 ja JavaScript. Projektiin kuuluu asiakastietokannan kehittämisen lisäksi web-sivuston kehitystyö.</p>
-
-
-        <div class="col-md-offset-0 col-md-12">
-            <div class="form-actions no-color">
-                <div class="btn-group btn-group-vertical btn-lg">
-                    <a href="/Index" class="btn btn-default">Aloitussivu&raquo;</a>
-                    <a href="/Asiakas" class="btn btn-default">Asiakashallinta&raquo;</a>
-                    <a href="/Hoitaja" class="btn btn-default">Hoitajahallinta&raquo;</a>
-                    <a href="/Hoitopaikka" class="btn btn-default">Hoitopaikkahallinta&raquo;</a>
-                    <a href="/Huomio" class="btn btn-default">Huomiot&raquo;</a>
-                    <a href="/Kurssit" class="btn btn-default">Kurssihallinta&raquo;</a>
-                    <a href="/Osoitteet" class="btn btn-default">Osoitehallinta&raquo;</a>
-                    <a href="/Palvelu" class="btn btn-default">Palveluhallinta&raquo;</a>
-                    <a href="/Postitoimipaikka" class="btn btn-default">Postitoimipaikat&raquo;</a>
-                    <a href="/Puhelimet" class="btn btn-default">Puhelinhallinta&raquo;</a>
-                    <a href="/Toimipiste" class="btn btn-default">Toimipistehallinta&raquo;</a>
-                    <a href="/Events" class="btn btn-default">Asiakasvaraushallinta&raquo;</a>
-                    <a href="/Rekisteroinnit" class="btn btn-default">Kurssirekisteröinti&raquo;</a>
-                    <a href="/Henkilokuntas" class="btn btn-default">Henkilokuntahallinta&raquo;</a>
-                    <a href="/Shipper" class="btn btn-default">Rahdintoimittajahallinta&raquo;</a>
-                    <a href="/Tilaus" class="btn btn-default">Tilaustenhallinta&raquo;</a>
-                    <a href="/Tuote" class="btn btn-default">Tuotehallinta&raquo;</a>
-                    <a href="/Varaukset" class="btn btn-default">Varaustenhallinta&raquo;</a>
-                    <a href="/EditModal" class="btn btn-default">KalenteriVaraushallinta&raquo;</a>
-                </div>
-            </div>
-
+        
            
 
 @*//KALENTERINÄKYMÄ*@
-            <div class="calendar">
+            @*<div class="calendar">*@
                 <div style="float:left; width: 150px;">
                     <div id="nav"></div>
                 </div>
@@ -69,7 +39,7 @@
                     <div id="dp"></div>
                 </div>
             </div>
-        </div>
+        
 
         <div class="space">
             <select id="theme">
@@ -328,8 +298,37 @@
     }
         </script> @*//<--KALENTERINÄKYMÄ*@
 
+    @*//navbar-2*@
 
-       <br /><br /><br />
+    <div class="col-md-offset-0 col-md-12">
+        <div class="form-actions no-color">
+            <div class="btn-group btn-group-vertical btn-lg">
+                <a href="/Index" class="btn btn-default">Aloitussivu&raquo;</a>
+                <a href="/Asiakas" class="btn btn-default">Asiakashallinta&raquo;</a>
+                <a href="/Hoitaja" class="btn btn-default">Hoitajahallinta&raquo;</a>
+                <a href="/Hoitopaikka" class="btn btn-default">Hoitopaikkahallinta&raquo;</a>
+                <a href="/Huomio" class="btn btn-default">Huomiot&raquo;</a>
+                <a href="/Kurssit" class="btn btn-default">Kurssihallinta&raquo;</a>
+                <a href="/Osoitteet" class="btn btn-default">Osoitehallinta&raquo;</a>
+                <a href="/Palvelu" class="btn btn-default">Palveluhallinta&raquo;</a>
+                <a href="/Postitoimipaikka" class="btn btn-default">Postitoimipaikat&raquo;</a>
+                <a href="/Puhelimet" class="btn btn-default">Puhelinhallinta&raquo;</a>
+                <a href="/Toimipiste" class="btn btn-default">Toimipistehallinta&raquo;</a>
+                <a href="/Events" class="btn btn-default">Asiakasvaraushallinta&raquo;</a>
+                <a href="/Rekisteroinnit" class="btn btn-default">Kurssirekisteröinti&raquo;</a>
+                <a href="/Henkilokuntas" class="btn btn-default">Henkilokuntahallinta&raquo;</a>
+                <a href="/Shipper" class="btn btn-default">Rahdintoimittajahallinta&raquo;</a>
+                <a href="/Tilaus" class="btn btn-default">Tilaustenhallinta&raquo;</a>
+                <a href="/Tuote" class="btn btn-default">Tuotehallinta&raquo;</a>
+                <a href="/Varaukset" class="btn btn-default">Varaustenhallinta&raquo;</a>
+                <a href="/EditModal" class="btn btn-default">KalenteriVaraushallinta&raquo;</a>
+            </div>
+        </div>@*//<--navbar-2*@
+
+   
+
+
+        <br /><br /><br />
 
         <div class="Opetusvideo">
             <!-- 16:9 aspect ratio -->
@@ -339,7 +338,7 @@
             </div>
         </div>
 
-        </div>
+    </div>
 
     <nav>
         <ul class="pager">
@@ -347,8 +346,6 @@
             <li><a href="/Asiakas">Seuraava</a></li>
         </ul>
     </nav>
-
-
 
 
     <div class="row">
@@ -368,6 +365,13 @@
             <p><a class="btn btn-default" href="#"># &raquo;</a></p>
         </div>
     </div>
+
+    <h1>POINT COLLEGE JALKAHOITOLAN AJANVARAUSTIETOKANTA</h1>
+    <h2>PointCollege Jalkahoitola ajanvaraustietokanta & Web-sivusto</h2>
+    <p class="lead">
+        Tämä on datanomi opintojen harjoitustehtävä, jossa kehitetään PointCollegen jalkahoitolalle uusi ajanvaraus järjestelmä.
+        Projektissa luodaan Visual Studion avulla käyttöliittymät, joissa hyödynnetään ASP.NET MVC 5 bootstrapin responsiivisia www-sivuja. Tietokantojen data tallentuu SQL-tietokantaan (Azure). Sivujen luomisessa käytetään seuraavia HTML5-tekniikoita: CSS, CSS3 ja JavaScript. Projektiin kuuluu asiakastietokannan kehittämisen lisäksi web-sivuston kehitystyö.
+    </p>
 
     <p>@ViewBag.Selain</p>
 </body>
