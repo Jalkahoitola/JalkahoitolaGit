@@ -1014,6 +1014,9 @@
     <Content Include="Views\Asiakas\Index.cshtml" />
     <Content Include="Views\Asiakas\OrderByFirstName.cshtml" />
     <Content Include="Views\Asiakas\OrderByLastName.cshtml" />
+    <Content Include="Views\Varaukset\OrderByPvm.cshtml" />
+    <Content Include="Views\Varaukset\OrderByAlku.cshtml" />
+    <Content Include="Views\Varaukset\OrderByPalvelun_nimi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

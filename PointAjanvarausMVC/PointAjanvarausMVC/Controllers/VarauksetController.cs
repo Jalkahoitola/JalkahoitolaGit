@@ -21,6 +21,29 @@ namespace PointAjanvarausMVC.Controllers
             return View(varaus.ToList());
         }
 
+        //14.6.2016 Lisätty tietokantataulujen suodatukset:
+        public ActionResult OrderByPvm()
+        {
+            var varaus = from v in db.Varaus
+                            orderby v.pvm ascending
+                            select v;
+            return View(varaus);
+        }
+        public ActionResult OrderByAlku()
+        {
+            var varaus = from v in db.Varaus
+                         orderby v.Alku ascending
+                         select v;
+            return View(varaus);
+        }
+        public ActionResult OrderByPalvelun_nimi()
+        {
+            var varaus = from v in db.Varaus
+                         orderby v.Palvelun_nimi ascending
+                         select v;
+            return View(varaus);
+        }//<--14.6.2016 Lisätty
+
         // GET: Varaukset/Details/5
         public ActionResult Details(int? id)
         {

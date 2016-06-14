@@ -1,0 +1,136 @@
+﻿@model IEnumerable<PointAjanvarausMVC.Models.Varaus>
+
+@{
+    ViewBag.Title = "OrderByPalvelun_nimi";
+}
+
+<h2>Järjestys palvelun mukaan</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Näytä kaikki", "Index")
+    @Html.ActionLink("Järjestys varauspvm mukaan", "OrderByPvm")
+    @Html.ActionLink("Järjestys varausajan mukaan", "OrderByAlku")
+    @Html.ActionLink("Järjestys palvelun mukaan", "OrderByPalvelun_nimi")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.pvm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Alku)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Loppu)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Asiakkaat1.Asiakastunnus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Asiakkaat1.Etunimi)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Asiakkaat1.Sukunimi)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Asiakkaat1.Asiakas_ID)
+        </th>
+
+        @*<th>
+                @Html.DisplayNameFor(model => model.Palvelun_nimi)
+            </th>*@
+
+        <th>
+            @Html.DisplayNameFor(model => model.Palvelut.Palvelun_nimi)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Info)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Hoitajat.Tunnus)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Hoitopaikat.Hoitopaikan_Nimi)
+        </th>
+
+        @*<th>
+                @Html.DisplayNameFor(model => model.Toimipisteet1.Toimipisteen_Nimi)
+            </th>*@
+
+        @*<th>
+                @Html.DisplayNameFor(model => model.Hoitopaikat.Hoitopaikan_Numero)
+            </th>*@
+
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.pvm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Alku)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Loppu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Asiakkaat1.Asiakastunnus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Asiakkaat1.Etunimi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Asiakkaat1.Sukunimi)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Asiakkaat1.Asiakas_ID)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Palvelun_nimi)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Palvelut.Palvelun_nimi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Info)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hoitajat.Tunnus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hoitopaikat.Hoitopaikan_Nimi)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Toimipisteet1.Toimipisteen_Nimi)
+                </td>*@
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Hoitopaikat.Hoitopaikan_Numero)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+
+            <td>
+                @Html.ActionLink("Muokkaa", "Edit", new { id = item.Varaus_ID }) |
+                @Html.ActionLink("Tiedot", "Details", new { id = item.Varaus_ID }) |
+                @Html.ActionLink("Poista", "Delete", new { id = item.Varaus_ID })
+            </td>
+        </tr>
+    }
+
+</table>
