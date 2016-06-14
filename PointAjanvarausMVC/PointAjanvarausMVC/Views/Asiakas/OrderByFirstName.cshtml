@@ -36,6 +36,9 @@
             @Html.DisplayNameFor(model => model.Puhelinnumero_1)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Sahkoposti)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Huomiot)
         </th>
         <th>
@@ -74,6 +77,9 @@
             @Html.DisplayFor(modelItem => item.Puhelinnumero_1)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Sahkoposti)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Huomiot)
         </td>
         <td>
@@ -86,9 +92,9 @@
             @Html.DisplayFor(modelItem => item.Huomiot1.Muut)
         </td>
         <td>
-            @Html.ActionLink("Muokkaa", "Edit", new { id=item.Asiakas_ID }) |
-            @Html.ActionLink("Tiedot", "Details", new { id=item.Asiakas_ID }) |
-            @Html.ActionLink("Poista", "Delete", new { id=item.Asiakas_ID })
+            @Html.ActionLink("Muokkaa", "Edit", new { id = item.Asiakas_ID }) |
+            @Html.ActionLink("Tiedot", "Details", new { id = item.Asiakas_ID }) |
+            @Html.ActionLink("Poista", "Delete", new { id = item.Asiakas_ID })
         </td>
     </tr>
 }

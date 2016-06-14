@@ -20,6 +20,7 @@
     [Palvelu_ID]        INT            NULL,
     [Asiakas_ID]        INT            NULL,
     [Varaus_ID]         INT            NULL,
+	[Sahkoposti]	NVARCHAR (100) NULL,
     PRIMARY KEY CLUSTERED ([Hoitaja_ID] ASC),
     CONSTRAINT [FK_Hoitajat_ToTable_2] FOREIGN KEY ([Huomio_ID]) REFERENCES [dbo].[Huomiot] ([Huomio_ID]),
     CONSTRAINT [FK_Hoitajat_ToTable] FOREIGN KEY ([Osoite_ID]) REFERENCES [dbo].[Osoite] ([Osoite_ID]),

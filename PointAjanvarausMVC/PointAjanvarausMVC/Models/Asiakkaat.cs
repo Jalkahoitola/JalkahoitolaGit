@@ -41,6 +41,7 @@ namespace PointAjanvarausMVC.Models
         public Nullable<int> Varaus_ID { get; set; }
         public Nullable<int> Palvelu_ID { get; set; }
         public string Asiakastunnus { get; set; }
+        public string Sahkoposti { get; set; }
     
         public virtual Osoite Osoite { get; set; }
         public virtual Puhelin Puhelin { get; set; }

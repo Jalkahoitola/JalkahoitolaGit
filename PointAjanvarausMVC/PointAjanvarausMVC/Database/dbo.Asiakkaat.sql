@@ -15,6 +15,7 @@
     [Varaus_ID]        INT            NULL,
     [Palvelu_ID]       INT            NULL,
     [Asiakastunnus]    NVARCHAR (100) NULL,
+	[Sahkoposti]	NVARCHAR (100) NULL,
     PRIMARY KEY CLUSTERED ([Asiakas_ID] ASC),
     CONSTRAINT [FK_Asiakkaat_ToTable] FOREIGN KEY ([Osoite_id]) REFERENCES [dbo].[Osoite] ([Osoite_ID]),
     CONSTRAINT [FK_Asiakkaat_ToTable_1] FOREIGN KEY ([Puhelin_id]) REFERENCES [dbo].[Puhelin] ([Puhelin_ID]),

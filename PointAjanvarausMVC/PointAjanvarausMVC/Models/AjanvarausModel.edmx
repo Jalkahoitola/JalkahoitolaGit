@@ -25,6 +25,7 @@
           <Property Name="Varaus_ID" Type="int" />
           <Property Name="Palvelu_ID" Type="int" />
           <Property Name="Asiakastunnus" Type="nvarchar" MaxLength="100" />
+          <Property Name="Sahkoposti" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Event">
           <Key>
@@ -84,6 +85,7 @@
           <Property Name="Palvelu_ID" Type="int" />
           <Property Name="Asiakas_ID" Type="int" />
           <Property Name="Varaus_ID" Type="int" />
+          <Property Name="Sahkoposti" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Hoitopaikat">
           <Key>
@@ -1701,6 +1703,7 @@
           <NavigationProperty Name="Asiakkaat1" Relationship="JohaMeriSQL2Model.FK_Hoitajat_ToTable_3" FromRole="Hoitajat" ToRole="Asiakkaat" />
           <NavigationProperty Name="Varaus1" Relationship="JohaMeriSQL2Model.FK_Hoitajat_ToTable_4" FromRole="Hoitajat" ToRole="Varaus" />
           <NavigationProperty Name="Palvelut1" Relationship="JohaMeriSQL2Model.FK_Hoitajat_ToTable_5" FromRole="Hoitajat" ToRole="Palvelut" />
+          <Property Name="Sahkoposti" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Event_ToTable_4">
           <End Type="JohaMeriSQL2Model.Hoitajat" Role="Hoitajat" Multiplicity="0..1" />
@@ -2152,6 +2155,7 @@
           <NavigationProperty Name="Puhelin1" Relationship="JohaMeriSQL2Model.FK_Puhelin_ToTable" FromRole="Asiakkaat" ToRole="Puhelin" />
           <NavigationProperty Name="Varaus1" Relationship="JohaMeriSQL2Model.FK_Varaus_ToTable_1" FromRole="Asiakkaat" ToRole="Varaus" />
           <Property Name="Asiakastunnus" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Sahkoposti" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Asiakkaat_ToTable">
           <End Type="JohaMeriSQL2Model.Osoite" Role="Osoite" Multiplicity="0..1" />
@@ -2525,6 +2529,7 @@
           <EntitySetMapping Name="Hoitajat">
             <EntityTypeMapping TypeName="JohaMeriSQL2Model.Hoitajat">
               <MappingFragment StoreEntitySet="Hoitajat">
+                <ScalarProperty Name="Sahkoposti" ColumnName="Sahkoposti" />
                 <ScalarProperty Name="Varaus_ID" ColumnName="Varaus_ID" />
                 <ScalarProperty Name="Asiakas_ID" ColumnName="Asiakas_ID" />
                 <ScalarProperty Name="Palvelu_ID" ColumnName="Palvelu_ID" />
@@ -2627,6 +2632,7 @@
           <EntitySetMapping Name="Asiakkaat">
             <EntityTypeMapping TypeName="JohaMeriSQL2Model.Asiakkaat">
               <MappingFragment StoreEntitySet="Asiakkaat">
+                <ScalarProperty Name="Sahkoposti" ColumnName="Sahkoposti" />
                 <ScalarProperty Name="Asiakastunnus" ColumnName="Asiakastunnus" />
                 <ScalarProperty Name="Palvelu_ID" ColumnName="Palvelu_ID" />
                 <ScalarProperty Name="Varaus_ID" ColumnName="Varaus_ID" />

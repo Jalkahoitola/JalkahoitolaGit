@@ -73,6 +73,12 @@
             @Html.DisplayNameFor(model => model.Henkilotunnus)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Puhelin.Puhelinnumero_1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sahkoposti)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Aloituspvm)
         </th>
         <th>
@@ -125,6 +131,12 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Henkilotunnus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Puhelin.Puhelinnumero_1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sahkoposti)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Aloituspvm)

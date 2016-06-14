@@ -11,7 +11,7 @@ namespace PointAjanvarausMVC.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    
     public partial class Varaus
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -33,14 +33,10 @@ namespace PointAjanvarausMVC.Models
         public string Palvelun_nimi { get; set; }
         public Nullable<int> Palvelu_ID { get; set; }
         public int Type { get; set; }
-        //Muokattu p‰iv‰m‰‰r‰ m‰‰rityksi‰ 13.6.2016:
-        [Display(Name = "Varausp‰iv‰")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> pvm { get; set; }
-
         public string Info { get; set; }
-        public Nullable<int> Toimipiste_ID { get; set; } 
+        public Nullable<int> Toimipiste_ID { get; set; }
+    
         public virtual Hoitajat Hoitajat { get; set; }
         public virtual Hoitopaikat Hoitopaikat { get; set; }
         public virtual Palvelut Palvelut { get; set; }

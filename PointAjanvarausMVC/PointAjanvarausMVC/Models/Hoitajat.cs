@@ -48,6 +48,7 @@ namespace PointAjanvarausMVC.Models
         public Nullable<int> Palvelu_ID { get; set; }
         public Nullable<int> Asiakas_ID { get; set; }
         public Nullable<int> Varaus_ID { get; set; }
+        public string Sahkoposti { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Event> Event { get; set; }
