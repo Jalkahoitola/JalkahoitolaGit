@@ -3,11 +3,36 @@
 @{
     ViewBag.Title = "Details";
 }
+@section scripts{
+    
+    
+<script src="~/Scripts/Applications/Logic.js"></script>
+<script>
+    $(function(){
+      initArkistointi();
+    })
+</script>
+    }
 
 <h2>Tiedot</h2>
 
 <div>
     <h4>Hoitajat</h4>
+
+    <p>
+        <input id="Tunnus" type="text" placeholder="hoitaja tunnus" />
+
+    </p>
+
+    <p>
+        <input id="ArkistoVuosikurssi" type="text" placeholder="x..." />
+
+    </p>
+
+    <button id="ArkistointiButton" class="btn">
+        Siirrä arkistoon
+    </button>
+
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -236,7 +261,7 @@
 
     <table class="table">
         <tr>
-         
+
             <th>
                 Kurssinimike
             </th>
@@ -257,7 +282,7 @@
         @foreach (var item in Model.Kurssi)
             {
             <tr>
-             
+
                 <td>
                     @Html.DisplayFor(modelItem => item.Kurssinimike)
                 </td>

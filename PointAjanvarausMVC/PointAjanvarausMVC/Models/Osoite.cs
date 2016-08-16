@@ -22,6 +22,7 @@ namespace PointAjanvarausMVC.Models
             this.Shippers1 = new HashSet<Shippers>();
             this.Toimipisteet1 = new HashSet<Toimipisteet>();
             this.Asiakkaat = new HashSet<Asiakkaat>();
+            this.Arkistot = new HashSet<Arkistot>();
         }
     
         public int Osoite_ID { get; set; }
@@ -49,5 +50,7 @@ namespace PointAjanvarausMVC.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Asiakkaat> Asiakkaat { get; set; }
         public virtual Asiakkaat Asiakkaat1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Arkistot> Arkistot { get; set; }
     }
 }

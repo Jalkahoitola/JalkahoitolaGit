@@ -27,7 +27,7 @@ namespace PointAjanvarausMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Rekisterointi rekisterointi = db.Rekisterointi.Find(id);
+           Rekisterointi rekisterointi = db.Rekisterointi.Find(id);
             if (rekisterointi == null)
             {
                 return HttpNotFound();

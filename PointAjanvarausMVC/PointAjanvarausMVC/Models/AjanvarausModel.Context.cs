@@ -42,5 +42,6 @@ namespace PointAjanvarausMVC.Models
         public virtual DbSet<Osoite> Osoite { get; set; }
         public virtual DbSet<Varaus> Varaus { get; set; }
         public virtual DbSet<Asiakkaat> Asiakkaat { get; set; }
+        public virtual DbSet<Arkistot> Arkistot { get; set; }
     }
 }

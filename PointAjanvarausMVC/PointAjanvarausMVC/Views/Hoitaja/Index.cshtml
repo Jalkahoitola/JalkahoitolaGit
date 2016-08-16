@@ -4,9 +4,20 @@
     ViewBag.Title = "Index";
 }
 @section scripts {
+    <script src="~/Scripts/Applications/Logic.js"></script>
+
+<script>
+    $(function(){
+      initArkistointi();
+    })
+
+
+</script>
 
     <script src="~/Scripts/jquery-2.2.3.js"></script>
     <script type="text/javascript">
+
+
 
         $(function () {
             $(".näytäHoitajaNappi").click(function () {
@@ -46,6 +57,20 @@
     @Html.ActionLink("Järjestys sukunimen mukaan", "OrderByLastName")
 </p>
 
+<p>
+    <input id="Tunnus" type="text" placeholder="hoitaja tunnus" />
+
+</p>
+
+<p>
+    <input id="ArkistoVuosikurssi" type="text" placeholder="x..." />
+
+</p>
+
+<button id="ArkistointiButton" class="btn">
+    Siirrä arkistoon
+</button>
+
 <table class="table">
     <tr>
         <th>
@@ -73,7 +98,7 @@
             @Html.DisplayNameFor(model => model.Henkilotunnus)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Puhelin.Puhelinnumero_1)
+            @Html.DisplayNameFor(model => model.Puhelinnumero_1)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Sahkoposti)
@@ -133,7 +158,7 @@
                 @Html.DisplayFor(modelItem => item.Henkilotunnus)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Puhelin.Puhelinnumero_1)
+                @Html.DisplayFor(modelItem => item.Puhelinnumero_1)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Sahkoposti)
@@ -152,7 +177,7 @@
                     <div class="col-lg-6">
                         <div class="input-group">
                             <span class="input-group-addon">
-                                <input type="checkbox" aria-label="...">
+                                <input type="checkbox" aria-label="Arkistointi">
                             </span>
 
                             <input type="text" class="form-control" aria-label="...">

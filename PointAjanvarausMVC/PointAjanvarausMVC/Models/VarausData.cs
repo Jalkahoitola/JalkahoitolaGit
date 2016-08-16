@@ -16,12 +16,21 @@ namespace PointAjanvarausMVC.Models
         //public int asiakas_id { get; set; }
         public DateTime Pvm { get; set; }
 
-        [Display(Name = "Pvm")]
+        [Display(Name = "pvm")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:Dd.MM.yyyy}", ApplyFormatInEditMode = true)]
-        public Nullable<System.DateTime> pvm { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime pvm { get; set; }
 
 
+        [Display(Name = "Aloituspvm")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime Aloituspvm { get; set; }
+
+        [Display(Name = "Valmistumispvm")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime Valmistumispvm { get; set; }
 
 
         public string startTime { get; set; }
@@ -31,6 +40,14 @@ namespace PointAjanvarausMVC.Models
         public string text { get; set; }
         public DateTime newStart { get; set; }
         public DateTime newEnd { get; set; }
+
+        public string tunnus { get; set; }
+        public int arkistoID { get; set; }
+
+        public string ArkistointiTunnus { get; set; }
+        public string ArkistoTunnus { get; set; }
+        public string tiedot_arkistoitu { get; set; }
+        public DateTime valmistumispvm { get; set; }
 
     }
 }

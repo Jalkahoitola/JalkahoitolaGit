@@ -77,6 +77,14 @@
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Toimipisteet_ToTable_4" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Varaus_ToTable_4" />
         <AssociationConnector Association="JohaMeriSQL2Model.FK_Henkilokunta_ToTable_3" />
+        <EntityTypeShape EntityType="JohaMeriSQL2Model.Arkistot" Width="1.5" PointX="30.75" PointY="2.75" />
+        <AssociationConnector Association="JohaMeriSQL2Model.FK_Arkistot_ToTable" />
+        <AssociationConnector Association="JohaMeriSQL2Model.FK_Arkistot_ToTable_1" />
+        <AssociationConnector Association="JohaMeriSQL2Model.FK_Arkistot_ToTable_2" />
+        <AssociationConnector Association="JohaMeriSQL2Model.FK_Arkistot_ToTable_3" />
+        <AssociationConnector Association="JohaMeriSQL2Model.FK_Arkistot_ToTable_4" />
+        <AssociationConnector Association="JohaMeriSQL2Model.FK_Arkistot_ToTable_5" />
+        <AssociationConnector Association="JohaMeriSQL2Model.FK_Arkistot_ToTable_6" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

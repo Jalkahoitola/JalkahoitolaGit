@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PointAjanvarausMVC.Models;
+using System.Globalization;
 
 namespace PointAjanvarausMVC.Controllers
 {
@@ -83,6 +84,7 @@ namespace PointAjanvarausMVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            CultureInfo fiFi = new CultureInfo("fi-FI");
 
             ViewBag.Asiakas_ID = new SelectList(db.Asiakkaat, "Asiakas_ID", "Asiakastunnus", varaus.Asiakas_ID);
             ViewBag.Hoitaja_ID = new SelectList(db.Hoitajat, "Hoitaja_ID", "Tunnus", varaus.Hoitaja_ID);
@@ -144,6 +146,7 @@ namespace PointAjanvarausMVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                CultureInfo fiFi = new CultureInfo("fi-FI");
                 db.Entry(varaus).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

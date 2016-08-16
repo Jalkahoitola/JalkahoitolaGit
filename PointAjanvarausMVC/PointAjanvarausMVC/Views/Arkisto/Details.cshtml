@@ -1,0 +1,202 @@
+﻿@model PointAjanvarausMVC.Models.Arkistot
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Arkistot</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tunnus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tunnus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Etunimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Etunimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Toinen_nimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Toinen_nimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sukunimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sukunimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Katuosoite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Katuosoite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Postinumero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Postinumero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Postitoimipaikka)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Postitoimipaikka)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Henkilotunnus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Henkilotunnus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aloituspvm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aloituspvm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valmistumispvm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valmistumispvm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Keskeytyspvm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Keskeytyspvm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tiedot_arkistoitu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tiedot_arkistoitu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kurssi_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kurssi_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rekisterointi_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rekisterointi_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sahkoposti)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sahkoposti)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Puhelinnumero_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Puhelinnumero_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Osoite.Katuosoite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Osoite.Katuosoite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Puhelin.Puhelinnumero_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Puhelin.Puhelinnumero_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Huomiot.Muut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Huomiot.Muut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Asiakkaat.Etunimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Asiakkaat.Etunimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Varaus.Alku)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Varaus.Alku)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Palvelut.Palvelun_nimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Palvelut.Palvelun_nimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hoitajat.Tunnus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoitajat.Tunnus)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Arkisto_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

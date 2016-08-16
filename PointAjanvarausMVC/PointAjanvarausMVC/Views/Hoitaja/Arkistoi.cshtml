@@ -1,0 +1,184 @@
+﻿@model IEnumerable<PointAjanvarausMVC.Models.Hoitajat>
+
+@{
+    ViewBag.Title = "Arkistointi";
+}
+
+@section scripts{
+
+
+    <script src="~/Scripts/Applications/Logic.js"></script>
+    <script>
+    $(function(){
+      initArkistointi();
+    })
+    </script>
+}
+<h2>Arkistoi</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<p>
+    <input id="Tunnus" type="text" placeholder="hoitaja tunnus" />
+
+</p>
+
+<p>
+    <input id="ArkistoVuosikurssi" type="text" placeholder="x..." />
+
+</p>
+
+<button id="ArkistointiButton" class="btn">
+    Siirrä arkistoon
+</button>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tunnus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Etunimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Toinen_nimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sukunimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Katuosoite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Postinumero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Postitoimipaikka)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Henkilotunnus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aloituspvm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Valmistumispvm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Keskeytyspvm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tiedot_arkistoitu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kurssi_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rekisterointi_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sahkoposti)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Puhelinnumero_1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Huomiot.Muut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Puhelin.Puhelinnumero_1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Osoite.Katuosoite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Asiakkaat1.Etunimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Varaus1.Alku)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Palvelut1.Palvelun_nimi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tunnus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Etunimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Toinen_nimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sukunimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Katuosoite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Postinumero)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Postitoimipaikka)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Henkilotunnus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aloituspvm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Valmistumispvm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Keskeytyspvm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tiedot_arkistoitu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kurssi_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rekisterointi_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sahkoposti)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Puhelinnumero_1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Huomiot.Muut)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Puhelin.Puhelinnumero_1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Osoite.Katuosoite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Asiakkaat1.Etunimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Varaus1.Alku)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Palvelut1.Palvelun_nimi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Hoitaja_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Hoitaja_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Hoitaja_ID })
+        </td>
+    </tr>
+}
+
+</table>

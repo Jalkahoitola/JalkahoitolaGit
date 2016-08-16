@@ -208,6 +208,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ArkistoController.cs" />
     <Compile Include="Controllers\AsiakasController.cs" />
     <Compile Include="Controllers\EditModalController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
@@ -248,6 +249,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AjanvarausModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ArkistoidutTiedot.cs" />
+    <Compile Include="Models\Arkistot.cs">
+      <DependentUpon>AjanvarausModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Asiakkaat.cs">
       <DependentUpon>AjanvarausModel.tt</DependentUpon>
     </Compile>
@@ -284,6 +289,7 @@
     <Compile Include="Models\Puhelin.cs">
       <DependentUpon>AjanvarausModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RekisteriArkisto.cs" />
     <Compile Include="Models\Rekisterointi.cs">
       <DependentUpon>AjanvarausModel.tt</DependentUpon>
     </Compile>
@@ -308,6 +314,7 @@
     <Compile Include="Models\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utilities\WebUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Antlr3.Runtime.dll" />
@@ -643,6 +650,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="dashboard\dashboard.css" />
     <Content Include="dashboard\index.html" />
+    <Content Include="Database\dbo.Arkistot.sql" />
     <Content Include="Database\dbo.Asiakkaat.sql" />
     <Content Include="Database\dbo.Event.sql" />
     <Content Include="Database\dbo.Henkilokunta.sql" />
@@ -852,7 +860,9 @@
     <Content Include="Models\obj\Debug\edmxResourcesToEmbed\Models\AjanvarausModel.msl" />
     <Content Include="Models\obj\Debug\edmxResourcesToEmbed\Models\AjanvarausModel.ssdl" />
     <Content Include="Database\file1.js.map" />
+    <Content Include="Scripts\Applications\Logic.js.map" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
+    <Content Include="Scripts\Applications\Logic.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\daypilot-all.min.js" />
@@ -1017,6 +1027,12 @@
     <Content Include="Views\Varaukset\OrderByPvm.cshtml" />
     <Content Include="Views\Varaukset\OrderByAlku.cshtml" />
     <Content Include="Views\Varaukset\OrderByPalvelun_nimi.cshtml" />
+    <Content Include="Views\Arkisto\Create.cshtml" />
+    <Content Include="Views\Arkisto\Delete.cshtml" />
+    <Content Include="Views\Arkisto\Details.cshtml" />
+    <Content Include="Views\Arkisto\Edit.cshtml" />
+    <Content Include="Views\Arkisto\Index.cshtml" />
+    <Content Include="Views\Hoitaja\Arkistoi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1032,6 +1048,8 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Database\file1.ts" />
+    <TypeScriptCompile Include="Scripts\Applications\Logic.ts" />
+    <TypeScriptCompile Include="Scripts\Typings\Jquery\jquery.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
